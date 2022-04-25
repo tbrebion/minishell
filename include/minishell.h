@@ -3,25 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 14:16:36 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/04/25 16:59:03 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/04/25 18:20:24 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H 
+#ifndef MINISHELL_H
 # define MINISHELL_H
 
-# include<stdio.h>
-# include<stdlib.h>
-# include<unistd.h>
-# include<sys/types.h>
-# include<sys/stat.h>
-# include<sys/wait.h>
-# include<signal.h>
-# include<dirent.h>
-# include"libft/libft.h"
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include <sys/types.h>
+# include <sys/stat.h>
+# include <sys/wait.h>
+# include <signal.h>
+# include <dirent.h>
+# include "../Lib42/include/lib42.h"
 
 #define BUFF_SIZE 1500
 

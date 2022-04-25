@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:19:38 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/04/25 16:51:52 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/04/25 18:14:38 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../include/minishell.h"
 
 t_tok	*parse_input(char *input)
 {
@@ -26,8 +26,8 @@ t_tok	*parse_input(char *input)
 		i++;
 	if (!(token_tab = malloc(sizeof(t_tok) * (i + (i - 1)))))
 		return (NULL); // ft_exit ??
-	
-}	
+
+}
 
 int main()
 {

@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 14:16:36 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/04/25 18:47:29 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/04/25 18:57:22 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,13 @@ typedef struct s_tok
 typedef struct s_cmd
 {
 	char	**av;
-	t_tok 	*redir;
+	t_tok	*redir;
 }	t_cmd;
 
 typedef struct s_pipe
 {
 	t_cmd	*left;
-	t_cmd 	*right;
+	t_cmd	*right;
 }	t_pipe;
 
 #endif

@@ -1,0 +1,3 @@
+[submodule "Lib42"]
+	path = Lib42
+	url = https://github.com/chozeur/Lib42.git

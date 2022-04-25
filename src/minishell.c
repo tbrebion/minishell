@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:19:38 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/04/25 18:14:38 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/04/25 18:31:03 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ t_tok	*parse_input(char *input)
 		i++;
 	if (!(token_tab = malloc(sizeof(t_tok) * (i + (i - 1)))))
 		return (NULL); // ft_exit ??
-
+	return (token_tab);
 }
 
-int main()
+int main(void)
 {
     char    buffer[BUFF_SIZE];
 
@@ -42,4 +42,5 @@ int main()
         else
             printf("Commande inconnue ...\n");
     }
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 14:16:36 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/04/26 13:06:33 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/04/26 16:50:43 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@
 # include "../Lib42/include/lib42.h"
 
 #define BUFF_SIZE 1500
+
+char	**g_env;
 
 typedef struct s_tok
 {

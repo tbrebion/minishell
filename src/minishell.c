@@ -6,61 +6,63 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:19:38 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/04/26 14:54:30 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/04/26 16:51:22 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-
-void/*t_tok	**/parse_input(char *input)
+/*
+void	parse_input(char *input)
 {
 	int		i;
-	int		j;
-	int		k;
 	char	**in_tab;
 	t_tok	*token_tab;
 
 	i = 0;
-	j = 0;
-	k = 0;
 	in_tab = ft_split(input, ' ');
 	while (in_tab[i])
 		i++;
 	if (!(token_tab = malloc(sizeof(t_tok) * (i + (i - 1)))))
-		return /*(NULL)*/; // ft_exit ??
+		return ; 
 	i = 0;
 	while (in_tab[i])
 	{
 		printf("%s\n", in_tab[i]);
 		i++;
 	}
-	
-	//return (token_tab);
-}
+
+}*/
 
 
-int main(void)
+int main(int ac, char **av, char **envp)
 {
-    char    buffer[BUFF_SIZE];
-	t_tok	*tok;
-	int		i = 0;
+	int	i;
 
-    while(1)
+	i = 0;
+	while (envp[i])
+		i++;
+	if (!(g_env = malloc(sizeof(char *) * i + 1)))
+		return (0);
+	i = 0;
+	while (envp[i])
+	{
+		g_env[i] = ft_strdup(envp[i]/*, ft_strlen(env[i]*/);
+		i++;
+	}
+	g_env[i] = 0;
+    /*while(1)
     {
         printf("<Prompt>:");
-        scanf("%s", buffer);
-		/*tok = */parse_input(buffer);
-		/*while (tok[i].val)
-		{
-			printf("%s\n", tok->val);
-			i++;
-		}*/
-        /*if (ft_strncmp("exit", buffer, 4)==0)
-            exit(0);
-        else
-            printf("Commande inconnue ...\n");*/
-		
-    }
+        //scanf("%s", buffer);
+		prompt = readline();	
+		printf("%s\n", prompt);
+    }*/
+	i = 0;
+	while (g_env[i])
+	{
+		printf("%s\n", g_env[i]);
+		i++;
+	}
 	return (0);
 }

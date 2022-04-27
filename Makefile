@@ -6,7 +6,7 @@
 #    By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/13 16:33:34 by flcarval          #+#    #+#              #
-#    Updated: 2022/04/26 15:53:54 by flcarval         ###   ########.fr        #
+#    Updated: 2022/04/27 16:47:06 by flcarval         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,8 +19,8 @@ RED = \033[0;31m
 GREEN = \033[0;32m
 NC = \033[0m
 ##### SOURCES #####
-SRC = $(addprefix src/, minishell.c)
-# UTILS = $(addprefix src/utils/, init_map.c maplen.c mapcheck.c locate_player.c leave.c isber.c isclean.c)
+SRC = $(addprefix src/, minishell.c get_env.c)
+PARSING = $(addprefix src/parsing/, )
 ##### NAMES #####
 NAME = minishell
 ##### OBJECTS #####

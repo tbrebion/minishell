@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:19:38 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/04/27 15:53:14 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/04/27 15:55:36 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	parse_input(char *input)
 	while (in_tab[i])
 		i++;
 	if (!(token_tab = malloc(sizeof(t_tok) * (i + (i - 1)))))
-		return ; 
+		return ;
 	i = 0;
 	while (in_tab[i])
 	{
@@ -51,12 +51,12 @@ int main(int ac, char **av, char **envp)
 		printf("%s\n", my_path[i]);
 		i++;
 	}*/
-    while(1)
-    {
+	while(1)
+	{
 		printf("My_prompt> ");
 		input = get_next_line(0);
 		printf("%s", input);
 		//printf("%s", get_next_line(0));
-    }
+	}
 	return (0);
 }

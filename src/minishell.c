@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:19:38 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/04/27 14:02:29 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/04/27 15:53:14 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,14 @@ void	parse_input(char *input)
 int main(int ac, char **av, char **envp)
 {
 	char	*input;
-	char	**my_path;
-	int		i;
+	//char	**my_path;
+	//int		i;
 
 	(void)ac;
 	(void)av;
-	my_path = get_path(get_env(envp));
-	i = 0;
+	(void)envp;
+	//my_path = get_path(get_env(envp));
+	//i = 0;
 	/*while (my_path[i])
 	{
 		printf("%s\n", my_path[i]);
@@ -52,9 +53,9 @@ int main(int ac, char **av, char **envp)
 	}*/
     while(1)
     {
-		printf("My_prompt> ")
+		printf("My_prompt> ");
 		input = get_next_line(0);
-		//printf("%s", input);
+		printf("%s", input);
 		//printf("%s", get_next_line(0));
     }
 	return (0);

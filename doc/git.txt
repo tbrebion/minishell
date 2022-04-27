@@ -22,3 +22,9 @@ git merge Chozeur  //recuperer ce qui a ete commit par la branche Chozeur
 gp
 
 ##################################################################
+
+PUSH UNE BRANCHE :
+
+	git push -u origin <nom_branche>
+
+##################################################################

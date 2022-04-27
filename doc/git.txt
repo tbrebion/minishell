@@ -1,0 +1,24 @@
+Commandes :
+
+git branch <nom_branche> : creation d'une branche
+
+git checkout <nom_branche> : changement de branche
+
+git merge <branche_source> : import d'une branche source vers ma branche actuelle
+
+
+######################  EXEMPLE POUR PUSH #####################
+
+Depuis Chozeur :
+
+gaa
+
+gcam "..."
+
+git checkout main  //aller sur la branche main
+
+git merge Chozeur  //recuperer ce qui a ete commit par la branche Chozeur
+
+gp
+
+##################################################################

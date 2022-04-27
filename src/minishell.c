@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:19:38 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/04/26 16:51:22 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/04/27 12:30:16 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,11 @@ void	parse_input(char *input)
 
 int main(int ac, char **av, char **envp)
 {
-	int	i;
+	int		i;
+	char	*input;
 
+	(void)ac;
+	(void)av;
 	i = 0;
 	while (envp[i])
 		i++;
@@ -47,22 +50,21 @@ int main(int ac, char **av, char **envp)
 	i = 0;
 	while (envp[i])
 	{
-		g_env[i] = ft_strdup(envp[i]/*, ft_strlen(env[i]*/);
+		g_env[i] = ft_strdup(envp[i]);
 		i++;
 	}
 	g_env[i] = 0;
-    /*while(1)
+    while(1)
     {
         printf("<Prompt>:");
-        //scanf("%s", buffer);
-		prompt = readline();	
-		printf("%s\n", prompt);
-    }*/
-	i = 0;
+		input = get_next_line(0);
+		printf("%s\n", input);
+    }
+	/*i = 0;
 	while (g_env[i])
 	{
 		printf("%s\n", g_env[i]);
 		i++;
-	}
+	}*/
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:19:38 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/04/27 12:30:16 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/04/27 14:02:29 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,34 +37,25 @@ void	parse_input(char *input)
 
 int main(int ac, char **av, char **envp)
 {
-	int		i;
 	char	*input;
+	char	**my_path;
+	int		i;
 
 	(void)ac;
 	(void)av;
+	my_path = get_path(get_env(envp));
 	i = 0;
-	while (envp[i])
-		i++;
-	if (!(g_env = malloc(sizeof(char *) * i + 1)))
-		return (0);
-	i = 0;
-	while (envp[i])
+	/*while (my_path[i])
 	{
-		g_env[i] = ft_strdup(envp[i]);
-		i++;
-	}
-	g_env[i] = 0;
-    while(1)
-    {
-        printf("<Prompt>:");
-		input = get_next_line(0);
-		printf("%s\n", input);
-    }
-	/*i = 0;
-	while (g_env[i])
-	{
-		printf("%s\n", g_env[i]);
+		printf("%s\n", my_path[i]);
 		i++;
 	}*/
+    while(1)
+    {
+		printf("My_prompt> ")
+		input = get_next_line(0);
+		//printf("%s", input);
+		//printf("%s", get_next_line(0));
+    }
 	return (0);
 }

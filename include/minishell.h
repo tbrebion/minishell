@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 14:16:36 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/04/26 16:50:43 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/04/27 13:43:47 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,7 @@
 # include <readline/history.h>
 # include "../Lib42/include/lib42.h"
 
-#define BUFF_SIZE 1500
-
-char	**g_env;
+//char	**g_env;
 
 typedef struct s_tok
 {
@@ -46,5 +44,8 @@ typedef struct s_pipe
 	t_cmd	*left;
 	t_cmd	*right;
 }	t_pipe;
+
+char	**get_env(char **envp);
+char	**get_path(char **my_env);
 
 #endif

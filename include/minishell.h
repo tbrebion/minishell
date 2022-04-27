@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 14:16:36 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/04/27 13:43:47 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/04/27 17:07:56 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,14 @@
 # include "../Lib42/include/lib42.h"
 
 //char	**g_env;
+
+# define LITERAL 100
+# define SPACE 200
+# define OUTREDIR 300
+# define INREDIR 400
+# define PIPE 500
+# define S_QUOTE 600
+# define D_QUOTE 700
 
 typedef struct s_tok
 {

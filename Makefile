@@ -6,7 +6,7 @@
 #    By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/13 16:33:34 by flcarval          #+#    #+#              #
-#    Updated: 2022/04/27 16:47:06 by flcarval         ###   ########.fr        #
+#    Updated: 2022/04/27 16:49:17 by flcarval         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ GREEN = \033[0;32m
 NC = \033[0m
 ##### SOURCES #####
 SRC = $(addprefix src/, minishell.c get_env.c)
-PARSING = $(addprefix src/parsing/, )
+PARSING = $(addprefix src/parsing/, str_tok.c)
 ##### NAMES #####
 NAME = minishell
 ##### OBJECTS #####

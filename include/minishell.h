@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 14:16:36 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/04/29 19:14:51 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/04/29 19:17:31 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,8 @@
 # include <readline/history.h>
 # include "../Lib42/include/lib42.h"
 
-//char	**g_env;
-
 # define LITERAL 100
-//# define SPACE 200
+# define SPACE 200
 # define OUTREDIR 300
 # define INREDIR 400
 # define PIPE 500

@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 16:45:12 by flcarval          #+#    #+#             */
-/*   Updated: 2022/04/29 18:04:12 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/04/29 19:02:55 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,25 @@
 static int		identify_tok(char c);
 static int		count_tok(char *str);
 static t_tok	set_tok(char *str, int *i);
+static void		set_tok_single_char(t_tok *tok);
 
 t_tok	*str_tok(char *str)
 {
-	t_tok	*res;
+	t_tok	*Tok;
 	int		tok_nb;
 	int		i;
 
 	tok_nb = count_tok(str);
-	res = malloc(sizeof(t_tok) * tok_nb);
-	if (!res)
+	Tok = malloc(sizeof(t_tok) * tok_nb);
+	if (!Tok)
 		return (NULL);
 	i = 0;
 	while (i < tok_nb)
 	{
-		res[i] = set_tok(str, &i);
+		Tok[i] = set_tok(str, &i);
 		i++;
 	}
+	return (Tok);
 }
 
 static int	identify_tok(char c)
@@ -87,36 +89,51 @@ static int	count_tok(char *str)
 
 static t_tok	set_tok(char *str, int *i)
 {
-	t_tok	res;
+	t_tok	tok;
 
-	res.type = identify_tok(str[*i]);
-	if (res.type == OUTREDIR)
+	tok.type = identify_tok(str[*i]);
+	tok.val = "";
+	if (tok.type == OUTREDIR)
 	{
-		res.val = ">";
+		tok.val = ">";
 		if (identify_tok(str[*i + 1]) == OUTREDIR)
 		{
 			(*i)++;
 			res.val = ">>";
 		}
 	}
-	else if (res.type == INREDIR)
+	else if (tok.type == INREDIR)
 	{
-		res.val = "<";
+		tok.val = "<";
 		if (identify_tok(str[*i + 1]) == INREDIR)
 		{
 			(*i)++;
-			res.val = "<<";
+			tok.val = "<<";
 		}
 	}
-	else if (res.type == SPACE || res.type == PIPE || \
-		res.type == S_QUOTE || res.type == D_QUOTE)
-	{
-		
-	}
+	else if (tok.type == SPACE || tok.type == PIPE || \
+		tok.type == S_QUOTE || tok.type == D_QUOTE)
+		set_tok_single_char(&tok);
 	else if (res.type == LITERAL)
 	{
 		while (identify_tok(str[*i]) == LITERAL)
+		{
 			(*i)++;
+			tok.val = stradd_char(val, str[*i]);
+		}
 	}
 	(*i)++;
+	return (tok);
+}
+
+static void	set_tok_single_char(t_tok *tok)
+{
+	if (tok->type == SPACE)
+		tok->val = " ";
+	else if (tok->type == PIPE)
+		tok->val = "|";
+	else if (tok->type == S_QUOTE)
+		tok->val = "\'";
+	else if (tok->type == D_QUOTE)
+		tok->val = "\"";
 }

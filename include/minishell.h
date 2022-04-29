@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 14:16:36 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/04/29 18:03:22 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/04/29 18:58:57 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,8 @@ typedef struct s_pipe
 
 char	**get_env(char **envp);
 char	**get_path(char **my_env);
-
 void	display_prompt(void);
+
+char	*stradd_char(char *str, char c);
 
 #endif

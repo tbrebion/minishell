@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:19:38 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/04/27 17:52:17 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/04/29 18:11:46 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,18 +45,12 @@ int main(int ac, char **av, char **envp)
 	(void)av;
 	(void)envp;
 	//my_path = get_path(get_env(envp));
-	//i = 0;
-	/*while (my_path[i])
-	{
-		printf("%s\n", my_path[i]);
-		i++;
-	}*/
     while(1)
 	{
-		ft_printf("My_prompt> ");
+		display_prompt();
+		ft_putstr(" \033[31m︻\033[0m\033[32m┳\033[0m\033[33mデ");
+
 		input = get_next_line(0);
-		ft_printf("%s", input);
-		//printf("%s", get_next_line(0));
     }
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 16:45:12 by flcarval          #+#    #+#             */
-/*   Updated: 2022/05/02 18:45:14 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/05/02 18:50:20 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,6 @@ static t_tok	set_tok(char *str, int *i)
 		tok.type == I_S_QUOTE || tok.type == I_D_QUOTE)
 		{
 			set_tok_single_char(&tok);
-			ft_printf("tok.val = \"%s\"\n", tok.val);
 			(*i)++;
 		}
 	else if (tok.type == I_LITERAL)
@@ -138,6 +137,7 @@ static t_tok	set_tok(char *str, int *i)
 			(*i)++;
 		}
 	}
+	ft_printf("tok.val = \"%s\"\n", tok.val);
 	return (tok);
 }
 

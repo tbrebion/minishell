@@ -2,25 +2,35 @@
 
 ## SRC ##
 
-SOURCES		+=                    		\
-		src/minishell.c              	\
-		src/redir.c                  	\
-		src/display_prompt.c         	\
-		src/get_env.c                	\
-		src/exit_shell.c				\
-		src/exec_test.c					\
-		src/env_builtin.c				\
-
-
-## SRC/PARSING ##
-
-SOURCES		+=                    		\
-		src/parsing/str_tok.c        	\
+SOURCES		+=                         		\
+		src/minishell.c                   	\
 
 
 ## SRC/UTILS ##
 
-SOURCES		+=                    		\
-		src/utils/stradd_char.c      	\
+SOURCES		+=                         		\
+		src/utils/get_env.c               	\
+		src/utils/exec_test.c             	\
+		src/utils/redir.c                 	\
+		src/utils/stradd_char.c           	\
+		src/utils/exit_shell.c            	\
+
+
+## SRC/BUILTINS ##
+
+SOURCES		+=                         		\
+		src/builtins/env_builtin.c        	\
+
+
+## SRC/DISPLAY ##
+
+SOURCES		+=                         		\
+		src/display/display_prompt.c      	\
+
+
+## SRC/PARSING ##
+
+SOURCES		+=                         		\
+		src/parsing/str_tok.c             	\
 
 

@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 14:16:36 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/02 14:59:35 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/02 15:20:32 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,20 +55,20 @@ typedef struct s_pipe
 }	t_pipe;
 
 // INIT ENV AND ALL PATHS
-void	init_env(char **envp);
-char	**get_path(void);
+char	**init_env(char **envp);
+char	**get_path(char **my_env);
 
 void	display_prompt(void);
 
 // FIND PATH TO EXEC
 char	*find_path(char *cmd, char **my_paths);
 
-void	exit_shell(void);
+void	exit_shell(char **my_env);
 
 // UTILS
 char	*stradd_char(char *str, char c);
 
 // BUILTINS
-void	print_env(void);
+void	print_env(char **my_env);
 
 #endif

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
@@ -7,7 +6,7 @@
 #    By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/13 16:33:34 by flcarval          #+#    #+#              #
-#    Updated: 2022/05/02 11:25:18 by tbrebion         ###   ########.fr        #
+#    Updated: 2022/05/02 11:40:44 by tbrebion         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,11 +47,9 @@ $(NAME): info_making $(OBJ)
 	@$(CC) -L./Lib42 -l42 -c $< -o $(<:.c=.o)
 
 run: all clean
-=======
 # Generated with GenMake
 # Arthur-TRT - https://github.com/arthur-trt/genMake
 # genmake vv1.1.4
->>>>>>> 0dae6e9235c13156728579cc00082cf1660704a8
 
 #Compiler and Linker
 CC					:= clang

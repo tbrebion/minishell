@@ -7,6 +7,8 @@ SOURCES		+=                    		\
 		src/redir.c                  	\
 		src/display_prompt.c         	\
 		src/get_env.c                	\
+		src/exit_shell.c				\
+		src/exec_test.c					\
 
 
 ## SRC/PARSING ##

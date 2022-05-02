@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 14:16:36 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/02 11:40:37 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/02 13:30:05 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,13 @@ typedef struct s_pipe
 	t_cmd	*right;
 }	t_pipe;
 
+// INIT ENV AND ALL PATHS
 void	init_env(char **envp);
 char	**get_path(char **my_env);
+
 void	display_prompt(void);
 
+// FIND PATH TO EXEC
 char	*find_path(char *cmd, char **my_paths);
 
 void	exit_shell(void);

@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 14:16:36 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/04/29 18:03:22 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/02 11:24:26 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@
 # include <readline/history.h>
 # include "../Lib42/include/lib42.h"
 
-//char	**g_env;
+char	**g_env;
 
 # define LITERAL 100
-//# define SPACE 200
+# define SPACE 200
 # define OUTREDIR 300
 # define INREDIR 400
 # define PIPE 500
@@ -53,9 +53,13 @@ typedef struct s_pipe
 	t_cmd	*right;
 }	t_pipe;
 
-char	**get_env(char **envp);
+void	init_env(char **envp);
 char	**get_path(char **my_env);
 
 void	display_prompt(void);
+
+char	*find_path(char *cmd, char **my_paths);
+
+void	exit_shell(void);
 
 #endif

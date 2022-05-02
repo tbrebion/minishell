@@ -6,7 +6,7 @@
 #    By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/13 16:33:34 by flcarval          #+#    #+#              #
-#    Updated: 2022/04/29 18:04:42 by tbrebion         ###   ########.fr        #
+#    Updated: 2022/05/02 11:25:18 by tbrebion         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ RED = \033[0;31m
 GREEN = \033[0;32m
 NC = \033[0m
 ##### SOURCES #####
-SRC = $(addprefix src/, minishell.c get_env.c display_prompt.c)
+SRC = $(addprefix src/, minishell.c get_env.c display_prompt.c exit_shell.c exec_test.c)
 PARSING = $(addprefix src/parsing/, str_tok.c)
 ##### NAMES #####
 NAME = minishell

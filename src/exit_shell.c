@@ -1,44 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_env.c                                          :+:      :+:    :+:   */
+/*   exit_shell.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/27 12:25:02 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/02 09:40:50 by tbrebion         ###   ########.fr       */
+/*   Created: 2022/05/02 09:32:37 by tbrebion          #+#    #+#             */
+/*   Updated: 2022/05/02 09:38:23 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-void	init_env(char **envp)
+void	exit_shell(void)
 {
-	int		i;
+	int	i;
 
-	i = 0;
-	while (envp[i])
-		i++;
-	if (!(g_env = malloc(sizeof(char *) * i + 1)))
-		return (NULL);
-	i = 0;
-	while (envp[i])
+	i = -1;
+	while (g_env[++i])
 	{
-		if (!(g_env[i] = ft_strdup(envp[i])));
-			exit_shell();
-		i++;
+		free(g_env[i]);
 	}
-	g_env[i] = 0;
-}
-
-char	**get_path(char **my_env)
-{
-	int		i;
-	char	**my_paths;
-
-	i = 0;
-	while (ft_strnstr(my_env[i], "PATH", 4) == 0)
-		i++;
-	my_paths = ft_split(my_env[i] + 5, ':');
-	return (my_paths);
+	free(g_env);
+	write(1, '\n', 1);
+	exit(0);
 }

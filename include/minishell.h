@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 14:16:36 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/02 15:20:32 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/02 16:06:42 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@
 
 //char	**g_env;
 
-# define LITERAL 100
-//# define SPACE 200
-# define OUTREDIR 300
-# define INREDIR 400
-# define PIPE 500
-# define S_QUOTE 600
-# define D_QUOTE 700
+# define I_LITERAL 100
+# define I_SPACE 200
+# define I_OUTREDIR 300
+# define I_INREDIR 400
+# define I_PIPE 500
+# define I_S_QUOTE 600
+# define I_D_QUOTE 700
 
 typedef struct s_tok
 {
@@ -70,5 +70,8 @@ char	*stradd_char(char *str, char c);
 
 // BUILTINS
 void	print_env(char **my_env);
+
+// PARSING
+t_tok	*str_tok(char *str);
 
 #endif

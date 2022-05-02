@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 16:45:12 by flcarval          #+#    #+#             */
-/*   Updated: 2022/05/02 18:50:20 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/05/03 01:03:34 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ t_tok	*str_tok(char *str)
 	j = 0;
 	while (i < tok_nb)
 	{
-		Tok[i] = set_tok(&str[j], &j);
+		Tok[i] = set_tok(str, &j);
 		i++;
 	}
 	Tok[i].val = NULL;
@@ -70,7 +70,7 @@ static int	count_tok(char *str)
 	i = 0;
 	while (str[i])
 	{
-		ft_printf("[identify_tok] : %d\n", identify_tok(str[i]));
+		// ft_printf("[identify_tok] : %d\n", identify_tok(str[i]));
 		// check if it's a single or double (> || >>)
 		if (identify_tok(str[i]) == I_OUTREDIR)
 		{
@@ -101,7 +101,7 @@ static t_tok	set_tok(char *str, int *i)
 	t_tok	tok;
 
 	tok.type = identify_tok(str[*i]);
-	ft_printf("tok.type = %d\n", tok.type);
+	// ft_printf("tok.type = %d\n", tok.type);
 	if (tok.type == I_OUTREDIR)
 	{
 		tok.val = ">";
@@ -137,7 +137,7 @@ static t_tok	set_tok(char *str, int *i)
 			(*i)++;
 		}
 	}
-	ft_printf("tok.val = \"%s\"\n", tok.val);
+	// ft_printf("tok.val = \"%s\"\n", tok.val);
 	return (tok);
 }
 

@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 09:32:37 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/02 09:38:23 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/02 13:48:39 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,6 @@ void	exit_shell(void)
 		free(g_env[i]);
 	}
 	free(g_env);
-	write(1, '\n', 1);
+	write(1, "\n", 1);
 	exit(0);
 }

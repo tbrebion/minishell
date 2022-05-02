@@ -9,6 +9,7 @@ SOURCES		+=                    		\
 		src/get_env.c                	\
 		src/exit_shell.c				\
 		src/exec_test.c					\
+		src/env_builtin.c				\
 
 
 ## SRC/PARSING ##

@@ -13,6 +13,8 @@ SOURCES		+=                         		\
 		src/utils/exec_test.c             	\
 		src/utils/redir.c                 	\
 		src/utils/stradd_char.c           	\
+		src/utils/catch_username.c          \
+		src/utils/limiter.c          		\
 
 
 ## SRC/BUILTINS ##

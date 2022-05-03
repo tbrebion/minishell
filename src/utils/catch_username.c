@@ -1,24 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   display_prompt.c                                   :+:      :+:    :+:   */
+/*   catch_username.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/29 17:54:00 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/03 14:01:10 by tbrebion         ###   ########.fr       */
+/*   Created: 2022/05/03 13:56:36 by tbrebion          #+#    #+#             */
+/*   Updated: 2022/05/03 14:03:44 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minishell.h"
+#include "../../include/minishell.h"
 
-void	display_prompt(void)
+char	*catch_user(char **my_env)
 {
-	char	*cwd;
-	char	buff[4096 + 1];
+	int	i;
 
-	cwd = getcwd(buff, 4096);
-	ft_printf("%s", cwd);
-	ft_putstr(" \033[31m︻\033[0m\033[32m┳\033[0m\033[33mデ");
-	ft_putstr("\033[0m\033[34m═\033[0m\033[35m—\033[0m$ ");
+	i = -1;
+	while (my_env[++i])
+	{
+		if (ft_strnstr(my_env[i], "USER", 4))
+			return (my_env[i]);
+	}
+	return (NULL);
+}
+
+char	*catch_username(char *user_line)
+{
+	int	i;
+
+	i = 0;
+	while (i < 5)
+		*user_line++;
+	return (user_line);
 }

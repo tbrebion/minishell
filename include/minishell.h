@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 14:16:36 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/03 12:22:18 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/03 14:13:06 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,8 @@ char	*find_path(char *cmd, char **my_paths);
 
 // UTILS
 char	*stradd_char(char *str, char c);
+char	*catch_user(char **my_env);
+char 	*catch_username(char *user_line);
 
 // BUILTINS
 void	builtin_manager(char *input, char **my_env);

@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:19:38 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/03 11:32:51 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/03 12:24:47 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,6 @@ int main(int ac, char **av, char **envp)
     while(1)
 	{
 		display_prompt();
-		ft_putstr(" \033[31m︻\033[0m\033[32m┳\033[0m\033[33mデ");
-		ft_putstr("\033[0m\033[34m═\033[0m\033[35m—\033[0m$ ");
 		input = get_next_line(0);
 		builtin_manager(input, my_env);
     }

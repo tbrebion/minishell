@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 14:16:36 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/03 11:27:52 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/03 12:22:18 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ char	*stradd_char(char *str, char c);
 
 // BUILTINS
 void	builtin_manager(char *input, char **my_env);
+void	print_cwd(void);
 void	exit_shell(char **my_env);
 void	print_env(char **my_env);
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 14:16:36 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/03 14:13:06 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/03 15:01:14 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ void	builtin_manager(char *input, char **my_env);
 void	print_cwd(void);
 void	exit_shell(char **my_env);
 void	print_env(char **my_env);
+int		echo_builtin(char *str, int n);
 
 // PARSING
 t_tok	*str_tok(char *str);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 14:16:36 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/02 16:06:42 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/05/03 11:27:52 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,12 @@ void	display_prompt(void);
 // FIND PATH TO EXEC
 char	*find_path(char *cmd, char **my_paths);
 
-void	exit_shell(char **my_env);
-
 // UTILS
 char	*stradd_char(char *str, char c);
 
 // BUILTINS
+void	builtin_manager(char *input, char **my_env);
+void	exit_shell(char **my_env);
 void	print_env(char **my_env);
 
 // PARSING

@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 13:56:36 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/03 14:03:44 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/04 14:23:57 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,6 @@ char	*catch_username(char *user_line)
 
 	i = 0;
 	while (i < 5)
-		*user_line++;
+		user_line++;
 	return (user_line);
 }

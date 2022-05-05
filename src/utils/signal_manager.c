@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   builtin_manager.c                                  :+:      :+:    :+:   */
+/*   signal_manager.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/03 11:19:52 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/05 12:34:43 by tbrebion         ###   ########.fr       */
+/*   Created: 2022/05/05 12:14:37 by tbrebion          #+#    #+#             */
+/*   Updated: 2022/05/05 12:33:14 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-void	builtin_manager(char *input, char **my_env)
+void	signal_handler(int signo, char **my_env)
 {
-	if ((size_t)(strncmp(input, "env\n", ft_strlen(input)) == 0))
-		print_env(my_env);
-	if ((size_t)(strncmp(input, "exit\n", ft_strlen(input)) == 0))
-		exit_shell(my_env);
-	if ((size_t)(strncmp(input, "pwd\n", ft_strlen(input)) == 0))
-		print_cwd();
+	if (signo == SIGINT)
+	{
+		write(1, "\n", 1);
+		display_prompt(my_env);
+		signal(SIGINT, (__sighandler_t)signal_handler);
+	}
 }

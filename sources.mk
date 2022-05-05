@@ -15,6 +15,7 @@ SOURCES		+=                         		\
 		src/utils/stradd_char.c           	\
 		src/utils/catch_username.c          \
 		src/utils/limiter.c          		\
+		src/utils/signal_manager.c          \
 
 
 ## SRC/BUILTINS ##

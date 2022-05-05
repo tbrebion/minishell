@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:19:38 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/04 14:23:08 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/05 14:18:29 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ int main(int ac, char **av, char **envp)
     while(1)
 	{
 		display_prompt(my_env);
+		//signal(SIGINT, (__sighandler_t)signal_handler);
 		input = get_next_line(0);
 		builtin_manager(input, my_env);
     }

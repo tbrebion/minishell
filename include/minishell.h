@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 14:16:36 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/05 12:24:07 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/06 11:19:31 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ void	display_prompt(char **my_env);
 
 // FIND PATH TO EXEC
 char	*find_path(char *cmd, char **my_paths);
+void	execute(char *av, char **my_env);
 
 // UTILS
 char	*stradd_char(char *str, char c);
@@ -78,5 +79,9 @@ int		echo_builtin(char *str, int n);
 
 // PARSING
 t_tok	*str_tok(char *str);
+
+//	REDIR
+int		redir_out(char **av, int append);
+int		redir_in(char **av);
 
 #endif

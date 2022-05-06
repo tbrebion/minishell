@@ -6,28 +6,40 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 14:21:49 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/04/28 14:31:52 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/06 11:25:38 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-int	redir_in(int fd) //   <
-{
-	int n_fd;
+/*
+	av is for test
+	GOT TO USE THE RIGHT TOKEN OF THE INPUT
+*/
 
-	n_fd = dup2(fd, 0);
-	if (n_fd == -1)
+int	redir_in(char **av) //   <
+{
+	int fd;
+
+	fd = open(av[2], O_WRONLY | O_CREAT | O_TRUNC, 0777); 
+	dup2(fd, 0);
+	if (fd == -1)
 		return (-1); ///return error
-	return (n_fd);
+	return (0);
 }
 
-int	redir_out(int fd) //   >
-{
-	int	n_fd;
+/////   APPEND DOES NOT WORK --> TO FIX ////////
 
-	n_fd = dup2(fd, 1);
-	if (n_fd == -1)
+int	redir_out(char **av, int append) //   >
+{
+	int	fd;
+
+	if (append == 0)
+		fd = open(av[2],  O_WRONLY | O_CREAT | O_TRUNC, 0777);
+	else
+		fd = open(av[2],  O_WRONLY | O_CREAT, 0777);
+	dup2(fd, 1);
+	if (fd == -1)
 		return (-1); ///return error
-	return (n_fd);
+	return (0);
 }

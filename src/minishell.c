@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:19:38 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/05 14:26:22 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/06 11:22:51 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,23 +31,24 @@ static char	**get_env(char	**envp)
 
 int main(int ac, char **av, char **envp)
 {
-	char	*input;
+	//char	*input;
  	//char	**my_paths;
 	char	**my_env;
 
 	(void)ac;
-	(void)av;
+	//(void)av;
 	//(void)envp;
 	my_env = get_env(envp);
  	//printf("%p\n", get_env(envp));
  	//my_paths = get_path();
-    while(1)
+	redir_out(av, 1);
+	execute(av[1], my_env);
+    /*while(1)
 	{
 		display_prompt(my_env);
-		//signal(SIGINT, (__sighandler_t)signal_handler);
 		input = get_next_line(0);
 		builtin_manager(input, my_env);
-    }
+    }*/
 	return (0);
 }
 

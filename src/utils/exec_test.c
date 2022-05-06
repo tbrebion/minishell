@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 09:45:14 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/06 10:56:28 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/06 12:28:09 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,5 @@ void	execute(char *av, char **my_env)
 		//error();
 	}
 	if (execve(path, cmd, my_env) == -1)
-		exit_shell(my_env);
+		/*return ;*/exit_shell(my_env);
 }

@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 09:45:14 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/06 12:28:09 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/06 13:52:04 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char	*find_path(char *cmd, char **my_paths)
 	{
 		part_path = ft_strjoin(my_paths[i], "/");
 		path = ft_strjoin(part_path, cmd);
-		//free(part_path);
+		free(part_path);
 		if (access(path, F_OK) == 0)
 			return (path);
 		free(path);

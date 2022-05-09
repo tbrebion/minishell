@@ -25,6 +25,7 @@ SOURCES		+=                         		\
 		src/builtins/env_builtin.c        	\
 		src/builtins/cwd_builtin.c        	\
 		src/builtins/exit_shell.c           \
+		src/builtins/is_builtin.c           \
 
 
 ## SRC/DISPLAY ##

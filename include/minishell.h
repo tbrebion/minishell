@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 14:16:36 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/06 11:19:31 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/09 09:58:25 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ char 	*catch_username(char *user_line);
 void	signal_handler(int signo, char **my_env);
 
 // BUILTINS
+int		is_builtin(char *cmd);
 void	builtin_manager(char *input, char **my_env);
 void	print_cwd(void);
 void	exit_shell(char **my_env);

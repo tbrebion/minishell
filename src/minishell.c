@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:19:38 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/09 10:57:14 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/09 11:37:05 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,21 +33,25 @@ int main(int ac, char **av, char **envp)
 {
 	char	*input;
 	char	**my_env;
+	int		i;
 
 	(void)ac;
-	//(void)av;
+	(void)av;
 	my_env = get_env(envp);
-	execute(av[1], my_env);
+	//execute(av[1], my_env);
 	//redir_out(av, 0);
     while(1)
 	{
+		i = 0;
 		display_prompt(my_env);
 		input = get_next_line(0);
+		while (input[i] != '\n')
+			i++;
+		input[i] = '\0';
 		if (is_builtin(input) == 1)
 			builtin_manager(input, my_env);
 		else
 			execute(input, my_env);
-		ft_printf("\n\nINPUT\n\n");
     }
 	return (0);
 }

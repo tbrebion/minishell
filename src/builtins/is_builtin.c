@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 09:51:29 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/09 10:45:55 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/09 11:38:45 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,5 @@ int	is_builtin(char *cmd)
 	if (echo == 0 || cd == 0 || pwd == 0 || export == 0 || unset == 0 
 	|| env == 0 || exit == 0)
 		return (1);
-	ft_printf("NO BUILTIN");
 	return (0);
 }

@@ -93,7 +93,7 @@ fclean: clean
 # Link
 $(TARGETDIR)/$(TARGET): $(OBJECTS)
 	@mkdir -p $(TARGETDIR)
-	$(CC) -o $(TARGETDIR)/$(TARGET) $^ $(LIB)
+	$(CC) -lreadline -o $(TARGETDIR)/$(TARGET) $^ $(LIB)
 
 # Link Bonus
 $(TARGETDIR)/$(TARGET_BONUS): $(OBJECTS_BONUS)

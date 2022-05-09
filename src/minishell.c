@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:19:38 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/09 11:37:05 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/09 11:47:16 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,13 @@ int main(int ac, char **av, char **envp)
 	char	*input;
 	char	**my_env;
 	int		i;
+	int		pid;
+	int		tour = 0;
 
 	(void)ac;
 	(void)av;
+	pid = fork();
 	my_env = get_env(envp);
-	//execute(av[1], my_env);
 	//redir_out(av, 0);
     while(1)
 	{
@@ -51,7 +53,12 @@ int main(int ac, char **av, char **envp)
 		if (is_builtin(input) == 1)
 			builtin_manager(input, my_env);
 		else
-			execute(input, my_env);
+		{
+			if (pid == 0) 
+				execute(input, my_env);
+		}
+		tour++;
+		ft_printf("\n\nTOUR %d\n\n", tour);
     }
 	return (0);
 }

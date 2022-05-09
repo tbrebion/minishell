@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 11:19:52 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/05 12:34:43 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/09 13:36:35 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	builtin_manager(char *input, char **my_env)
 {
-	if ((size_t)(strncmp(input, "env\n", ft_strlen(input)) == 0))
+	if ((size_t)(strncmp(input, "env", 3) == 0))
 		print_env(my_env);
-	if ((size_t)(strncmp(input, "exit\n", ft_strlen(input)) == 0))
+	if ((size_t)(strncmp(input, "exit", 4) == 0))
 		exit_shell(my_env);
-	if ((size_t)(strncmp(input, "pwd\n", ft_strlen(input)) == 0))
+	if ((size_t)(strncmp(input, "pwd", 3) == 0))
 		print_cwd();
 }

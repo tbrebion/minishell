@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 14:16:36 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/09 16:14:54 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/10 10:45:25 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,8 @@ int		echo_builtin(char *str, int n);
 t_tok	*str_tok(char *str);
 
 //	REDIR
-int		redir_out(char **av, int append);
+int		redir_out(char **av);
+int		redir_out_append(char **av);
 int		redir_in(char **av);
 
 #endif

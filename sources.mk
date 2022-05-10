@@ -10,7 +10,7 @@ SOURCES		+=                         		\
 
 SOURCES		+=                         		\
 		src/utils/get_env.c               	\
-		src/utils/exec_test.c             	\
+		src/utils/exec.c             	\
 		src/utils/redir.c                 	\
 		src/utils/stradd_char.c           	\
 		src/utils/catch_username.c          \

@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:19:38 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/10 10:48:14 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/10 11:06:29 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,11 @@ int main(int ac, char **av, char **envp)
 	{
 		i = 0;
 		//display_prompt(my_env);
-		//input = readline(display_prompt(my_env));
-		input = get_next_line(0);
-		while (input[i] != '\n')
+		input = readline(display_prompt(my_env));
+		//input = get_next_line(0);
+		/*while (input[i] != '\n')
 			i++;
-		input[i] = '\0';
+		input[i] = '\0';*/
 		if (is_builtin(input) == 0)
 		{
 			pid = fork();

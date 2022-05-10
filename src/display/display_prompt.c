@@ -6,12 +6,12 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 17:54:00 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/10 13:35:05 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/10 14:22:08 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
-
+/*
 char	*display_prompt(char **my_env)
 {
 	char	*cwd;
@@ -38,4 +38,4 @@ char	*display_prompt(char **my_env)
 	//free(tmp_ret);
 	//free(tmp_2_ret);
 	return (ret);
-}
+}*/

@@ -30,7 +30,7 @@ SOURCES		+=                         		\
 
 ## SRC/DISPLAY ##
 
-SOURCES		+=                         		\
+#SOURCES		+=                         		\
 		src/display/display_prompt.c      	\
 
 

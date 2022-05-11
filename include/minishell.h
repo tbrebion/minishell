@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 14:16:36 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/11 11:04:34 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/11 13:20:13 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,12 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <dirent.h>
+# include <errno.h>
+# include <signal.h>
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <sys/wait.h>
-# include <signal.h>
-# include <dirent.h>
 # include <readline/readline.h>
 # include <readline/history.h>
 # include "../Lib42/include/lib42.h"
@@ -54,11 +55,11 @@ typedef struct s_pipe
 	t_cmd	*right;
 }	t_pipe;
 
+//char	*display_prompt(char **my_env);
+
 // INIT ENV AND ALL PATHS
 char	**init_env(char **envp);
 char	**get_path(char **my_env);
-
-//char	*display_prompt(char **my_env);
 
 // FIND PATH TO EXEC
 char	*find_path(char *cmd, char **my_paths);
@@ -77,6 +78,7 @@ void	print_cwd(void);
 void	exit_shell(char **my_env);
 void	print_env(char **my_env);
 int		echo_builtin(char *str, int n);
+void	cd_builtin(char *input);
 
 // PARSING
 t_tok	*str_tok(char *str);

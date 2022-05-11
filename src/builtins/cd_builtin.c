@@ -6,8 +6,14 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 11:27:23 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/11 11:30:46 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/11 13:25:14 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
+
+void	cd_builtin(char	*input)
+{
+	if (chdir(input) == -1)
+		return ;
+}

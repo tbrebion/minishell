@@ -27,11 +27,12 @@ SOURCES		+=                         		\
 		src/builtins/cwd_builtin.c        	\
 		src/builtins/exit_shell.c           \
 		src/builtins/is_builtin.c           \
+		src/builtins/cd_builtin.c           \
 
 
 ## SRC/DISPLAY ##
 
-#SOURCES		+=                         		\
+#SOURCES		+=                         	\
 		src/display/display_prompt.c      	\
 
 

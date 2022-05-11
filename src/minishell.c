@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:19:38 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/11 11:33:49 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/11 14:38:34 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,12 @@ int main(int ac, char **av, char **envp)
 
 	(void)ac;
 	(void)av;
+	(void)envp;
 	if (!(*envp))
 		exit(0);
 	my_env = get_env(envp);
-	ft_printf("\n%s\n", catch_env_var("$LS_COLORS", my_env));
-    while(1)
+	//cd_builtin(av[1]);
+	while(1)
 	{
 		i = 0;
 		input = readline("./minishell \033[31m︻\033[0m\033[32m┳\033[0m\033[33mデ\033[0m\033[34m═\033[0m\033[35m—\033[0m$ ");

@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:19:38 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/10 14:21:58 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/11 11:07:53 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,23 +35,18 @@ int main(int ac, char **av, char **envp)
 	char	**my_env;
 	int		i;
 	int		pid;
-	//char	*prompt;
 
 	(void)ac;
 	(void)av;
 	if (!(*envp))
 		exit(0);
 	my_env = get_env(envp);
+	//ft_printf("\n%s\n", catch_env_var("$LS_COLORS", my_env));
     while(1)
 	{
 		i = 0;
-		//display_prompt(my_env);
-		//prompt = display_prompt(my_env);
 		input = readline("./minishell \033[31m︻\033[0m\033[32m┳\033[0m\033[33mデ\033[0m\033[34m═\033[0m\033[35m—\033[0m$ ");
-		//input = get_next_line(0);
-		/*while (input[i] != '\n')
-			i++;
-		input[i] = '\0';*/
+		add_history(input); // ASK SOMEONE --> WHERE IS HISTORY
 		if (is_builtin(input) == 0)
 		{
 			pid = fork();

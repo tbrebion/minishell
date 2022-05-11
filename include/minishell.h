@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 14:16:36 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/10 14:23:38 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/11 11:04:34 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	execute(char *av, char **my_env);
 // UTILS
 char	*stradd_char(char *str, char c);
 char	*catch_user(char **my_env);
-char 	*catch_username(char *user_line);
+char	*catch_env_var(char *input, char **my_env);
 void	signal_handler(int signo, char **my_env);
 
 // BUILTINS

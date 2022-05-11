@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 16:45:12 by flcarval          #+#    #+#             */
-/*   Updated: 2022/05/03 01:03:34 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/05/11 15:58:28 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,14 @@ t_tok	*str_tok(char *str)
 		i++;
 	}
 	Tok[i].val = NULL;
+	// DEBUG
+	int u = 0;
+	while (u < tok_nb)
+	{
+		ft_printf("Tok[%d].val = %s\tTok[%d].type = %d\n", u, Tok[u].type, u, Tok[u].type);
+		u++;
+	}
+	// END_DEBUG
 	return (Tok);
 }
 

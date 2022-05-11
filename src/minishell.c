@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:19:38 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/11 14:38:34 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/11 16:00:41 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,12 @@ int main(int ac, char **av, char **envp)
 	while(1)
 	{
 		i = 0;
-		input = readline("./minishell \033[31m︻\033[0m\033[32m┳\033[0m\033[33mデ\033[0m\033[34m═\033[0m\033[35m—\033[0m$ ");
+		input = readline("🚭 \e[0;31mminishell \e[0;36mLamala \e[0;33mChoZeur\e[0m 🏁 ");
 		add_history(input);
 		if (is_builtin(input) == 0)
 		{
 			pid = fork();
-			if (pid == 0) 
+			if (pid == 0)
 				execute(input, my_env);
 			wait(0);
 		}

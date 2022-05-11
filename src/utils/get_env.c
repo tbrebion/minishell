@@ -6,11 +6,11 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 12:25:02 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/02 15:21:26 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/11 11:32:24 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minishell.h"
+#include "../../include/minishell.h"
 
 char	**init_env(char **envp)
 {

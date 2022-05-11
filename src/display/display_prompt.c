@@ -6,11 +6,11 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 17:54:00 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/10 14:22:08 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/11 11:31:41 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minishell.h"
+#include "../../include/minishell.h"
 /*
 char	*display_prompt(char **my_env)
 {

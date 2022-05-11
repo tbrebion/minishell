@@ -1,31 +1,13 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit_shell.c                                       :+:      :+:    :+:   */
+/*   cd_builtin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/02 09:32:37 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/11 11:31:17 by tbrebion         ###   ########.fr       */
+/*   Created: 2022/05/11 11:27:23 by tbrebion          #+#    #+#             */
+/*   Updated: 2022/05/11 11:30:46 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
-
-void	exit_shell(char **my_env)
-{
-	int	i;
-
-	i = 0;
-	if (my_env[i])
-	{
-		while (my_env[i])
-		{
-			free(my_env[i]);
-			i++;
-		}
-		free(my_env);
-	}
-	//write(1, "\n", 1);
-	exit(0);
-}

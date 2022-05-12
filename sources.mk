@@ -28,6 +28,7 @@ SOURCES		+=                         		\
 		src/builtins/exit_shell.c           \
 		src/builtins/is_builtin.c           \
 		src/builtins/cd_builtin.c           \
+		src/builtins/echo_builtin.c         \
 
 
 ## SRC/DISPLAY ##

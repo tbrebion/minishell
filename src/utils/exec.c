@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 09:45:14 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/11 11:32:13 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/12 14:21:21 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ char	*find_path(char *cmd, char **my_paths)
 		i++;
 	}
 	i = -1;
-	/*while (my_paths[++i])
+	while (my_paths[++i])
 		free(my_paths[i]);
-	free(my_paths);*/
+	free(my_paths);
 	return (0);
 }
 

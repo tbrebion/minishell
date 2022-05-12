@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 14:16:36 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/11 13:20:13 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/12 11:01:08 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void	builtin_manager(char *input, char **my_env);
 void	print_cwd(void);
 void	exit_shell(char **my_env);
 void	print_env(char **my_env);
-int		echo_builtin(char *str, int n);
+int		echo_builtin(char *input/*, int n*/);
 void	cd_builtin(char *input);
 
 // PARSING

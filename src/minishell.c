@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:19:38 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/11 16:00:41 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/05/12 11:03:58 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int main(int ac, char **av, char **envp)
 	char	*input;
 	char	**my_env;
 	int		i;
+	//t_tok	*tokens;
 	int		pid;
 
 	(void)ac;
@@ -48,6 +49,7 @@ int main(int ac, char **av, char **envp)
 		i = 0;
 		input = readline("🚭 \e[0;31mminishell \e[0;36mLamala \e[0;33mChoZeur\e[0m 🏁 ");
 		add_history(input);
+		//tokens = str_tok(input);
 		if (is_builtin(input) == 0)
 		{
 			pid = fork();

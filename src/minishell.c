@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:19:38 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/12 11:03:58 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/13 15:09:59 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,20 +33,17 @@ int main(int ac, char **av, char **envp)
 {
 	char	*input;
 	char	**my_env;
-	int		i;
 	//t_tok	*tokens;
 	int		pid;
 
 	(void)ac;
 	(void)av;
-	(void)envp;
+	//(void)envp;
 	if (!(*envp))
 		exit(0);
 	my_env = get_env(envp);
-	//cd_builtin(av[1]);
 	while(1)
 	{
-		i = 0;
 		input = readline("🚭 \e[0;31mminishell \e[0;36mLamala \e[0;33mChoZeur\e[0m 🏁 ");
 		add_history(input);
 		//tokens = str_tok(input);

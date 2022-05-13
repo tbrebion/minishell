@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 11:19:52 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/12 11:01:28 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/13 15:13:08 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,4 +22,6 @@ void	builtin_manager(char *input, char **my_env)
 		print_cwd();
 	if ((size_t)(ft_strncmp(input, "echo", 4) == 0))
 		echo_builtin(input);
+	if ((size_t)(ft_strncmp(input, "export", 6) == 0))
+		export_varenv(input, my_env);
 }

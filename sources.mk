@@ -29,6 +29,7 @@ SOURCES		+=                         		\
 		src/builtins/is_builtin.c           \
 		src/builtins/cd_builtin.c           \
 		src/builtins/echo_builtin.c         \
+		src/builtins/export_builtin.c       \
 
 
 ## SRC/DISPLAY ##

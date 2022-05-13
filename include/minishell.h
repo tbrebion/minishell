@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 14:16:36 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/12 11:01:08 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/13 15:07:14 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ void	exit_shell(char **my_env);
 void	print_env(char **my_env);
 int		echo_builtin(char *input/*, int n*/);
 void	cd_builtin(char *input);
+void	export_varenv(char *var_env, char **my_env);
 
 // PARSING
 t_tok	*str_tok(char *str);

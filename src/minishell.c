@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:19:38 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/13 15:09:59 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/14 01:16:06 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,9 @@ int main(int ac, char **av, char **envp)
 	my_env = get_env(envp);
 	while(1)
 	{
-		input = readline("🚭 \e[0;31mminishell \e[0;36mLamala \e[0;33mChoZeur\e[0m 🏁 ");
+		// Ca passe a la norme ⏬⏬
+		input = readline("🚭\e[0m \e[1;31m\e[3;43m minishell \e[0m  \e[1;36mLamala \
+\e[5;33m⚡\e[0m \e[1;33mChoZeur 🏁\e[0m ");
 		add_history(input);
 		//tokens = str_tok(input);
 		if (is_builtin(input) == 0)

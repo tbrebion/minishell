@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 14:16:36 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/13 15:07:14 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/14 02:40:22 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,11 @@
 # define I_S_QUOTE 600
 # define I_D_QUOTE 700
 
-typedef struct s_tok
-{
-	char	*val;
-	int		type;
-}	t_tok;
+// typedef struct s_tok
+// {
+// 	char			*val;
+// 	int				type;
+// }	t_tok;
 
 typedef struct s_cmd
 {
@@ -82,7 +82,7 @@ void	cd_builtin(char *input);
 void	export_varenv(char *var_env, char **my_env);
 
 // PARSING
-t_tok	*str_tok(char *str);
+t_list	**str_tok(char *str);
 
 //	REDIR
 int		redir_out(char **av);

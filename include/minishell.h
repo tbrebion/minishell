@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 14:16:36 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/14 02:40:22 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/05/15 18:10:32 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@
 # define I_PIPE 500
 # define I_S_QUOTE 600
 # define I_D_QUOTE 700
+
+# define DEBUG ft_printf("debug\n");
 
 // typedef struct s_tok
 // {

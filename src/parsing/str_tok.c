@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 16:51:49 by flcarval          #+#    #+#             */
-/*   Updated: 2022/05/16 14:11:00 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/05/16 14:26:32 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,11 @@ int	main(int ac, char **av)
 	while (lst)
 	{
 	/////////////////////////////////////////
-		// ft_printf("tok.type = %d\ttok.val = %s\n", lst->tok->type, lst->tok->val);
+		ft_printf("tok.type = %d\ttok.val = %s\n", lst->content->type, lst->content->val);
 	/////////////////////////////////////////
 		prev = lst;
 		lst = lst->next;
-		//free(prev->content->val);
+		free(prev->content->val);
 		free(prev);
 	}
 	return (0);

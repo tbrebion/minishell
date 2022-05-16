@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 16:51:49 by flcarval          #+#    #+#             */
-/*   Updated: 2022/05/15 19:21:11 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/05/16 09:44:20 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,15 +85,15 @@ static t_tok	*set_tok(char *str, int *i)
 	{
 		// tok.val = str up to a non-literal char
 		len = 0;
-		while (str[len] && identify_tok(str[len]) == I_LITERAL)
+		while (str[len + *i] && identify_tok(str[len + *i]) == I_LITERAL)
 			len++;
 		tok->val = malloc(sizeof(char) * (len + 1));
 		if (!tok->val)
 			return (NULL);
 		len = 0;
-		while (str[len] && identify_tok(str[len]) == I_LITERAL)
+		while (str[len + *i] && identify_tok(str[len + *i]) == I_LITERAL)
 		{
-			tok->val[len] = str[len];
+			tok->val[len] = str[len + *i];
 			len++;
 		}
 		tok->val[len - 1] = '\0';
@@ -129,15 +129,15 @@ static t_tok	*set_tok(char *str, int *i)
 	{
 		// tok.val = str up to SQ or DQ (w/o quotes)
 		len = 0;
-		while (str[len] && identify_tok(str[len]) != tok->type)
+		while (str[len + *i] && identify_tok(str[len + *i]) != tok->type)
 			len++;
 		tok->val = malloc(sizeof(char) * (len + 1));
 		if (!tok->val)
 			return (NULL);
 		len = 1;	// to skip first char (that is a quote)
-		while (str[len] && identify_tok(str[len]) != tok->type)
+		while (str[len + *i] && identify_tok(str[len + *i]) != tok->type)
 		{
-			tok->val[len - 1] = str[len];
+			tok->val[len - 1] = str[len + *i];
 			len++;
 		}
 		tok->val[len - 1] = '\0';

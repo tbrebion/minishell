@@ -17,6 +17,7 @@ SOURCES		+=                         		\
 		src/utils/catch_env_var.c      	    \
 		src/utils/limiter.c          		\
 		src/utils/signal_manager.c          \
+		src/utils/ft_max.c                  \
 
 
 ## SRC/BUILTINS ##

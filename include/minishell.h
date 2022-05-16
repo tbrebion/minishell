@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 12:24:08 by flcarval          #+#    #+#             */
-/*   Updated: 2022/05/16 13:54:55 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/16 15:03:55 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ char	*stradd_char(char *str, char c);
 char	*catch_user(char **my_env);
 char	*catch_env_var(char *input, char **my_env);
 void	signal_handler(int signo, char **my_env);
+int		ft_max(int a, int b);
 
 // BUILTINS
 int		is_builtin(char *cmd);

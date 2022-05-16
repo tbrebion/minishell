@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 11:02:39 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/16 11:00:47 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/16 14:05:34 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void	here_doc_supply(char *limiter)
 	else
 	{
 		close(fd[1]);
-		dup2(fd[0], STDIN_FILENO);
+		dup2(fd[0], /*STDIN_FILENO*/ STDOUT_FILENO);
 		wait(0);
 	}
 }

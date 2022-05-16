@@ -7,6 +7,7 @@
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 14:16:36 by tbrebion          #+#    #+#             */
 <<<<<<< HEAD
+<<<<<<< HEAD
 /*   Updated: 2022/05/16 10:34:00 by flcarval         ###   ########.fr       */
 =======
 <<<<<<< HEAD
@@ -15,6 +16,9 @@
 /*   Updated: 2022/05/16 09:25:51 by tbrebion         ###   ########.fr       */
 >>>>>>> Lamala
 >>>>>>> 25880f70884b2385692d041cc0943967892273ac
+=======
+/*   Updated: 2022/05/16 10:11:39 by tbrebion         ###   ########.fr       */
+>>>>>>> Lamala
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,5 +102,6 @@ t_list	**str_tok(char *str);
 int		redir_out(char **av);
 int		redir_out_append(char **av);
 int		redir_in(char **av);
+void	here_doc(char *limiter);
 
 #endif

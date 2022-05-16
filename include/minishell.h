@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 14:16:36 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/15 18:10:32 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/05/16 09:25:51 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,11 @@
 
 # define DEBUG ft_printf("debug\n");
 
-// typedef struct s_tok
-// {
-// 	char			*val;
-// 	int				type;
-// }	t_tok;
+typedef struct s_tok
+{
+	char			*val;
+	int				type;
+}	t_tok;
 
 typedef struct s_cmd
 {

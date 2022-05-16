@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   str_tok.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 16:51:49 by flcarval          #+#    #+#             */
-/*   Updated: 2022/05/16 14:26:32 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/05/16 15:05:45 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ t_list	**str_tok(char *str)
 	return (Tokens);
 }
 
-int	main(int ac, char **av)
+/*int	main(int ac, char **av)
 {
 	t_list	**Tokens;
 	t_list	*lst;
@@ -54,7 +54,7 @@ int	main(int ac, char **av)
 		free(prev);
 	}
 	return (0);
-}
+}*/
 
 static int	identify_tok(char c)
 {

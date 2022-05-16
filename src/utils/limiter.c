@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   limiter.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 11:02:39 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/16 11:00:47 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/16 14:11:35 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,11 @@ void	her_doc(char *input)
 }
 
 
-int	main(int ac, char **av)
-{
-	int	fd;
+// int	main(int ac, char **av)
+// {
+// 	int	fd;
 
-	(void)ac;
-	fd = open(av[1], O_RDONLY | O_CREAT | O_APPEND, 0777); 
-	here_doc_supply(av[1]);
-}
-	
+// 	(void)ac;
+// 	fd = open(av[1], O_RDONLY | O_CREAT | O_APPEND, 0777);
+// 	here_doc_supply(av[1]);
+// }

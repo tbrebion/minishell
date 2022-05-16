@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 12:24:08 by flcarval          #+#    #+#             */
-/*   Updated: 2022/05/16 15:03:55 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/05/16 18:05:07 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,8 @@ void	export_varenv(char *var_env, char **my_env);
 
 // PARSING
 t_list	**str_tok(char *str);
+int		identify_tok(char c);
+t_tok	*set_tok(char *str, int *i);
 
 //	REDIR
 int		redir_out(char **av);

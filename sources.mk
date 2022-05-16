@@ -43,5 +43,7 @@ SOURCES		+=                         		\
 
 SOURCES		+=                         		\
 		src/parsing/str_tok.c             	\
+		src/parsing/identify_tok.c       	\
+		src/parsing/set_tok.c            	\
 
 

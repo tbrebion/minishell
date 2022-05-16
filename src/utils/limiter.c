@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 11:02:39 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/16 15:02:20 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/16 15:27:38 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,34 +19,32 @@
 static void	here_doc_supply(char *limiter)
 {
 	pid_t	pid;
-	int		fd[2];
 	char	*line;
+	//char	*tab[4096];
+	//int		i;
 
-	line = malloc(ft_strlen(limiter));
-	if (!line)
-		return ;
-	if (pipe(fd) == -1)
-		return ;
+	//i = 0;
 	pid = fork();
 	if (pid == 0)
 	{
-		close(fd[0]);
 		while (1)
 		{
+			/*line = malloc(ft_strlen(limiter));
+			if (!line)
+				return ;*/
 			line = readline("heredoc> ");
-			if ((ft_strncmp(line, limiter, ft_strlen(line))) == 0)
+			if ((ft_strncmp(line, limiter, ft_max(ft_strlen(line), ft_strlen(limiter))) == 0))
 			{
 				free(line);
 				exit(EXIT_SUCCESS);
 			}
-			write(fd[1], line, ft_strlen(line));
+			//tab[i] = line;
+			//i++;
 			free(line);
 		}
 	}
 	else
 	{
-		close(fd[1]);
-		dup2(fd[0], STDIN_FILENO);
 		wait(0);
 	}
 }
@@ -74,6 +72,6 @@ int	main(int ac, char **av)
 	int	fd;
 
 	(void)ac;
-	fd = open(av[1], O_RDONLY | O_CREAT | O_APPEND, 0777);
+	fd = open(av[1], O_WRONLY | O_RDONLY | O_CREAT | O_APPEND, 0777);
 	here_doc_supply(av[1]);
 }

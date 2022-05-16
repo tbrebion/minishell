@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 12:24:08 by flcarval          #+#    #+#             */
-/*   Updated: 2022/05/16 18:05:07 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/05/17 00:17:24 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,12 @@ typedef struct s_pipe
 	t_cmd	*right;
 }	t_pipe;
 
+typedef struct s_data
+{
+	int	tok_nb;
+	// ? ajouter **my_env
+}	t_data;
+
 //char	*display_prompt(char **my_env);
 
 // INIT ENV AND ALL PATHS
@@ -84,9 +90,10 @@ void	cd_builtin(char *input);
 void	export_varenv(char *var_env, char **my_env);
 
 // PARSING
-t_list	**str_tok(char *str);
+t_list	**str_tok(char *str, t_data *data);
 int		identify_tok(char c);
 t_tok	*set_tok(char *str, int *i);
+char	**tok_to_cli(t_list **Tokens, int tok_nb);
 
 //	REDIR
 int		redir_out(char **av);

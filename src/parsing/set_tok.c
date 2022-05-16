@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 18:03:10 by flcarval          #+#    #+#             */
-/*   Updated: 2022/05/16 18:25:12 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/05/17 00:28:31 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_tok	*set_tok(char *str, int *i)
 		return (NULL);
 	tok->type = identify_tok(str[*i]);
 	/////////////////////////////////////////
-	ft_printf("tok->type = %d\n", tok->type);
+	// ft_printf("tok->type = %d\n", tok->type);
 	/////////////////////////////////////////
 	if (tok->type == I_LITERAL)
 		set_lit(str, i, tok);
@@ -35,7 +35,7 @@ t_tok	*set_tok(char *str, int *i)
 	else
 		set_simple(str, i, tok);
 	/////////////////////////////////////////
-	ft_printf("tok->val = %s\n", tok->val);
+	// ft_printf("tok->val = %s\n", tok->val);
 	/////////////////////////////////////////
 	return (tok);
 }

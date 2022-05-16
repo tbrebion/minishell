@@ -3,21 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/25 14:16:36 by tbrebion          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2022/05/16 10:34:00 by flcarval         ###   ########.fr       */
-=======
-<<<<<<< HEAD
-/*   Updated: 2022/05/16 09:26:18 by flcarval         ###   ########.fr       */
-=======
-/*   Updated: 2022/05/16 09:25:51 by tbrebion         ###   ########.fr       */
->>>>>>> Lamala
->>>>>>> 25880f70884b2385692d041cc0943967892273ac
+/*   Created: 2022/05/16 12:04:43 by flcarval          #+#    #+#             */
+/*   Updated: 2022/05/16 12:04:46 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef MINISHELL_H
 # define MINISHELL_H

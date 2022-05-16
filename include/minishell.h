@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 14:16:36 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/16 09:26:18 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/05/16 10:34:00 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,11 @@
 
 # define DEBUG ft_printf("debug\n");
 
-typedef struct s_tok
-{
-	char			*val;
-	int				type;
-}	t_tok;
+// typedef struct s_tok
+// {
+// 	char			*val;
+// 	int				type;
+// }	t_tok;
 
 typedef struct s_cmd
 {

@@ -6,11 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 14:16:36 by tbrebion          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2022/05/16 09:26:18 by flcarval         ###   ########.fr       */
-=======
-/*   Updated: 2022/05/16 09:25:51 by tbrebion         ###   ########.fr       */
->>>>>>> Lamala
+/*   Updated: 2022/05/16 10:11:39 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,5 +90,6 @@ t_list	**str_tok(char *str);
 int		redir_out(char **av);
 int		redir_out_append(char **av);
 int		redir_in(char **av);
+void	here_doc(char *limiter);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 19:58:21 by flcarval          #+#    #+#             */
-/*   Updated: 2022/05/16 13:59:29 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/05/16 14:25:25 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ typedef struct s_tok
 
 typedef struct s_list
 {
-	void			*content;
+	t_tok			*content;
 	struct s_list	*next;
 }	t_list;
 

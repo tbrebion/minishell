@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:19:38 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/17 00:26:58 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/05/17 00:53:24 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int main(int ac, char **av, char **envp)
 	{
 		// Ca passe a la norme ⏬⏬
 		input = readline("🚭\e[0m \e[1;31m\e[3;43m minishell \e[0m  \e[1;36mLamala \
-\e[5;33m⚡\e[0m \e[1;33mChoZeur 🏁\e[0m ");
+\e[5;33m⚡\e[0m \e[1;30mChoZeur 🏁\e[0m ");
 		Tokens = str_tok(input, &data);
 		Cli = tok_to_cli(Tokens, data.tok_nb);
 		add_history(Cli[0]);

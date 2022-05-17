@@ -6,12 +6,12 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:19:38 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/17 11:11:45 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/17 11:42:29 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
-
+/*
 static char	**get_env(char	**envp)
 {
  	static char	**my_env = (char **)0;
@@ -65,7 +65,7 @@ int main(int ac, char **av, char **envp)
 			builtin_manager(Cli[0], my_env);
     }
 	return (0);
-}
+}*/
 
 /*int	main(int ac, char **av)
 {

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:19:38 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/17 00:53:24 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/05/17 09:27:26 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-static char	**get_env(char	**envp)
+/*static char	**get_env(char	**envp)
 {
  	static char	**my_env = (char **)0;
 
@@ -66,7 +66,7 @@ int main(int ac, char **av, char **envp)
     }
 	return (0);
 }
-
+*/
 /*int	main(int ac, char **av)
 {
 	(void)ac;

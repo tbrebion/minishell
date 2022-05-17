@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 11:02:39 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/17 11:47:51 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/17 20:04:27 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,21 @@
 	#####  USE UNLINK  ########
 */
 
-static void	here_doc_supply(char *file, char *limiter)
+static void	here_doc_supply(char *limiter)
 {
 	pid_t	pid;
 	char	*line;
 	int	fd;
 
-	fd = open(file, O_WRONLY | O_RDONLY | O_CREAT | O_APPEND, 0777);
-	dup2(fd, 0);
-	pid = fork();
+	fd = open(".here_doc", O_RDWR | O_CREAT | O_TRUNC, 0644);
+	//dup2(fd, 0);
+	/*pid = fork();
 	if (pid == 0)
-	{
+	{*/
 		while (1)
 		{
-			//line = get_next_line(fd);
-			line = readline("heredoc> ");
+			line = get_next_line(0);
+			//line = readline("heredoc> ");
 			if ((ft_strncmp(line, limiter, ft_max(ft_strlen(line), ft_strlen(limiter))) == 0))
 			{
 				free(line);
@@ -41,11 +41,7 @@ static void	here_doc_supply(char *file, char *limiter)
 	}
 	else
 	{
-		wait(0);
-		/*while(1)
-		{
-			ft_printf("%s", get_next_line(fd));
-		}*/
+		ft_printf("%s", line);
 	}
 }
 /*
@@ -70,6 +66,5 @@ void	her_doc(char *input)
 int	main(int ac, char **av)
 {
 	(void)ac;
-	//fd = open(av[1], O_WRONLY | O_RDONLY | O_CREAT | O_APPEND, 0777);
-	here_doc_supply(av[1], av[1]);
+	here_doc_supply(av[1]);
 }

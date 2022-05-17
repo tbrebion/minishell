@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:19:38 by tbrebion          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2022/05/17 11:42:29 by tbrebion         ###   ########.fr       */
+=======
+/*   Updated: 2022/05/17 11:44:16 by flcarval         ###   ########.fr       */
+>>>>>>> 03bf0e2430d0ce3b98669ae6174be5d8fd32aac5
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +38,7 @@ int main(int ac, char **av, char **envp)
 	char	*input;
 	char	**my_env;
 	//t_tok	*tokens;
-	int		pid;
+	//int		pid;
 	t_data	data;
 	t_list	**Tokens;
 	char	**Cli;
@@ -54,14 +58,14 @@ int main(int ac, char **av, char **envp)
 		Cli = tok_to_cli(Tokens, data.tok_nb);
 		add_history(Cli[0]);
 		//tokens = str_tok(input);
-		if (is_builtin(Cli[0]) == 0)
+		/*if (is_builtin(Cli[0]) == 0)
 		{
 			pid = fork();
 			if (pid == 0)
 				execute(Cli[0], my_env);
 			wait(0);
 		}
-		else
+		else*/
 			builtin_manager(Cli[0], my_env);
     }
 	return (0);

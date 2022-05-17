@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd_builtin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 11:27:23 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/11 13:25:14 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/17 11:47:31 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,14 @@
 
 void	cd_builtin(char	*input)
 {
-	if (chdir(input) == -1)
+	char	*cwd;
+	char	**split_input;
+
+	cwd = NULL;
+	cwd = getcwd(cwd, 4096);
+	split_input = ft_split(input, ' ');
+	closedir((DIR *)cwd);
+	if (chdir(split_input[1]) == -1)
 		return ;
 }
+

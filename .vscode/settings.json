@@ -5,7 +5,8 @@
 		"libft.h": "c",
 		"unistd.h": "c",
 		"stdio.h": "c",
-		"minishell.h": "c"
+		"minishell.h": "c",
+		"stdlib.h": "c"
 	},
 	"C_Cpp.errorSquiggles": "Disabled"
 }

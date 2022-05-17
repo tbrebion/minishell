@@ -92,6 +92,7 @@ fclean: clean
 
 # Link
 $(TARGETDIR)/$(TARGET): $(OBJECTS)
+	@make -C ./Lib42/
 	@mkdir -p $(TARGETDIR)
 	$(CC) -lreadline -o $(TARGETDIR)/$(TARGET) $^ $(LIB)
 

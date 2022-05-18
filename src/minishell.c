@@ -6,12 +6,12 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:19:38 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/17 19:46:32 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/18 09:37:16 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
-/*
+
 static char	**get_env(char	**envp)
 {
  	static char	**my_env = (char **)0;
@@ -34,7 +34,7 @@ int main(int ac, char **av, char **envp)
 	char	*input;
 	char	**my_env;
 	//t_tok	*tokens;
-	//int		pid;
+	int		pid;
 	t_data	data;
 	t_list	**Tokens;
 	char	**Cli;
@@ -66,7 +66,7 @@ int main(int ac, char **av, char **envp)
     }
 	return (0);
 }
-*/
+
 /*int	main(int ac, char **av)
 {
 	(void)ac;

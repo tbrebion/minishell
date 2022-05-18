@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 11:02:39 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/17 20:04:27 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/18 09:22:45 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,31 +18,31 @@
 
 static void	here_doc_supply(char *limiter)
 {
-	pid_t	pid;
 	char	*line;
+	char	*ret;
 	int	fd;
 
+	ret = NULL;
 	fd = open(".here_doc", O_RDWR | O_CREAT | O_TRUNC, 0644);
-	//dup2(fd, 0);
-	/*pid = fork();
-	if (pid == 0)
-	{*/
-		while (1)
-		{
-			line = get_next_line(0);
-			//line = readline("heredoc> ");
-			if ((ft_strncmp(line, limiter, ft_max(ft_strlen(line), ft_strlen(limiter))) == 0))
-			{
-				free(line);
-				exit(EXIT_SUCCESS);
-			}
-			free(line);
-		}
-	}
-	else
+	while (1)
 	{
-		ft_printf("%s", line);
+		ft_putstr("here_doc> ");
+		line = get_next_line(0);
+		ret = ft_strjoin(ret, line);
+		if ((ft_strncmp(line, limiter, ft_max((ft_strlen(line) - 1), ft_strlen(limiter))) == 0))
+		{
+			free(line);
+			//free(ret);
+			//exit(EXIT_SUCCESS);
+			break ;
+		}
+		ft_putstr_fd(ret, fd);
+		//free(ret);
+		free(line);
 	}
+	while (get_next_line(fd))
+		ft_putstr(get_next_line(fd));
+	close(fd);
 }
 /*
 void	her_doc(char *input)

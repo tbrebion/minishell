@@ -1,26 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   export_builtin.c                                   :+:      :+:    :+:   */
+/*   redir_manager.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/06 09:58:04 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/18 09:48:38 by tbrebion         ###   ########.fr       */
+/*   Created: 2022/05/18 09:54:58 by tbrebion          #+#    #+#             */
+/*   Updated: 2022/05/18 10:45:21 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-void	export_varenv(char *var_env, char **my_env)
+void	redir_manager(t_data *data)
 {
-	int		i;
-	char	**split_var;
-
-	i = 0;
-	split_var = ft_split(var_env, ' ');
-	while (my_env[i])
-		i++;
-	my_env[i] = ft_strdup(split_var[1]);	
-	// FREE SPLIT_INPUT
+	
 }

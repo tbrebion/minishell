@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 09:51:29 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/18 09:39:39 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/18 09:49:22 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	is_builtin(char *cmd)
 	int	exit;
 
 	echo = ft_strncmp(cmd, "echo\n", ft_strlen(cmd));
-	cd = ft_strncmp(cmd, "cd\n", 2/*ft_strlen(cmd)*/);
+	cd = ft_strncmp(cmd, "cd\n", ft_strlen(cmd));
 	pwd = ft_strncmp(cmd, "pwd\n", ft_strlen(cmd));
 	export = ft_strncmp(cmd, "export\n", ft_strlen(cmd));
 	unset = ft_strncmp(cmd, "unset\n", ft_strlen(cmd));

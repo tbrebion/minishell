@@ -1,25 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cd_builtin.c                                       :+:      :+:    :+:   */
+/*   unset_builtin.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/11 11:27:23 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/18 10:47:02 by flcarval         ###   ########.fr       */
+/*   Created: 2022/05/18 09:33:36 by flcarval          #+#    #+#             */
+/*   Updated: 2022/05/18 10:48:51 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-void	cd_builtin(t_data *data, int i)
+void	unset_builtin(t_data *data, int i)
 {
-	char	*cwd;
+	int	j;
 
-	cwd = NULL;
-	cwd = getcwd(cwd, 4096);
-	closedir((DIR *)cwd);
-	if (chdir(data->Tokens[i + 1]->content->val) == -1)
-		return ;
+	j = 0;
+	while (data->my_env[j])
+	{
+		if (ft_strncmp(data->my_env[j], ft_strjoin(data->Tokens[i + 1]->content->val, "="), \
+			ft_strlen(data->Tokens[i + 1]->content->val) + 1))
+			{
+				while (data->my_env[j + 1])
+				{
+					data->my_env[j] = data->my_env[j + 1];
+					j++;
+				}
+				data->my_env[j] = NULL;
+			}
+			j++;
+	}
 }
-

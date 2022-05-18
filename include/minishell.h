@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 12:24:08 by flcarval          #+#    #+#             */
-/*   Updated: 2022/05/17 00:17:24 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/05/18 10:51:56 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,9 @@ typedef struct s_pipe
 
 typedef struct s_data
 {
-	int	tok_nb;
-	// ? ajouter **my_env
+	int		tok_nb;
+	t_list	**Tokens;
+	char	**my_env;
 }	t_data;
 
 //char	*display_prompt(char **my_env);
@@ -81,13 +82,14 @@ int		ft_max(int a, int b);
 
 // BUILTINS
 int		is_builtin(char *cmd);
-void	builtin_manager(char *input, char **my_env);
+void	builtin_manager(t_data *data, int i);
 void	print_cwd(void);
 void	exit_shell(char **my_env);
 void	print_env(char **my_env);
-int		echo_builtin(char *input/*, int n*/);
-void	cd_builtin(char *input);
-void	export_varenv(char *var_env, char **my_env);
+int		echo_builtin(t_data *data, int i);
+void	cd_builtin(t_data *data, int i);
+void	export_varenv(t_data *data, int i);
+void	unset_builtin(t_data *data, int i);
 
 // PARSING
 t_list	**str_tok(char *str, t_data *data);

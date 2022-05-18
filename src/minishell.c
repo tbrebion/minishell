@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:19:38 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/18 09:37:16 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/18 10:51:18 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,9 @@ static char	**get_env(char	**envp)
 int main(int ac, char **av, char **envp)
 {
 	char	*input;
-	char	**my_env;
 	//t_tok	*tokens;
 	int		pid;
 	t_data	data;
-	t_list	**Tokens;
 	char	**Cli;
 
 	(void)ac;
@@ -44,25 +42,25 @@ int main(int ac, char **av, char **envp)
 	//(void)envp;
 	if (!(*envp))
 		exit(0);
-	my_env = get_env(envp);
+	data.my_env = get_env(envp);
 	while(1)
 	{
 		// Ca passe a la norme ⏬⏬
 		input = readline("🚭\e[0m \e[1;31m\e[3;43m minishell \e[0m  \e[1;36mLamala \
 \e[5;33m⚡\e[0m \e[1;30mChoZeur 🏁\e[0m ");
-		Tokens = str_tok(input, &data);
-		Cli = tok_to_cli(Tokens, data.tok_nb);
+		data.Tokens = str_tok(input, &data);
+		Cli = tok_to_cli(data.Tokens, data.tok_nb);
 		add_history(Cli[0]);
 		//tokens = str_tok(input);
 		if (is_builtin(Cli[0]) == 0)
 		{
 			pid = fork();
 			if (pid == 0)
-				execute(Cli[0], my_env);
+				execute(Cli[0], data.my_env);
 			wait(0);
 		}
 		else
-			builtin_manager(Cli[0], my_env);
+			builtin_manager(&data, 0);
     }
 	return (0);
 }

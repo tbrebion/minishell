@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 01:26:03 by flcarval          #+#    #+#             */
-/*   Updated: 2022/05/18 10:52:44 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/05/18 12:32:19 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	echo_builtin(t_data *data, int i)
 	char	*nl;
 	int		n;
 
-	if ((ft_strncmp(data->Tokens[i + 1]->content->val, "-n", 2) == 0))
+	if ((ft_strncmp(get_n_lst(data->Tokens, i + 1)->content->val, "-n", 2) == 0))
 	{
 		n = 0;
 		i += 2;
@@ -36,7 +36,7 @@ int	echo_builtin(t_data *data, int i)
 		nl = "\n";
 	else
 		nl = "";
-	ft_printf("%s%s", data->Tokens[i]->content->val, nl);
+	ft_printf("%s%s", get_n_lst(data->Tokens, i)->content->val, nl);
 	i = -1;
 	return (0);
 }

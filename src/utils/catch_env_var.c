@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   catch_env_var.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 15:25:04 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/11 11:03:52 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/18 14:25:26 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	*catch_env_var(char *input, char **my_env)
 		i++;
 	ret = ft_strnstr(my_env[i], input + 1, ft_strlen(input) - 1);
 	if (!ret)
-		return (NULL); // ERROR 
+		return (NULL); // ERROR
 	i = 0;
 	while (ret[i] != '=')
 		i++;

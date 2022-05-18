@@ -18,6 +18,7 @@ SOURCES		+=                         		\
 		src/utils/limiter.c          		\
 		src/utils/signal_manager.c          \
 		src/utils/ft_max.c                  \
+		src/utils/get_n_lst.c                 \
 
 
 ## SRC/BUILTINS ##
@@ -31,7 +32,7 @@ SOURCES		+=                         		\
 		src/builtins/cd_builtin.c           \
 		src/builtins/echo_builtin.c         \
 		src/builtins/export_builtin.c       \
-		src/builtins/unset_builtin.c       \
+		src/builtins/unset_builtin.c       	\
 
 
 ## SRC/DISPLAY ##

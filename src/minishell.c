@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:19:38 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/18 10:51:18 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/05/18 14:14:05 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 static char	**get_env(char	**envp)
 {
- 	static char	**my_env = (char **)0;
+	static char	**my_env = (char **)0;
 
- 	if (my_env == (char **)0)
+	if (my_env == (char **)0)
 	{
 		//ft_putstr_fd("Setting env variable\n", 1);
 		my_env = init_env(envp);
@@ -51,7 +51,8 @@ int main(int ac, char **av, char **envp)
 		data.Tokens = str_tok(input, &data);
 		Cli = tok_to_cli(data.Tokens, data.tok_nb);
 		add_history(Cli[0]);
-		//tokens = str_tok(input);
+		data.Tokens = str_tok(input, &data);
+		// ft_printf("Cli[0] = %s\n", Cli[0]);
 		if (is_builtin(Cli[0]) == 0)
 		{
 			pid = fork();
@@ -61,7 +62,7 @@ int main(int ac, char **av, char **envp)
 		}
 		else
 			builtin_manager(&data, 0);
-    }
+	}
 	return (0);
 }
 

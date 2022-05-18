@@ -1,37 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tok_to_cli.c                                       :+:      :+:    :+:   */
+/*   get_n_lst.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/09 15:25:04 by flcarval          #+#    #+#             */
-/*   Updated: 2022/05/18 14:13:55 by flcarval         ###   ########.fr       */
+/*   Created: 2022/05/18 11:54:47 by flcarval          #+#    #+#             */
+/*   Updated: 2022/05/18 12:03:40 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-char	**tok_to_cli(t_list **Tokens, int tok_nb)
+t_list	*get_n_lst(t_list **Tokens, int n)
 {
-	char	**Cli;
 	t_list	*lst;
-	int		i;
 
-	Cli = malloc(sizeof(char *) * (tok_nb));
 	lst = *Tokens;
-	i = 0;
-	while (lst && i < tok_nb)
+	while (lst && n)
 	{
-		Cli[i] = ft_strdup("");
-		while (lst && lst->content->type != I_PIPE)
-		{
-			if (Cli[i][0])
-				Cli[i] = ft_strjoin(Cli[i], " ");
-			Cli[i] = ft_strjoin(Cli[i], lst->content->val);
-			lst = lst->next;
-		}
-		i++;
+		lst = lst->next;
+		n--;
 	}
-	return (Cli);
+	// ft_printf("[get_n_lst] n = %d\ttok.val = %s\ttok.type = %d\n", n, lst->content->val, lst->content->type);
+	return (lst);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 09:45:14 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/17 11:38:01 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/18 14:35:02 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ char	*find_path(char *cmd, char **my_paths)
 		i++;
 	}
 	i = -1;
-	while (my_paths[++i])
-		free(my_paths[i]);
-	free(my_paths);
+	// while (my_paths[++i])
+	// 	free(my_paths[i]);
+	// free(my_paths);
 	return (0);
 }
 

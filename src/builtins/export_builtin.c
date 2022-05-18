@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 09:58:04 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/18 11:04:17 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/05/18 12:32:14 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,5 @@ void	export_varenv(t_data *data, int i)
 	j = 0;
 	while (data->my_env[j])
 		j++;
-	data->my_env[j] = ft_strdup(data->Tokens[i + 1]->content->val);
+	data->my_env[j] = ft_strdup(get_n_lst(data->Tokens, i + 1)->content->val);
 }

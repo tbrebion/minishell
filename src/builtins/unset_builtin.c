@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:33:36 by flcarval          #+#    #+#             */
-/*   Updated: 2022/05/18 10:48:51 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/05/18 12:32:08 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ void	unset_builtin(t_data *data, int i)
 	j = 0;
 	while (data->my_env[j])
 	{
-		if (ft_strncmp(data->my_env[j], ft_strjoin(data->Tokens[i + 1]->content->val, "="), \
-			ft_strlen(data->Tokens[i + 1]->content->val) + 1))
+		if (ft_strncmp(data->my_env[j], ft_strjoin(get_n_lst(data->Tokens, i + 1)->content->val, "="), \
+			ft_strlen(get_n_lst(data->Tokens, i + 1)->content->val) + 1))
 			{
 				while (data->my_env[j + 1])
 				{

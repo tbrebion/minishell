@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 16:51:49 by flcarval          #+#    #+#             */
-/*   Updated: 2022/05/18 10:58:34 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/05/18 14:12:00 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,12 @@ t_list	**str_tok(char *str, t_data *data)
 		return (NULL);
 	*Tokens = NULL;
 	i = 0;
-	int j = 0;
 	while (str[i])
 	{
-		ft_lstadd_back(Tokens, ft_lstnew((t_tok *)set_tok(str, &i)));
-		j++;
+		if (identify_tok(str[i]) != I_SPACE)
+			ft_lstadd_back(Tokens, ft_lstnew((t_tok *)set_tok(str, &i)));
+		else
+			i++;
 	}
 	data->tok_nb = ft_lstsize(*Tokens);
 	return (Tokens);

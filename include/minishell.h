@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 12:24:08 by flcarval          #+#    #+#             */
-/*   Updated: 2022/05/18 10:51:56 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/05/18 12:03:56 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ char	*catch_user(char **my_env);
 char	*catch_env_var(char *input, char **my_env);
 void	signal_handler(int signo, char **my_env);
 int		ft_max(int a, int b);
+t_list	*get_n_lst(t_list **Tokens, int n);
 
 // BUILTINS
 int		is_builtin(char *cmd);

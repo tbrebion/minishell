@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:19:38 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/19 11:23:27 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/19 12:03:30 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,11 +58,7 @@ int main(int ac, char **av, char **envp)
 		{
 			pid = fork();
 			if (pid == 0)
-			{
-				//signal(SIGQUIT, &sigquit_handler);
-				//signal(SIGINT, &sigint_handler);
 				execute(Cli[0], data.my_env);
-			}
 			wait(0);
 		}
 		else

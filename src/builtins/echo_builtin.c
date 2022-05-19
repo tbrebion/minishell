@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   echo_builtin.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 01:26:03 by flcarval          #+#    #+#             */
-/*   Updated: 2022/05/18 12:32:19 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/05/19 12:24:38 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ and n so n = 1 -> print w/ \n (n = 0 -> print w/o \n)
 int	echo_builtin(t_data *data, int i)
 {
 	char	*nl;
+	char	*ret;
 	int		n;
 
 	if ((ft_strncmp(get_n_lst(data->Tokens, i + 1)->content->val, "-n", 2) == 0))
@@ -36,7 +37,11 @@ int	echo_builtin(t_data *data, int i)
 		nl = "\n";
 	else
 		nl = "";
-	ft_printf("%s%s", get_n_lst(data->Tokens, i)->content->val, nl);
+	ret = catch_env_var(get_n_lst(data->Tokens, i)->content->val, data->my_env);
+	if (ret != NULL)
+		ft_printf("%s%s", ret, nl);
+	else
+		ft_printf("%s%s", get_n_lst(data->Tokens, i)->content->val, nl);
 	i = -1;
 	return (0);
 }

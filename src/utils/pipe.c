@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 13:30:45 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/18 15:15:50 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/19 09:19:00 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	ft_pipe(char **split_input, char **my_env)
 	return (0);
 }
 */
-static void	child_process(t_data *data, int i)
+/*static void	child_process(t_data *data, int n)
 {
 	int	pid;
 	int fd[2];
@@ -69,7 +69,7 @@ static void	child_process(t_data *data, int i)
 	{
 		close(fd[0]);
 		dup2(fd[1], STDOUT_FILENO);
-		execute(Cli[i], data->my_env);
+		execute(Cli[n], data->my_env);
 	}
 	else
 	{
@@ -87,14 +87,14 @@ void	pipe(t_data *data, int nb_tok)
 	int	filout;
 
 	i = 2;
-	filein = open(/*split_input[0]*/, O_RDONLY, 0777);
+	filein = open(Cli[n], O_RDONLY, 0777);
 	if (filein == -1)
 		return ;
-	fileout = open(/*split_input[3]*/, O_WRONLY | O_CREAT | O_TRUNC, 0777);
+	fileout = open(Cli[n + 1], O_WRONLY | O_CREAT | O_TRUNC, 0777);
 	if (fileout == -1)
 		return ;
 	dup2(filein, STDIN_FILENO);
 	while (i < nb_tok - 2)
 		child_process(data, n);
-	execute(Cli[i], data->my_env);
-}	
+	execute(Cli[n], data->my_env);
+}*/	

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:19:38 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/18 14:14:05 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/05/19 11:23:27 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ int main(int ac, char **av, char **envp)
 	data.my_env = get_env(envp);
 	while(1)
 	{
+		signal(SIGINT, &sigint_handler);
 		// Ca passe a la norme ⏬⏬
 		input = readline("🚭\e[0m \e[1;31m\e[3;43m minishell \e[0m  \e[1;36mLamala \
 \e[5;33m⚡\e[0m \e[1;30mChoZeur 🏁\e[0m ");
@@ -52,12 +53,16 @@ int main(int ac, char **av, char **envp)
 		Cli = tok_to_cli(data.Tokens, data.tok_nb);
 		add_history(Cli[0]);
 		data.Tokens = str_tok(input, &data);
-		// ft_printf("Cli[0] = %s\n", Cli[0]);
+		//ft_printf("Cli[0] = %s\n", Cli[0]);
 		if (is_builtin(Cli[0]) == 0)
 		{
 			pid = fork();
 			if (pid == 0)
+			{
+				//signal(SIGQUIT, &sigquit_handler);
+				//signal(SIGINT, &sigint_handler);
 				execute(Cli[0], data.my_env);
+			}
 			wait(0);
 		}
 		else

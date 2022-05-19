@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 12:24:08 by flcarval          #+#    #+#             */
-/*   Updated: 2022/05/18 12:03:56 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/05/19 10:36:03 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,6 @@ void	execute(char *av, char **my_env);
 char	*stradd_char(char *str, char c);
 char	*catch_user(char **my_env);
 char	*catch_env_var(char *input, char **my_env);
-void	signal_handler(int signo, char **my_env);
 int		ft_max(int a, int b);
 t_list	*get_n_lst(t_list **Tokens, int n);
 
@@ -103,5 +102,9 @@ int		redir_out(char **av);
 int		redir_out_append(char **av);
 int		redir_in(char **av);
 void	here_doc(char *limiter);
+
+//	SIGNAL
+void	sigint_handler(int signo);
+void	sigquit_handler(int signo);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 01:26:03 by flcarval          #+#    #+#             */
-/*   Updated: 2022/05/19 12:24:38 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/19 15:07:55 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,11 @@ int	echo_builtin(t_data *data, int i)
 	char	*ret;
 	int		n;
 
+	if (!(get_n_lst(data->Tokens, i)->content->val))
+	{
+		write(1, "\n", 1);
+		return (-1);
+	}
 	if ((ft_strncmp(get_n_lst(data->Tokens, i + 1)->content->val, "-n", 2) == 0))
 	{
 		n = 0;

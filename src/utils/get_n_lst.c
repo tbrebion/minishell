@@ -23,5 +23,7 @@ t_list	*get_n_lst(t_list **Tokens, int n)
 		n--;
 	}
 	// ft_printf("[get_n_lst] n = %d\ttok.val = %s\ttok.type = %d\n", n, lst->content->val, lst->content->type);
+	/*if (lst == *Tokens)
+		return (NULL);*/
 	return (lst);
 }

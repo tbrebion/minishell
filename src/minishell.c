@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:19:38 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/19 12:03:30 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/20 17:46:24 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int main(int ac, char **av, char **envp)
 	while(1)
 	{
 		signal(SIGINT, &sigint_handler);
+		signal(SIGQUIT, &sigquit_handler);
 		// Ca passe a la norme ⏬⏬
 		input = readline("🚭\e[0m \e[1;31m\e[3;43m minishell \e[0m  \e[1;36mLamala \
 \e[5;33m⚡\e[0m \e[1;30mChoZeur 🏁\e[0m ");

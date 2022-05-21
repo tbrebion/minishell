@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:19:38 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/20 17:46:24 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/21 13:51:29 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ int main(int ac, char **av, char **envp)
 	if (!(*envp))
 		exit(0);
 	data.my_env = get_env(envp);
+	/*if (read(0, input, 4096) == 0)
+		exit(0);*/
 	while(1)
 	{
 		signal(SIGINT, &sigint_handler);
@@ -50,6 +52,7 @@ int main(int ac, char **av, char **envp)
 		// Ca passe a la norme ⏬⏬
 		input = readline("🚭\e[0m \e[1;31m\e[3;43m minishell \e[0m  \e[1;36mLamala \
 \e[5;33m⚡\e[0m \e[1;30mChoZeur 🏁\e[0m ");
+		ctrld_handler(input);
 		data.Tokens = str_tok(input, &data);
 		Cli = tok_to_cli(data.Tokens, data.tok_nb);
 		add_history(Cli[0]);

@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 12:24:08 by flcarval          #+#    #+#             */
-/*   Updated: 2022/05/19 10:36:03 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/21 13:49:41 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,8 +103,9 @@ int		redir_out_append(char **av);
 int		redir_in(char **av);
 void	here_doc(char *limiter);
 
-//	SIGNAL
+//	SIGNAL AND EOF HANDLER
 void	sigint_handler(int signo);
 void	sigquit_handler(int signo);
+void	ctrld_handler(char *input);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 12:14:37 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/21 13:52:00 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/21 15:05:04 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,5 @@ void	sigquit_handler(int signo) // "CTRL+\"
 void	ctrld_handler(char *input) // "CTRL+d"
 {
 	if (input == NULL)
-		exit(0);
+		exit(EXIT_FAILURE);
 }

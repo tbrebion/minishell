@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 12:35:41 by flcarval          #+#    #+#             */
-/*   Updated: 2022/05/21 13:44:56 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/21 14:53:36 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@ int	ft_strncmp(char *s1, char *s2, int n)
 
 	i = 0;
 	t = 0;
+
+	if (!s1)
+		return (-1);
 	if (s1[i] == '\0' && s2[i] == '\0')
 		return (0);
 	while (i < n && (s1[i] || s2[i]))

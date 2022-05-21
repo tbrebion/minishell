@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+         #
+#    By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/07 18:31:06 by flcarval          #+#    #+#              #
-#    Updated: 2022/04/01 01:43:21 by flcarval         ###   ########.fr        #
+#    Updated: 2022/05/21 14:50:21 by tbrebion         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ OBJS_FT = ${FT_PRINTF:.c=.o}
 OBJ_GNL = ${GNL:.c=.o}
 OBJ = $(OBJ_GNL) $(OBJ_B) $(OBJ_M) $(OBJS_FT)
 CC = gcc
-FLAGS = -Wall -Werror -Wextra
+FLAGS = -Wall -Werror -Wextra -g3
 
 all: $(NAME) clean
 

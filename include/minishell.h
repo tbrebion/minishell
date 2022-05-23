@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 12:24:08 by flcarval          #+#    #+#             */
-/*   Updated: 2022/05/23 10:21:52 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/23 15:07:32 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ typedef struct s_data
 //char	*display_prompt(char **my_env);
 
 // INIT ENV AND ALL PATHS
-char	**init_env(char **envp);
+void	init_env(t_data *data, char **envp);
 char	**get_path(char **my_env);
 
 // FIND PATH TO EXEC

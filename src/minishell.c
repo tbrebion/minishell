@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:19:38 by tbrebion          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2022/05/23 15:26:27 by tbrebion         ###   ########.fr       */
+=======
+/*   Updated: 2022/05/23 15:15:40 by flcarval         ###   ########.fr       */
+>>>>>>> 9444927f4bd7e511d96354193548709f584c9c05
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +64,7 @@ int main(int ac, char **av, char **envp)
 		}
 		else
 			builtin_manager(&data, 0);
+		free_tokens(data.Tokens);
 	}
 	return (0);
 }

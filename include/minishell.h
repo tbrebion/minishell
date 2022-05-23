@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 12:24:08 by flcarval          #+#    #+#             */
-/*   Updated: 2022/05/23 15:07:32 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/23 15:32:32 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
@@ -26,8 +27,6 @@
 # include <readline/history.h>
 # include "../Lib42/include/lib42.h"
 
-//char	**g_env;
-
 # define I_LITERAL 100
 # define I_SPACE 200
 # define I_OUTREDIR 300
@@ -43,6 +42,7 @@
 // 	char			*val;
 // 	int				type;
 // }	t_tok;
+
 
 typedef struct s_cmd
 {
@@ -63,6 +63,8 @@ typedef struct s_data
 	char	**my_env;
 }	t_data;
 
+t_data	*g_data;
+
 //char	*display_prompt(char **my_env);
 
 // INIT ENV AND ALL PATHS
@@ -79,6 +81,7 @@ char	*catch_user(char **my_env);
 char	*catch_env_var(char *input, t_data *data);
 int		ft_max(int a, int b);
 t_list	*get_n_lst(t_list **Tokens, int n);
+void	free_tokens(t_list **Tokens);
 
 // BUILTINS
 int		is_builtin(char *cmd);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   echo_builtin.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 01:26:03 by flcarval          #+#    #+#             */
-/*   Updated: 2022/05/19 15:07:55 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/23 13:50:43 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	echo_builtin(t_data *data, int i)
 	char	*nl;
 	char	*ret;
 	int		n;
+	int		j;
 
 	if (!(get_n_lst(data->Tokens, i)->content->val))
 	{
@@ -42,11 +43,20 @@ int	echo_builtin(t_data *data, int i)
 		nl = "\n";
 	else
 		nl = "";
-	ret = catch_env_var(get_n_lst(data->Tokens, i)->content->val, data->my_env);
-	if (ret != NULL)
-		ft_printf("%s%s", ret, nl);
-	else
-		ft_printf("%s%s", get_n_lst(data->Tokens, i)->content->val, nl);
-	i = -1;
+	j = 0;
+	while (get_n_lst(data->Tokens, i + j)->content->type == I_LITERAL || \
+		get_n_lst(data->Tokens, i + j)->content->type == I_D_QUOTE || \
+		get_n_lst(data->Tokens, i + j)->content->type == I_S_QUOTE)
+	{
+		ret = catch_env_var(get_n_lst(data->Tokens, i + j)->content->val, data->my_env);
+		if (ret != NULL)
+			ft_printf("%s", ret);
+		else
+			ft_printf("%s", get_n_lst(data->Tokens, i + j)->content->val);
+		ft_printf(" ");
+		j++;
+	}
+	ft_printf("%s", nl);
+	// i = -1;
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 01:26:03 by flcarval          #+#    #+#             */
-/*   Updated: 2022/05/23 14:00:28 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/05/23 14:54:32 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@
 echo function takes *str as the string to output
 and n so n = 1 -> print w/ \n (n = 0 -> print w/o \n)
 */
+
+// ! SEGFAULT  when no args
+// ! "JS ERROR;JS LOG" when single char
 
 int	echo_builtin(t_data *data, int i)
 {

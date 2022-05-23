@@ -6,9 +6,10 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 12:24:08 by flcarval          #+#    #+#             */
-/*   Updated: 2022/05/23 15:03:49 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/05/23 15:14:23 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
@@ -66,7 +67,7 @@ typedef struct s_data
 //char	*display_prompt(char **my_env);
 
 // INIT ENV AND ALL PATHS
-char	**init_env(char **envp);
+void	init_env(t_data *data, char **envp);
 char	**get_path(char **my_env);
 
 // FIND PATH TO EXEC

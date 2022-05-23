@@ -3,16 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:19:38 by tbrebion          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2022/05/23 15:06:34 by flcarval         ###   ########.fr       */
+=======
+/*   Updated: 2022/05/23 15:07:48 by tbrebion         ###   ########.fr       */
+>>>>>>> 57db5ae9d277fc80fd870be555142815c577561e
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-static char	**get_env(char	**envp)
+/*static char	**get_env(char	**envp)
 {
 	static char	**my_env = (char **)0;
 
@@ -26,7 +30,7 @@ static char	**get_env(char	**envp)
 		//ft_putstr_fd("Already setted\n", 1);
 	}
 	return (my_env);
-}
+}*/
 
 
 int main(int ac, char **av, char **envp)
@@ -40,7 +44,8 @@ int main(int ac, char **av, char **envp)
 	(void)av;
 	if (!(*envp))
 		exit(0);
-	data.my_env = get_env(envp);
+	//data.my_env = get_env(envp);
+	init_env(&data, envp);
 	while(1)
 	{
 		signal(SIGINT, &sigint_handler);

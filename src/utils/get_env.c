@@ -6,30 +6,30 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 12:25:02 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/23 10:36:20 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/23 15:08:06 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-char	**init_env(char **envp)
+void	init_env(t_data *data, char **envp)
 {
-	char	**my_env;
+	//char	**my_env;
 	int		i;
 
 	i = 0;
 	while (envp[i])
 		i++;
-	if (!(my_env = malloc(sizeof(char *) * (i + 1))))
-		exit_shell(my_env);//return (NULL);
+	if (!(data->my_env = malloc(sizeof(char *) * (i + 1))))
+		exit_shell(data->my_env);//return (NULL);
 	i = 0;
 	while (envp[i])
 	{
-		if (!(my_env[i] = ft_strdup(envp[i])))
-			exit_shell(my_env);
+		if (!(data->my_env[i] = ft_strdup(envp[i])))
+			exit_shell(data->my_env);
 		i++;
 	}
-	return (my_env);
+	//return (data->my_env);
 }
 
 char	**get_path(char **my_env)

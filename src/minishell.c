@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:19:38 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/23 14:07:32 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/05/23 15:06:34 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ int main(int ac, char **av, char **envp)
 		}
 		else
 			builtin_manager(&data, 0);
+		free_tokens(data.Tokens);
 	}
 	return (0);
 }

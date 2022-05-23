@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:19:38 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/23 14:02:13 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/23 14:07:32 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static char	**get_env(char	**envp)
 int main(int ac, char **av, char **envp)
 {
 	char	*input;
-	//int		pid;
+	int		pid;
 	t_data	data;
 	char	**Cli;
 
@@ -54,7 +54,7 @@ int main(int ac, char **av, char **envp)
 		add_history(Cli[0]);
 		data.Tokens = str_tok(input, &data);
 		//ft_printf("Cli[0] = %s\n", Cli[0]);
-		/*if (is_builtin(Cli[0]) == 0)
+		if (is_builtin(Cli[0]) == 0)
 		{
 			//ft_printf("Cli[0] = %s\n", Cli[0]);
 			pid = fork();
@@ -62,7 +62,7 @@ int main(int ac, char **av, char **envp)
 				execute(Cli[0], &data);
 			wait(0);
 		}
-		else*/
+		else
 			builtin_manager(&data, 0);
 	}
 	return (0);

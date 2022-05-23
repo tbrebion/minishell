@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 12:24:08 by flcarval          #+#    #+#             */
-/*   Updated: 2022/05/23 15:32:32 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/05/23 15:38:55 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ typedef struct s_data
 	char	**my_env;
 }	t_data;
 
-t_data	*g_data;
+//t_data	*g_data;
 
 //char	*display_prompt(char **my_env);
 

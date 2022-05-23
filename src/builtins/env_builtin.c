@@ -6,14 +6,14 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 13:37:33 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/11 11:30:40 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/23 13:56:39 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
 void	print_env(char **my_env)
-{
+
 	int	i;
 
 	i = 0;

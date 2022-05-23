@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 01:26:03 by flcarval          #+#    #+#             */
-/*   Updated: 2022/05/23 13:54:30 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/05/23 14:00:28 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,17 +44,22 @@ int	echo_builtin(t_data *data, int i)
 	else
 		nl = "";
 	j = 0;
-	while (get_n_lst(data->Tokens, i + j)->content->type == I_LITERAL || \
+	while (get_n_lst(data->Tokens, i + j) && \
+		(get_n_lst(data->Tokens, i + j)->content->type == I_LITERAL || \
 		get_n_lst(data->Tokens, i + j)->content->type == I_D_QUOTE || \
-		get_n_lst(data->Tokens, i + j)->content->type == I_S_QUOTE)
+		get_n_lst(data->Tokens, i + j)->content->type == I_S_QUOTE))
 	{
 		ret = catch_env_var(get_n_lst(data->Tokens, i + j)->content->val, data);
 		if (ret != NULL)
 			ft_printf("%s", ret);
 		else
 			ft_printf("%s", get_n_lst(data->Tokens, i + j)->content->val);
-		ft_printf(" ");
 		j++;
+		if (get_n_lst(data->Tokens, i + j) && \
+		(get_n_lst(data->Tokens, i + j)->content->type == I_LITERAL || \
+		get_n_lst(data->Tokens, i + j)->content->type == I_D_QUOTE || \
+		get_n_lst(data->Tokens, i + j)->content->type == I_S_QUOTE))
+			ft_printf(" ");
 	}
 	ft_printf("%s", nl);
 	// i = -1;

@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 12:24:08 by flcarval          #+#    #+#             */
-/*   Updated: 2022/05/23 15:14:23 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/05/23 15:32:32 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@
 # include <readline/history.h>
 # include "../Lib42/include/lib42.h"
 
-//char	**g_env;
-
 # define I_LITERAL 100
 # define I_SPACE 200
 # define I_OUTREDIR 300
@@ -44,6 +42,7 @@
 // 	char			*val;
 // 	int				type;
 // }	t_tok;
+
 
 typedef struct s_cmd
 {
@@ -63,6 +62,8 @@ typedef struct s_data
 	t_list	**Tokens;
 	char	**my_env;
 }	t_data;
+
+t_data	*g_data;
 
 //char	*display_prompt(char **my_env);
 

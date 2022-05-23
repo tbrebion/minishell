@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 09:45:14 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/18 14:35:02 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/05/23 11:28:13 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,13 @@ char	*find_path(char *cmd, char **my_paths)
 		i++;
 	}
 	i = -1;
-	// while (my_paths[++i])
-	// 	free(my_paths[i]);
-	// free(my_paths);
+	//while (my_paths[++i])
+	//	free(my_paths[i]);
+	//free(my_paths);
 	return (0);
 }
 
-void	execute(char *av, char **my_env)
+void	execute(char *av, t_data *data)
 {
 	int		i;
 	char	**cmd;
@@ -47,15 +47,15 @@ void	execute(char *av, char **my_env)
 
 	i = -1;
 	cmd = ft_split(av, ' ');
-	paths = get_path(my_env);
+	paths = get_path(data->my_env);
 	path = find_path(cmd[0], paths);
 	if (!path)
 	{
 		while (cmd[++i])
 			free(cmd[i]);
 		free(cmd);
-		exit_shell(my_env);
+		exit_shell(data->my_env);
 	}
-	if (execve(path, cmd, my_env) == -1)
+	if (execve(path, cmd, data->my_env) == -1)
 		return ;//exit_shell(my_env);
 }

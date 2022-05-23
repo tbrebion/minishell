@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 01:26:03 by flcarval          #+#    #+#             */
-/*   Updated: 2022/05/19 15:07:55 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/23 10:11:48 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	echo_builtin(t_data *data, int i)
 		nl = "\n";
 	else
 		nl = "";
-	ret = catch_env_var(get_n_lst(data->Tokens, i)->content->val, data->my_env);
+	ret = catch_env_var(get_n_lst(data->Tokens, i)->content->val, data);
 	if (ret != NULL)
 		ft_printf("%s%s", ret, nl);
 	else

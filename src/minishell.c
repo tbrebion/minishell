@@ -6,28 +6,27 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:19:38 by tbrebion          #+#    #+#             */
+<<<<<<< HEAD
+/*   Updated: 2022/05/23 15:26:27 by tbrebion         ###   ########.fr       */
+=======
 /*   Updated: 2022/05/23 15:15:40 by flcarval         ###   ########.fr       */
+>>>>>>> 9444927f4bd7e511d96354193548709f584c9c05
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
-
-/*static char	**get_env(char	**envp)
+/*
+static void	get_env(t_data *data, char **envp)
 {
-	static char	**my_env = (char **)0;
+	data->my_env = (char **)0;
 
-	if (my_env == (char **)0)
+	if (data->my_env == (char **)0)
 	{
 		//ft_putstr_fd("Setting env variable\n", 1);
-		my_env = init_env(envp);
+		init_env(data, envp);
 	}
-	else
-	{
-		//ft_putstr_fd("Already setted\n", 1);
-	}
-	return (my_env);
-}*/
-
+}
+*/
 
 int main(int ac, char **av, char **envp)
 {

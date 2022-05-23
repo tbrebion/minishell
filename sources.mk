@@ -18,7 +18,7 @@ SOURCES		+=                         		\
 		src/utils/limiter.c          		\
 		src/utils/signal_manager.c          \
 		src/utils/ft_max.c                  \
-		src/utils/get_n_lst.c                 \
+		src/utils/get_n_lst.c               \
 
 
 ## SRC/BUILTINS ##

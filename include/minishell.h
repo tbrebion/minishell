@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 12:24:08 by flcarval          #+#    #+#             */
-/*   Updated: 2022/05/21 13:49:41 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/23 10:21:52 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,12 +71,12 @@ char	**get_path(char **my_env);
 
 // FIND PATH TO EXEC
 char	*find_path(char *cmd, char **my_paths);
-void	execute(char *av, char **my_env);
+void	execute(char *av, t_data *data);
 
 // UTILS
 char	*stradd_char(char *str, char c);
 char	*catch_user(char **my_env);
-char	*catch_env_var(char *input, char **my_env);
+char	*catch_env_var(char *input, t_data *data);
 int		ft_max(int a, int b);
 t_list	*get_n_lst(t_list **Tokens, int n);
 

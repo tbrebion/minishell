@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:19:38 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/21 15:02:52 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/23 10:22:26 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,10 @@ int main(int ac, char **av, char **envp)
 		//ft_printf("Cli[0] = %s\n", Cli[0]);
 		if (is_builtin(Cli[0]) == 0)
 		{
+			//ft_printf("Cli[0] = %s\n", Cli[0]);
 			pid = fork();
 			if (pid == 0)
-				execute(Cli[0], data.my_env);
+				execute(Cli[0], &data);
 			wait(0);
 		}
 		else

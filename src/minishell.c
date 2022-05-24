@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:19:38 by tbrebion          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2022/05/23 15:26:27 by tbrebion         ###   ########.fr       */
-=======
-/*   Updated: 2022/05/23 15:15:40 by flcarval         ###   ########.fr       */
->>>>>>> 9444927f4bd7e511d96354193548709f584c9c05
+/*   Updated: 2022/05/24 12:43:13 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +30,12 @@ int main(int ac, char **av, char **envp)
 	int		pid;
 	t_data	data;
 	char	**Cli;
+	t_list	*lst;
 
 	(void)ac;
 	(void)av;
 	if (!(*envp))
 		exit(0);
-	//data.my_env = get_env(envp);
 	init_env(&data, envp);
 	while(1)
 	{
@@ -53,13 +49,17 @@ int main(int ac, char **av, char **envp)
 		Cli = tok_to_cli(data.Tokens, data.tok_nb);
 		add_history(Cli[0]);
 		data.Tokens = str_tok(input, &data);
-		//ft_printf("Cli[0] = %s\n", Cli[0]);
+		lst = (*data.Tokens);
+		//ft_printf("\n%s\n", lst->content->val);
 		if (is_builtin(Cli[0]) == 0)
 		{
 			//ft_printf("Cli[0] = %s\n", Cli[0]);
 			pid = fork();
 			if (pid == 0)
-				execute(Cli[0], &data);
+			{
+				redir_manager(&data);
+				execute(/*Cli[0]*/lst->content->val, &data);
+			}
 			wait(0);
 		}
 		else

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 12:24:08 by flcarval          #+#    #+#             */
-/*   Updated: 2022/05/23 15:38:55 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/05/24 12:25:15 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,9 +101,10 @@ t_tok	*set_tok(char *str, int *i);
 char	**tok_to_cli(t_list **Tokens, int tok_nb);
 
 //	REDIR
-int		redir_out(char **av);
-int		redir_out_append(char **av);
-int		redir_in(char **av);
+void	redir_manager(t_data *data);
+int		redir_out(char *str);
+int		redir_out_append(char *str);
+int		redir_in(char *str);
 void	here_doc(char *limiter);
 
 //	SIGNAL AND EOF HANDLER

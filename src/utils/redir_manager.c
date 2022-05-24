@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:54:58 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/18 10:45:21 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/24 12:35:38 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,13 @@
 
 void	redir_manager(t_data *data)
 {
-	
+	t_list	*lst;
+
+	lst = (*data->Tokens);
+	while (lst)
+	{
+		if (lst->content->type == I_OUTREDIR)
+			redir_out(lst->next->content->val);
+		lst = lst->next;
+	}
 }

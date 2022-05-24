@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   signal_manager.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 12:14:37 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/23 15:24:35 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/05/24 19:06:30 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,7 @@ void	sigint_handler(int signo) // CTRL+c
 	if (signo == SIGINT)
 	{
 		ft_putstr_fd("\n", 2);
-		ft_printf("🚭\e[0m \e[1;31m\e[3;43m minishell \e[0m  \e[1;36mLamala \
-\e[5;33m⚡\e[0m \e[1;30mChoZeur 🏁\e[0m ");
+		ft_printf("MY_PROMPT>> ");
 		//kill(0, SIGINT);
 		//exit(EXIT_FAILURE);
 	}

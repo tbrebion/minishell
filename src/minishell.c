@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:19:38 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/24 18:11:18 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/05/24 19:10:37 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void	get_env(t_data *data, char **envp)
 int main(int ac, char **av, char **envp)
 {
 	char	*input;
-	int		pid;
+	//int		pid;
 	t_data	data;
 	char	**Cli;
 	t_list	*lst;
@@ -37,28 +37,25 @@ int main(int ac, char **av, char **envp)
 	if (!(*envp))
 		exit(0);
 	init_env(&data, envp);
+	signal(SIGINT, &sigint_handler);
+	signal(SIGQUIT, &sigquit_handler);
 	while(1)
 	{
-		signal(SIGINT, &sigint_handler);
-		signal(SIGQUIT, &sigquit_handler);
 		// Ca passe a la norme ⏬⏬
-		input = readline("🚭\e[0m \e[1;31m\e[3;43m minishell \e[0m  \e[1;36mLamala \
-\e[5;33m⚡\e[0m \e[1;30mChoZeur 🏁\e[0m ");
+		input = readline("MY_PROMPT>> ");
 		ctrld_handler(input);
 		data.Tokens = str_tok(input, &data);
 		Cli = tok_to_cli(data.Tokens, data.tok_nb);
 		add_history(input);
 		data.Tokens = str_tok(input, &data);
 		lst = (*data.Tokens);
-		//ft_printf("\n%s\n", lst->content->val);
-		if (is_builtin(Cli[0]) == 0)
+		if (is_builtin(lst->content->val) == 0)
 		{
-			//ft_printf("Cli[0] = %s\n", Cli[0]);
 			pid = fork();
 			if (pid == 0)
 			{
 				redir_manager(&data);
-				execute(/*Cli[0]*/lst->content->val, &data);
+				execute(Cli[0]lst->content->val, &data);
 			}
 			wait(0);
 		}
@@ -84,3 +81,5 @@ int main(int ac, char **av, char **envp)
 	}
 	return (0);
 }*/
+
+/*"🚭\e[0m \e[1;31m\e[3;43m minishell \e[0m  \e[1;36mLamala \e[5;33m⚡\e[0m \e[1;30mChoZeur 🏁\e[0m "*/

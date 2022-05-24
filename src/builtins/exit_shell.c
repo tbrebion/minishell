@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 09:32:37 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/23 10:27:06 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/24 18:49:35 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	exit_shell(char **my_env)
 {
 	int	i;
 
+	ft_printf("\nICIIIII\n");
 	i = 0;
 	if (my_env[i])
 	{
@@ -26,5 +27,5 @@ void	exit_shell(char **my_env)
 		}
 		free(my_env);
 	}
-	exit(0);
+	exit(EXIT_FAILURE);
 }

@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 09:45:14 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/23 11:28:13 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/24 19:02:55 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,9 @@ void	execute(char *av, t_data *data)
 		while (cmd[++i])
 			free(cmd[i]);
 		free(cmd);
-		exit_shell(data->my_env);
+		free_tokens(data->Tokens);
+		exit(0);
+		//exit_shell(data->my_env);
 	}
 	if (execve(path, cmd, data->my_env) == -1)
 		return ;//exit_shell(my_env);

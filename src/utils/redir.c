@@ -6,13 +6,13 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 14:21:49 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/24 17:12:59 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/24 17:16:15 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-int	redir_in(char *str) //   <
+void	redir_in(char *str) //   <
 {
 	int fd;
 
@@ -23,7 +23,7 @@ int	redir_in(char *str) //   <
 	return (0);
 }
 
-int	redir_out(char *str) //   >
+void	redir_out(char *str) //   >
 {
 	int	fd;
 
@@ -35,7 +35,7 @@ int	redir_out(char *str) //   >
 	return (0);
 }
 
-int	redir_out_append(char *str) //   >>
+void	redir_out_append(char *str) //   >>
 {
 	int	fd;
 

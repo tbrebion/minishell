@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:19:38 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/24 13:53:53 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/24 18:11:18 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int main(int ac, char **av, char **envp)
 		ctrld_handler(input);
 		data.Tokens = str_tok(input, &data);
 		Cli = tok_to_cli(data.Tokens, data.tok_nb);
-		add_history(Cli[0]);
+		add_history(input);
 		data.Tokens = str_tok(input, &data);
 		lst = (*data.Tokens);
 		//ft_printf("\n%s\n", lst->content->val);

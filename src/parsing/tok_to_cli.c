@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 15:25:04 by flcarval          #+#    #+#             */
-/*   Updated: 2022/05/24 17:38:24 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/24 17:40:49 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char	**tok_to_cli(t_list **Tokens, int tok_nb)
 	{
 		Cli[i] = ft_strdup("");
 		while (lst && lst->content->type >= I_OUTREDIR && \
-			lst->content->type <= 500)
+			lst->content->type <= I_PIPE)
 		{
 			if (Cli[i][0])
 				Cli[i] = ft_strjoin(Cli[i], " ");

@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 15:25:04 by flcarval          #+#    #+#             */
-/*   Updated: 2022/05/24 17:33:38 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/05/24 17:35:19 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ char	**tok_to_cli(t_list **Tokens, int tok_nb)
 		Cli[i] = ft_strdup("");
 		while (lst && lst->content->type >= I_OUTREDIR && \
 			lst->content->type <= 500)
-		/*&& lst->content->type != I_OUTREDIR && lst->content->type != I_INREDIR*/)
 		{
 			if (Cli[i][0])
 				Cli[i] = ft_strjoin(Cli[i], " ");

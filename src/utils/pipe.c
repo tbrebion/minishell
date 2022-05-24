@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 13:30:45 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/19 09:19:00 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/24 17:31:29 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@ int	ft_pipe(char **split_input, char **my_env)
 		parent_process(split_input, my_env, fd);
 	return (0);
 }
-*/
-/*static void	child_process(t_data *data, int n)
+*//*
+static void	child_process(t_data *data, int n)
 {
 	int	pid;
 	int fd[2];
@@ -97,4 +97,5 @@ void	pipe(t_data *data, int nb_tok)
 	while (i < nb_tok - 2)
 		child_process(data, n);
 	execute(Cli[n], data->my_env);
-}*/	
+}	
+*/

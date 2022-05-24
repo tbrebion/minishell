@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 15:25:04 by flcarval          #+#    #+#             */
-/*   Updated: 2022/05/24 17:30:44 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/05/24 17:33:38 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ char	**tok_to_cli(t_list **Tokens, int tok_nb)
 			Cli[i] = ft_strjoin(Cli[i], lst->content->val);
 			lst = lst->next;
 		}
+		if (lst)
+			lst = lst->next;
 		i++;
 	}
 	return (Cli);

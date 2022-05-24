@@ -6,16 +6,11 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 14:21:49 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/24 13:59:17 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/24 17:12:59 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
-
-/*
-	av is for test
-	GOT TO USE THE RIGHT TOKEN OF THE INPUT
-*/
 
 int	redir_in(char *str) //   <
 {

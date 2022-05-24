@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 18:03:10 by flcarval          #+#    #+#             */
-/*   Updated: 2022/05/17 00:45:21 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/05/24 17:11:59 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,10 @@ static void	set_redir(char *str, int *i, t_tok *tok)
 	if (tok->type == I_OUTREDIR)
 	{
 		if (str[*i + 1] == '>')
+		{
 			tok->val = ft_strdup(">>");
+			tok->type = I_D_OUTREDIR;
+		}
 		else
 			tok->val = ft_strdup(">");
 		*i += ft_strlen(tok->val);
@@ -114,7 +117,10 @@ static void	set_redir(char *str, int *i, t_tok *tok)
 	else if (tok->type == I_INREDIR)
 	{
 		if (str[*i + 1] == '<')
+		{
 			tok->val = ft_strdup("<<");
+			tok->type = I_D_INREDIR;
+		}
 		else
 			tok->val = ft_strdup("<");
 		*i += ft_strlen(tok->val);

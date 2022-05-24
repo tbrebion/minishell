@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 12:24:08 by flcarval          #+#    #+#             */
-/*   Updated: 2022/05/24 12:25:15 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/24 17:09:51 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,9 @@
 # define I_LITERAL 100
 # define I_SPACE 200
 # define I_OUTREDIR 300
+# define I_D_OUTREDIR 350
 # define I_INREDIR 400
+# define I_D_INREDIR 450
 # define I_PIPE 500
 # define I_S_QUOTE 600
 # define I_D_QUOTE 700

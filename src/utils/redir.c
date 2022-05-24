@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 14:21:49 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/24 13:26:38 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/24 13:59:17 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,11 @@ int	redir_out(char *str) //   >
 {
 	int	fd;
 
-	fd = open(str,  O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	fd = open(str,  O_RDWR | O_CREAT | O_TRUNC, 0644);
 	if (fd == -1)
 		return (-1); ///return error
 	dup2(fd, 1);
+	//exit(0);
 	return (0);
 }
 
@@ -43,7 +44,7 @@ int	redir_out_append(char *str) //   >>
 {
 	int	fd;
 
-	fd = open(str,  O_WRONLY | O_CREAT | O_APPEND, 0644);
+	fd = open(str,  O_RDWR | O_CREAT | O_APPEND, 0644);
 	if (fd == -1)
 		return (-1); ///return error
 	dup2(fd, 1);

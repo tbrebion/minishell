@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:19:38 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/24 19:10:37 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/25 09:02:04 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void	get_env(t_data *data, char **envp)
 int main(int ac, char **av, char **envp)
 {
 	char	*input;
-	//int		pid;
+	int		pid;
 	t_data	data;
 	char	**Cli;
 	t_list	*lst;
@@ -55,7 +55,8 @@ int main(int ac, char **av, char **envp)
 			if (pid == 0)
 			{
 				redir_manager(&data);
-				execute(Cli[0]lst->content->val, &data);
+				execute(/*Cli[0]*/lst->content->val, &data);
+				free(input);
 			}
 			wait(0);
 		}

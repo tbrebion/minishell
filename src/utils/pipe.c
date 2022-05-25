@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 13:30:45 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/24 18:43:27 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/25 12:28:06 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,10 +87,10 @@ void	pipe(t_data *data, int nb_cmd)
 	int	filout;
 
 	i = 2;
-	filein = open(Cli[n], O_RDONLY, 0777);
+	filein = open(Cli[n], O_RDONLY, 0644);
 	if (filein == -1)
 		return ;
-	fileout = open(Cli[n + 1], O_WRONLY | O_CREAT | O_TRUNC, 0777);
+	fileout = open(Cli[n + 1], O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	if (fileout == -1)
 		return ;
 	dup2(filein, STDIN_FILENO);

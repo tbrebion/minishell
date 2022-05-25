@@ -13,7 +13,6 @@ SOURCES		+=                         		\
 		src/utils/exec.c             		\
 		src/utils/redir.c                 	\
 		src/utils/stradd_char.c           	\
-		src/utils/catch_user.c 		        \
 		src/utils/catch_env_var.c      	    \
 		src/utils/limiter.c          		\
 		src/utils/signal_manager.c          \

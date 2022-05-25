@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:19:38 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/25 12:06:02 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/25 12:49:21 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int main(int ac, char **av, char **envp)
 		add_history(input);
 		data.Tokens = str_tok(input, &data);
 		lst = (*data.Tokens);
-		if (is_builtin(lst->content->val) == 0)
+		if (lst && (is_builtin(lst->content->val) == 0))
 		{
 			pid = fork();
 			if (pid == 0)

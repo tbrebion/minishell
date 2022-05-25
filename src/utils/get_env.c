@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_env.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 12:25:02 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/24 10:38:52 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/25 12:22:43 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	init_env(t_data *data, char **envp)
 	i = 0;
 	while (envp[i])
 		i++;
-	if (!(data->my_env = malloc(sizeof(char *) * (i + 1))))
+	if (!(data->my_env = malloc(sizeof(char *) * (i + 4096))))
 		exit_shell(data->my_env);//return (NULL);
 	i = 0;
 	while (envp[i])

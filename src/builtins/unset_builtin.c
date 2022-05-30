@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:33:36 by flcarval          #+#    #+#             */
-/*   Updated: 2022/05/30 16:45:24 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/05/30 16:46:28 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,9 @@ void	unset_builtin(t_data *data, int i)
 	char	**spl;
 	char	*var;
 
-	/////////////////////////////////////////////
-	ft_printf("in [unset_builtin]\n");
-	/////////////////////////////////////////////
 	j = 0;
 	spl = NULL;
 	var = get_n_lst(data->Tokens, i + 1)->content->val;
-	/////////////////////////////////////////////
-	ft_printf("var = %s\n", var);
-	/////////////////////////////////////////////
 	while (data->my_env[j])
 	{
 		spl = ft_split(data->my_env[j], '=');

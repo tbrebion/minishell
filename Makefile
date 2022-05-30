@@ -86,6 +86,9 @@ clean:
 fclean: clean
 	@$(RM) -rf $(TARGETDIR)
 
+test: re 
+	./bin/minishell
+	@clear
 
 # Pull in dependency info for *existing* .o files
 -include $(OBJECTS:.$(OBJEXT)=.$(DEPEXT))

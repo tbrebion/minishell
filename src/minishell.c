@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:19:38 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/30 15:26:17 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/30 17:55:58 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,26 +32,19 @@ int main(int ac, char **av, char **envp)
 	char	**Cli;
 	t_list	*lst;
 
-	//int		test_sigint;
-
 	(void)ac;
 	(void)av;
-	//input = NULL;
 	if (!(*envp))
 		exit(0);
-	//test_sigint = 0;
-	//ft_sig_state(&test_sigint, 0);
-	init_env(&data, envp);
 	signal(SIGINT, &sigint_handler);
 	signal(SIGQUIT, &sigquit_handler);
+	init_env(&data, envp);
 	while(1)
 	{
-		// Ca passe a la norme ⏬⏬
-		//test_sigint = 0;
 		g_input = readline("MY_PROMPT>> ");
 		ctrld_handler(g_input);
-		if(!g_input[0] || (!(g_input)))
-			continue;
+		if(!g_input[0])
+			continue ;
 		data.Tokens = str_tok(g_input, &data);
 		Cli = tok_to_cli(data.Tokens, data.tok_nb);
 		add_history(g_input);

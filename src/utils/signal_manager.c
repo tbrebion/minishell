@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 12:14:37 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/30 15:26:48 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/30 17:55:37 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,12 @@
 
 void	sigint_handler(int signo) // CTRL+c
 {
-
-	tty_raw_mode();
 	if (signo == SIGINT)
 	{
-		//ft_sig_state(NULL, 1);
 		ft_putstr_fd("\n", 2);
 		free(g_input);
-		g_input = NULL;
+		g_input = readline("MY_PROMPT>> ");
 	}
-	disableRawMode();
 }
 
 void	sigquit_handler(int signo) // "CTRL+\"

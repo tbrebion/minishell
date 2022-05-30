@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:19:38 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/25 14:28:32 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/30 08:59:39 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ int main(int ac, char **av, char **envp)
 	{
 		// Ca passe a la norme ⏬⏬
 		input = readline("MY_PROMPT>> 	");
+		ctrld_handler(input);
 		if(!input[0])
 			continue;
-		ctrld_handler(input);
 		data.Tokens = str_tok(input, &data);
 		Cli = tok_to_cli(data.Tokens, data.tok_nb);
 		add_history(input);

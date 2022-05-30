@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 12:24:08 by flcarval          #+#    #+#             */
-/*   Updated: 2022/05/25 14:32:42 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/30 15:28:26 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <dirent.h>
 # include <errno.h>
 # include <signal.h>
+# include <termio.h>
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <sys/wait.h>
@@ -45,6 +46,9 @@
 // 	int				type;
 // }	t_tok;
 
+static char	*g_input;
+
+static struct termios orig_termios;
 
 typedef struct s_cmd
 {
@@ -75,7 +79,7 @@ char	**get_path(char **my_env);
 
 // FIND PATH TO EXEC
 char	*find_path(char *cmd, char **my_paths);
-void	execute(char *av, t_data *data);
+void	execute(/*char *av, */t_data *data, int i);
 
 // UTILS
 char	*stradd_char(char *str, char c);
@@ -113,5 +117,11 @@ void	here_doc(char *limiter);
 void	sigint_handler(int signo);
 void	sigquit_handler(int signo);
 void	ctrld_handler(char *input);
+
+//	 RAW MODE
+void disableRawMode(void);
+void tty_raw_mode(void);
+
+//int	ft_sig_state(int *status, int get);
 
 #endif

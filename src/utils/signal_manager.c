@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 12:14:37 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/25 09:00:46 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/30 15:26:48 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,16 @@
 
 void	sigint_handler(int signo) // CTRL+c
 {
+
+	tty_raw_mode();
 	if (signo == SIGINT)
 	{
+		//ft_sig_state(NULL, 1);
 		ft_putstr_fd("\n", 2);
-		ft_printf("MY_PROMPT>> ");
+		free(g_input);
+		g_input = NULL;
 	}
+	disableRawMode();
 }
 
 void	sigquit_handler(int signo) // "CTRL+\"
@@ -32,3 +37,38 @@ void	ctrld_handler(char *input) // "CTRL+d"
 	if (input == NULL)
 		exit(EXIT_FAILURE);
 }
+/*
+int	ft_sig_state(int *status, int get)
+{
+	static int	*state = (int *)0;
+
+	if (status != NULL)
+		state = status;
+	if (get == 1)
+		*state = 1;
+	return (*state);
+
+}
+*/
+/*char	*ft_get_addr(char **input)
+{
+	static int	*my_input_addr = (int *)0;
+
+	if (input)
+		my_input_addr = input;
+	return (*my_input_addr);
+
+// si str == null c'est la function siginnt_handler qui appelle
+// si != ull je viens set l'adresse 
+}*/
+/*
+char *ft_example(void)
+{
+	char *str = malloc(sizeof(char) * 42);
+
+	ft_get_addr(str);
+
+
+	// signal :: 
+
+}*/

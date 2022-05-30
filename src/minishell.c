@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:19:38 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/30 09:48:53 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/30 15:26:17 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,30 +26,36 @@ static void	get_env(t_data *data, char **envp)
 
 int main(int ac, char **av, char **envp)
 {
-	char	*input;
+	//char	*input;
 	int		pid;
 	t_data	data;
 	char	**Cli;
 	t_list	*lst;
 
+	//int		test_sigint;
+
 	(void)ac;
 	(void)av;
+	//input = NULL;
 	if (!(*envp))
 		exit(0);
+	//test_sigint = 0;
+	//ft_sig_state(&test_sigint, 0);
 	init_env(&data, envp);
 	signal(SIGINT, &sigint_handler);
 	signal(SIGQUIT, &sigquit_handler);
 	while(1)
 	{
 		// Ca passe a la norme ⏬⏬
-		input = readline("MY_PROMPT>> 	");
-		ctrld_handler(input);
-		if(!input[0])
+		//test_sigint = 0;
+		g_input = readline("MY_PROMPT>> ");
+		ctrld_handler(g_input);
+		if(!g_input[0] || (!(g_input)))
 			continue;
-		data.Tokens = str_tok(input, &data);
+		data.Tokens = str_tok(g_input, &data);
 		Cli = tok_to_cli(data.Tokens, data.tok_nb);
-		add_history(input);
-		data.Tokens = str_tok(input, &data);
+		add_history(g_input);
+		data.Tokens = str_tok(g_input, &data);
 		lst = (*data.Tokens);
 		if (lst && (is_builtin(lst->content->val) == 0))
 		{
@@ -57,8 +63,8 @@ int main(int ac, char **av, char **envp)
 			if (pid == 0)
 			{
 				redir_manager(&data);
-				execute(lst->content->val, &data);
-				free(input);
+				execute(/*lst->content->val, */&data, 0);
+				free(g_input);
 			}
 			wait(0);
 		}
@@ -66,7 +72,7 @@ int main(int ac, char **av, char **envp)
 		{
 			redir_manager(&data);
 			builtin_manager(&data, 0);
-			free(input);
+			free(g_input);
 		}
 		free_tokens(data.Tokens);
 	}

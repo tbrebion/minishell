@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 09:45:14 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/24 19:02:55 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/30 11:30:12 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,26 +38,27 @@ char	*find_path(char *cmd, char **my_paths)
 	return (0);
 }
 
-void	execute(char *av, t_data *data)
+void	execute(/*char *av, */t_data *data, int i)
 {
-	int		i;
+	int		j;
 	char	**cmd;
 	char	**paths;
 	char	*path;
 
-	i = -1;
-	cmd = ft_split(av, ' ');
+	j = -1;
+	cmd = ft_split(/*av*/get_n_lst(data->Tokens, i)->content->val, ' ');
 	paths = get_path(data->my_env);
 	path = find_path(cmd[0], paths);
 	if (!path)
 	{
-		while (cmd[++i])
-			free(cmd[i]);
+		while (cmd[++j])
+			free(cmd[j]);
 		free(cmd);
 		free_tokens(data->Tokens);
 		exit(0);
 		//exit_shell(data->my_env);
 	}
 	if (execve(path, cmd, data->my_env) == -1)
-		return ;//exit_shell(my_env);
+		perror(cmd[0]);
+		//return ;//exit_shell(my_env);
 }

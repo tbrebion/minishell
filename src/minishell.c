@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:19:38 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/30 08:59:39 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/30 09:48:53 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int main(int ac, char **av, char **envp)
 			if (pid == 0)
 			{
 				redir_manager(&data);
-				execute(/*Cli[0]*/lst->content->val, &data);
+				execute(lst->content->val, &data);
 				free(input);
 			}
 			wait(0);

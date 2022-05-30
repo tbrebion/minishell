@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 01:26:03 by flcarval          #+#    #+#             */
-/*   Updated: 2022/05/25 09:07:44 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/30 09:21:33 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ and n so n = 1 -> print w/ \n (n = 0 -> print w/o \n)
 */
 
 // ! SEGFAULT  when no args
-// ! "JS ERROR;JS LOG" when single char
 
 int	echo_builtin(t_data *data, int i)
 {
@@ -27,7 +26,7 @@ int	echo_builtin(t_data *data, int i)
 	int		n;
 	int		j;
 
-	if (!(get_n_lst(data->Tokens, i)->content->val))
+	if (!(get_n_lst(data->Tokens, i + 1)/*->content->val*/))
 	{
 		write(1, "\n", 1);
 		return (-1);

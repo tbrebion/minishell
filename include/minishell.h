@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 12:24:08 by flcarval          #+#    #+#             */
-/*   Updated: 2022/05/30 17:19:47 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/30 18:17:40 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@
 // 	int				type;
 // }	t_tok;
 
-static char	*g_input;
+extern char	*g_input;
 
 static struct termios orig_termios;
 
@@ -67,8 +67,10 @@ typedef struct s_data
 	int		tok_nb;
 	t_list	**Tokens;
 	char	**my_env;
+	int		exit;
 }	t_data;
 
+extern t_data data;
 //t_data	*g_data;
 
 //char	*display_prompt(char **my_env);

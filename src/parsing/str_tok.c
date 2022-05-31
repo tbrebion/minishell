@@ -6,13 +6,13 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 16:51:49 by flcarval          #+#    #+#             */
-/*   Updated: 2022/05/18 14:12:00 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/05/31 14:54:17 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-t_list	**str_tok(char *str, t_data *data)
+t_list	**str_tok(char *str/*, t_data *data*/)
 {
 	t_list	**Tokens;
 	int		i;
@@ -29,7 +29,7 @@ t_list	**str_tok(char *str, t_data *data)
 		else
 			i++;
 	}
-	data->tok_nb = ft_lstsize(*Tokens);
+	data.tok_nb = ft_lstsize(*Tokens);
 	return (Tokens);
 }
 

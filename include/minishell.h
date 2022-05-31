@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 12:24:08 by flcarval          #+#    #+#             */
-/*   Updated: 2022/05/31 14:50:25 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/31 15:48:17 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@
 // 	int				type;
 // }	t_tok;
 
-extern char	*g_input;
+// extern char	*data.input;
 
 //static struct termios orig_termios;
 
@@ -68,48 +68,50 @@ typedef struct s_data
 	t_list	**Tokens;
 	char	**my_env;
 	int		error_status;
+	char	*previous_dir;
+	char	*input;
 }	t_data;
 
 extern t_data data;
-//t_data	*g_data;
+//t_data	* data;
 
 //char	*display_prompt(char **my_env);
 
 // INIT ENV AND ALL PATHS
-void	init_env(t_data *data, char **envp);
+void	init_env(/*t_data *data, */char **envp);
 char	**get_path(char **my_env);
 
 // FIND PATH TO EXEC
 char	*find_path(char *cmd, char **my_paths);
-void	execute(/*char *av, */t_data *data, int i);
+void	execute(/*char *av, *//*t_data *data, */int i);
 
 // UTILS
 char	*stradd_char(char *str, char c);
 char	*catch_user(char **my_env);
-char	*catch_env_var(char *input, t_data *data);
+char	*catch_env_var(char *input/*, t_data *data*/);
 int		ft_max(int a, int b);
 t_list	*get_n_lst(t_list **Tokens, int n);
 void	free_tokens(t_list **Tokens);
 
 // BUILTINS
 int		is_builtin(char *cmd);
-void	builtin_manager(t_data *data, int i);
+void	builtin_manager(/*t_data *data, */int i);
 void	print_cwd(void);
 void	exit_shell(char **my_env);
 void	print_env(char **my_env);
-int		echo_builtin(t_data *data, int i);
-void	cd_builtin(t_data *data, int i);
-void	export_varenv(t_data *data, int i);
-void	unset_builtin(t_data *data, int i);
+int		echo_builtin(/*t_data *data, */int i);
+void	cd_builtin(/*t_data *data, */int i);
+void	export_varenv(/*t_data *data, */int i);
+void	unset_builtin(/*t_data *data, */int i);
 
 // PARSING
-t_list	**str_tok(char *str, t_data *data);
+t_list	**str_tok(char *str/*, t_data *data*/);
 int		identify_tok(char c);
 t_tok	*set_tok(char *str, int *i);
 char	**tok_to_cli(t_list **Tokens, int tok_nb);
 
 //	REDIR
-void	redir_manager(t_data *data);
+void	redir_manager(/*t_data *data*/);
 void	redir_out(char *str);
 void	redir_out_append(char *str);
 void	redir_in(char *str);
@@ -122,9 +124,10 @@ void	ctrld_handler(char *input);
 void	interrupt_here_doc(int signo);
 
 //	 RAW MODE
+/*
 void disableRawMode(void);
 void tty_raw_mode(void);
-
+*/
 //int	ft_sig_state(int *status, int get);
 
 #endif

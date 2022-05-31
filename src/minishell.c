@@ -6,32 +6,32 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:19:38 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/31 11:27:25 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/05/31 15:43:43 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
-/*
-static void	get_env(t_data *data, char **envp)
-{
-	data->my_env = (char **)0;
 
-	if (data->my_env == (char **)0)
-	{
-		//ft_putstr_fd("Setting env variable\n", 1);
-		init_env(data, envp);
-	}
-}
-*/
+// static void	get_env(/*t_data *data, */char **envp)
+// {
+// 	data.my_env = (char **)0;
 
-char	*g_input;
+// 	if (data.my_env == (char **)0)
+// 	{
+// 		//ft_putstr_fd("Setting env variable\n", 1);
+// 		init_env(data, envp);
+// 	}
+// }
+
+
+// char	*data.input;
 t_data	data;
 
 int main(int ac, char **av, char **envp)
 {
 	//char	*input;
 	int		pid;
-	//t_data	data;
+	// t_data	data;
 	char	**Cli;
 	t_list	*lst;
 
@@ -41,17 +41,18 @@ int main(int ac, char **av, char **envp)
 		exit(0);
 	signal(SIGINT, &sigint_handler);
 	signal(SIGQUIT, &sigquit_handler);
-	init_env(&data, envp);
+	init_env(/*&data, */envp);
+	data.previous_dir = NULL;
 	while(1)
 	{
-		g_input = readline("MY_PROMPT>> ");
-		ctrld_handler(g_input);
-		if(!g_input[0])
+		data.input = readline("MY_PROMPT>> ");
+		ctrld_handler(data.input);
+		if(!data.input[0])
 			continue ;
-		data.Tokens = str_tok(g_input, &data);
+		data.Tokens = str_tok(data.input/*, &data*/);
 		Cli = tok_to_cli(data.Tokens, data.tok_nb);
-		add_history(g_input);
-		data.Tokens = str_tok(g_input, &data);
+		add_history(data.input);
+		data.Tokens = str_tok(data.input/*, &data*/);
 		lst = (*data.Tokens);
 		if (lst && (is_builtin(lst->content->val) == 0))
 		{
@@ -59,16 +60,16 @@ int main(int ac, char **av, char **envp)
 			if (pid == 0)
 			{
 				redir_manager(&data);
-				execute(&data, 0);
-				free(g_input);
+				execute(/*&data, */0);
+				free(data.input);
 			}
 			wait(0);
 		}
 		else
 		{
 			redir_manager(&data);
-			builtin_manager(&data, 0);
-			free(g_input);
+			builtin_manager(/*&data, */0);
+			free(data.input);
 		}
 		free_tokens(data.Tokens);
 	}

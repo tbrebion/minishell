@@ -6,18 +6,18 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 09:58:04 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/18 12:32:14 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/05/31 14:42:11 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-void	export_varenv(t_data *data, int i)
+void	export_varenv(/*t_data *data, */int i)
 {
 	int		j;
 
 	j = 0;
-	while (data->my_env[j])
+	while (data.my_env[j])
 		j++;
-	data->my_env[j] = ft_strdup(get_n_lst(data->Tokens, i + 1)->content->val);
+	data.my_env[j] = ft_strdup(get_n_lst(data.Tokens, i + 1)->content->val);
 }

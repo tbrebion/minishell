@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 12:14:37 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/31 15:12:47 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/31 15:47:01 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,13 @@ void	sigquit_handler(int signo) // "CTRL+\"
 void	ctrld_handler(char *input) // "CTRL+d"
 {
 	if (input == NULL)
-		exit(EXIT_FAILURE);
+		exit(EXIT_SUCCESS);
 }
 
 void	interrupt_here_doc(int signo)
 {
 	(void)signo;
 	data.error_status = 130;
-	kill(0, SIGINT);
+	//kill(0, SIGINT);
 	exit(130);
 }

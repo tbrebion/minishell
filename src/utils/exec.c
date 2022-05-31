@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 09:45:14 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/30 11:30:12 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/31 15:43:43 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ char	*find_path(char *cmd, char **my_paths)
 	return (0);
 }
 
-void	execute(/*char *av, */t_data *data, int i)
+void	execute(/*char *av, *//*t_data *data, */int i)
 {
 	int		j;
 	char	**cmd;
@@ -46,19 +46,19 @@ void	execute(/*char *av, */t_data *data, int i)
 	char	*path;
 
 	j = -1;
-	cmd = ft_split(/*av*/get_n_lst(data->Tokens, i)->content->val, ' ');
-	paths = get_path(data->my_env);
+	cmd = ft_split(/*av*/get_n_lst(data.Tokens, i)->content->val, ' ');
+	paths = get_path(data.my_env);
 	path = find_path(cmd[0], paths);
 	if (!path)
 	{
 		while (cmd[++j])
 			free(cmd[j]);
 		free(cmd);
-		free_tokens(data->Tokens);
+		free_tokens(data.Tokens);
 		exit(0);
-		//exit_shell(data->my_env);
+		//exit_shell(data.my_env);
 	}
-	if (execve(path, cmd, data->my_env) == -1)
+	if (execve(path, cmd, data.my_env) == -1)
 		perror(cmd[0]);
 		//return ;//exit_shell(my_env);
 }

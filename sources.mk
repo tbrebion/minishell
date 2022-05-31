@@ -20,7 +20,6 @@ SOURCES		+=                         		\
 		src/utils/get_n_lst.c               \
 		src/utils/free_tokens.c             \
 		src/utils/redir_manager.c           \
-		src/utils/raw_mode.c                \
 
 
 ## SRC/BUILTINS ##

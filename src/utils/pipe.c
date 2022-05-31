@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipe.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 13:30:45 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/25 12:28:06 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/31 14:42:11 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	ft_pipe(char **split_input, char **my_env)
 	return (0);
 }
 */
-static void	child_process(t_data *data, int n)
+static void	child_process(/*t_data *data, */int n)
 {
 	int	pid;
 	int fd[2];
@@ -69,7 +69,7 @@ static void	child_process(t_data *data, int n)
 	{
 		close(fd[0]);
 		dup2(fd[1], STDOUT_FILENO);
-		execute(Cli[n], data->my_env);
+		execute(Cli[n], data.my_env);
 	}
 	else
 	{
@@ -79,7 +79,7 @@ static void	child_process(t_data *data, int n)
 	}
 }
 
-void	pipe(t_data *data, int nb_cmd)
+void	pipe(/*t_data *data, */int nb_cmd)
 {
 	int	i;
 	int	n;
@@ -96,5 +96,5 @@ void	pipe(t_data *data, int nb_cmd)
 	dup2(filein, STDIN_FILENO);
 	while (i < nb_cmd)
 		child_process(data, n);
-	execute(Cli[n], data->my_env);
-}	
+	execute(Cli[n], data.my_env);
+}

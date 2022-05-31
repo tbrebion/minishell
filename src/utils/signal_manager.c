@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   signal_manager.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 12:14:37 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/31 10:46:23 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/31 15:28:11 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	sigquit_handler(int signo) // "CTRL+\"
 void	ctrld_handler(char *input) // "CTRL+d"
 {
 	if (input == NULL)
-		exit(EXIT_FAILURE);
+		exit(EXIT_SUCCESS);
 }
 
 
@@ -63,7 +63,7 @@ int	ft_sig_state(int *status, int get)
 	return (*my_input_addr);
 
 // si str == null c'est la function siginnt_handler qui appelle
-// si != ull je viens set l'adresse 
+// si != ull je viens set l'adresse
 }*/
 /*
 char *ft_example(void)
@@ -73,6 +73,6 @@ char *ft_example(void)
 	ft_get_addr(str);
 
 
-	// signal :: 
+	// signal ::
 
 }*/

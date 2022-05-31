@@ -27,7 +27,7 @@ SOURCES		+=                         		\
 SOURCES		+=                         		\
 		src/builtins/builtin_manager.c		\
 		src/builtins/env_builtin.c        	\
-		src/builtins/cwd_builtin.c        	\
+		src/builtins/pwd_builtin.c        	\
 		src/builtins/exit_shell.c           \
 		src/builtins/is_builtin.c           \
 		src/builtins/cd_builtin.c           \

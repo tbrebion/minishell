@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:19:38 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/30 18:36:43 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/31 09:25:48 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,14 @@ int main(int ac, char **av, char **envp)
 		data.exit = 0;
 		g_input = readline("MY_PROMPT>> ");
 		ctrld_handler(g_input);
-		if(!g_input[0] || data.exit == 1)
+		if(!g_input[0]/* || data.exit == 1*/)
 		{
 			//ft_printf("\nOKKKKKKKKKKKKKK\n");
+			continue ;
+		}
+		if (data.exit == 1)
+		{
+			free(g_input);
 			continue ;
 		}
 		data.Tokens = str_tok(g_input, &data);

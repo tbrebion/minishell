@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 12:14:37 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/30 19:28:36 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/31 09:25:59 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,10 @@ void	sigint_handler(int signo) // CTRL+c
 	if (signo == SIGINT)
 	{
 		data.exit = 1;
-		free(g_input);
-		g_input = ft_strdup("\n");
+		//free(g_input);
+		//g_input = NULL/*ft_strdup("\n")*/;
+		//ft_printf("\n");
+		//ft_printf("MY_PROMPT>> ");
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 12:14:37 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/31 09:49:00 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/31 10:46:23 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,21 @@ void	sigint_handler(int signo) // CTRL+c
 {
 	if (signo == SIGINT)
 	{
-		data.exit = 1;
-		free(g_input);
-		g_input = ft_strdup("\n");
-		return ;
-		//ft_printf("\n");
-		//ft_printf("MY_PROMPT>> ");
+		write(2, "\n", 1);
+		rl_on_new_line();
+		rl_replace_line("", 0);
+		rl_redisplay();
+		data.error_status = 130;
 	}
 }
 
 void	sigquit_handler(int signo) // "CTRL+\"
 {
 	if (signo == SIGQUIT)
-		return ;
+	{
+		write(2, "\b\b  \b\b", 6);
+		signal(SIGQUIT, SIG_IGN);
+	}
 }
 
 void	ctrld_handler(char *input) // "CTRL+d"

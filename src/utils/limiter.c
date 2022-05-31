@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 11:02:39 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/18 09:33:01 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/31 15:01:28 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	here_doc(char *limiter)
 	ret = NULL;
 	//fd = open(".here_doc", O_RDWR | O_CREAT | O_TRUNC, 0644);
 	i = 0;
+	signal(SIGINT, &interrupt_here_doc);
 	while (1)
 	{
 		ft_putstr("here_doc> ");

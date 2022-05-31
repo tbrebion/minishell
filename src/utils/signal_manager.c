@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 12:14:37 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/31 10:46:23 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/31 15:12:47 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,40 +39,10 @@ void	ctrld_handler(char *input) // "CTRL+d"
 		exit(EXIT_FAILURE);
 }
 
-
-
-/*
-int	ft_sig_state(int *status, int get)
+void	interrupt_here_doc(int signo)
 {
-	static int	*state = (int *)0;
-
-	if (status != NULL)
-		state = status;
-	if (get == 1)
-		*state = 1;
-	return (*state);
-
+	(void)signo;
+	data.error_status = 130;
+	kill(0, SIGINT);
+	exit(130);
 }
-*/
-/*char	*ft_get_addr(char **input)
-{
-	static int	*my_input_addr = (int *)0;
-
-	if (input)
-		my_input_addr = input;
-	return (*my_input_addr);
-
-// si str == null c'est la function siginnt_handler qui appelle
-// si != ull je viens set l'adresse 
-}*/
-/*
-char *ft_example(void)
-{
-	char *str = malloc(sizeof(char) * 42);
-
-	ft_get_addr(str);
-
-
-	// signal :: 
-
-}*/

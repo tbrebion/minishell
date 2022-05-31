@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 12:24:08 by flcarval          #+#    #+#             */
-/*   Updated: 2022/05/31 10:48:35 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/31 14:50:25 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,7 @@ void	here_doc(char *limiter);
 void	sigint_handler(int signo);
 void	sigquit_handler(int signo);
 void	ctrld_handler(char *input);
+void	interrupt_here_doc(int signo);
 
 //	 RAW MODE
 void disableRawMode(void);

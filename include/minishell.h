@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 12:24:08 by flcarval          #+#    #+#             */
-/*   Updated: 2022/05/31 09:58:18 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/31 10:48:35 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ typedef struct s_data
 	int		tok_nb;
 	t_list	**Tokens;
 	char	**my_env;
-	int		exit;
 	int		error_status;
 }	t_data;
 

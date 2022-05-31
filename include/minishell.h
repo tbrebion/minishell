@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 12:24:08 by flcarval          #+#    #+#             */
-/*   Updated: 2022/05/30 18:17:40 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/05/31 09:58:18 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@
 
 extern char	*g_input;
 
-static struct termios orig_termios;
+//static struct termios orig_termios;
 
 typedef struct s_cmd
 {
@@ -68,6 +68,7 @@ typedef struct s_data
 	t_list	**Tokens;
 	char	**my_env;
 	int		exit;
+	int		error_status;
 }	t_data;
 
 extern t_data data;

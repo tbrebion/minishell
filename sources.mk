@@ -20,6 +20,8 @@ SOURCES		+=                         		\
 		src/utils/get_n_lst.c               \
 		src/utils/free_tokens.c             \
 		src/utils/redir_manager.c           \
+		src/utils/set_error_env.c           \
+		src/utils/put_error_status.c        \
 
 
 ## SRC/BUILTINS ##

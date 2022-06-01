@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:19:38 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/31 15:43:43 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/06/01 17:10:00 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,10 @@ int main(int ac, char **av, char **envp)
 	signal(SIGQUIT, &sigquit_handler);
 	init_env(/*&data, */envp);
 	data.previous_dir = NULL;
+	data.error_status = 0;
 	while(1)
 	{
+		set_error_env();
 		data.input = readline("MY_PROMPT>> ");
 		ctrld_handler(data.input);
 		if(!data.input[0])
@@ -72,6 +74,7 @@ int main(int ac, char **av, char **envp)
 			free(data.input);
 		}
 		free_tokens(data.Tokens);
+		set_error_env();
 	}
 	return (0);
 }

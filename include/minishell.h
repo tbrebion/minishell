@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 12:24:08 by flcarval          #+#    #+#             */
-/*   Updated: 2022/05/31 15:48:17 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/06/01 16:45:16 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,8 @@ char	*catch_env_var(char *input/*, t_data *data*/);
 int		ft_max(int a, int b);
 t_list	*get_n_lst(t_list **Tokens, int n);
 void	free_tokens(t_list **Tokens);
+void	set_error_env(void);
+void	put_error_status(void);
 
 // BUILTINS
 int		is_builtin(char *cmd);

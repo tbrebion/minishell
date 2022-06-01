@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 09:45:14 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/31 15:43:43 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/06/01 17:11:41 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,11 @@ char	*find_path(char *cmd, char **my_paths)
 		i++;
 	}
 	i = -1;
+	//data.error_status = 127;
 	//while (my_paths[++i])
 	//	free(my_paths[i]);
 	//free(my_paths);
-	return (0);
+	return (NULL);
 }
 
 void	execute(/*char *av, *//*t_data *data, */int i)
@@ -55,10 +56,15 @@ void	execute(/*char *av, *//*t_data *data, */int i)
 			free(cmd[j]);
 		free(cmd);
 		free_tokens(data.Tokens);
+		data.error_status = 127;
 		exit(0);
 		//exit_shell(data.my_env);
 	}
+//	data.error_status = 0;
 	if (execve(path, cmd, data.my_env) == -1)
+	{
+		//data.error_status = 127;
 		perror(cmd[0]);
+	}
 		//return ;//exit_shell(my_env);
 }

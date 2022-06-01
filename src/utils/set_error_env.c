@@ -1,36 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   export_builtin.c                                   :+:      :+:    :+:   */
+/*   set_error_env.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 09:58:04 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/01 16:19:36 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/06/01 16:39:05 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-void	export_varenv(/*t_data *data, */int i)
+void	set_error_env(void)
 {
 	int		j;
 	char	**spl;
 	char	*exp;
 	int		k;
-	int		t;
 
 	j = 0;
 	spl = NULL;
-	exp = get_n_lst(data.Tokens, i + 1)->content->val;
+	exp = ft_strjoin(ft_strdup("?="), ft_itoa(data.error_status));
+	/////////////////////////////////////////
+	// ft_printf("-------\nexp = %s\n-------\n", exp);
+	/////////////////////////////////////////
 	while (data.my_env[j])
 	{
 		spl = ft_split(data.my_env[j], '=');
-		t = 0;
-		while (exp[ft_strlen(spl[0]) + t] == ' ')
-			t++;
-		if (exp[ft_strlen(spl[0]) + t] == '=' && t)
-			return ;
 		if (!ft_strncmp(spl[0], exp, ft_strlen(spl[0])) && \
 			exp[ft_strlen(spl[0])] == '=')
 		{

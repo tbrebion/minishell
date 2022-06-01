@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:19:38 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/01 16:38:51 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/06/01 17:44:42 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,10 @@ int main(int ac, char **av, char **envp)
 	signal(SIGQUIT, &sigquit_handler);
 	init_env(/*&data, */envp);
 	data.previous_dir = NULL;
+	data.error_status = 0;
 	while(1)
 	{
+		set_error_env();
 		data.input = readline("MY_PROMPT>> ");
 		ctrld_handler(data.input);
 		if(!data.input[0])
@@ -55,8 +57,8 @@ int main(int ac, char **av, char **envp)
 		add_history(data.input);
 		data.Tokens = str_tok(data.input/*, &data*/);
 		lst = (*data.Tokens);
-		if (lst->content->type == I_D_INREDIR)
-			here_doc(lst->next->content->val);
+		/*if (lst->content->type == I_D_INREDIR)
+			here_doc(lst->next->content->val);*/
 		if (lst && (is_builtin(lst->content->val) == 0))
 		{
 			pid = fork();
@@ -76,6 +78,7 @@ int main(int ac, char **av, char **envp)
 			free(data.input);
 		}
 		free_tokens(data.Tokens);
+		set_error_env();
 	}
 	return (0);
 }

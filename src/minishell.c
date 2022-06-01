@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:19:38 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/31 15:43:43 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/06/01 12:00:02 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int main(int ac, char **av, char **envp)
 {
 	//char	*input;
 	int		pid;
+	//int		status;
 	// t_data	data;
 	char	**Cli;
 	t_list	*lst;
@@ -63,7 +64,7 @@ int main(int ac, char **av, char **envp)
 				execute(/*&data, */0);
 				free(data.input);
 			}
-			wait(0);
+			waitpid(pid, NULL, 0);
 		}
 		else
 		{

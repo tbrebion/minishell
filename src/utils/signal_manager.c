@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 12:14:37 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/31 15:47:01 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/06/01 12:05:56 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,6 @@ void	interrupt_here_doc(int signo)
 {
 	(void)signo;
 	data.error_status = 130;
-	//kill(0, SIGINT);
+	write(1, "\n", 1);
 	exit(130);
 }

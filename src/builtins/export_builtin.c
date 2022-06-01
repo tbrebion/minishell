@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 09:58:04 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/01 16:12:34 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/06/01 16:19:36 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	export_varenv(/*t_data *data, */int i)
 		t = 0;
 		while (exp[ft_strlen(spl[0]) + t] == ' ')
 			t++;
-		if (exp[ft_strlen(spl[0]) + t] == '=')
+		if (exp[ft_strlen(spl[0]) + t] == '=' && t)
 			return ;
 		if (!ft_strncmp(spl[0], exp, ft_strlen(spl[0])) && \
 			exp[ft_strlen(spl[0])] == '=')

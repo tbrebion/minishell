@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:19:38 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/01 15:18:59 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/06/01 16:38:51 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ t_data	data;
 int main(int ac, char **av, char **envp)
 {
 	//char	*input;
-	//int		pid;
+	int		pid;
 	//int		status;
 	// t_data	data;
 	char	**Cli;
@@ -57,7 +57,7 @@ int main(int ac, char **av, char **envp)
 		lst = (*data.Tokens);
 		if (lst->content->type == I_D_INREDIR)
 			here_doc(lst->next->content->val);
-		/*if (lst && (is_builtin(lst->content->val) == 0))
+		if (lst && (is_builtin(lst->content->val) == 0))
 		{
 			pid = fork();
 			if (pid == 0)
@@ -74,7 +74,7 @@ int main(int ac, char **av, char **envp)
 			redir_manager(&data);
 			builtin_manager(0);
 			free(data.input);
-		}*/
+		}
 		free_tokens(data.Tokens);
 	}
 	return (0);

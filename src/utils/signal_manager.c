@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 12:14:37 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/01 17:43:49 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/06/02 17:38:32 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,5 @@ void	interrupt_here_doc(int signo)
 	data.error_status = 130;
 	set_error_env();
 	//kill(0, SIGINT);
-	exit(130);
+	exit(0);
 }

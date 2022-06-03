@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 12:24:08 by flcarval          #+#    #+#             */
-/*   Updated: 2022/06/01 16:45:16 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/06/03 15:04:15 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@
 // extern char	*data.input;
 
 //static struct termios orig_termios;
-
+/*
 typedef struct s_cmd
 {
 	char	**av;
@@ -61,15 +61,27 @@ typedef struct s_pipe
 	t_cmd	*left;
 	t_cmd	*right;
 }	t_pipe;
+*/
+/*
+typedef struct cmd_line
+{
+	char			*cmd;
+	struct cmd_line	*next;
+}	t_cmd_line;*/
 
 typedef struct s_data
 {
 	int		tok_nb;
 	t_list	**Tokens;
 	char	**my_env;
+	char	**Cli;
+	t_list	*lst;
 	int		error_status;
 	char	*previous_dir;
 	char	*input;
+	char	**all_cmd;
+	int		pid;
+	int		here_doc_founded;
 }	t_data;
 
 extern t_data data;
@@ -80,6 +92,8 @@ extern t_data data;
 // INIT ENV AND ALL PATHS
 void	init_env(/*t_data *data, */char **envp);
 char	**get_path(char **my_env);
+void 	init_in_loop(void);
+void 	init_out_loop(void);
 
 // FIND PATH TO EXEC
 char	*find_path(char *cmd, char **my_paths);
@@ -94,6 +108,7 @@ t_list	*get_n_lst(t_list **Tokens, int n);
 void	free_tokens(t_list **Tokens);
 void	set_error_env(void);
 void	put_error_status(void);
+void	builtin_or_not(void);
 
 // BUILTINS
 int		is_builtin(char *cmd);
@@ -124,6 +139,7 @@ void	sigint_handler(int signo);
 void	sigquit_handler(int signo);
 void	ctrld_handler(char *input);
 void	interrupt_here_doc(int signo);
+void	init_sig(void);
 
 //	 RAW MODE
 /*

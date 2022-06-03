@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit_shell.c                                       :+:      :+:    :+:   */
+/*   other_init.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/02 09:32:37 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/03 09:31:23 by tbrebion         ###   ########.fr       */
+/*   Created: 2022/06/03 11:10:14 by tbrebion          #+#    #+#             */
+/*   Updated: 2022/06/03 14:02:41 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-void	exit_shell(char **my_env)
+void	init_out_loop(void)
 {
-	int	i;
+	data.previous_dir = NULL;
+	data.error_status = 0;
+}		
 
-	i = 0;
-	if (my_env[i])
-	{
-		while (my_env[i])
-		{
-			free(my_env[i]);
-			i++;
-		}
-		free(my_env);
-	}
-	free_tokens(data.Tokens);
-	exit(EXIT_SUCCESS);
+void	init_in_loop(void)
+{
+	data.Tokens = str_tok(data.input);
+	data.Cli = tok_to_cli(data.Tokens, data.tok_nb);
+	add_history(data.input);
+	data.lst = (*data.Tokens);
+	data.all_cmd = ft_split(data.input, '|');
+	data.here_doc_founded = 0;
 }

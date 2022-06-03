@@ -22,6 +22,8 @@ SOURCES		+=                         		\
 		src/utils/redir_manager.c           \
 		src/utils/set_error_env.c           \
 		src/utils/put_error_status.c        \
+		src/utils/other_init.c 		       	\
+		src/utils/builtin_or_not.c 		  	\
 
 
 ## SRC/BUILTINS ##

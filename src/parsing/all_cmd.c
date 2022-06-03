@@ -1,31 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit_shell.c                                       :+:      :+:    :+:   */
+/*   all_cmd.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/02 09:32:37 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/03 09:31:23 by tbrebion         ###   ########.fr       */
+/*   Created: 2022/06/03 10:38:01 by tbrebion          #+#    #+#             */
+/*   Updated: 2022/06/03 11:24:33 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
-
-void	exit_shell(char **my_env)
+/*
+static int	nb_pipe(void)
 {
 	int	i;
+	int	nb_pipe;
 
 	i = 0;
-	if (my_env[i])
+	nb_pipe = 0;
+	while(data.input[i])
 	{
-		while (my_env[i])
-		{
-			free(my_env[i]);
-			i++;
-		}
-		free(my_env);
+		if (identify_tok(data.input[i]) == I_PIPE)
+			nb_pipe++;
+		i++;
 	}
-	free_tokens(data.Tokens);
-	exit(EXIT_SUCCESS);
+	return nb_pipe;
 }
+
+t_cmd_line	*cdm_lines(void)
+{
+	int			i;
+	int			j;
+	t_cmd_line	*lines;
+
+	i = 0;
+	j = 0;
+	lines = malloc(sizeof(t_cmd_line) * (nb_pipe() + 1));
+	while(data.input[i])
+	{
+		while()
+	}
+}
+*/

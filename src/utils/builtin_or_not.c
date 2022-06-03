@@ -1,31 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit_shell.c                                       :+:      :+:    :+:   */
+/*   builtin_or_not.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/02 09:32:37 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/03 09:31:23 by tbrebion         ###   ########.fr       */
+/*   Created: 2022/06/03 13:19:02 by tbrebion          #+#    #+#             */
+/*   Updated: 2022/06/03 16:27:25 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-void	exit_shell(char **my_env)
+void	builtin_or_not(void)
 {
-	int	i;
-
-	i = 0;
-	if (my_env[i])
+	if (data.lst && (is_builtin(data.lst->content->val) == 0))
 	{
-		while (my_env[i])
+		data.pid = fork();
+		if (data.pid == 0)
 		{
-			free(my_env[i]);
-			i++;
+			redir_manager(&data);
+			execute(0);
+			free(data.input);
+			exit(0);
 		}
-		free(my_env);
+		wait(0);
 	}
-	free_tokens(data.Tokens);
-	exit(EXIT_SUCCESS);
+	else
+	{
+		redir_manager(&data);
+		builtin_manager(0);
+		free(data.input);
+	}
 }

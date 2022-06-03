@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 12:14:37 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/02 17:38:32 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/06/03 16:22:46 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void	sigint_handler(int signo) // CTRL+c
 		data.error_status = 130;
 	}
 	set_error_env();
-
 }
 
 void	sigquit_handler(int signo) // "CTRL+\"
@@ -45,7 +44,13 @@ void	interrupt_here_doc(int signo)
 {
 	(void)signo;
 	data.error_status = 130;
+	data.here_doc_founded = 1;
 	set_error_env();
-	//kill(0, SIGINT);
 	exit(0);
+}
+
+void	init_sig(void)
+{
+	signal(SIGINT, &sigint_handler);
+	signal(SIGQUIT, &sigquit_handler);
 }

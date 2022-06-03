@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 09:45:14 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/01 17:11:41 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/06/03 09:18:23 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	execute(/*char *av, *//*t_data *data, */int i)
 		exit(0);
 		//exit_shell(data.my_env);
 	}
-//	data.error_status = 0;
+	data.error_status = 0;
 	if (execve(path, cmd, data.my_env) == -1)
 	{
 		//data.error_status = 127;

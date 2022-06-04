@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 12:24:08 by flcarval          #+#    #+#             */
-/*   Updated: 2022/06/03 15:04:15 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/06/04 15:57:28 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ typedef struct s_data
 	char	*previous_dir;
 	char	*input;
 	char	**all_cmd;
-	int		pid;
+	pid_t	pid;
 	int		here_doc_founded;
 }	t_data;
 

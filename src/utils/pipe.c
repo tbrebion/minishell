@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipe.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 13:30:45 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/31 15:43:43 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/06/04 14:25:25 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@ int	ft_pipe(char **split_input, char **my_env)
 		parent_process(split_input, my_env, fd);
 	return (0);
 }
-*/
-static void	child_process(/*t_data *data, */int n)
+*//*
+static void	child_process(static int n)
 {
 	int	pid;
 	int fd[2];
@@ -69,7 +69,7 @@ static void	child_process(/*t_data *data, */int n)
 	{
 		close(fd[0]);
 		dup2(fd[1], STDOUT_FILENO);
-		execute(Cli[n], data.my_env);
+		execute(data.all_cmd[n], data.my_env);
 	}
 	else
 	{
@@ -79,22 +79,24 @@ static void	child_process(/*t_data *data, */int n)
 	}
 }
 
-void	pipe(/*t_data *data, */int nb_cmd)
+void	pipe(void)
 {
-	int	i;
-	int	n;
-	int	filein;
-	int	filout;
+	int			i;
+	static int	n;
+	int			filein;
+	int			filout;
 
 	i = 2;
-	filein = open(Cli[n], O_RDONLY, 0644);
+	n = 0;
+	filein = open(data.all_cmd[n], O_RDONLY, 0644);
 	if (filein == -1)
 		return ;
-	fileout = open(Cli[n + 1], O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	fileout = open(".fileout", O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	if (fileout == -1)
 		return ;
 	dup2(filein, STDIN_FILENO);
-	while (i < nb_cmd)
+	while (i++ < nb_cmd)
 		child_process(data, n);
-	execute(Cli[n], data.my_env);
+	execute(data.all_cmd[n], data.my_env);
 }
+*/

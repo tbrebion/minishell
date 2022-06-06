@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 13:19:02 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/03 16:27:25 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/06/06 10:10:59 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,11 @@ void	builtin_or_not(void)
 {
 	if (data.lst && (is_builtin(data.lst->content->val) == 0))
 	{
+		signal(SIGINT, SIG_IGN);
 		data.pid = fork();
 		if (data.pid == 0)
 		{
+			signal(SIGINT, &interrupt_cmd);
 			redir_manager(&data);
 			execute(0);
 			free(data.input);

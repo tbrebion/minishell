@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:19:38 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/04 16:21:20 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/06/06 10:06:18 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,11 @@ int main(int ac, char **av, char **envp)
 	(void)av;
 	init_env(envp);
 	init_out_loop();
-	init_sig();
+	// init_sig();
 	while(1)
 	{
 		//set_error_env();
+		init_sig();
 		data.input = readline("MY_PROMPT>> ");
 		ctrld_handler(data.input);
 		if(!data.input[0])

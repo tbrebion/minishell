@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 11:02:39 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/04 16:56:38 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/06/06 10:13:18 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,7 @@ static void	here_doc_supply(char *limiter)
 	char	*ret;
 
 	ret = ft_strdup("");
-	signal(SIGINT, &interrupt_here_doc);
-	// sigaction();
+	signal(SIGINT, &interrupt_cmd);
 	while (1)
 	{
 		ft_putstr("here_doc> ");
@@ -38,6 +37,7 @@ static void	here_doc_supply(char *limiter)
 	}
 	ft_putstr(ret);
 	free(ret);
+	exit(0);
 }
 
 void	here_doc(char *limiter)
@@ -45,9 +45,9 @@ void	here_doc(char *limiter)
 	(void)limiter;
 	pid_t	pid1;
 
+	signal(SIGINT, SIG_IGN);
 	pid1 = fork();
 	if (pid1 == 0)
 		here_doc_supply(data.lst->next->content->val);
 	wait(0);
-	exit(0);
 }

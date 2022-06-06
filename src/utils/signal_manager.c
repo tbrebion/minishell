@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 12:14:37 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/06 10:09:53 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/06/06 11:14:00 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ void	interrupt_cmd(int signo)
 {
 	(void)signo;
 	data.error_status = 130;
-	data.here_doc_founded = 1;
 	write(2, "\n", 1);
 	//set_error_env();
 	exit(130);

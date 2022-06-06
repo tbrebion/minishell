@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 11:10:14 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/04 16:13:06 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/06/06 11:14:56 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,4 @@ void	init_in_loop(void)
 	add_history(data.input);
 	data.lst = (*data.Tokens);
 	data.all_cmd = ft_split(data.input, '|');
-	data.here_doc_founded = 0;
 }

@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 09:45:14 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/06 17:06:23 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/06/06 17:17:19 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ void	execute(/*char *av, t_data *data, */int i)
 		j++;
 	}
 	cmd = ft_split(/*av*/tmp, ' ');
+	free(tmp);
 	paths = get_path(data.my_env);
 	path = find_path(cmd[0], paths);
 	j = -1;

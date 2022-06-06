@@ -6,12 +6,24 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 15:25:04 by flcarval          #+#    #+#             */
-/*   Updated: 2022/05/24 17:40:49 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/06/06 15:43:35 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
+/*
+static void debug(char **Cli)
+{
+	int	i = -1;
 
+	while (Cli[++i])
+	{
+		ft_printf("%d : %s\n", i, Cli[i]);
+	}
+	i++;
+	// ft_printf("%d : %s\n", i, Cli[i]);
+}
+*/
 char	**tok_to_cli(t_list **Tokens, int tok_nb)
 {
 	char	**Cli;
@@ -36,5 +48,6 @@ char	**tok_to_cli(t_list **Tokens, int tok_nb)
 			lst = lst->next;
 		i++;
 	}
+	//debug(Cli);
 	return (Cli);
 }

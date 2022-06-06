@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 12:14:37 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/06 11:28:38 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/06/06 15:55:19 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,16 @@ void	init_sig(void)
 {
 	signal(SIGINT, &sigint_handler);
 	signal(SIGQUIT, &sigquit_handler);
+}
+
+void	reinit_sig(void)
+{
+	signal(SIGINT, &interrupt_cmd);
+	signal(SIGQUIT, &sigquit_handler);
+}
+
+void	ignore_sig(void)
+{
+	signal(SIGINT, SIG_IGN);
+	signal(SIGQUIT, SIG_IGN);
 }

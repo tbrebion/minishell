@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 11:02:39 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/06 10:13:18 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/06/06 15:59:50 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,18 @@ static void	here_doc_supply(char *limiter)
 	char	*ret;
 
 	ret = ft_strdup("");
-	signal(SIGINT, &interrupt_cmd);
+	// signal(SIGINT, &interrupt_cmd);
+	reinit_sig();
 	while (1)
 	{
 		ft_putstr("here_doc> ");
 		line = get_next_line(0);
+		if (!line)
+		{
+			write(2, "\b\b\b\b\b\b\b\b\b\b", 10);
+			free(line);
+			continue;
+		}
 		if ((ft_strncmp(line, limiter, ft_max((ft_strlen(line) - 1), ft_strlen(limiter))) == 0))
 		{
 			free(line);
@@ -45,7 +52,8 @@ void	here_doc(char *limiter)
 	(void)limiter;
 	pid_t	pid1;
 
-	signal(SIGINT, SIG_IGN);
+	// signal(SIGINT, SIG_IGN);
+	ignore_sig();
 	pid1 = fork();
 	if (pid1 == 0)
 		here_doc_supply(data.lst->next->content->val);

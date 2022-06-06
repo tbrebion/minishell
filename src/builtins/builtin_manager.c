@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 11:19:52 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/06 12:34:01 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/06/06 14:39:52 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,4 @@ void	builtin_manager(/*t_data *data, */int i)
 		unset_builtin(/*data, */i);
 	if ((size_t)(ft_strncmp(get_n_lst(data.Tokens, i)->content->val, "$?", 3) == 0))
 		put_error_status();
-	//exit(0);
 }

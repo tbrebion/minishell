@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 14:21:49 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/06 12:28:23 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/06/06 15:41:50 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,10 @@ void	redir_in(char *str)
 
 	fd = open(str, O_RDONLY, 0644);
 	if (fd == -1)
-		return ;
+	{
+		perror(str);
+		data.error_status = 1;
+	}
 	dup2(fd, 0);
 	return ;
 }

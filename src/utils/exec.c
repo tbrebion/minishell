@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 09:45:14 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/06 16:01:27 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/06/06 17:06:23 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,17 +39,28 @@ char	*find_path(char *cmd, char **my_paths)
 	return (NULL);
 }
 
-void	execute(/*char *av, *//*t_data *data, */int i)
+void	execute(/*char *av, t_data *data, */int i)
 {
 	int		j;
+	char	*tmp;
 	char	**cmd;
 	char	**paths;
 	char	*path;
 
-	j = -1;
-	cmd = ft_split(/*av*/get_n_lst(data.Tokens, i)->content->val, ' ');
+	j = 0;
+	tmp = ft_strdup("");
+	while (get_n_lst(data.Tokens, i + j) && \
+		get_n_lst(data.Tokens, i + j)->content->type == I_LITERAL)
+	{
+		if (j)
+			tmp = ft_strjoin(tmp, " ");
+		tmp = ft_strjoin(tmp, get_n_lst(data.Tokens, i + j)->content->val);
+		j++;
+	}
+	cmd = ft_split(/*av*/tmp, ' ');
 	paths = get_path(data.my_env);
 	path = find_path(cmd[0], paths);
+	j = -1;
 	if (!path)
 	{
 		while (cmd[++j])

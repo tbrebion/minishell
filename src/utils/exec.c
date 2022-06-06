@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 09:45:14 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/06 17:17:19 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/06/06 17:31:42 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ void	execute(/*char *av, t_data *data, */int i)
 	j = -1;
 	if (!path)
 	{
+		ft_printf("%s : ", cmd[0]);
+		ft_putstr_fd("command not found\n", 2);
 		while (cmd[++j])
 			free(cmd[j]);
 		free(cmd);

@@ -6,10 +6,9 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 12:24:08 by flcarval          #+#    #+#             */
-/*   Updated: 2022/06/06 11:14:52 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/06/06 12:05:41 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
@@ -83,7 +82,7 @@ typedef struct s_data
 	pid_t	pid;
 }	t_data;
 
-extern t_data data;
+extern t_data	data;
 //t_data	* data;
 
 //char	*display_prompt(char **my_env);
@@ -108,6 +107,7 @@ void	free_tokens(t_list **Tokens);
 void	set_error_env(void);
 void	put_error_status(void);
 void	builtin_or_not(void);
+int		is_pipe(void);
 
 // BUILTINS
 int		is_builtin(char *cmd);

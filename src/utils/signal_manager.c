@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 12:14:37 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/06 11:14:00 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/06/06 11:28:38 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	sigint_handler(int signo) // CTRL+c
 {
-	if (signo == SIGINT /*&& data.pid != 0*/)
+	if (signo == SIGINT)
 	{
 		write(2, "\n", 1);
 		rl_on_new_line();

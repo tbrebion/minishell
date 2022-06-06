@@ -24,6 +24,7 @@ SOURCES		+=                         		\
 		src/utils/put_error_status.c        \
 		src/utils/other_init.c 		       	\
 		src/utils/builtin_or_not.c 		  	\
+		src/utils/is_pipe.c 		  		\
 
 
 ## SRC/BUILTINS ##

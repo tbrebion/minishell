@@ -1,46 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   redir.c                                            :+:      :+:    :+:   */
+/*   is_pipe.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/28 14:21:49 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/06 12:28:23 by tbrebion         ###   ########.fr       */
+/*   Created: 2022/06/06 11:36:09 by tbrebion          #+#    #+#             */
+/*   Updated: 2022/06/06 11:42:13 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-void	redir_in(char *str)
+int	is_pipe(void)
 {
-	int fd;
+	int	i;
 
-	fd = open(str, O_RDONLY, 0644);
-	if (fd == -1)
-		return ;
-	dup2(fd, 0);
-	return ;
-}
-
-void	redir_out(char *str)
-{
-	int	fd;
-
-	fd = open(str,  O_RDWR | O_CREAT | O_TRUNC, 0644);
-	if (fd == -1)
-		return ;
-	dup2(fd, 1);
-	return ;
-}
-
-void	redir_out_append(char *str)
-{
-	int	fd;
-
-	fd = open(str,  O_RDWR | O_CREAT | O_APPEND, 0644);
-	if (fd == -1)
-		return ;
-	dup2(fd, 1);
-	return ;
+	i = 0;
+	while(data.input[i++])
+		if (identify_tok(data.input[i]) == I_PIPE)
+			return (1);
+	return (0);
 }

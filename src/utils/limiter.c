@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 11:02:39 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/06 15:59:50 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/06/06 17:36:43 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ static void	here_doc_supply(char *limiter)
 	char	*ret;
 
 	ret = ft_strdup("");
-	// signal(SIGINT, &interrupt_cmd);
 	reinit_sig();
 	while (1)
 	{
@@ -30,9 +29,9 @@ static void	here_doc_supply(char *limiter)
 		line = get_next_line(0);
 		if (!line)
 		{
-			write(2, "\b\b\b\b\b\b\b\b\b\b", 10);
-			free(line);
-			continue;
+			free(ret);
+			write(2, "\n", 1);
+			exit(EXIT_SUCCESS);
 		}
 		if ((ft_strncmp(line, limiter, ft_max((ft_strlen(line) - 1), ft_strlen(limiter))) == 0))
 		{

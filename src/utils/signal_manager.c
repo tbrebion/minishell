@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 12:14:37 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/06 15:55:19 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/06/06 17:16:22 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	sigquit_handler(int signo) // "CTRL+\"
 	if (signo == SIGQUIT)
 	{
 		write(2, "\b\b  \b\b", 6);
-		signal(SIGQUIT, SIG_IGN);
+		// signal(SIGQUIT, SIG_IGN);
 	}
 }
 

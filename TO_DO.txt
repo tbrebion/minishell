@@ -11,5 +11,4 @@
 # **************************************************************************** #
 
 
-- SPLIT AU PIPE 
-- 
+- error_status reste a zero apres un [command not found]

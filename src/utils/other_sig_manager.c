@@ -1,26 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_n_lst.c                                        :+:      :+:    :+:   */
+/*   other_sig_manager.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/18 11:54:47 by flcarval          #+#    #+#             */
-/*   Updated: 2022/06/07 16:14:51 by tbrebion         ###   ########.fr       */
+/*   Created: 2022/06/07 16:19:17 by tbrebion          #+#    #+#             */
+/*   Updated: 2022/06/07 16:20:45 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-t_list	*get_n_lst(t_list **Tokens, int n)
+void	init_sig(void)
 {
-	t_list	*lst;
+	signal(SIGINT, &sigint_handler);
+	signal(SIGQUIT, &sigquit_handler);
+}
 
-	lst = *Tokens;
-	while (lst && n)
-	{
-		lst = lst->next;
-		n--;
-	}
-	return (lst);
+void	reinit_sig(void)
+{
+	signal(SIGINT, &interrupt_cmd);
+	signal(SIGQUIT, &sigquit_handler);
+}
+
+void	ignore_sig(void)
+{
+	signal(SIGINT, SIG_IGN);
+	signal(SIGQUIT, SIG_IGN);
 }

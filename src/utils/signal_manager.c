@@ -6,13 +6,13 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 12:14:37 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/06 17:16:22 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/06/07 16:20:42 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-void	sigint_handler(int signo) // CTRL+c
+void	sigint_handler(int signo)
 {
 	if (signo == SIGINT)
 	{
@@ -22,19 +22,15 @@ void	sigint_handler(int signo) // CTRL+c
 		rl_redisplay();
 		data.error_status = 130;
 	}
-	//set_error_env();
 }
 
-void	sigquit_handler(int signo) // "CTRL+\"
+void	sigquit_handler(int signo)
 {
 	if (signo == SIGQUIT)
-	{
 		write(2, "\b\b  \b\b", 6);
-		// signal(SIGQUIT, SIG_IGN);
-	}
 }
 
-void	ctrld_handler(char *input) // "CTRL+d"
+void	ctrld_handler(char *input)
 {
 	if (input == NULL)
 		exit(EXIT_SUCCESS);
@@ -45,24 +41,5 @@ void	interrupt_cmd(int signo)
 	(void)signo;
 	data.error_status = 130;
 	write(2, "\n", 1);
-	//set_error_env();
 	exit(130);
-}
-
-void	init_sig(void)
-{
-	signal(SIGINT, &sigint_handler);
-	signal(SIGQUIT, &sigquit_handler);
-}
-
-void	reinit_sig(void)
-{
-	signal(SIGINT, &interrupt_cmd);
-	signal(SIGQUIT, &sigquit_handler);
-}
-
-void	ignore_sig(void)
-{
-	signal(SIGINT, SIG_IGN);
-	signal(SIGQUIT, SIG_IGN);
 }

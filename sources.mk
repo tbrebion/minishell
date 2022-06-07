@@ -16,6 +16,7 @@ SOURCES		+=                         		\
 		src/utils/catch_env_var.c      	    \
 		src/utils/limiter.c          		\
 		src/utils/signal_manager.c          \
+		src/utils/other_sig_manager.c       \
 		src/utils/ft_max.c                  \
 		src/utils/get_n_lst.c               \
 		src/utils/free_tokens.c             \

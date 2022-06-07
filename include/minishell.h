@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 12:24:08 by flcarval          #+#    #+#             */
-/*   Updated: 2022/06/06 15:55:29 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/06/07 16:22:05 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,14 @@ typedef struct s_data
 	char	**all_cmd;
 	pid_t	pid;
 }	t_data;
+
+typedef struct	s_directory
+{
+	char	*cwd;
+	char	*home;
+	char	*close_to_home;
+	char	*tmp;
+}	t_directory;
 
 extern t_data	data;
 //t_data	* data;

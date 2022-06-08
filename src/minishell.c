@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:19:38 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/08 16:33:51 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/06/08 19:03:27 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int main(int ac, char **av, char **envp)
 			continue ;
 		init_in_loop();
 		exit_builtin();
-		if (is_cd())
+		if (is_cd() || is_export() || is_unset())
 			continue ;
 		// if (is_pipe() == 0)
 		builtin_or_not();

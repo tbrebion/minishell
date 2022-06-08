@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 12:24:08 by flcarval          #+#    #+#             */
-/*   Updated: 2022/06/08 16:32:21 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/06/08 19:03:17 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,10 @@ void	cd_builtin(/*t_data *data, */int i);
 void	export_varenv(/*t_data *data, */int i);
 void	unset_builtin(/*t_data *data, */int i);
 void	exit_builtin(void);
-int	is_cd(void);
+int		is_cd(void);
+int		is_export(void);
+int		is_unset(void);
+
 
 // PARSING
 t_list	**str_tok(char *str/*, t_data *data*/);

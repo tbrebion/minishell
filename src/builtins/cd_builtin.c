@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 11:27:23 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/31 15:29:01 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/06/08 16:36:48 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	cd_builtin(/*t_data *data, */int i)
 	tmp = ft_strdup(cwd);
 	close_to_home = ft_strdup("/mnt/nfs/homes/");
 	home = ft_strjoin(close_to_home, catch_env_var("$USER"/*, &data*/));
+	ft_printf("home = %s\n", home);
 	closedir((DIR *)cwd);
 	if (!(get_n_lst(data.Tokens, i + 1)))
 	{

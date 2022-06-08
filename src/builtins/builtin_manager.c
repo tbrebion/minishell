@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_manager.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 11:19:52 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/08 10:45:24 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/06/08 16:32:45 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,15 @@ void	exit_builtin(void)
 {
 	if ((size_t)(ft_strncmp(get_n_lst(data.Tokens, 0)->content->val, "exit", 5) == 0))
 		exit_shell(data.my_env);
+}
+
+int	is_cd(void)
+{
+	if ((size_t)(ft_strncmp(get_n_lst(data.Tokens, 0)->content->val, "cd", 3) == 0))
+		cd_builtin(0);
+	else
+		return (0);
+	return (1);
 }
 
 void	builtin_manager(/*t_data *data, */int i)

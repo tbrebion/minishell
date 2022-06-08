@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 09:45:14 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/08 10:33:00 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/06/08 13:58:47 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,3 +88,30 @@ void	execute(int i)
 	if (execve(path, cmd, data.my_env) == -1)
 		data.error_status = 127;
 }
+/*
+void	execute(int n)
+{
+	char	**cmd;
+	char	*path;
+	int		i;
+
+	i = -1;
+	cmd = ft_split(data.all_cmd[n], ' ');
+	path = find_path(data.all_cmd[0], data.my_env);
+	if (!path)
+	{
+		while (cmd[++i])
+			free(cmd[i]);
+		free(cmd);
+		// error();
+		ft_printf("\nERRORR\n");
+		return ;
+	}
+	if (execve(path, data.all_cmd, data.my_env) == -1)
+	{
+		ft_printf("\nERRORR\n");
+		return ;
+	}
+		// error();
+}
+*/

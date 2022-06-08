@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 13:30:45 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/08 09:52:10 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/06/08 13:45:47 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,18 @@ int	ft_pipe(char **split_input, char **my_env)
 	return (0);
 }
 */
-static void	child_process(static int n)
+
+static int	nb_cmd_to_exec(void)
+{
+	int	nb;
+
+	nb = 0;
+	while (data.all_cmd[nb])
+		nb++;
+	return (nb);
+}
+
+static void	child_process(int i)
 {
 	int	pid;
 	int	fd[2];
@@ -69,7 +80,7 @@ static void	child_process(static int n)
 	{
 		close(fd[0]);
 		dup2(fd[1], STDOUT_FILENO);
-		execute(data.all_cmd[n], data.my_env);
+		execute(i);
 	}
 	else
 	{
@@ -79,14 +90,15 @@ static void	child_process(static int n)
 	}
 }
 
-void	pipe(void)
+void	pipe_cmd(void)
 {
-	int			i;
-	static int	n;
+	int	i;
+	int	nb_cmd;
 
-	i = 0;
-	n = 0;
-	while (i++ < nb_cmd)
-		child_process(data, n);
-	execute(data.all_cmd[n], data.my_env);
+	i = -1;
+	nb_cmd = nb_cmd_to_exec();
+	while (++i < nb_cmd)
+		child_process(i);
+	// i++;
+	// execute_for_pipe(i);
 }

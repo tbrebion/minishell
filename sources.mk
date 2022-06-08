@@ -26,6 +26,7 @@ SOURCES		+=                         		\
 		src/utils/other_init.c 		       	\
 		src/utils/builtin_or_not.c 		  	\
 		src/utils/is_pipe.c 		  		\
+		src/utils/pipe.c 		  			\
 
 
 ## SRC/BUILTINS ##

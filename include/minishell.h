@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 12:24:08 by flcarval          #+#    #+#             */
-/*   Updated: 2022/06/08 10:40:39 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/06/08 12:13:59 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,8 @@ void 	init_out_loop(void);
 
 // FIND PATH TO EXEC
 char	*find_path(char *cmd, char **my_paths);
-void	execute(/*char *av, *//*t_data *data, */int i);
+void	execute(int i);
+void	execute_for_pipe(int i);
 
 // UTILS
 char	*stradd_char(char *str, char c);
@@ -116,6 +117,7 @@ void	set_error_env(void);
 void	put_error_status(void);
 void	builtin_or_not(void);
 int		is_pipe(void);
+void	pipe_cmd(void);
 
 // BUILTINS
 int		is_builtin(char *cmd);

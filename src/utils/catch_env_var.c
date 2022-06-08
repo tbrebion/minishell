@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 15:25:04 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/07 16:10:14 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/06/08 14:17:14 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,7 @@ char	*catch_env_var(char *input)
 			free(tab[j]);
 		free(tab);
 	}
+	if (ret == NULL)
+		return (NULL);
 	return (ret + i);
 }

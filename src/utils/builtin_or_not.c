@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 13:19:02 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/08 10:40:16 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/06/08 12:08:52 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void	builtin_or_not(void)
 {
 	if (data.lst)
 	{
-		exit_builtin();
 		ignore_sig();
 		data.pid = fork();
 		if (data.pid == 0)

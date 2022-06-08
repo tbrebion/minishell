@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 09:58:04 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/04 15:56:12 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/06/08 09:38:36 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 //	IMPOSSIBLE CORRECTOR CAN UNSET THE ERROR_ENV
 
 /////////////////////////////////////////////////
-
 
 /*
 void	set_error_env(void)

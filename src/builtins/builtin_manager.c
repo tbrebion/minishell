@@ -6,18 +6,24 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 11:19:52 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/06 14:39:52 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/06/08 10:39:56 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
+void	exit_builtin(void)
+{
+	if ((size_t)(ft_strncmp(get_n_lst(data.Tokens, 0)->content->val, "exit", 5) == 0))
+		exit_shell(data.my_env);
+}
+
 void	builtin_manager(/*t_data *data, */int i)
 {
 	if ((size_t)(ft_strncmp(get_n_lst(data.Tokens, i)->content->val, "env", 4) == 0))
 		print_env(data.my_env);
-	if ((size_t)(ft_strncmp(get_n_lst(data.Tokens, i)->content->val, "exit", 5) == 0))
-		exit_shell(data.my_env);
+	// if ((size_t)(ft_strncmp(get_n_lst(data.Tokens, i)->content->val, "exit", 5) == 0))
+		// exit_shell(data.my_env);
 	if ((size_t)(ft_strncmp(get_n_lst(data.Tokens, i)->content->val, "pwd", 4) == 0))
 		print_cwd();
 	if ((size_t)(ft_strncmp(get_n_lst(data.Tokens, i)->content->val, "echo", 5) == 0))

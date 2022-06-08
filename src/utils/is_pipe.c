@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 11:36:09 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/06 11:42:13 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/06/08 09:51:22 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	is_pipe(void)
 	int	i;
 
 	i = 0;
-	while(data.input[i++])
+	while (data.input[i++])
 		if (identify_tok(data.input[i]) == I_PIPE)
 			return (1);
 	return (0);

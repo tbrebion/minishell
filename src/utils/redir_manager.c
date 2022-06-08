@@ -6,13 +6,13 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:54:58 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/06 14:42:18 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/06/08 09:44:06 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-void	redir_manager(/*t_data *data*/)
+void	redir_manager(void)
 {
 	t_list	*lst;
 
@@ -26,7 +26,7 @@ void	redir_manager(/*t_data *data*/)
 		if (lst->content->type == I_INREDIR)
 			redir_in(lst->next->content->val);
 		if (lst->content->type == I_D_INREDIR)
-			here_doc(lst->next->content->val);
+			here_doc();
 		lst = lst->next;
 	}
 }

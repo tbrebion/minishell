@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 14:21:49 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/06 15:41:50 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/06/08 09:50:39 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	redir_in(char *str)
 {
-	int fd;
+	int	fd;
 
 	fd = open(str, O_RDONLY, 0644);
 	if (fd == -1)
@@ -30,7 +30,7 @@ void	redir_out(char *str)
 {
 	int	fd;
 
-	fd = open(str,  O_RDWR | O_CREAT | O_TRUNC, 0644);
+	fd = open(str, O_RDWR | O_CREAT | O_TRUNC, 0644);
 	if (fd == -1)
 		return ;
 	dup2(fd, 1);
@@ -41,7 +41,7 @@ void	redir_out_append(char *str)
 {
 	int	fd;
 
-	fd = open(str,  O_RDWR | O_CREAT | O_APPEND, 0644);
+	fd = open(str, O_RDWR | O_CREAT | O_APPEND, 0644);
 	if (fd == -1)
 		return ;
 	dup2(fd, 1);

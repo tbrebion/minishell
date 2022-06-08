@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 09:45:14 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/07 17:09:50 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/06/08 10:33:00 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,8 @@ void	execute(int i)
 	j = -1;
 	if (!path)
 	{
-		ft_printf("%s : ", cmd[0]);
-		ft_putstr_fd("command not found\n", 2);
+		// ft_printf("%s : ", cmd[0]);
+		// ft_putstr_fd("command not found\n", 2);
 		while (cmd[++j])
 			free(cmd[j]);
 		free(cmd);

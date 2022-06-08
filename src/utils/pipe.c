@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 13:30:45 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/06 15:43:42 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/06/08 09:52:10 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,11 @@ int	ft_pipe(char **split_input, char **my_env)
 		parent_process(split_input, my_env, fd);
 	return (0);
 }
-*/*
+*/
 static void	child_process(static int n)
 {
 	int	pid;
-	int fd[2];
+	int	fd[2];
 
 	if (pipe(fd) == -1)
 		return ;

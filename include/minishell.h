@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 12:24:08 by flcarval          #+#    #+#             */
-/*   Updated: 2022/06/07 16:22:05 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/06/08 10:40:39 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,6 +127,7 @@ int		echo_builtin(/*t_data *data, */int i);
 void	cd_builtin(/*t_data *data, */int i);
 void	export_varenv(/*t_data *data, */int i);
 void	unset_builtin(/*t_data *data, */int i);
+void	exit_builtin(void);
 
 // PARSING
 t_list	**str_tok(char *str/*, t_data *data*/);
@@ -139,7 +140,7 @@ void	redir_manager(/*t_data *data*/);
 void	redir_out(char *str);
 void	redir_out_append(char *str);
 void	redir_in(char *str);
-void	here_doc(char *limiter);
+void	here_doc(void);
 
 //	SIGNAL AND EOF HANDLER
 void	sigint_handler(int signo);

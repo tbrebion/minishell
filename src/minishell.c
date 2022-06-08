@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:19:38 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/08 15:17:53 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/06/08 15:44:13 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,10 @@ int main(int ac, char **av, char **envp)
 			continue ;
 		init_in_loop();
 		exit_builtin();
-		// if (is_pipe() == 0)
+		if (is_pipe() == 0)
 			builtin_or_not();
-		// else
-			// pipe_cmd();
+		else
+			pipe_cmd();
 		free_tokens(data.Tokens);
 		// set_error_env();
 	}

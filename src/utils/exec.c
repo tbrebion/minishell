@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 09:45:14 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/08 13:58:47 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/06/08 16:00:22 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,21 +34,6 @@ char	*find_path(char *cmd, char **my_paths)
 	data.error_status = 127;
 	return (NULL);
 }
-/*
-static void exec_supply(char *path, char **paths, )
-{
-	if (!path)
-	{
-		ft_printf("%s : ", cmd[0]);
-		ft_putstr_fd("command not found\n", 2);
-		while (cmd[++j])
-			free(cmd[j]);
-		free(cmd);
-		free_tokens(data.Tokens);
-		data.error_status = 127;
-		exit(0);
-	}
-}*/
 
 void	execute(int i)
 {
@@ -68,6 +53,7 @@ void	execute(int i)
 		tmp = ft_strjoin(tmp, get_n_lst(data.Tokens, i + j)->content->val);
 		j++;
 	}
+	// ft_printf("\n%s\n", tmp);
 	cmd = ft_split(tmp, ' ');
 	free(tmp);
 	paths = get_path(data.my_env);
@@ -88,30 +74,3 @@ void	execute(int i)
 	if (execve(path, cmd, data.my_env) == -1)
 		data.error_status = 127;
 }
-/*
-void	execute(int n)
-{
-	char	**cmd;
-	char	*path;
-	int		i;
-
-	i = -1;
-	cmd = ft_split(data.all_cmd[n], ' ');
-	path = find_path(data.all_cmd[0], data.my_env);
-	if (!path)
-	{
-		while (cmd[++i])
-			free(cmd[i]);
-		free(cmd);
-		// error();
-		ft_printf("\nERRORR\n");
-		return ;
-	}
-	if (execve(path, data.all_cmd, data.my_env) == -1)
-	{
-		ft_printf("\nERRORR\n");
-		return ;
-	}
-		// error();
-}
-*/

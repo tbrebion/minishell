@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 15:25:04 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/09 14:40:42 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/06/09 14:44:53 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,6 @@ char	*catch_env_var(char *input)
 	int		i;
 	int		j;
 
-	///////////////////////
-	// ft_printf("[CEV] input = %s\n", input);
-	///////////////////////
 	i = 0;
 	j = -1;
 	tab = NULL;
@@ -67,8 +64,5 @@ char	*catch_env_var(char *input)
 	}
 	if (ret == NULL)
 		return (NULL);
-	///////////////////////
-	// ft_printf("[CEV] (ret + i) = %s\n", ret + i);
-	///////////////////////
 	return (ret + i);
 }

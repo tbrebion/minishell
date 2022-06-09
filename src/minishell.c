@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:19:38 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/09 14:30:48 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/06/09 14:45:06 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,15 +45,6 @@ int main(int ac, char **av, char **envp)
 			continue ;
 		init_in_loop();
 		exit_builtin();
-		////////////////////
-		// ft_printf("TOK-->%s<--TOK\n", (get_n_lst(data.Tokens, 2))->content->val);
-		// int i = 0;
-		// while (i < data.tok_nb)
-		// {
-		// 	ft_printf("TOK--> %s\n\n", (get_n_lst(data.Tokens, i))->content->val);
-		// 	i++;
-		// }
-		/////////////////
 		if (is_cd() || is_export() || is_unset())
 			continue ;
 		// if (is_pipe() == 0)

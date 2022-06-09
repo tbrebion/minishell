@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export_builtin.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 09:58:04 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/08 18:59:35 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/06/09 09:58:21 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ void	export_varenv(/*t_data *data, */int i)
 
 	j = 0;
 	spl = NULL;
+	if (!get_n_lst(data.Tokens, i + 1))
+		return ;
 	exp = get_n_lst(data.Tokens, i + 1)->content->val;
 	while (data.my_env[j])
 	{

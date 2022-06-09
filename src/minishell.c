@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:19:38 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/08 20:19:47 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/06/09 10:14:28 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int main(int ac, char **av, char **envp)
 		init_sig();
 		data.input = readline("MY_PROMPT>> ");
 		ctrld_handler(data.input);
-		if(!data.input[0])
+		if(!data.input[0] || only_white_space() == 1)
 			continue ;
 		init_in_loop();
 		exit_builtin();

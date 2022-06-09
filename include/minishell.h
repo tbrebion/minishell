@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 12:24:08 by flcarval          #+#    #+#             */
-/*   Updated: 2022/06/08 19:03:17 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/06/09 10:09:11 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,7 @@ void	put_error_status(void);
 void	builtin_or_not(void);
 int		is_pipe(void);
 void	pipe_cmd(void);
+int		only_white_space(void);
 
 // BUILTINS
 int		is_builtin(char *cmd);

@@ -27,6 +27,7 @@ SOURCES		+=                         		\
 		src/utils/builtin_or_not.c 		  	\
 		src/utils/is_pipe.c 		  		\
 		src/utils/pipe.c 		  			\
+		src/utils/only_white_space.c 		\
 
 
 ## SRC/BUILTINS ##

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_error_env.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 09:58:04 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/09 13:59:20 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/06/09 15:51:09 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,12 @@ void	set_error_env(void)
 	char	**spl;
 	char	*exp;
 	int		k;
+	char	*err_stat;
 
 	j = 0;
 	spl = NULL;
-	exp = ft_strjoin(ft_strdup("?="), ft_itoa(data.error_status));
+	err_stat = ft_itoa(data.error_status);
+	exp = ft_strjoin(ft_strdup("?="), err_stat);
 	/////////////////////////////////////////
 	// ft_printf("-------\nexp = %s\n-------\n", exp);
 	/////////////////////////////////////////
@@ -44,9 +46,13 @@ void	set_error_env(void)
 			while (spl[++k])
 				free(spl[k]);
 			free(spl);
+			free(err_stat);
+			free(exp);
 			return ;
 		}
 		j++;
 	}
+	free(err_stat);
 	data.my_env[j] = ft_strdup(exp);
+	free(exp);
 }

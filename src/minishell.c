@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:19:38 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/09 14:45:06 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/06/09 16:09:01 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,16 +42,22 @@ int main(int ac, char **av, char **envp)
 		data.input = readline("MY_PROMPT>> ");
 		ctrld_handler(data.input);
 		if(!data.input[0] || only_white_space() == 1)
+		{
+			free_loop();
 			continue ;
+		}
 		init_in_loop();
 		exit_builtin();
 		if (is_cd() || is_export() || is_unset())
+		{
+			free_loop();
 			continue ;
+		}
 		// if (is_pipe() == 0)
 		builtin_or_not();
 		// else
 			// pipe_cmd();
-		free_tokens(data.Tokens);
+		free_loop();
 		set_error_env();
 	}
 	return (0);

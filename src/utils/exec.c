@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 09:45:14 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/09 11:37:15 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/06/09 16:09:01 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	execute(int i)
 		while (cmd[++j])
 			free(cmd[j]);
 		free(cmd);
-		free_tokens(data.Tokens);
+		free_loop();
 		data.error_status = 127;
 		exit(0);
 	}

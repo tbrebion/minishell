@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 13:30:45 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/09 10:58:12 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/06/09 11:38:11 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,10 @@ static void	child_process(int i)
 		close(fd[0]);
 		dup2(fd[1], STDOUT_FILENO);
 		redir_manager(&data);
-		execute(i);
+		if (is_builtin(data.lst->content->val) == 0)
+			execute(i);
+		else
+			builtin_manager(i);
 	}
 	else
 	{

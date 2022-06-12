@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 01:26:03 by flcarval          #+#    #+#             */
-/*   Updated: 2022/06/09 14:44:42 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/06/12 15:40:47 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	echo_builtin(/*t_data *data, */int i)
 	{
 		ret = NULL;
 		if (get_n_lst(data.Tokens, i + j)->content->type != I_S_QUOTE)
-			ret = catch_env_var(get_n_lst(data.Tokens, i + j)->content->val/*, data*/);
+			ret = catch_env_var(get_n_lst(data.Tokens, i + j)->content->val);
 		if (ret != NULL)
 			ft_printf("%s", ret);
 		else

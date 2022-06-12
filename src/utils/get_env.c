@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 12:25:02 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/07 16:17:41 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/06/12 15:40:38 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,6 @@ void	init_env(char **envp)
 			exit_shell(data.my_env);
 		i++;
 	}
-	i++;
-	data.my_env[i] = NULL;
 	while (data.my_env[i++])
 		data.my_env[i] = NULL;
 }

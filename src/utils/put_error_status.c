@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   put_error_status.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 14:42:36 by flcarval          #+#    #+#             */
-/*   Updated: 2022/06/01 16:51:04 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/06/13 14:19:10 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,13 @@
 
 void	put_error_status(void)
 {
-	ft_printf("minishell: command not found: %d\n", data.error_status);
+	char	*error_status;
+	// perror(errno);
+
+	error_status = ft_itoa(data.error_status);
+	ft_putstr_fd(error_status, 0);
+	ft_putstr_fd(": command not found", 0);
+	ft_putchar_fd('\n', 0);
+	free(error_status);
+	exit(127);
 }

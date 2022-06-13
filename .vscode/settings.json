@@ -6,7 +6,8 @@
 		"unistd.h": "c",
 		"stdio.h": "c",
 		"minishell.h": "c",
-		"stdlib.h": "c"
+		"stdlib.h": "c",
+		"history.h": "c"
 	},
 	"C_Cpp.errorSquiggles": "Disabled"
 }

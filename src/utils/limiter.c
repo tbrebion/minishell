@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 11:02:39 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/08 09:56:29 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/06/13 14:29:41 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,13 @@ static void	here_doc_supply(char *limiter)
 void	here_doc(void)
 {
 	pid_t	pid1;
+	int		status;
 
 	ignore_sig();
 	pid1 = fork();
 	if (pid1 == 0)
 		here_doc_supply(data.lst->next->content->val);
-	wait(0);
+	waitpid(-1, &status, 0);
+	data.error_status = WEXITSTATUS(status);
+	exit(data.error_status);
 }

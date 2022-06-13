@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 09:45:14 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/09 16:09:01 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/06/13 14:40:41 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,11 @@ char	*find_path(char *cmd, char **my_paths)
 		i++;
 	}
 	i = -1;
-	data.error_status = 127;
+	if (cmd)
+	{
+		ft_putstr_fd(cmd, 0);
+		ft_putstr_fd(" : command not found\n", 0);
+	}
 	return (NULL);
 }
 
@@ -53,7 +57,6 @@ void	execute(int i)
 		tmp = ft_strjoin(tmp, get_n_lst(data.Tokens, i + j)->content->val);
 		j++;
 	}
-	// ft_printf("\n%s\n", tmp);
 	cmd = ft_split(tmp, ' ');
 	free(tmp);
 	paths = get_path(data.my_env);
@@ -61,16 +64,13 @@ void	execute(int i)
 	j = -1;
 	if (!path)
 	{
-		// ft_printf("%s : ", cmd[0]);
-		// ft_putstr_fd("command not found\n", 2);
 		while (cmd[++j])
 			free(cmd[j]);
 		free(cmd);
-		free_loop();
-		data.error_status = 127;
-		exit(0);
+		// free_loop();
+		exit(127);
 	}
 	data.error_status = 0;
 	if (execve(path, cmd, data.my_env) == -1)
-		data.error_status = 127;
+		exit(130);
 }

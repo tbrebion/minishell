@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:19:38 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/12 15:13:04 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/06/13 13:27:44 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int main(int ac, char **av, char **envp)
 		ctrld_handler(data.input);
 		if(!data.input[0] || only_white_space() == 1)
 		{
-			// free_loop();
+			data.error_status = 127;
 			continue ;
 		}
 		init_in_loop();
@@ -62,7 +62,7 @@ int main(int ac, char **av, char **envp)
 		// else
 			// pipe_cmd();
 		// free_loop();
-		set_error_env();
+		// set_error_env();
 	}
 	return (0);
 }

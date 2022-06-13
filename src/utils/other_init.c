@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   other_init.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 11:10:14 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/09 15:48:55 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/06/13 13:53:13 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,6 @@ void	init_in_loop(void)
 	data.Cli = tok_to_cli(data.Tokens, data.tok_nb);
 	add_history(data.input);
 	data.lst = (*data.Tokens);
+	// data.error_status = errno;
 	// data.all_cmd = ft_split(data.input, '|');
 }

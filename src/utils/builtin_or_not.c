@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_or_not.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 13:19:02 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/09 16:09:01 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/06/13 14:17:00 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	builtin_or_not(void)
 {
 	if (data.lst)
 	{
+		int	status;
 		ignore_sig();
 		data.pid = fork();
 		if (data.pid == 0)
@@ -27,9 +28,10 @@ void	builtin_or_not(void)
 			else
 				builtin_manager(0);
 			free(data.input);
-			free_loop();
+			// free_loop();
 			exit(0);
 		}
-		wait(0);
+		waitpid(-1, &status, 0);
+		data.error_status = WEXITSTATUS(status);
 	}
 }

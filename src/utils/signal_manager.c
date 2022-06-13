@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 12:14:37 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/07 16:20:42 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/06/13 14:42:52 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ void	ctrld_handler(char *input)
 void	interrupt_cmd(int signo)
 {
 	(void)signo;
-	data.error_status = 130;
 	write(2, "\n", 1);
 	exit(130);
 }

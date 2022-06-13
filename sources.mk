@@ -28,7 +28,7 @@ SOURCES		+=                         		\
 		src/utils/is_pipe.c 		  		\
 		src/utils/pipe.c 		  			\
 		src/utils/only_white_space.c 		\
-
+		src/utils/free_split.c 		\
 
 ## SRC/BUILTINS ##
 

@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 11:19:52 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/20 16:33:47 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/06/20 16:50:11 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	exit_builtin(void)
 			ft_putstr_fd((get_n_lst(data.Tokens, 1)->content->val), 0);
 			ft_putstr_fd(": numeric argument required\n", 0);
 		}
+		free_loop();
 		exit_shell(data.my_env);
 	}
 }

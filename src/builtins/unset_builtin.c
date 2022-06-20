@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   unset_builtin.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:33:36 by flcarval          #+#    #+#             */
-/*   Updated: 2022/06/09 09:59:40 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/06/13 16:24:27 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
-
-static void	free_split(char **spl);
 
 void	unset_builtin(/*t_data *data, */int i)
 {
@@ -42,17 +40,4 @@ void	unset_builtin(/*t_data *data, */int i)
 		free_split(spl);
 		j++;
 	}
-}
-
-static void	free_split(char **spl)
-{
-	int	i;
-
-	i = 0;
-	while (spl[i])
-	{
-		free(spl[i]);
-		i++;
-	}
-	free(spl);
 }

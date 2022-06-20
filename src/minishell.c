@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:19:38 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/20 14:39:57 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/06/20 16:25:16 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int main(int ac, char **av, char **envp)
 		builtin_or_not();
 		// else
 			// pipe_cmd();
-		free_loop();
+		// free_loop();
 		set_error_env();
 	}
 	return (0);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_split.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 16:23:11 by flcarval          #+#    #+#             */
-/*   Updated: 2022/06/20 14:19:44 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/06/20 16:23:48 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	free_split(char **spl)
 		return ;
 	while (spl[i])
 	{
+		ft_printf("i = %d\n", i);
 		free(spl[i]);
 		i++;
 	}

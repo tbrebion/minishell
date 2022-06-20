@@ -6,17 +6,28 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 13:19:02 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/13 14:17:00 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/06/20 12:26:57 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
+///////////////////
+//  data.is_env ?
+//////////////////
+
 void	builtin_or_not(void)
 {
+	int	status;
+
 	if (data.lst)
 	{
-		int	status;
+		if (data.is_env == 0)
+		{
+			builtin_manager(0);
+			free(data.input);
+			return ;
+		}
 		ignore_sig();
 		data.pid = fork();
 		if (data.pid == 0)
@@ -27,8 +38,8 @@ void	builtin_or_not(void)
 				execute(0);
 			else
 				builtin_manager(0);
-			free(data.input);
-			// free_loop();
+			// free(data.input);
+			free_loop();
 			exit(0);
 		}
 		waitpid(-1, &status, 0);

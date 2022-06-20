@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 12:24:08 by flcarval          #+#    #+#             */
-/*   Updated: 2022/06/13 13:40:52 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/06/20 09:39:22 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ typedef struct s_data
 	char	*input;
 	char	**all_cmd;
 	pid_t	pid;
+	int		is_env;
 }	t_data;
 
 typedef struct	s_directory

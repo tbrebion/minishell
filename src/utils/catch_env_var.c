@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 15:25:04 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/12 15:49:33 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/06/20 09:55:00 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,9 @@
 static char	*catch_supply(char *input, char **tab, int *i, int *j)
 {
 	char	*ret;
+	int		k;
 
+	k = -1;
 	if (data.my_env[*i])
 	{
 		tab = ft_split(data.my_env[*i], '=');
@@ -35,6 +37,9 @@ static char	*catch_supply(char *input, char **tab, int *i, int *j)
 	while (ret[*i] != '=')
 		(*i)++;
 	(*i)++;
+	while (tab[++k])
+		free(tab[k]);
+	free(tab);
 	return (ret);
 }
 

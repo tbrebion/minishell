@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 12:14:37 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/13 14:42:52 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/06/20 08:38:30 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	sigint_handler(int signo)
 		rl_replace_line("", 0);
 		rl_redisplay();
 		data.error_status = 130;
+		set_error_env();
 	}
 }
 

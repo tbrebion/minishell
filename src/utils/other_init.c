@@ -6,11 +6,17 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 11:10:14 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/13 13:53:13 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/06/20 12:22:44 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
+
+static void	history(void)
+{
+	if (data.input)
+		add_history(data.input);
+}
 
 void	init_out_loop(void)
 {
@@ -20,10 +26,18 @@ void	init_out_loop(void)
 
 void	init_in_loop(void)
 {
+	int	i;
+
+	i = -1;
+	if (data.Tokens)
+	{
+		while (data.Tokens[++i])
+			free(data.Tokens[i]);
+		free(data.Tokens);
+	}
 	data.Tokens = str_tok(data.input);
 	data.Cli = tok_to_cli(data.Tokens, data.tok_nb);
-	add_history(data.input);
+	history();
 	data.lst = (*data.Tokens);
-	// data.error_status = errno;
 	// data.all_cmd = ft_split(data.input, '|');
 }

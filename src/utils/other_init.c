@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 11:10:14 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/20 14:07:27 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/06/20 16:39:45 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,12 @@ void	init_in_loop(void)
 	int	i;
 
 	i = -1;
-	// if (data.Tokens)
-	// {
-	// 	while (data.Tokens[++i])
-	// 		free(data.Tokens[i]);
-	// 	free(data.Tokens);
-	// }
+	if (data.Tokens)
+	{
+		while (data.Tokens[++i])
+			free(data.Tokens[i]);
+		free(data.Tokens);
+	}
 	data.Tokens = str_tok(data.input);
 	data.Cli = tok_to_cli(data.Tokens, data.tok_nb);
 	history();

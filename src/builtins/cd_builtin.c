@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 11:27:23 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/13 13:57:22 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/06/13 16:09:32 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	cd_builtin(/*t_data *data, */int i)
 		{
 			data.previous_dir = ft_strdup(cwd);
 			data.error_status = 1;
+			return ;
 		}
 	}
 	else if (!ft_strncmp(get_n_lst(data.Tokens, i + 1)->content->val, "-", 2))
@@ -47,6 +48,8 @@ void	cd_builtin(/*t_data *data, */int i)
 	{
 		perror(get_n_lst(data.Tokens, i + 1)->content->val);
 		data.error_status = 1;
+		return ;
 	}
 	data.previous_dir = tmp;
+	data.error_status = 0;
 }

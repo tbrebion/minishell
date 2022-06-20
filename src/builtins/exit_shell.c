@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit_shell.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 09:32:37 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/09 16:09:01 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/06/13 16:33:48 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,6 @@ void	exit_shell(char **my_env)
 		}
 		free(my_env);
 	}
-	free_loop();
+	// free_loop();
 	exit(EXIT_SUCCESS);
 }

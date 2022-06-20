@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_manager.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 11:19:52 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/08 19:01:01 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/06/13 16:38:20 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,14 @@
 void	exit_builtin(void)
 {
 	if ((size_t)(ft_strncmp(get_n_lst(data.Tokens, 0)->content->val, "exit", 5) == 0))
+	{
+		if (get_n_lst(data.Tokens, 1))
+		{
+			ft_putstr_fd((get_n_lst(data.Tokens, 1)->content->val), 0);
+			ft_putstr_fd(": numeric argument required\n", 0);
+		}
 		exit_shell(data.my_env);
+	}
 }
 
 int	is_cd(void)
@@ -47,8 +54,13 @@ int	is_unset(void)
 
 void	builtin_manager(/*t_data *data, */int i)
 {
-	if ((size_t)(ft_strncmp(get_n_lst(data.Tokens, i)->content->val, "env", 4) == 0))
+	if ((size_t)(ft_strncmp(get_n_lst(data.Tokens, i)->content->val, "env", 4) == 0) && !(get_n_lst(data.Tokens, i + 1)))
 		print_env(data.my_env);
+	else if ((size_t)(ft_strncmp(get_n_lst(data.Tokens, i)->content->val, "env", 4) == 0) && (get_n_lst(data.Tokens, i + 1)))
+	{
+		ft_putstr_fd((get_n_lst(data.Tokens, i + 1)->content->val), 0);
+		ft_putstr_fd(" : No such file or directory\n", 0);
+	}
 	if ((size_t)(ft_strncmp(get_n_lst(data.Tokens, i)->content->val, "pwd", 4) == 0))
 		print_cwd();
 	if ((size_t)(ft_strncmp(get_n_lst(data.Tokens, i)->content->val, "echo", 5) == 0))

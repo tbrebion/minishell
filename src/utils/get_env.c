@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 12:25:02 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/12 15:40:38 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/06/20 09:13:08 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,14 @@ void	init_env(char **envp)
 	int		i;
 
 	i = 0;
-	if (!(*envp))
-		exit(0);
-	while (envp[i])
-		i++;
-	data.my_env = malloc(sizeof(char *) * (i + 4096));
+	data.my_env = ft_calloc(4096, sizeof(char *));
 	if (!data.my_env)
 		exit_shell(data.my_env);
+	if (!(*envp))
+	{
+		data.is_env = 0;
+		return ;
+	}
 	i = 0;
 	while (envp[i])
 	{

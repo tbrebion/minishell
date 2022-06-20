@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:19:38 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/13 13:27:44 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/06/20 12:38:30 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,10 @@ int main(int ac, char **av, char **envp)
 {
 	(void)ac;
 	(void)av;
+	data.is_env = 1;
 	init_env(envp);
 	init_out_loop();
+	ft_printf("size of Tok = %d\tsize of tok* = %d\n", sizeof(t_tok), sizeof(t_tok *));
 	while (1)
 	{
 		set_error_env();
@@ -46,10 +48,7 @@ int main(int ac, char **av, char **envp)
 		data.input = readline("MY_PROMPT>> ");
 		ctrld_handler(data.input);
 		if(!data.input[0] || only_white_space() == 1)
-		{
-			data.error_status = 127;
 			continue ;
-		}
 		init_in_loop();
 		exit_builtin();
 		if (is_cd() || is_export() || is_unset())
@@ -61,8 +60,8 @@ int main(int ac, char **av, char **envp)
 		builtin_or_not();
 		// else
 			// pipe_cmd();
-		// free_loop();
-		// set_error_env();
+		free_loop();
+		set_error_env();
 	}
 	return (0);
 }

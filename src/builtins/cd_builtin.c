@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd_builtin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 11:27:23 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/21 12:41:56 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/06/21 17:43:37 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	cd_builtin(/*t_data *data, */int i)
 			data.previous_dir = ft_strdup(cwd);
 			data.error_status = 1;
 			free(home);
-			// free(tmp);
+			free(close_to_home);
 			return ;
 		}
 	}

@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 09:58:04 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/21 16:57:21 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/06/21 17:26:36 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,21 +73,23 @@ static int	is_al_set(char *exp)
 		if (ft_strcmp(spl[0], remove_plus(tmp[0])))
 		{
 			free_split(tmp);
+			free_split(spl);
 			return (i);
 		}
 		free_split(spl);
 		i++;
 	}
+	free_split(tmp);
 	return (-1);
 }
 
 static void	add_var(char *exp)
 {
 	int		i;
-	char	*tmp;
+	char	**tmp;
 
 	i = is_al_set(exp);
-	tmp = ft_split(exp, '=')[1];
+	tmp = ft_split(exp, '=');
 	if (i == -1)
 	{
 		i = 0;
@@ -96,8 +98,8 @@ static void	add_var(char *exp)
 		data.my_env[i] = ft_strdup(exp);
 	}
 	else
-		data.my_env[i] = ft_strjoin(data.my_env[i], tmp);
-	free(tmp);
+		data.my_env[i] = ft_strjoin(data.my_env[i], tmp[1]);
+	free_split(tmp);
 }
 
 static void	set_var(char *exp)

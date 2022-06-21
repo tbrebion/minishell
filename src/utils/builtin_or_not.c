@@ -3,18 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_or_not.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 13:19:02 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/20 16:31:41 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/06/21 10:42:05 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
-
-///////////////////
-//  data.is_env ?
-//////////////////
 
 void	builtin_or_not(void)
 {

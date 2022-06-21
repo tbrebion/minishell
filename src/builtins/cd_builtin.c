@@ -6,15 +6,20 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 11:27:23 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/13 16:09:32 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/06/21 12:41:56 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-/*
-	A LA PLACE DE tbrebion  --> $USER
-*/
+////////////////////////////////////////
+
+//         malloc : - close_to_home
+//					- tmp
+//					- home
+
+////////////////////////////////////
+
 void	cd_builtin(/*t_data *data, */int i)
 {
 	char	*cwd;
@@ -27,7 +32,7 @@ void	cd_builtin(/*t_data *data, */int i)
 	cwd = getcwd(cwd, 4096);
 	tmp = ft_strdup(cwd);
 	close_to_home = ft_strdup("/mnt/nfs/homes/");
-	home = ft_strjoin(close_to_home, catch_env_var("$USER"/*, &data*/));
+	home = ft_strjoin(close_to_home, catch_env_var("$USER"));
 	closedir((DIR *)cwd);
 	if (!(get_n_lst(data.Tokens, i + 1)))
 	{
@@ -35,6 +40,8 @@ void	cd_builtin(/*t_data *data, */int i)
 		{
 			data.previous_dir = ft_strdup(cwd);
 			data.error_status = 1;
+			free(home);
+			// free(tmp);
 			return ;
 		}
 	}
@@ -48,8 +55,12 @@ void	cd_builtin(/*t_data *data, */int i)
 	{
 		perror(get_n_lst(data.Tokens, i + 1)->content->val);
 		data.error_status = 1;
+		free(home);
+		// free(tmp);
 		return ;
 	}
 	data.previous_dir = tmp;
+	free(home);
+	// free(tmp);
 	data.error_status = 0;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 12:24:08 by flcarval          #+#    #+#             */
-/*   Updated: 2022/06/20 14:04:19 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/06/21 12:01:37 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,7 +142,7 @@ int		is_unset(void);
 t_list	**str_tok(char *str/*, t_data *data*/);
 int		identify_tok(char c);
 t_tok	*set_tok(char *str, int *i);
-char	**tok_to_cli(t_list **Tokens, int tok_nb);
+// char	**tok_to_cli(t_list **Tokens, int tok_nb);
 
 //	REDIR
 void	redir_manager(/*t_data *data*/);

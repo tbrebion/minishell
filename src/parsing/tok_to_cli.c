@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 15:25:04 by flcarval          #+#    #+#             */
-/*   Updated: 2022/06/20 16:09:20 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/06/21 12:01:18 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void debug(char **Cli)
 	i++;
 	// ft_printf("%d : %s\n", i, Cli[i]);
 }
-*/
+
 char	**tok_to_cli(t_list **Tokens, int tok_nb)
 {
 	char	**Cli;
@@ -50,3 +50,4 @@ char	**tok_to_cli(t_list **Tokens, int tok_nb)
 	}
 	return (Cli);
 }
+*/

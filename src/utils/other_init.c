@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 11:10:14 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/20 17:05:20 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/06/21 12:05:51 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,25 +26,8 @@ void	init_out_loop(void)
 
 void	init_in_loop(void)
 {
-	t_list	*lst;
-
-	lst = NULL;
-	if (data.Tokens && *data.Tokens)
-		lst = (*data.Tokens);
-	if (lst && lst->content->val)
-	{
-		while (lst)
-		{
-			free(lst->content->val);
-			free(lst->content);
-			lst = lst->next;	
-		}
-		free(lst);
-	}
-	if (data.Cli && data.Cli[0][0])
-		free_split(data.Cli);
 	data.Tokens = str_tok(data.input);
-	data.Cli = tok_to_cli(data.Tokens, data.tok_nb);
+	// data.Cli = tok_to_cli(data.Tokens, data.tok_nb);
 	history();
 	data.lst = (*data.Tokens);
 	// data.all_cmd = ft_split(data.input, '|');

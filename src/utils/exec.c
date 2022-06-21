@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 09:45:14 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/13 14:40:41 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/06/21 10:42:27 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ void	execute(int i)
 		while (cmd[++j])
 			free(cmd[j]);
 		free(cmd);
-		// free_loop();
 		exit(127);
 	}
 	data.error_status = 0;

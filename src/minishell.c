@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:19:38 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/20 16:25:16 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/06/21 12:35:50 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ int main(int ac, char **av, char **envp)
 		set_error_env();
 		init_sig();
 		data.input = readline("MY_PROMPT>> ");
-		// data.input = get_next_line(0);
 		ctrld_handler(data.input);
 		if(!data.input[0] || only_white_space() == 1)
 			continue ;
@@ -54,14 +53,14 @@ int main(int ac, char **av, char **envp)
 		exit_builtin();
 		if (is_cd() || is_export() || is_unset())
 		{
-			// free_loop();
+			free_loop();
 			continue ;
 		}
 		// if (is_pipe() == 0)
 		builtin_or_not();
 		// else
 			// pipe_cmd();
-		// free_loop();
+		free_loop();
 		set_error_env();
 	}
 	return (0);

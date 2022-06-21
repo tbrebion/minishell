@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 16:23:11 by flcarval          #+#    #+#             */
-/*   Updated: 2022/06/20 16:33:23 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/06/21 11:48:10 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	free_split(char **spl)
 		return ;
 	while (spl[i])
 	{
-		ft_printf("i = %d\n", i);
 		free(spl[i]);
 		i++;
 	}

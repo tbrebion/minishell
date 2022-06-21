@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:00:56 by flcarval          #+#    #+#             */
-/*   Updated: 2022/06/21 16:15:49 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/06/21 16:41:17 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,6 @@ int	ft_strcmp(char *a, char *b)
 	int	i;
 
 	i = 0;
-	//////////////////////
-	ft_printf("[ft_strncmp] : a = %s\tb = %s\n", a, b);
-	//////////////////////
 	while (a[i] && b[i])
 	{
 		if (a[i] != b[i])

@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 09:58:04 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/23 10:05:06 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/06/23 10:07:04 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@ void	export_varenv(/*t_data *data, */int i)
 	int		j;
 	char	**spl;
 	char	*exp;
-	int		k;
-	int		t;
 
 	j = 0;
 	spl = NULL;

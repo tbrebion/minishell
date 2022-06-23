@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 13:19:02 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/21 10:42:05 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/06/23 12:09:00 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,12 @@ void	builtin_or_not(void)
 				reinit_sig();
 				redir_manager(&data);
 				if (is_builtin(data.lst->content->val) == 0)
-					execute(0);
+				{
+					if (is_pipe() == 1)
+						pipe_cmd();
+					else
+						execute(0);
+				}
 				else
 					builtin_manager(0);
 				exit(0);

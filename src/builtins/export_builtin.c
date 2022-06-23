@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 09:58:04 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/23 10:07:04 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/06/23 10:08:29 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static int	is_add(char *exp)
 		{
 			return (i + 2);
 		}
-		j++;
+		i++;
 	}
 	return (-1);
 }

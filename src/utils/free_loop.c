@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 14:56:57 by flcarval          #+#    #+#             */
-/*   Updated: 2022/06/21 11:58:29 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/06/23 11:52:01 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void	free_loop(void)
 		free_tokens(data.Tokens);
 	if (data.input)
 		free(data.input);
+	if (data.all_cmd)
+		free_split(data.all_cmd);
 	/*if (data.Cli && data.Cli[0][0])
 		free_cli();*/
 }

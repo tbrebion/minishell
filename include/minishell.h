@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 12:24:08 by flcarval          #+#    #+#             */
-/*   Updated: 2022/06/21 16:04:31 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/06/23 11:21:56 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ void 	init_out_loop(void);
 // FIND PATH TO EXEC
 char	*find_path(char *cmd, char **my_paths);
 void	execute(int i);
-void	execute_for_pipe(int i);
+// void	execute_for_pipe(int i);
 
 // UTILS
 char	*stradd_char(char *str, char c);

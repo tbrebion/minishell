@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 11:27:23 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/23 10:21:39 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/06/23 16:35:04 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,13 +56,9 @@ void	cd_builtin(/*t_data *data, */int i)
 		perror(get_n_lst(data.Tokens, i + 1)->content->val);
 		data.error_status = 1;
 		free(home);
-		free(tmp);
-		tmp = NULL;
 		return ;
 	}
 	data.previous_dir = tmp;
 	free(home);
-	free(tmp);
-	tmp = NULL;
 	data.error_status = 0;
 }

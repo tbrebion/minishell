@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 13:30:45 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/23 14:26:23 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/06/23 16:36:46 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,21 +96,26 @@ void	pipe_cmd(void)
 	// int		i;
 	pid_t	pid;
 	int		fd[2];
-	// int		status;
+	int		status;
 
 	pid = fork();
 	if (pid == 0)
 	{
 		dup2(fd[1], STDOUT_FILENO);
 		close(fd[0]);
+		redir_manager(&data);
 		execute_for_pipe(1);
 	}
-	/*else
-	{*/
+	else
+	{
 		dup2(fd[0], STDIN_FILENO);
 		close(fd[1]);
+		redir_manager(&data);
 		execute_for_pipe(0);
-	// }
+	}
+	waitpid(-1, &status, 0);
+	data.error_status = WEXITSTATUS(status);
+	exit(data.error_status);
 	// i = -1;
 	// while (++i < 2)
 	// {
@@ -118,7 +123,4 @@ void	pipe_cmd(void)
 	// 	execute_for_pipe(i);
 	// 	waitpid(-1, &status, 0);
 	// }
-	// waitpid(-1, &status, 0);
-	// data.error_status = WEXITSTATUS(status);
-	// exit(data.error_status);
 }

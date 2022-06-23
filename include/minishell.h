@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 12:24:08 by flcarval          #+#    #+#             */
-/*   Updated: 2022/06/21 12:01:37 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/06/21 16:04:31 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,7 @@ int		is_pipe(void);
 void	pipe_cmd(void);
 int		only_white_space(void);
 void	free_split(char **spl);
+int		ft_strcmp(char *a, char *b);
 
 // BUILTINS
 int		is_builtin(char *cmd);

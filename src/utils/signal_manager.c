@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 12:14:37 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/20 08:38:30 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/06/24 14:43:34 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,10 @@ void	sigquit_handler(int signo)
 void	ctrld_handler(char *input)
 {
 	if (input == NULL)
+	{
+		free_split(data.my_env);
 		exit(EXIT_SUCCESS);
+	}
 }
 
 void	interrupt_cmd(int signo)

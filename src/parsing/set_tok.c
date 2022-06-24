@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_tok.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 18:03:10 by flcarval          #+#    #+#             */
-/*   Updated: 2022/05/24 17:20:13 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/06/24 12:17:13 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ static void	set_quotes(char *str, int *i, t_tok *tok)
 	len = 0;
 	while (str[len + *i] && identify_tok(str[len + *i]) != tok->type)
 		len++;
-	tok->val = malloc(sizeof(char) * (len + *i));
+	tok->val = malloc(sizeof(char) * (len + *i) + 1);
 	if (!tok->val)
 		return ;
 	len = 1;	// to skip first char (that is a quote)

@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 09:58:04 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/23 10:08:29 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/06/25 14:18:26 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,8 @@ static void	set_var(char *exp)
 		while (data.my_env[i])
 			i++;
 	}
+	if (data.my_env[i])
+		free(data.my_env[i]);
 	data.my_env[i] = ft_strdup(exp);
 }
 

@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 11:27:23 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/24 14:40:01 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/06/25 12:22:51 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,6 @@ void	cd_builtin(/*t_data *data, */int i)
 	tmp = ft_strdup(cwd);
 	close_to_home = ft_strdup("/mnt/nfs/homes/");
 	home = ft_strjoin(close_to_home, catch_env_var("$USER"));
-	// if (cwd)
-		// closedir((DIR *)cwd);
 	if (!(get_n_lst(data.Tokens, i + 1)))
 	{
 		if (chdir(home) == -1)
@@ -60,9 +58,11 @@ void	cd_builtin(/*t_data *data, */int i)
 		free(home);
 		return ;
 	}
-	data.previous_dir = tmp;
-	// if (tmp)
-		// free(tmp);
+	if (data.previous_dir)
+		free(data.previous_dir);
+	data.previous_dir = ft_strdup(tmp);
+	if (tmp)
+		free(tmp);
 	free(home);
 	data.error_status = 0;
 }

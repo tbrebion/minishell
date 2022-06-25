@@ -6,13 +6,13 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 11:27:23 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/25 15:01:54 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/06/25 15:33:23 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-void	cd_builtin(/*t_data *data, */int i)
+void	cd_builtin(int i)
 {
 	char	*cwd;
 	char	*home;

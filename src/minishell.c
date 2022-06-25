@@ -6,41 +6,26 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:19:38 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/24 14:39:24 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/06/25 14:44:24 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-// static void	get_env(/*t_data *data, */char **envp)
-// {
-// 	data.my_env = (char **)0;
-
-// 	if (data.my_env == (char **)0)
-// 	{
-// 		//ft_putstr_fd("Setting env variable\n", 1);
-// 		init_env(data, envp);
-// 	}
-// }
-
-	///////
-//	sterror(errno);
-	///////
-
-/////////////////////////
-	// free_loop();  segfault !
-///////////////////////
-
 t_data	data;
 
-int main(int ac, char **av, char **envp)
+static void	void_args(int ac, char **av)
 {
 	(void)ac;
 	(void)av;
+}
+
+int main(int ac, char **av, char **envp)
+{
+	void_args(ac, av);
 	data.is_env = 1;
 	init_env(envp);
 	init_out_loop();
-	// ft_printf("size of Tok = %d\tsize of tok* = %d\n", sizeof(t_tok), sizeof(t_tok *));
 	while (1)
 	{
 		set_error_env();
@@ -56,10 +41,7 @@ int main(int ac, char **av, char **envp)
 			free_loop();
 			continue ;
 		}
-		// if (is_pipe() == 0)
 		builtin_or_not();
-		// else
-			// pipe_cmd();
 		free_loop();
 		set_error_env();
 	}

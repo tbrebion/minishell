@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 12:24:08 by flcarval          #+#    #+#             */
-/*   Updated: 2022/06/24 11:49:32 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/06/27 15:57:02 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,8 @@ void	pipe_cmd(void);
 int		only_white_space(void);
 void	free_split(char **spl);
 int		ft_strcmp(char *a, char *b);
+char	*ft_strndup(char *s1, int n);
+char	*expand_str(char *str);
 
 // BUILTINS
 int		is_builtin(char *cmd);

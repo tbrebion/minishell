@@ -30,6 +30,8 @@ SOURCES		+=                         		\
 		src/utils/only_white_space.c 		\
 		src/utils/free_split.c 				\
 		src/utils/ft_strcmp.c 				\
+		src/utils/ft_strndup.c 				\
+		src/utils/expand_str.c 				\
 
 ## SRC/BUILTINS ##
 

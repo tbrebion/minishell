@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 14:42:14 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/27 16:04:41 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/06/28 10:07:37 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	*expand_str(char *str)
 	i = 0;
 	while (is_dollar(str) != 0)
 	{
-		ft_printf("here sttr = %s\n", str);
+		// ft_printf("here sttr = %s\n", str);
 		tmp = ft_strdup(str);
 		free(str);
 		str = expand_str_supply(tmp);

@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 09:58:04 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/24 15:26:03 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/06/25 15:36:04 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,7 @@ void	set_error_env(void)
 	spl = NULL;
 	err_var = ft_strdup("?=");
 	err_stat = ft_itoa(data.error_status);
-	exp = ft_strjoin(/*ft_strdup("?=")*/err_var, err_stat);
-	/////////////////////////////////////////
-	// ft_printf("-------\nexp = %s\n-------\n", exp);
-	/////////////////////////////////////////
+	exp = ft_strjoin(err_var, err_stat);
 	while (data.my_env[j])
 	{
 		spl = ft_split(data.my_env[j], '=');

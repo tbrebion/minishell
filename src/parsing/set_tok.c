@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 18:03:10 by flcarval          #+#    #+#             */
-/*   Updated: 2022/06/24 12:17:13 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/06/27 15:57:12 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ static void	set_simple(char *str, int *i, t_tok *tok);
 static void	set_redir(char *str, int *i, t_tok *tok);
 static void	set_lit(char *str, int *i, t_tok *tok);
 static void	set_quotes(char *str, int *i, t_tok *tok);
+static void	set_q_to_l(t_tok *tok);
 
 t_tok	*set_tok(char *str, int *i)
 {
@@ -84,7 +85,7 @@ static void	set_quotes(char *str, int *i, t_tok *tok)
 
 	// tok.val = str up to SQ or DQ (w/o quotes)
 	len = 0;
-	while (str[len + *i] && identify_tok(str[len + *i]) != tok->type)
+	while (str[len + *i + 1] && identify_tok(str[len + *i + 1]) != tok->type)
 		len++;
 	tok->val = malloc(sizeof(char) * (len + *i) + 1);
 	if (!tok->val)
@@ -97,6 +98,7 @@ static void	set_quotes(char *str, int *i, t_tok *tok)
 	}
 	tok->val[len - 1] = '\0';
 	*i += len + 1;
+	set_q_to_l(tok);
 }
 
 static void	set_redir(char *str, int *i, t_tok *tok)
@@ -123,4 +125,13 @@ static void	set_redir(char *str, int *i, t_tok *tok)
 			tok->val = ft_strdup("<");
 		*i += ft_strlen(tok->val);
 	}
+}
+
+
+static void	set_q_to_l(t_tok *tok)
+{
+
+	if (tok->type != I_S_QUOTE)	
+		tok->val = expand_str(tok->val);
+	tok->type = I_LITERAL;
 }

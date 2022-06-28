@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 13:30:45 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/23 16:36:46 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/06/25 15:41:41 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,40 +57,7 @@ static void	execute_for_pipe(int i)
 	if (execve(path, cmd, data.my_env) == -1)
 		exit(130);
 }
-/*
-static void	child_process(int i)
-{
-	int	pid;
-	// int status;
-	int	fd[2];
 
-	if (pipe(fd) == -1)
-		return ;
-	pid = fork();
-	if (pid == -1)
-		return ;
-	if (pid == 0)
-	{
-		close(fd[0]);
-		dup2(fd[1], STDOUT_FILENO);
-		// redir_manager(&data);
-		// if (is_builtin(data.lst->content->val) == 0)
-		execute_for_pipe(i);
-		// else
-			// builtin_manager(i);
-		exit(0);
-	}
-	else
-	{
-		dup2(fd[0], STDIN_FILENO);
-		close(fd[1]);
-		wait(0);
-		// redir_manager(&data);
-		// waitpid(-1, &status, 0);
-		// data.error_status = WEXITSTATUS(status);
-	}
-}
-*/
 void	pipe_cmd(void)
 {
 	// int		i;

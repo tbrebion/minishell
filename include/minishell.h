@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 12:24:08 by flcarval          #+#    #+#             */
-/*   Updated: 2022/06/24 11:49:32 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/06/28 10:34:59 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ extern t_data	data;
 void	init_env(/*t_data *data, */char **envp);
 char	**get_path(char **my_env);
 void 	init_in_loop(void);
-void 	init_out_loop(void);
+void 	init_out_loop(char **envp);
 
 // FIND PATH TO EXEC
 char	*find_path(char *cmd, char **my_paths);
@@ -122,6 +122,8 @@ void	pipe_cmd(void);
 int		only_white_space(void);
 void	free_split(char **spl);
 int		ft_strcmp(char *a, char *b);
+char	*ft_strndup(char *s1, int n);
+char	*expand_str(char *str);
 
 // BUILTINS
 int		is_builtin(char *cmd);

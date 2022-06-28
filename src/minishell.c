@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:19:38 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/25 14:44:24 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/06/28 11:05:48 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,7 @@ static void	void_args(int ac, char **av)
 int main(int ac, char **av, char **envp)
 {
 	void_args(ac, av);
-	data.is_env = 1;
-	init_env(envp);
-	init_out_loop();
+	init_out_loop(envp);
 	while (1)
 	{
 		set_error_env();

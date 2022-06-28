@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 12:25:02 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/20 09:13:08 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/06/28 14:27:21 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,11 @@ void	init_env(char **envp)
 	data.my_env = ft_calloc(4096, sizeof(char *));
 	if (!data.my_env)
 		exit_shell(data.my_env);
+	ft_printf("envp address = %p\n", &envp);
 	if (!(*envp))
 	{
 		data.is_env = 0;
+		exit(0);
 		return ;
 	}
 	i = 0;

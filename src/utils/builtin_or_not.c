@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 13:19:02 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/28 10:50:30 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/06/28 12:20:20 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	builtin_or_not(void)
 		}
 		else
 		{
+			ft_printf("is env : %d\n", data.my_env);
 			ignore_sig();
 			data.pid = fork();
 			if (data.pid == 0)

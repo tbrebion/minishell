@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 13:37:33 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/05/23 14:02:43 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/07/03 15:55:39 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	print_env(char **my_env)
 	int	i;
 
 	i = 0;
-	while(my_env[i])
+	while (my_env[i])
 	{
 		ft_printf("%s\n", my_env[i]);
 		i++;

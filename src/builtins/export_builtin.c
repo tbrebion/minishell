@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 09:58:04 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/25 14:18:26 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/07/03 15:54:24 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	set_var(char *exp);
 static char	*remove_plus(char *exp);
 static int	exp_check(char *exp);
 
-void	export_varenv(/*t_data *data, */int i)
+void	export_varenv(int i)
 {
 	int		j;
 	char	**spl;
@@ -127,7 +127,7 @@ static char	*remove_plus(char *exp)
 	i = 0;
 	while (exp[i])
 	{
-		if (exp[i] == '+' /*&& exp[i + 1] == '='*/)
+		if (exp[i] == '+')
 		{
 			if (!exp[i + 1])
 			{
@@ -136,7 +136,7 @@ static char	*remove_plus(char *exp)
 			}
 			while (exp[i])
 			{
-				exp[i]= exp[i + 1];
+				exp[i] = exp[i + 1];
 				i++;
 			}
 			return (exp);

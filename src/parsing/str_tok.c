@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 16:51:49 by flcarval          #+#    #+#             */
-/*   Updated: 2022/07/03 15:27:36 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/07/03 16:00:47 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@ t_list	**str_tok(char *str)
 // 	while (lst)
 // 	{
 // 	/////////////////////////////////////////
-// 		ft_printf("tok.type = %d\ttok.val = %s\n", lst->content->type, lst->content->val);
+// 		ft_printf("tok.type = %d\ttok.val = %s\n"
+// , lst->content->type, lst->content->val);
 // 	/////////////////////////////////////////
 // 		prev = lst;
 // 		lst = lst->next;

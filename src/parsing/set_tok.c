@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 18:03:10 by flcarval          #+#    #+#             */
-/*   Updated: 2022/06/27 15:57:12 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/07/03 16:02:50 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,6 @@ t_tok	*set_tok(char *str, int *i)
 		set_quotes(str, i, tok);
 	else
 		set_simple(str, i, tok);
-	/////////////////////////////////////////
-	// ft_printf("tok->val = %s\n", tok->val);
-	// ft_printf("tok->type = %d\n", tok->type);
-	/////////////////////////////////////////
 	return (tok);
 }
 
@@ -61,7 +57,6 @@ static void	set_lit(char *str, int *i, t_tok *tok)
 
 	if (tok->type == I_LITERAL)
 	{
-		// tok.val = str up to a non-literal char
 		len = 0;
 		while (str[len + *i] && identify_tok(str[len + *i]) == I_LITERAL)
 			len++;
@@ -83,14 +78,13 @@ static void	set_quotes(char *str, int *i, t_tok *tok)
 {
 	int	len;
 
-	// tok.val = str up to SQ or DQ (w/o quotes)
 	len = 0;
 	while (str[len + *i + 1] && identify_tok(str[len + *i + 1]) != tok->type)
 		len++;
 	tok->val = malloc(sizeof(char) * (len + *i) + 1);
 	if (!tok->val)
 		return ;
-	len = 1;	// to skip first char (that is a quote)
+	len = 1;
 	while (str[len + *i] && identify_tok(str[len + *i]) != tok->type)
 	{
 		tok->val[len - 1] = str[len + *i];
@@ -127,11 +121,9 @@ static void	set_redir(char *str, int *i, t_tok *tok)
 	}
 }
 
-
 static void	set_q_to_l(t_tok *tok)
 {
-
-	if (tok->type != I_S_QUOTE)	
+	if (tok->type != I_S_QUOTE)
 		tok->val = expand_str(tok->val);
 	tok->type = I_LITERAL;
 }

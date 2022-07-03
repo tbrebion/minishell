@@ -6,13 +6,13 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:33:36 by flcarval          #+#    #+#             */
-/*   Updated: 2022/06/24 13:35:46 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/07/03 15:52:39 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-void	unset_builtin(/*t_data *data, */int i)
+void	unset_builtin(int i)
 {
 	int		j;
 	char	**spl;

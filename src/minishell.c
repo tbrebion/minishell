@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:19:38 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/07/01 13:55:57 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/07/03 14:34:57 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int main(int ac, char **av, char **envp)
 		if (quotes_not_close() == 1)
 		{
 			ft_putstr_fd("quotes error\n", 0);
+			free_loop();
 			continue ;
 		}
 		exit_builtin();

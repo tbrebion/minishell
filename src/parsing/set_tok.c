@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_tok.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 18:03:10 by flcarval          #+#    #+#             */
-/*   Updated: 2022/07/03 16:02:50 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/07/03 22:02:25 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,13 @@ static void	set_quotes(char *str, int *i, t_tok *tok)
 	}
 	tok->val[len - 1] = '\0';
 	*i += len + 1;
+	///////////////////
+	// ft_printf("BEFORE : tok.val = %s\n", tok->val);
+	///////////////////
 	set_q_to_l(tok);
+	///////////////////
+	// ft_printf("AFTER : tok.val = %s\n", tok->val);
+	///////////////////
 }
 
 static void	set_redir(char *str, int *i, t_tok *tok)

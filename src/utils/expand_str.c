@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand_str.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 14:42:14 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/07/03 15:48:53 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/07/03 22:02:06 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,17 +38,26 @@ static char	*expand_str_supply(char *str)
 	char	*tmp;
 	char	*ret;
 	char	*res;
+	char	*end;
 
 	i = 0;
 	while (str[i] && str[i] != '$')
 		i++;
 	if (!str[i])
 		return (NULL);
+	end = ft_strdup(&str[i + env_len(&str[i])]);
+	////////////////////////
+	// ft_printf("[expand_str_supply] : end = [%s]\n", end);
+	////////////////////////
 	res = ft_strndup(str, i);
 	tmp = ft_strndup(&str[i], env_len(&str[i]));
 	ret = catch_env_var(tmp);
 	res = ft_strjoin(res, ret);
+	res = ft_strjoin(res, end);
 	free(tmp);
+	//////////////////////
+	// ft_printf("\n[expand_str_supply] = %s\n\n", res);
+	//////////////////////
 	return (res);
 }
 

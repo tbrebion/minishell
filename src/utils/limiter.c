@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 11:02:39 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/21 12:21:07 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/07/01 12:27:57 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,13 @@ void	here_doc(void)
 	pid_t	pid1;
 	int		status;
 
+	if (!data.lst->next)
+	{
+		ft_putstr_fd("syntax error\n", 0);
+		data.error_status = 2;
+		exit(data.error_status);
+		return ;
+	}
 	ignore_sig();
 	pid1 = fork();
 	if (pid1 == 0)

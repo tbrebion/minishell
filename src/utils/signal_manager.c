@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 12:14:37 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/28 10:59:31 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/06/28 14:55:51 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	ctrld_handler(char *input)
 {
 	if (input == NULL)
 	{
+		ft_putstr_fd("exit", 0);
 		if (data.my_env)
 			free_split(data.my_env);
 		if (data.previous_dir)

@@ -1,44 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   builtin_or_not.c                                   :+:      :+:    :+:   */
+/*   quotes_not_close.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/03 13:19:02 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/07/03 14:20:49 by tbrebion         ###   ########.fr       */
+/*   Created: 2022/07/01 12:28:54 by tbrebion          #+#    #+#             */
+/*   Updated: 2022/07/03 14:53:48 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-void	builtin_or_not(void)
+int	quotes_not_close(void)
 {
-	int	status;
+	int		i;
 
-	if (data.lst)
+	i = 0;
+	while (data.input[i])
 	{
-		if (data.is_env == 0)
+		if (data.input[i] == '\'')
 		{
-			builtin_manager(0);
-			return ;
+			i++;
+			while (data.input[i] && data.input[i] != '\'')
+				i++;
+			if (data.input[i] != '\'')
+				return (1);
 		}
-		else
+		if (data.input[i] == '\"')
 		{
-			ignore_sig();
-			data.pid = fork();
-			if (data.pid == 0)
-			{
-				reinit_sig();
-				redir_manager(&data);
-				if (is_builtin(data.lst->content->val) == 0)
-						execute(0);
-				else
-					builtin_manager(0);
-				exit(0);
-			}
-			waitpid(-1, &status, 0);
-			data.error_status = WEXITSTATUS(status);
+			i++;
+			while (data.input[i] && data.input[i] != '\"')
+				i++;
+			if (data.input[i] != '\"')
+				return (1);
 		}
+		i++;
 	}
+	return (0);
 }

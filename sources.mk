@@ -32,6 +32,7 @@ SOURCES		+=                         		\
 		src/utils/ft_strcmp.c 				\
 		src/utils/ft_strndup.c 				\
 		src/utils/expand_str.c 				\
+		src/utils/quotes_not_close.c		\
 
 ## SRC/BUILTINS ##
 

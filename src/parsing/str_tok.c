@@ -6,16 +6,15 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 16:51:49 by flcarval          #+#    #+#             */
-/*   Updated: 2022/06/20 14:31:15 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/07/03 15:27:36 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-t_list	**str_tok(char *str/*, t_data *data*/)
+t_list	**str_tok(char *str)
 {
 	t_list	**Tokens;
-	// t_tok	*tmp;
 	int		i;
 
 	Tokens = malloc(sizeof(t_list *));
@@ -25,9 +24,8 @@ t_list	**str_tok(char *str/*, t_data *data*/)
 	i = 0;
 	while (str[i])
 	{
-		// tmp = set_tok(str, &i);
 		if (identify_tok(str[i]) != I_SPACE)
-			ft_lstadd_back(Tokens, ft_lstnew((t_tok *)set_tok(str, &i)/*tmp*/)); ////////////////////////////////// le retour de set_tok peut pas etre free 
+			ft_lstadd_back(Tokens, ft_lstnew((t_tok *)set_tok(str, &i)));
 		else
 			i++;
 	}

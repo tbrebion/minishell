@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 09:51:29 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/13 10:58:00 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/07/03 15:55:06 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	is_builtin(char *cmd)
 	exit = ft_strncmp(cmd, "exit", 4);
 	error_status = ft_strncmp(cmd, "$?", 2);
 	if (echo == 0 || cd == 0 || pwd == 0 || export == 0 || unset == 0
-	|| env == 0 || exit == 0 || error_status == 0)
+		|| env == 0 || exit == 0 || error_status == 0)
 		return (1);
 	return (0);
 }

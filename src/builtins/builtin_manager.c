@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 11:19:52 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/20 16:50:11 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/07/03 15:57:16 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	is_unset(void)
 	return (1);
 }
 
-void	builtin_manager(/*t_data *data, */int i)
+void	builtin_manager(int i)
 {
 	if ((size_t)(ft_strncmp(get_n_lst(data.Tokens, i)->content->val, "env", 4) == 0) && !(get_n_lst(data.Tokens, i + 1)))
 		print_env(data.my_env);
@@ -65,7 +65,7 @@ void	builtin_manager(/*t_data *data, */int i)
 	if ((size_t)(ft_strncmp(get_n_lst(data.Tokens, i)->content->val, "pwd", 4) == 0))
 		print_cwd();
 	if ((size_t)(ft_strncmp(get_n_lst(data.Tokens, i)->content->val, "echo", 5) == 0))
-		echo_builtin(/*data, */i);
+		echo_builtin(i);
 	if ((size_t)(ft_strncmp(get_n_lst(data.Tokens, i)->content->val, "$?", 3) == 0))
 		put_error_status();
 	free_loop();

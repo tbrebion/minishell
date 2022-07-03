@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 13:19:02 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/28 10:50:30 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/07/03 15:46:04 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	builtin_or_not(void)
 				reinit_sig();
 				redir_manager(&data);
 				if (is_builtin(data.lst->content->val) == 0)
-						execute(0);
+					execute(0);
 				else
 					builtin_manager(0);
 				exit(0);

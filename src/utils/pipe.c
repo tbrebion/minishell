@@ -6,46 +6,24 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 13:30:45 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/25 15:41:41 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/07/03 15:51:37 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-/*static int	nb_cmd_to_exec(void)
-{
-	int	nb;
-
-	nb = 0;
-	while (data.all_cmd[nb])
-		nb++;
-	return (nb);
-}*/
-
 static void	execute_for_pipe(int i)
 {
 	int		j;
-	// char	*tmp;
 	char	**cmd;
 	char	**paths;
 	char	*path;
 
 	j = -1;
-	/*tmp = ft_strdup("");
-	while (get_n_lst(data.Tokens, i + j) && \
-		get_n_lst(data.Tokens, i + j)->content->type == I_LITERAL)
-	{
-		if (j)
-			tmp = ft_strjoin(tmp, " ");
-		tmp = ft_strjoin(tmp, get_n_lst(data.Tokens, i + j)->content->val);
-		j++;
-	}*/
 	cmd = ft_split(data.all_cmd[i], ' ');
 
-	// free(tmp);
 	paths = get_path(data.my_env);
 	path = find_path(cmd[0], paths);
-	// j = -1;
 	if (!path)
 	{
 		while (cmd[++j])
@@ -60,7 +38,6 @@ static void	execute_for_pipe(int i)
 
 void	pipe_cmd(void)
 {
-	// int		i;
 	pid_t	pid;
 	int		fd[2];
 	int		status;
@@ -83,11 +60,4 @@ void	pipe_cmd(void)
 	waitpid(-1, &status, 0);
 	data.error_status = WEXITSTATUS(status);
 	exit(data.error_status);
-	// i = -1;
-	// while (++i < 2)
-	// {
-	// 	child_process(i);
-	// 	execute_for_pipe(i);
-	// 	waitpid(-1, &status, 0);
-	// }
 }

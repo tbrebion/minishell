@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:19:38 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/07/03 14:34:57 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/07/03 15:59:26 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	void_args(int ac, char **av)
 	(void)av;
 }
 
-int main(int ac, char **av, char **envp)
+int	main(int ac, char **av, char **envp)
 {
 	void_args(ac, av);
 	init_out_loop(envp);
@@ -30,7 +30,7 @@ int main(int ac, char **av, char **envp)
 		init_sig();
 		data.input = readline("MY_PROMPT>> ");
 		ctrld_handler(data.input);
-		if(!data.input[0] || only_white_space() == 1)
+		if (!data.input[0] || only_white_space() == 1)
 			continue ;
 		init_in_loop();
 		if (quotes_not_close() == 1)
@@ -53,4 +53,5 @@ int main(int ac, char **av, char **envp)
 	return (0);
 }
 
-/*"🚭\e[0m \e[1;31m\e[3;43m minishell \e[0m  \e[1;36mLamala \e[5;33m⚡\e[0m \e[1;30mChoZeur 🏁\e[0m "*/
+/*"🚭\e[0m \e[1;31m\e[3;43m minishell \e[0m  
+\e[1;36mLamala \e[5;33m⚡\e[0m \e[1;30mChoZeur 🏁\e[0m "*/

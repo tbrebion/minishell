@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 14:42:14 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/07/03 15:33:18 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/07/03 15:48:53 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static char	*expand_str_supply(char *str)
 		i++;
 	if (!str[i])
 		return (NULL);
-	res = ft_strndup(str, i);	
+	res = ft_strndup(str, i);
 	tmp = ft_strndup(&str[i], env_len(&str[i]));
 	ret = catch_env_var(tmp);
 	res = ft_strjoin(res, ret);

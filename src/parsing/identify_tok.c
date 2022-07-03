@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   identify_tok.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 18:04:09 by flcarval          #+#    #+#             */
-/*   Updated: 2022/05/16 18:04:44 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/07/03 16:00:16 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	identify_tok(char c)
 {
-	// added tabs to I_SPACE type
 	if (c == ' ' || c == '\t')
 		return (I_SPACE);
 	else if (c == '>')

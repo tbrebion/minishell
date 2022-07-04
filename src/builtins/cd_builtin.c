@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 11:27:23 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/07/04 11:12:25 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/07/04 16:22:55 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	cd_home(char *home, char *cwd, char *tmp);
 static void	cd_previous(void);
-static int	cd_error(char *home, int i);
+static int	cd_error(char *home, int i, char *tmp);
 
 int	cd_builtin(int i)
 {
@@ -34,7 +34,7 @@ int	cd_builtin(int i)
 	else if (!ft_strncmp(get_n_lst(data.Tokens, i + 1)->content->val, "-", 2))
 		cd_previous();
 	else if (chdir(get_n_lst(data.Tokens, i + 1)->content->val) == -1)
-		return (cd_error(home, i));
+		return (cd_error(home, i, tmp));
 	if (data.previous_dir)
 		free(data.previous_dir);
 	data.previous_dir = ft_strdup(tmp);
@@ -68,10 +68,11 @@ static void	cd_previous(void)
 	print_cwd();
 }
 
-static int	cd_error(char *home, int i)
+static int	cd_error(char *home, int i, char *tmp)
 {
 	perror(get_n_lst(data.Tokens, i + 1)->content->val);
 	data.error_status = 1;
 	free(home);
+	free(tmp);
 	return (0);
 }

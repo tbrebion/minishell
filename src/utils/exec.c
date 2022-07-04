@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   exec.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 09:45:14 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/21 10:42:27 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/07/04 16:15:05 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
+
+static void	execute_supply(char *path, char **cmd);
 
 char	*find_path(char *cmd, char **my_paths)
 {
@@ -61,12 +63,14 @@ void	execute(int i)
 	free(tmp);
 	paths = get_path(data.my_env);
 	path = find_path(cmd[0], paths);
-	j = -1;
+	execute_supply(path, cmd);
+}
+
+static void	execute_supply(char *path, char **cmd)
+{
 	if (!path)
 	{
-		while (cmd[++j])
-			free(cmd[j]);
-		free(cmd);
+		free_split(cmd);
 		exit(127);
 	}
 	data.error_status = 0;

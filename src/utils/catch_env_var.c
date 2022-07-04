@@ -3,21 +3,49 @@
 /*                                                        :::      ::::::::   */
 /*   catch_env_var.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 15:25:04 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/21 10:35:26 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/07/04 15:49:55 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
+static char	*catch_supply(char *input, char **tab, int *i, int *j);
+static char	*return_catched(char **tab, char *ret, int i);
+
+char	*catch_env_var(char *input)
+{
+	char	*ret;
+	char	**tab;
+	int		i;
+	int		j;
+
+	i = 0;
+	j = -1;
+	tab = NULL;
+	if (ft_strlen(input) == 1)
+		return (NULL);
+	while (data.my_env[i] && !(ft_strnstr(data.my_env[i], \
+		input + 1, ft_strlen(input) - 1)))
+		i++;
+	if (!data.my_env[i] && input[0] != '$')
+		return (NULL);
+	if (!data.my_env[i] && input[0] == '$')
+	{
+		ret = ft_strdup("\0");
+		return (ret);
+	}
+	ret = catch_supply(input, tab, &i, &j);
+	return (return_catched(tab, ret, i));
+}
+
 static char	*catch_supply(char *input, char **tab, int *i, int *j)
 {
 	char	*ret;
-	int		k;
 
-	k = -1;
+	ret = NULL;
 	if (data.my_env[*i])
 	{
 		tab = ft_split(data.my_env[*i], '=');
@@ -37,41 +65,14 @@ static char	*catch_supply(char *input, char **tab, int *i, int *j)
 	while (ret[*i] != '=')
 		(*i)++;
 	(*i)++;
-	while (tab[++k])
-		free(tab[k]);
-	free(tab);
+	free_split(tab);
 	return (ret);
 }
 
-char	*catch_env_var(char *input)
+static char	*return_catched(char **tab, char *ret, int i)
 {
-	char	*ret;
-	char	**tab;
-	int		i;
-	int		j;
-
-	i = 0;
-	j = -1;
-	tab = NULL;
-	if (ft_strlen(input) == 1)
-		return (NULL);
-	while (data.my_env[i] && !(ft_strnstr(data.my_env[i], \
-	input + 1, ft_strlen(input) - 1)))
-		i++;
-	if (!data.my_env[i] && input[0] != '$')
-		return (NULL);
-	if (!data.my_env[i] && input[0] == '$')
-	{
-		ret = ft_strdup("\0");
-		return (ret);
-	}
-	ret = catch_supply(input, tab, &i, &j);
 	if (tab)
-	{
-		while (tab[++j])
-			free(tab[j]);
-		free(tab);
-	}
+		free_split(tab);
 	if (ret == NULL)
 		return (NULL);
 	return (ret + i);

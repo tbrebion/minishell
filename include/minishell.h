@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 12:24:08 by flcarval          #+#    #+#             */
-/*   Updated: 2022/07/04 11:51:21 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/07/04 14:03:55 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,6 +148,11 @@ int		is_al_set(char *exp);
 t_list	**str_tok(char *str/*, t_data *data*/);
 int		identify_tok(char c);
 t_tok	*set_tok(char *str, int *i);
+void	set_simple(char *str, int *i, t_tok *tok);
+void	set_redir(char *str, int *i, t_tok *tok);
+void	set_lit(char *str, int *i, t_tok *tok);
+void	set_quotes(char *str, int *i, t_tok *tok);
+void	set_q_to_l(t_tok *tok);
 // char	**tok_to_cli(t_list **Tokens, int tok_nb);
 
 //	REDIR

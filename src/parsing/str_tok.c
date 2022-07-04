@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   str_tok.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 16:51:49 by flcarval          #+#    #+#             */
-/*   Updated: 2022/07/03 16:00:47 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/07/04 14:00:14 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,44 +14,21 @@
 
 t_list	**str_tok(char *str)
 {
-	t_list	**Tokens;
+	t_list	**tokens;
 	int		i;
 
-	Tokens = malloc(sizeof(t_list *));
-	if (!Tokens)
+	tokens = malloc(sizeof(t_list *));
+	if (!tokens)
 		return (NULL);
-	*Tokens = NULL;
+	*tokens = NULL;
 	i = 0;
 	while (str[i])
 	{
 		if (identify_tok(str[i]) != I_SPACE)
-			ft_lstadd_back(Tokens, ft_lstnew((t_tok *)set_tok(str, &i)));
+			ft_lstadd_back(tokens, ft_lstnew((t_tok *)set_tok(str, &i)));
 		else
 			i++;
 	}
-	data.tok_nb = ft_lstsize(*Tokens);
-	return (Tokens);
+	data.tok_nb = ft_lstsize(*tokens);
+	return (tokens);
 }
-
-// int	main(int ac, char **av)
-// {
-// 	t_list	**Tokens;
-// 	t_list	*lst;
-// 	t_list	*prev;
-
-// 	(void)ac;
-// 	Tokens = str_tok(av[1]);
-// 	lst = *Tokens;
-// 	while (lst)
-// 	{
-// 	/////////////////////////////////////////
-// 		ft_printf("tok.type = %d\ttok.val = %s\n"
-// , lst->content->type, lst->content->val);
-// 	/////////////////////////////////////////
-// 		prev = lst;
-// 		lst = lst->next;
-// 		free(prev->content->val);
-// 		free(prev);
-// 	}
-// 	return (0);
-// }

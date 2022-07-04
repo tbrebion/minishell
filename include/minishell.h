@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 12:24:08 by flcarval          #+#    #+#             */
-/*   Updated: 2022/07/01 13:53:38 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/07/04 10:43:16 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,7 +133,7 @@ void	print_cwd(void);
 void	exit_shell(char **my_env);
 void	print_env(char **my_env);
 int		echo_builtin(/*t_data *data, */int i);
-void	cd_builtin(/*t_data *data, */int i);
+int	cd_builtin(/*t_data *data, */int i);
 void	export_varenv(/*t_data *data, */int i);
 void	unset_builtin(/*t_data *data, */int i);
 void	exit_builtin(void);

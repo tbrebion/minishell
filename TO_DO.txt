@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-CE QUI NE MARCHE PAS : 
+CE QUI NE MARCHE PAS :
 
 • Gérer ’ (single quote) qui doit empêcher le shell d’interpréter les méta-caractères
 présents dans la séquence entre guillemets.
@@ -21,3 +21,5 @@ est connectée à l’entrée de la commande suivante grâce à un pipe.
 • export without args --> but his result is unspecified (see man export)
 
 • export +=
+
+• gestion des expand dans cd

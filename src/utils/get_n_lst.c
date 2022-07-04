@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   get_n_lst.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 11:54:47 by flcarval          #+#    #+#             */
-/*   Updated: 2022/06/07 16:14:51 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/07/04 16:57:23 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-t_list	*get_n_lst(t_list **Tokens, int n)
+t_list	*get_n_lst(t_list **tokens, int n)
 {
 	t_list	*lst;
 
-	lst = *Tokens;
+	lst = *tokens;
 	while (lst && n)
 	{
 		lst = lst->next;

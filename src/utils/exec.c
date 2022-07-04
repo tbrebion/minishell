@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 09:45:14 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/07/04 16:48:45 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/07/04 16:57:23 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,12 @@ void	execute(int i)
 
 	j = 0;
 	tmp = ft_strdup("");
-	while (get_n_lst(g_data.Tokens, i + j) && \
-		get_n_lst(g_data.Tokens, i + j)->content->type == I_LITERAL)
+	while (get_n_lst(g_data.tokens, i + j) && \
+		get_n_lst(g_data.tokens, i + j)->content->type == I_LITERAL)
 	{
 		if (j)
 			tmp = ft_strjoin(tmp, " ");
-		tmp = ft_strjoin(tmp, get_n_lst(g_data.Tokens, i + j)->content->val);
+		tmp = ft_strjoin(tmp, get_n_lst(g_data.tokens, i + j)->content->val);
 		j++;
 	}
 	cmd = ft_split(tmp, ' ');

@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 12:24:08 by flcarval          #+#    #+#             */
-/*   Updated: 2022/07/04 16:49:06 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/07/04 16:58:19 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,43 +37,14 @@
 # define I_S_QUOTE 600
 # define I_D_QUOTE 700
 
-# define DEBUG ft_printf("debug\n");
-
-// typedef struct s_tok
-// {
-// 	char			*val;
-// 	int				type;
-// }	t_tok;
-
-// extern char	*g_data.input;
-
-//static struct termios orig_termios;
-/*
-typedef struct s_cmd
-{
-	char	**av;
-	t_tok	*redir;
-}	t_cmd;
-
-typedef struct s_pipe
-{
-	t_cmd	*left;
-	t_cmd	*right;
-}	t_pipe;
-*/
-/*
-typedef struct cmd_line
-{
-	char			*cmd;
-	struct cmd_line	*next;
-}	t_cmd_line;*/
+// # define DEBUG ft_printf("debug\n");
 
 typedef struct s_g_data
 {
 	int		tok_nb;
-	t_list	**Tokens;
+	t_list	**tokens;
 	char	**my_env;
-	char	**Cli;
+	char	**cli;
 	t_list	*lst;
 	int		error_status;
 	char	*previous_dir;
@@ -83,7 +54,7 @@ typedef struct s_g_data
 	int		is_env;
 }	t_data;
 
-typedef struct	s_directory
+typedef struct s_directory
 {
 	char	*cwd;
 	char	*home;
@@ -92,27 +63,22 @@ typedef struct	s_directory
 }	t_directory;
 
 extern t_data	g_data;
-//t_data	* g_data;
 
-//char	*display_prompt(char **my_env);
-
-// INIT ENV AND ALL PATHS
-void	init_env(/*t_data *g_data, */char **envp);
+void	init_env(char **envp);
 char	**get_path(char **my_env);
-void 	init_in_loop(void);
-void 	init_out_loop(char **envp);
+void	init_in_loop(void);
+void	init_out_loop(char **envp);
 
 // FIND PATH TO EXEC
 char	*find_path(char *cmd, char **my_paths);
 void	execute(int i);
-// void	execute_for_pipe(int i);
 
 // UTILS
 char	*stradd_char(char *str, char c);
 char	*catch_user(char **my_env);
-char	*catch_env_var(char *input/*, t_data *g_data*/);
+char	*catch_env_var(char *input);
 int		ft_max(int a, int b);
-t_list	*get_n_lst(t_list **Tokens, int n);
+t_list	*get_n_lst(t_list **tokens, int n);
 void	free_loop(void);
 void	set_error_env(void);
 void	put_error_status(void);
@@ -128,14 +94,14 @@ int		quotes_not_close(void);
 
 // BUILTINS
 int		is_builtin(char *cmd);
-void	builtin_manager(/*t_data *g_data, */int i);
+void	builtin_manager(int i);
 void	print_cwd(void);
 void	exit_shell(char **my_env);
 void	print_env(char **my_env);
-int		echo_builtin(/*t_data *g_data, */int i);
-int		cd_builtin(/*t_data *g_data, */int i);
-void	export_varenv(/*t_data *g_data, */int i);
-void	unset_builtin(/*t_data *g_data, */int i);
+int		echo_builtin(int i);
+int		cd_builtin(int i);
+void	export_varenv(int i);
+void	unset_builtin(int i);
 void	exit_builtin(void);
 int		is_cd(void);
 int		is_export(void);
@@ -145,7 +111,7 @@ void	set_var(char *exp);
 int		is_al_set(char *exp);
 
 // PARSING
-t_list	**str_tok(char *str/*, t_data *g_data*/);
+t_list	**str_tok(char *str);
 int		identify_tok(char c);
 t_tok	*set_tok(char *str, int *i);
 void	set_simple(char *str, int *i, t_tok *tok);
@@ -153,10 +119,9 @@ void	set_redir(char *str, int *i, t_tok *tok);
 void	set_lit(char *str, int *i, t_tok *tok);
 void	set_quotes(char *str, int *i, t_tok *tok);
 void	set_q_to_l(t_tok *tok);
-// char	**tok_to_cli(t_list **Tokens, int tok_nb);
 
 //	REDIR
-void	redir_manager(/*t_data *g_data*/);
+void	redir_manager(void);
 void	redir_out(char *str);
 void	redir_out_append(char *str);
 void	redir_in(char *str);
@@ -170,12 +135,5 @@ void	interrupt_cmd(int signo);
 void	init_sig(void);
 void	reinit_sig(void);
 void	ignore_sig(void);
-
-//	 RAW MODE
-/*
-void disableRawMode(void);
-void tty_raw_mode(void);
-*/
-//int	ft_sig_state(int *status, int get);
 
 #endif

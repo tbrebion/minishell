@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 13:30:45 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/07/04 16:48:45 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/07/04 16:55:47 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,14 +46,14 @@ void	pipe_cmd(void)
 	{
 		dup2(fd[1], STDOUT_FILENO);
 		close(fd[0]);
-		redir_manager(&g_data);
+		redir_manager();
 		execute_for_pipe(1);
 	}
 	else
 	{
 		dup2(fd[0], STDIN_FILENO);
 		close(fd[1]);
-		redir_manager(&g_data);
+		redir_manager();
 		execute_for_pipe(0);
 	}
 	waitpid(-1, &status, 0);

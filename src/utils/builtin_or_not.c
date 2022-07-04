@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 13:19:02 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/07/04 16:48:45 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/07/04 16:55:37 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static void	builtin_or_not_supply(int *status)
 	if (g_data.pid == 0)
 	{
 		reinit_sig();
-		redir_manager(&g_data);
+		redir_manager();
 		if (is_builtin(g_data.lst->content->val) == 0)
 			execute(0);
 		else

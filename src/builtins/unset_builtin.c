@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   unset_builtin.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:33:36 by flcarval          #+#    #+#             */
-/*   Updated: 2022/07/03 15:52:39 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/07/04 11:46:34 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void	unset_builtin(int i)
 	char	*var;
 
 	j = 0;
-	spl = NULL;
 	if (!get_n_lst(data.Tokens, i + 1))
 		return ;
 	var = get_n_lst(data.Tokens, i + 1)->content->val;

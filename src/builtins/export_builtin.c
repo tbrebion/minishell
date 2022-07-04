@@ -3,19 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   export_builtin.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 09:58:04 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/07/03 15:54:24 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/07/04 11:52:25 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
 static int	is_add(char *exp);
-static int	is_al_set(char *exp);
-static void	add_var(char *exp);
-static void	set_var(char *exp);
+int			is_al_set(char *exp);
 static char	*remove_plus(char *exp);
 static int	exp_check(char *exp);
 
@@ -61,7 +59,7 @@ static int	is_add(char *exp)
 	return (-1);
 }
 
-static int	is_al_set(char *exp)
+int	is_al_set(char *exp)
 {
 	int		i;
 	char	**spl;
@@ -83,41 +81,6 @@ static int	is_al_set(char *exp)
 	}
 	free_split(tmp);
 	return (-1);
-}
-
-static void	add_var(char *exp)
-{
-	int		i;
-	char	**tmp;
-
-	i = is_al_set(exp);
-	tmp = ft_split(exp, '=');
-	if (i == -1)
-	{
-		i = 0;
-		while (data.my_env[i])
-			i++;
-		data.my_env[i] = ft_strdup(exp);
-	}
-	else
-		data.my_env[i] = ft_strjoin(data.my_env[i], tmp[1]);
-	free_split(tmp);
-}
-
-static void	set_var(char *exp)
-{
-	int	i;
-
-	i = is_al_set(exp);
-	if (i == -1)
-	{
-		i = 0;
-		while (data.my_env[i])
-			i++;
-	}
-	if (data.my_env[i])
-		free(data.my_env[i]);
-	data.my_env[i] = ft_strdup(exp);
 }
 
 static char	*remove_plus(char *exp)

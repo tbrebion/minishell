@@ -46,6 +46,7 @@ SOURCES		+=                         		\
 		src/builtins/echo_builtin.c         \
 		src/builtins/export_builtin.c       \
 		src/builtins/unset_builtin.c       	\
+		src/builtins/export_supply.c       	\
 
 
 ## SRC/DISPLAY ##

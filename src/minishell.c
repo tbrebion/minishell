@@ -6,13 +6,13 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:19:38 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/07/04 16:43:57 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/07/04 16:49:06 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-t_data	data;
+t_data	g_data;
 
 static void	void_args(int ac, char **av);
 static void	main_loop(void);
@@ -22,7 +22,7 @@ int	main(int ac, char **av, char **envp)
 	void_args(ac, av);
 	init_out_loop(envp);
 	main_loop();
-	free_split(data.my_env);
+	free_split(g_data.my_env);
 	return (0);
 }
 
@@ -38,9 +38,9 @@ static void	main_loop(void)
 	{
 		set_error_env();
 		init_sig();
-		data.input = readline("MY_PROMPT>> ");
-		ctrld_handler(data.input);
-		if (!data.input[0] || only_white_space() == 1)
+		g_data.input = readline("MY_PROMPT>> ");
+		ctrld_handler(g_data.input);
+		if (!g_data.input[0] || only_white_space() == 1)
 			continue ;
 		init_in_loop();
 		if (quotes_not_close() == 1)

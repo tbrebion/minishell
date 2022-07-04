@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 12:24:08 by flcarval          #+#    #+#             */
-/*   Updated: 2022/07/04 14:03:55 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/07/04 16:49:06 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@
 // 	int				type;
 // }	t_tok;
 
-// extern char	*data.input;
+// extern char	*g_data.input;
 
 //static struct termios orig_termios;
 /*
@@ -68,7 +68,7 @@ typedef struct cmd_line
 	struct cmd_line	*next;
 }	t_cmd_line;*/
 
-typedef struct s_data
+typedef struct s_g_data
 {
 	int		tok_nb;
 	t_list	**Tokens;
@@ -91,13 +91,13 @@ typedef struct	s_directory
 	char	*tmp;
 }	t_directory;
 
-extern t_data	data;
-//t_data	* data;
+extern t_data	g_data;
+//t_data	* g_data;
 
 //char	*display_prompt(char **my_env);
 
 // INIT ENV AND ALL PATHS
-void	init_env(/*t_data *data, */char **envp);
+void	init_env(/*t_data *g_data, */char **envp);
 char	**get_path(char **my_env);
 void 	init_in_loop(void);
 void 	init_out_loop(char **envp);
@@ -110,7 +110,7 @@ void	execute(int i);
 // UTILS
 char	*stradd_char(char *str, char c);
 char	*catch_user(char **my_env);
-char	*catch_env_var(char *input/*, t_data *data*/);
+char	*catch_env_var(char *input/*, t_data *g_data*/);
 int		ft_max(int a, int b);
 t_list	*get_n_lst(t_list **Tokens, int n);
 void	free_loop(void);
@@ -128,14 +128,14 @@ int		quotes_not_close(void);
 
 // BUILTINS
 int		is_builtin(char *cmd);
-void	builtin_manager(/*t_data *data, */int i);
+void	builtin_manager(/*t_data *g_data, */int i);
 void	print_cwd(void);
 void	exit_shell(char **my_env);
 void	print_env(char **my_env);
-int		echo_builtin(/*t_data *data, */int i);
-int		cd_builtin(/*t_data *data, */int i);
-void	export_varenv(/*t_data *data, */int i);
-void	unset_builtin(/*t_data *data, */int i);
+int		echo_builtin(/*t_data *g_data, */int i);
+int		cd_builtin(/*t_data *g_data, */int i);
+void	export_varenv(/*t_data *g_data, */int i);
+void	unset_builtin(/*t_data *g_data, */int i);
 void	exit_builtin(void);
 int		is_cd(void);
 int		is_export(void);
@@ -145,7 +145,7 @@ void	set_var(char *exp);
 int		is_al_set(char *exp);
 
 // PARSING
-t_list	**str_tok(char *str/*, t_data *data*/);
+t_list	**str_tok(char *str/*, t_data *g_data*/);
 int		identify_tok(char c);
 t_tok	*set_tok(char *str, int *i);
 void	set_simple(char *str, int *i, t_tok *tok);
@@ -156,7 +156,7 @@ void	set_q_to_l(t_tok *tok);
 // char	**tok_to_cli(t_list **Tokens, int tok_nb);
 
 //	REDIR
-void	redir_manager(/*t_data *data*/);
+void	redir_manager(/*t_data *g_data*/);
 void	redir_out(char *str);
 void	redir_out_append(char *str);
 void	redir_in(char *str);

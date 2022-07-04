@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 09:45:14 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/07/04 16:15:05 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/07/04 16:48:45 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,17 +51,17 @@ void	execute(int i)
 
 	j = 0;
 	tmp = ft_strdup("");
-	while (get_n_lst(data.Tokens, i + j) && \
-		get_n_lst(data.Tokens, i + j)->content->type == I_LITERAL)
+	while (get_n_lst(g_data.Tokens, i + j) && \
+		get_n_lst(g_data.Tokens, i + j)->content->type == I_LITERAL)
 	{
 		if (j)
 			tmp = ft_strjoin(tmp, " ");
-		tmp = ft_strjoin(tmp, get_n_lst(data.Tokens, i + j)->content->val);
+		tmp = ft_strjoin(tmp, get_n_lst(g_data.Tokens, i + j)->content->val);
 		j++;
 	}
 	cmd = ft_split(tmp, ' ');
 	free(tmp);
-	paths = get_path(data.my_env);
+	paths = get_path(g_data.my_env);
 	path = find_path(cmd[0], paths);
 	execute_supply(path, cmd);
 }
@@ -73,7 +73,7 @@ static void	execute_supply(char *path, char **cmd)
 		free_split(cmd);
 		exit(127);
 	}
-	data.error_status = 0;
-	if (execve(path, cmd, data.my_env) == -1)
+	g_data.error_status = 0;
+	if (execve(path, cmd, g_data.my_env) == -1)
 		exit(130);
 }

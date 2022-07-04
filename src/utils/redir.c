@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redir.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 14:21:49 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/13 10:59:44 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/07/04 16:48:45 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	redir_in(char *str)
 	if (fd == -1)
 	{
 		perror(str);
-		data.error_status = 1;
+		g_data.error_status = 1;
 	}
 	dup2(fd, 0);
 	return ;

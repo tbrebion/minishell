@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   only_white_space.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 10:03:26 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/09 10:12:48 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/07/04 16:48:45 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ int	only_white_space(void)
 	int	i;
 
 	i = 0;
-	while (data.input[i])
+	while (g_data.input[i])
 	{
-		if (data.input[i] != ' ' && data.input[i] != '\t')
+		if (g_data.input[i] != ' ' && g_data.input[i] != '\t')
 			return (0);
 		i++;
 	}

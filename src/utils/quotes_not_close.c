@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   quotes_not_close.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 12:28:54 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/07/03 14:53:48 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/07/04 16:48:45 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,22 +17,22 @@ int	quotes_not_close(void)
 	int		i;
 
 	i = 0;
-	while (data.input[i])
+	while (g_data.input[i])
 	{
-		if (data.input[i] == '\'')
+		if (g_data.input[i] == '\'')
 		{
 			i++;
-			while (data.input[i] && data.input[i] != '\'')
+			while (g_data.input[i] && g_data.input[i] != '\'')
 				i++;
-			if (data.input[i] != '\'')
+			if (g_data.input[i] != '\'')
 				return (1);
 		}
-		if (data.input[i] == '\"')
+		if (g_data.input[i] == '\"')
 		{
 			i++;
-			while (data.input[i] && data.input[i] != '\"')
+			while (g_data.input[i] && g_data.input[i] != '\"')
 				i++;
-			if (data.input[i] != '\"')
+			if (g_data.input[i] != '\"')
 				return (1);
 		}
 		i++;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   signal_manager.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 12:14:37 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/28 14:55:51 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/07/04 16:48:45 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	sigint_handler(int signo)
 		rl_on_new_line();
 		rl_replace_line("", 0);
 		rl_redisplay();
-		data.error_status = 130;
+		g_data.error_status = 130;
 		set_error_env();
 	}
 }
@@ -36,10 +36,10 @@ void	ctrld_handler(char *input)
 	if (input == NULL)
 	{
 		ft_putstr_fd("exit", 0);
-		if (data.my_env)
-			free_split(data.my_env);
-		if (data.previous_dir)
-			free(data.previous_dir);
+		if (g_data.my_env)
+			free_split(g_data.my_env);
+		if (g_data.previous_dir)
+			free(g_data.previous_dir);
 		exit(EXIT_SUCCESS);
 	}
 }

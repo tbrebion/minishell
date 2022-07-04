@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 16:51:49 by flcarval          #+#    #+#             */
-/*   Updated: 2022/07/04 14:00:14 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/07/04 16:48:45 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,6 @@ t_list	**str_tok(char *str)
 		else
 			i++;
 	}
-	data.tok_nb = ft_lstsize(*tokens);
+	g_data.tok_nb = ft_lstsize(*tokens);
 	return (tokens);
 }

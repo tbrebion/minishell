@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 13:19:02 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/07/04 14:12:22 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/07/04 16:48:45 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ void	builtin_or_not(void)
 {
 	int	status;
 
-	if (data.lst)
+	if (g_data.lst)
 	{
-		if (data.is_env == 0)
+		if (g_data.is_env == 0)
 		{
 			builtin_manager(0);
 			return ;
@@ -33,17 +33,17 @@ void	builtin_or_not(void)
 static void	builtin_or_not_supply(int *status)
 {
 	ignore_sig();
-	data.pid = fork();
-	if (data.pid == 0)
+	g_data.pid = fork();
+	if (g_data.pid == 0)
 	{
 		reinit_sig();
-		redir_manager(&data);
-		if (is_builtin(data.lst->content->val) == 0)
+		redir_manager(&g_data);
+		if (is_builtin(g_data.lst->content->val) == 0)
 			execute(0);
 		else
 			builtin_manager(0);
 		exit(0);
 	}
 	waitpid(-1, status, 0);
-	data.error_status = WEXITSTATUS(*status);
+	g_data.error_status = WEXITSTATUS(*status);
 }

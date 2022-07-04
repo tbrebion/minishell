@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 15:25:04 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/07/04 15:49:55 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/07/04 16:48:45 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@ char	*catch_env_var(char *input)
 	tab = NULL;
 	if (ft_strlen(input) == 1)
 		return (NULL);
-	while (data.my_env[i] && !(ft_strnstr(data.my_env[i], \
+	while (g_data.my_env[i] && !(ft_strnstr(g_data.my_env[i], \
 		input + 1, ft_strlen(input) - 1)))
 		i++;
-	if (!data.my_env[i] && input[0] != '$')
+	if (!g_data.my_env[i] && input[0] != '$')
 		return (NULL);
-	if (!data.my_env[i] && input[0] == '$')
+	if (!g_data.my_env[i] && input[0] == '$')
 	{
 		ret = ft_strdup("\0");
 		return (ret);
@@ -46,12 +46,12 @@ static char	*catch_supply(char *input, char **tab, int *i, int *j)
 	char	*ret;
 
 	ret = NULL;
-	if (data.my_env[*i])
+	if (g_data.my_env[*i])
 	{
-		tab = ft_split(data.my_env[*i], '=');
-		ret = ft_strnstr(data.my_env[*i], input + 1, ft_strlen(input));
+		tab = ft_split(g_data.my_env[*i], '=');
+		ret = ft_strnstr(g_data.my_env[*i], input + 1, ft_strlen(input));
 	}
-	if (data.my_env[*i] && \
+	if (g_data.my_env[*i] && \
 	(ft_strncmp(tab[0], input + 1, ft_strlen(tab[0])) != 0))
 	{
 		while (tab[++(*j)])

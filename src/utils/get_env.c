@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_env.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 12:25:02 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/07/03 15:47:18 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/07/04 16:48:45 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,18 @@ void	init_env(char **envp)
 	int		i;
 
 	i = 0;
-	data.my_env = ft_calloc(4096, sizeof(char *));
-	if (!data.my_env)
-		exit_shell(data.my_env);
+	g_data.my_env = ft_calloc(4096, sizeof(char *));
+	if (!g_data.my_env)
+		exit_shell(g_data.my_env);
 	while (envp[i])
 	{
-		data.my_env[i] = ft_strdup(envp[i]);
-		if (!(data.my_env[i]))
-			exit_shell(data.my_env);
+		g_data.my_env[i] = ft_strdup(envp[i]);
+		if (!(g_data.my_env[i]))
+			exit_shell(g_data.my_env);
 		i++;
 	}
-	while (data.my_env[i++])
-		data.my_env[i] = NULL;
+	while (g_data.my_env[i++])
+		g_data.my_env[i] = NULL;
 }
 
 char	**get_path(char **my_env)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   limiter.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 11:02:39 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/07/01 12:27:57 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/07/04 16:48:45 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,18 +53,18 @@ void	here_doc(void)
 	pid_t	pid1;
 	int		status;
 
-	if (!data.lst->next)
+	if (!g_data.lst->next)
 	{
 		ft_putstr_fd("syntax error\n", 0);
-		data.error_status = 2;
-		exit(data.error_status);
+		g_data.error_status = 2;
+		exit(g_data.error_status);
 		return ;
 	}
 	ignore_sig();
 	pid1 = fork();
 	if (pid1 == 0)
-		here_doc_supply(data.lst->next->content->val);
+		here_doc_supply(g_data.lst->next->content->val);
 	waitpid(-1, &status, 0);
-	data.error_status = WEXITSTATUS(status);
-	exit(data.error_status);
+	g_data.error_status = WEXITSTATUS(status);
+	exit(g_data.error_status);
 }

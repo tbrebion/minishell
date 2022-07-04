@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   all_cmd.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 10:38:01 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/06/03 11:24:33 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/07/04 16:48:45 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ static int	nb_pipe(void)
 
 	i = 0;
 	nb_pipe = 0;
-	while(data.input[i])
+	while(g_data.input[i])
 	{
-		if (identify_tok(data.input[i]) == I_PIPE)
+		if (identify_tok(g_data.input[i]) == I_PIPE)
 			nb_pipe++;
 		i++;
 	}
@@ -37,7 +37,7 @@ t_cmd_line	*cdm_lines(void)
 	i = 0;
 	j = 0;
 	lines = malloc(sizeof(t_cmd_line) * (nb_pipe() + 1));
-	while(data.input[i])
+	while(g_data.input[i])
 	{
 		while()
 	}

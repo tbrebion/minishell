@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_loop.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 14:56:57 by flcarval          #+#    #+#             */
-/*   Updated: 2022/07/03 15:48:16 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/07/04 16:48:45 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ static void	free_tokens(t_list **Tokens);
 
 void	free_loop(void)
 {
-	if (data.Tokens)
-		free_tokens(data.Tokens);
-	if (data.input)
-		free(data.input);
+	if (g_data.Tokens)
+		free_tokens(g_data.Tokens);
+	if (g_data.input)
+		free(g_data.input);
 }
 
 static void	free_tokens(t_list **Tokens)
@@ -45,11 +45,11 @@ static void	free_cli(void)
 	int	i;
 
 	i = 0;
-	while (data.Cli[i])
+	while (g_data.Cli[i])
 	{
-		free(data.Cli[i]);
+		free(g_data.Cli[i]);
 		i++;
 	}
-	free(data.Cli);
+	free(g_data.Cli);
 }
 */

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   other_init.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 11:10:14 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/07/03 15:49:16 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/07/04 16:48:45 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,21 @@
 
 static void	history(void)
 {
-	if (data.input)
-		add_history(data.input);
+	if (g_data.input)
+		add_history(g_data.input);
 }
 
 void	init_out_loop(char **envp)
 {
-	data.is_env = 1;
+	g_data.is_env = 1;
 	init_env(envp);
-	data.previous_dir = NULL;
-	data.error_status = 0;
+	g_data.previous_dir = NULL;
+	g_data.error_status = 0;
 }
 
 void	init_in_loop(void)
 {
-	data.Tokens = str_tok(data.input);
+	g_data.Tokens = str_tok(g_data.input);
 	history();
-	data.lst = (*data.Tokens);
+	g_data.lst = (*g_data.Tokens);
 }

@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 14:02:53 by flcarval          #+#    #+#             */
-/*   Updated: 2022/07/04 14:06:28 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/07/04 18:31:03 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void	set_lit(char *str, int *i, t_tok *tok)
 			len++;
 		}
 		tok->val[len] = '\0';
+		tok->val = expand_str(tok->val);
 		*i += len;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 15:25:04 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/07/04 16:48:45 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/07/04 18:45:09 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ char	*catch_env_var(char *input)
 		return (NULL);
 	if (!g_data.my_env[i] && input[0] == '$')
 	{
-		ret = ft_strdup("\0");
+		ret = "";
 		return (ret);
 	}
 	ret = catch_supply(input, tab, &i, &j);

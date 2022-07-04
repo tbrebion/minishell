@@ -61,6 +61,4 @@ SOURCES		+=                         		\
 		src/parsing/str_tok.c             	\
 		src/parsing/identify_tok.c       	\
 		src/parsing/set_tok.c            	\
-		src/parsing/tok_to_cli.c         	\
-		src/parsing/set_tok_supply.c         	\
-
+		src/parsing/set_tok_supply.c        \

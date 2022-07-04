@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 12:35:23 by flcarval          #+#    #+#             */
-/*   Updated: 2022/04/01 01:34:42 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/07/04 18:59:40 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,3 @@ int	ft_strlcpy(char *dst, char *src, int dstsize)
 	}
 	return (ft_strlen(src));
 }
-	// TO PROTECT FROM ORIGINAL SEGFAULT :
-	//
-	// if (dst == NULL || src == NULL)
-	// return (0);

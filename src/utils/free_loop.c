@@ -6,14 +6,13 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 14:56:57 by flcarval          #+#    #+#             */
-/*   Updated: 2022/07/04 16:57:49 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/07/04 18:57:40 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
 static void	free_tokens(t_list **tokens);
-// static void	free_cli(void);
 
 void	free_loop(void)
 {
@@ -39,17 +38,3 @@ static void	free_tokens(t_list **tokens)
 	}
 	free(tokens);
 }
-/*
-static void	free_cli(void)
-{
-	int	i;
-
-	i = 0;
-	while (g_data.cli[i])
-	{
-		free(g_data.cli[i]);
-		i++;
-	}
-	free(g_data.cli);
-}
-*/

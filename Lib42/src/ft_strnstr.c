@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 12:35:50 by flcarval          #+#    #+#             */
-/*   Updated: 2022/05/25 10:15:41 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/07/04 18:59:48 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,3 @@ char	*ft_strnstr(char *big, char *little, int len)
 	}
 	return (NULL);
 }
-// TO PROTECT FROM ORIGINAL SEGFAULT
-// in the first if() -> add "|| big == NULL"

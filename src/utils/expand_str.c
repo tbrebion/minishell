@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 14:42:14 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/07/03 22:02:06 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/07/04 10:28:19 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ static char	*expand_str_supply(char *str)
 	res = ft_strjoin(res, ret);
 	res = ft_strjoin(res, end);
 	free(tmp);
+	free(end);
 	//////////////////////
 	// ft_printf("\n[expand_str_supply] = %s\n\n", res);
 	//////////////////////

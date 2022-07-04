@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipe.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 13:30:45 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/07/03 15:51:37 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/07/04 16:38:34 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ static void	execute_for_pipe(int i)
 
 	j = -1;
 	cmd = ft_split(data.all_cmd[i], ' ');
-
 	paths = get_path(data.my_env);
 	path = find_path(cmd[0], paths);
 	if (!path)

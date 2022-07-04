@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:19:38 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/07/03 15:59:26 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/07/04 16:43:57 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,26 @@
 
 t_data	data;
 
+static void	void_args(int ac, char **av);
+static void	main_loop(void);
+
+int	main(int ac, char **av, char **envp)
+{
+	void_args(ac, av);
+	init_out_loop(envp);
+	main_loop();
+	free_split(data.my_env);
+	return (0);
+}
+
 static void	void_args(int ac, char **av)
 {
 	(void)ac;
 	(void)av;
 }
 
-int	main(int ac, char **av, char **envp)
+static void	main_loop(void)
 {
-	void_args(ac, av);
-	init_out_loop(envp);
 	while (1)
 	{
 		set_error_env();
@@ -49,9 +59,4 @@ int	main(int ac, char **av, char **envp)
 		free_loop();
 		set_error_env();
 	}
-	free_split(data.my_env);
-	return (0);
 }
-
-/*"🚭\e[0m \e[1;31m\e[3;43m minishell \e[0m  
-\e[1;36mLamala \e[5;33m⚡\e[0m \e[1;30mChoZeur 🏁\e[0m "*/

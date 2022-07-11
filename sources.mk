@@ -33,6 +33,7 @@ SOURCES		+=                         		\
 		src/utils/ft_strndup.c 				\
 		src/utils/expand_str.c 				\
 		src/utils/quotes_not_close.c		\
+		src/utils/is_num.c					\
 
 ## SRC/BUILTINS ##
 

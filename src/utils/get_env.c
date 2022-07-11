@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_env.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 12:25:02 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/07/04 16:48:45 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/07/11 17:05:46 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ void	init_env(char **envp)
 	i = 0;
 	g_data.my_env = ft_calloc(4096, sizeof(char *));
 	if (!g_data.my_env)
-		exit_shell(g_data.my_env);
+		exit_shell(g_data.my_env, -12);
 	while (envp[i])
 	{
 		g_data.my_env[i] = ft_strdup(envp[i]);
 		if (!(g_data.my_env[i]))
-			exit_shell(g_data.my_env);
+			exit_shell(g_data.my_env, -12);
 		i++;
 	}
 	while (g_data.my_env[i++])

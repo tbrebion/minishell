@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit_shell.c                                       :+:      :+:    :+:   */
+/*   is_num.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/02 09:32:37 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/07/11 17:03:06 by tbrebion         ###   ########.fr       */
+/*   Created: 2022/07/11 16:51:35 by tbrebion          #+#    #+#             */
+/*   Updated: 2022/07/11 16:54:27 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-void	exit_shell(char **my_env, int stat)
+int	is_num(char *str)
 {
-	ft_putstr_fd("exit", 0);
-	if (my_env)
-		free_split(my_env);
-	if (g_data.previous_dir)
-		free(g_data.previous_dir);
-	exit(stat);
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] < 48 || str[i] > 57)
+			return (0);
+		i++;
+	}
+	return (1);
 }

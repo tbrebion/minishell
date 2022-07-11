@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_manager.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 11:19:52 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/07/04 16:57:23 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/07/11 17:12:21 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,25 @@
 
 void	exit_builtin(void)
 {
+	int tmp;
+
 	if (!(ft_strncmp(get_n_lst(g_data.tokens, 0)->content->val, "exit", 5)))
 	{
 		if (get_n_lst(g_data.tokens, 1))
 		{
-			ft_putstr_fd((get_n_lst(g_data.tokens, 1)->content->val), 0);
-			ft_putstr_fd(": numeric argument required\n", 0);
+			tmp = ft_atoi(get_n_lst(g_data.tokens, 1)->content->val);
+			if ((is_num(get_n_lst(g_data.tokens, 1)->content->val)) == 0)
+			{
+				ft_putstr_fd((get_n_lst(g_data.tokens, 1)->content->val), 0);
+				ft_putstr_fd(": numeric argument required\n", 0);
+				free_loop();
+				exit_shell(g_data.my_env, 0);
+			}
+			free_loop();
+			exit_shell(g_data.my_env, tmp/*ft_atoi(get_n_lst(g_data.tokens, 1)->content->val)*/);
 		}
 		free_loop();
-		exit_shell(g_data.my_env);
+		exit_shell(g_data.my_env, 0);
 	}
 }
 

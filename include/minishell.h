@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 12:24:08 by flcarval          #+#    #+#             */
-/*   Updated: 2022/07/04 16:58:19 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/07/11 17:04:00 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,12 +91,13 @@ int		ft_strcmp(char *a, char *b);
 char	*ft_strndup(char *s1, int n);
 char	*expand_str(char *str);
 int		quotes_not_close(void);
+int		is_num(char *str);
 
 // BUILTINS
 int		is_builtin(char *cmd);
 void	builtin_manager(int i);
 void	print_cwd(void);
-void	exit_shell(char **my_env);
+void	exit_shell(char **my_env, int stat);
 void	print_env(char **my_env);
 int		echo_builtin(int i);
 int		cd_builtin(int i);

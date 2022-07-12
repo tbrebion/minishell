@@ -10,7 +10,9 @@
 #                                                                              #
 # **************************************************************************** #
 
+-------------------------------------------------
 CE QUI NE MARCHE PAS :
+-------------------------------------------------
 
 • Gérer ’ (single quote) qui doit empêcher le shell d’interpréter les méta-caractères
 présents dans la séquence entre guillemets.
@@ -23,3 +25,17 @@ est connectée à l’entrée de la commande suivante grâce à un pipe.
 • export +=
 
 • gestion des expand dans cd
+
+-------------------------------------------------
+POST CORRECTION
+-------------------------------------------------
+
+• unset : invalid read
+
+• exit : arg en sortie
+
+• arg de commande peuvent etre apres la redirection
+
+• here_doc avec une commande avant
+
+• pb d'expand sur S_QUOTES dans D_QUOTES

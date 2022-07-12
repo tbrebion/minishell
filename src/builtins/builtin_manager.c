@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_manager.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 11:19:52 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/07/11 17:12:21 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/07/12 14:01:24 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	exit_builtin(void)
 {
-	int tmp;
+	int	tmp;
 
 	if (!(ft_strncmp(get_n_lst(g_data.tokens, 0)->content->val, "exit", 5)))
 	{
@@ -29,7 +29,7 @@ void	exit_builtin(void)
 				exit_shell(g_data.my_env, 0);
 			}
 			free_loop();
-			exit_shell(g_data.my_env, tmp/*ft_atoi(get_n_lst(g_data.tokens, 1)->content->val)*/);
+			exit_shell(g_data.my_env, tmp);
 		}
 		free_loop();
 		exit_shell(g_data.my_env, 0);

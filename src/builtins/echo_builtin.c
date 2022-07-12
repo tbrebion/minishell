@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 01:26:03 by flcarval          #+#    #+#             */
-/*   Updated: 2022/07/04 16:57:23 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/07/12 15:49:06 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,8 @@ static void	echo_supply_loop(int i, int *j)
 	char	*ret;
 
 	ret = NULL;
-	if (get_n_lst(g_data.tokens, i + *j)->content->type != I_S_QUOTE)
+	if (get_n_lst(g_data.tokens, i + *j) && get_n_lst(g_data.tokens, i + *j)->content->val \
+		&& get_n_lst(g_data.tokens, i + *j)->content->type != I_S_QUOTE)
 		ret = catch_env_var(get_n_lst(g_data.tokens, i + *j)->content->val);
 	if (ret != NULL)
 		ft_printf("%s", ret);

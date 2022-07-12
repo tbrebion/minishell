@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 15:25:04 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/07/04 18:46:40 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/07/12 15:44:00 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char	*catch_env_var(char *input)
 	i = 0;
 	j = -1;
 	tab = NULL;
-	if (ft_strlen(input) == 1)
+	if (!input || ft_strlen(input) == 1)
 		return (NULL);
 	while (g_data.my_env[i] && !(ft_strnstr(g_data.my_env[i], \
 		input + 1, ft_strlen(input) - 1)))

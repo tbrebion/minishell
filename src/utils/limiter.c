@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 11:02:39 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/07/12 20:11:25 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/07/12 22:08:52 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,21 @@ static void	here_doc_supply(char *limiter, char *tmp)
 	if (tmp)
 	{
 		free(ret);
-		execute(0);
+		if (ft_strcmp(tmp, "env") == 1)
+		{
+			print_env(g_data.my_env);
+			exit(0);
+		}
+		else if (is_builtin(tmp))
+		{
+			builtin_manager(0);
+			is_cd();
+			is_unset();
+			is_export();
+			exit(0);
+		}
+		else
+			execute(0);
 	}
 	ft_putstr(ret);
 	free(ret);

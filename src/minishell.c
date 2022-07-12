@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:19:38 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/07/04 16:49:06 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/07/12 21:50:08 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,13 +49,13 @@ static void	main_loop(void)
 			free_loop();
 			continue ;
 		}
+		builtin_or_not();
 		exit_builtin();
 		if (is_cd() || is_export() || is_unset())
 		{
 			free_loop();
 			continue ;
 		}
-		builtin_or_not();
 		free_loop();
 		set_error_env();
 	}

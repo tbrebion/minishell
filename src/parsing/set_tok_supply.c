@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_tok_supply.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 14:02:53 by flcarval          #+#    #+#             */
-/*   Updated: 2022/07/13 18:21:27 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/07/13 19:51:20 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,8 +103,4 @@ void	set_q_to_l(t_tok *tok)
 {
 	if (tok->type != I_S_QUOTE)
 		tok->val = expand_str(tok->val);
-<<<<<<< HEAD
-	// tok->type = I_LITERAL;
-=======
->>>>>>> 0d4823f2a39c46834d480a515e83890e5294319c
 }

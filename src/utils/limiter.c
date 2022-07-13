@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 11:02:39 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/07/12 22:08:52 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/07/13 14:18:26 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,29 @@ static void	here_doc_other_supply(char *line, char *ret)
 		free(ret);
 		write(2, "\n", 1);
 		exit(EXIT_SUCCESS);
+	}
+}
+
+static void	hd_supply(char *ret, char *tmp)
+{
+	if (tmp)
+	{
+		free(ret);
+		if (ft_strcmp(tmp, "env") == 1)
+		{
+			print_env(g_data.my_env);
+			exit(0);
+		}
+		else if (is_builtin(tmp))
+		{
+			builtin_manager(0);
+			is_cd();
+			is_unset();
+			is_export();
+			exit(0);
+		}
+		else
+			execute(0);
 	}
 }
 
@@ -43,25 +66,7 @@ static void	here_doc_supply(char *limiter, char *tmp)
 		ret = ft_strjoin(ret, line);
 		free(line);
 	}
-	if (tmp)
-	{
-		free(ret);
-		if (ft_strcmp(tmp, "env") == 1)
-		{
-			print_env(g_data.my_env);
-			exit(0);
-		}
-		else if (is_builtin(tmp))
-		{
-			builtin_manager(0);
-			is_cd();
-			is_unset();
-			is_export();
-			exit(0);
-		}
-		else
-			execute(0);
-	}
+	hd_supply(ret, tmp);
 	ft_putstr(ret);
 	free(ret);
 	exit(0);
@@ -74,7 +79,8 @@ void	here_doc(void)
 	char	*tmp;
 
 	tmp = NULL;
-	if (g_data.lst->content->type != I_D_INREDIR && ft_strcmp(g_data.lst->content->val, "cat") != 1)
+	if (g_data.lst->content->type != I_D_INREDIR && \
+	ft_strcmp(g_data.lst->content->val, "cat") != 1)
 		tmp = g_data.lst->content->val;
 	while (g_data.lst->content->type != I_D_INREDIR)
 		g_data.lst = g_data.lst->next;

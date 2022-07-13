@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 14:42:14 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/07/04 16:17:41 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/07/13 18:11:12 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ static int	env_len(char *str)
 	int	i;
 
 	i = 0;
-	while (str[i] && str[i] != ' ')
+	while (str[i] && str[i] != ' ' && str[i] != '\'' && str[i] != '\"')
 		i++;
 	return (i);
 }

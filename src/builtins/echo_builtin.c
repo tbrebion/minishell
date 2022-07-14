@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 01:26:03 by flcarval          #+#    #+#             */
-/*   Updated: 2022/07/13 16:41:00 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/07/14 13:13:21 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,16 +62,6 @@ static void	set_n_i(int *n, int *i, int mod)
 
 static void	echo_supply_loop(int i, int *j)
 {
-	// char	*ret;
-
-	// ret = NULL;
-	// if (get_n_lst(g_data.tokens, i + *j) && get_n_lst(g_data.tokens, i + *j)->content->val \
-	// 	&& get_n_lst(g_data.tokens, i + *j)->content->type != I_S_QUOTE)
-	// 	ret = catch_env_var(get_n_lst(g_data.tokens, i + *j)->content->val);
-	// if (ret != NULL)
-	// 	ft_printf("%s", ret);
-	// else
-	// 	ft_printf("%s", get_n_lst(g_data.tokens, i + *j)->content->val);
 	if (get_n_lst(g_data.tokens, i + *j))
 		ft_printf("%s", get_n_lst(g_data.tokens, i + *j)->content->val);
 	(*j)++;

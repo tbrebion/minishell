@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:19:38 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/07/12 21:50:08 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/07/14 02:20:45 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static void	main_loop(void)
 	{
 		set_error_env();
 		init_sig();
-		g_data.input = readline("MY_PROMPT>> ");
+		g_data.input = readline("\\\\ minishell \\\\ ");
 		ctrld_handler(g_data.input);
 		if (!g_data.input[0] || only_white_space() == 1)
 			continue ;
@@ -60,3 +60,10 @@ static void	main_loop(void)
 		set_error_env();
 	}
 }
+
+/*
+MY_PROMPT>>
+爪ĭກĭ-ᏕਮҾᏝᏝ
+∩∩┌(ಠ_ಠ)┌∩∩
+ጠĭηĭᏕħεłł
+*/

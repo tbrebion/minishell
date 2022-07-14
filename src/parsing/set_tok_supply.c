@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 14:02:53 by flcarval          #+#    #+#             */
-/*   Updated: 2022/07/13 17:49:05 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/07/14 01:01:17 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,5 +103,4 @@ void	set_q_to_l(t_tok *tok)
 {
 	if (tok->type != I_S_QUOTE)
 		tok->val = expand_str(tok->val);
-	// tok->type = I_LITERAL;
 }

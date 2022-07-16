@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:33:36 by flcarval          #+#    #+#             */
-/*   Updated: 2022/07/12 15:37:15 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/07/14 01:30:18 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,11 @@ void	unset_builtin(int i)
 		{
 			while (g_data.my_env[j + 1])
 			{
+				free(g_data.my_env[j]);
 				g_data.my_env[j] = ft_strdup(g_data.my_env[j + 1]);
-				free(g_data.my_env[++j]);
+				j++;
 			}
+			free(g_data.my_env[j]);
 			g_data.my_env[j] = NULL;
 		}
 		free_split(spl);

@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:19:38 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/07/19 16:41:45 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/07/19 18:45:09 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ static void	main_loop(void)
 		if (!g_data.input[0] || only_white_space() == 1)
 			continue ;
 		init_in_loop();
+		rotate_tokens();
 		if (quotes_not_close() == 1)
 		{
 			ft_putstr_fd("quotes error\n", 0);

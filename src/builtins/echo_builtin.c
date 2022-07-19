@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 01:26:03 by flcarval          #+#    #+#             */
-/*   Updated: 2022/07/16 11:57:40 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/07/19 17:31:57 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,14 @@ int	echo_builtin(int i)
 		(get_n_lst(g_data.tokens, i + j)->content->type == I_LITERAL || \
 		get_n_lst(g_data.tokens, i + j)->content->type == I_D_QUOTE || \
 		get_n_lst(g_data.tokens, i + j)->content->type == I_S_QUOTE))
-		echo_supply_loop(i, &j);
+		{
+			if (get_n_lst(g_data.tokens, i + j)->content->val[0] == '-')
+			{
+				j++;
+				continue ;
+			}
+			echo_supply_loop(i, &j);
+		}
 	ft_printf("%s", nl);
 	return (0);
 }

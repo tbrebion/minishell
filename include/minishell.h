@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 12:24:08 by flcarval          #+#    #+#             */
-/*   Updated: 2022/07/11 17:04:00 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/07/19 16:40:16 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ int		echo_builtin(int i);
 int		cd_builtin(int i);
 void	export_varenv(int i);
 void	unset_builtin(int i);
-void	exit_builtin(void);
+int		exit_builtin(void);
 int		is_cd(void);
 int		is_export(void);
 int		is_unset(void);

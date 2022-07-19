@@ -3,21 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_manager.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 11:19:52 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/07/13 14:30:49 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/07/19 17:29:06 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-void	exit_builtin(void)
+int	exit_builtin(void)
 {
 	int	tmp;
 
 	if (!(ft_strncmp(get_n_lst(g_data.tokens, 0)->content->val, "exit", 5)))
 	{
+		if (get_n_lst(g_data.tokens, 2) && (is_num(get_n_lst(g_data.tokens, 1)->content->val)) == 1)
+		{
+			ft_putstr_fd("exit\n", 0);
+			ft_putstr_fd("exit: too many arguments\n", 0);
+			g_data.error_status = 127;
+			free_loop();
+			return (1);
+		}
 		if (get_n_lst(g_data.tokens, 1))
 		{
 			tmp = ft_atoi(get_n_lst(g_data.tokens, 1)->content->val);
@@ -26,7 +34,8 @@ void	exit_builtin(void)
 				ft_putstr_fd((get_n_lst(g_data.tokens, 1)->content->val), 0);
 				ft_putstr_fd(": numeric argument required\n", 0);
 				free_loop();
-				exit_shell(g_data.my_env, 0);
+				g_data.error_status = 2;
+				exit_shell(g_data.my_env, 2);
 			}
 			free_loop();
 			exit_shell(g_data.my_env, tmp);
@@ -34,6 +43,7 @@ void	exit_builtin(void)
 		free_loop();
 		exit_shell(g_data.my_env, 0);
 	}
+	return (0);
 }
 
 int	is_cd(void)
@@ -73,6 +83,7 @@ void	builtin_manager(int i)
 	{
 		ft_putstr_fd((get_n_lst(g_data.tokens, i + 1)->content->val), 0);
 		ft_putstr_fd(" : No such file or directory\n", 0);
+		exit(127);
 	}
 	if (!(ft_strncmp(get_n_lst(g_data.tokens, i)->content->val, "pwd", 4)))
 		print_cwd();

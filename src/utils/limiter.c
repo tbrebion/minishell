@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   limiter.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 11:02:39 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/07/13 14:18:26 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/07/19 20:40:07 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ static void	here_doc_supply(char *limiter, char *tmp)
 {
 	char	*line;
 	char	*ret;
+	char	*tmpret;
+	char	*tmpbis;
 
 	ret = ft_strdup("");
 	reinit_sig();
@@ -67,7 +69,9 @@ static void	here_doc_supply(char *limiter, char *tmp)
 		free(line);
 	}
 	hd_supply(ret, tmp);
-	ft_putstr(ret);
+	tmpbis = ft_strdup(ret);
+	tmpret = expand_str(tmpbis);
+	ft_putstr(tmpret);
 	free(ret);
 	exit(0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redir_manager.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:54:58 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/07/19 18:54:54 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/07/19 19:26:48 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,28 @@ void	rotate_tokens(void)
 {
 	t_list	*tmp;
 	t_list	*save;
+	int		i;
 	// t_list	*tmp_dos;
 	// t_list	*save_dos;
 
 	if (redir_first() == -1)
 		return ;
-	if (!(*g_data.tokens) || ft_lstsize(*g_data.tokens) < 2)
-		return ;
-	save = (*g_data.tokens);
-	while ((*g_data.tokens)->next->next != NULL)
-		(*g_data.tokens) = (**g_data.tokens).next;
-	tmp = (*g_data.tokens)->next;
-	(*g_data.tokens)->next = NULL;
-	(*g_data.tokens) = tmp;
-	(*g_data.tokens)->next = save;
+	i = 0;
+	/////////////////////
+	// ft_printf("toknb = %d\n", g_data.tok_nb);
+	/////////////////////
+	while (i++ < g_data.tok_nb - 2)
+	{
+		if (!(*g_data.tokens) || ft_lstsize(*g_data.tokens) < 2)
+			return ;
+		save = (*g_data.tokens);
+		while ((*g_data.tokens)->next->next != NULL)
+			(*g_data.tokens) = (**g_data.tokens).next;
+		tmp = (*g_data.tokens)->next;
+		(*g_data.tokens)->next = NULL;
+		(*g_data.tokens) = tmp;
+		(*g_data.tokens)->next = save;
+	}
 
 	// save_dos = (g_data.lst);
 	// while ((g_data.lst)->next->next != NULL)

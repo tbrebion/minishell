@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 12:24:08 by flcarval          #+#    #+#             */
-/*   Updated: 2022/07/19 18:35:39 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/07/20 14:57:08 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ int		quotes_not_close(void);
 int		is_num(char *str);
 int		redir_first(void);
 void	rotate_tokens(void);
+int		is_meta_char(void);
 
 // BUILTINS
 int		is_builtin(char *cmd);

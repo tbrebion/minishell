@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 19:58:21 by flcarval          #+#    #+#             */
-/*   Updated: 2022/06/24 11:49:48 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/07/20 15:06:45 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ void	ft_putnbr_fd(int n, int fd);
 
 typedef struct s_tok
 {
-	char			*val;
-	int				type;
+	char	*val;
+	int		type;
 }	t_tok;
 
 typedef struct s_list

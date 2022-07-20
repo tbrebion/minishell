@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   limiter.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 11:02:39 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/07/20 15:01:33 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/07/20 15:42:32 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ void	here_doc(void)
 	ignore_sig();
 	pid1 = fork();
 	if (pid1 == 0)
-		here_doc_supply(g_data.lst->next->content->val, tmp);
+		here_doc_supply(g_data.limiter, tmp);
 	waitpid(-1, &status, 0);
 	g_data.error_status = WEXITSTATUS(status);
 	exit(g_data.error_status);

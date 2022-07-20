@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 14:56:57 by flcarval          #+#    #+#             */
-/*   Updated: 2022/07/20 15:13:42 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/07/20 15:59:49 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	free_loop(void)
 		free_tokens(g_data.tokens);
 	if (g_data.input)
 		free(g_data.input);
-	if (g_data.limiter)
+	if (g_data.limiter && g_data.limiter[0])
 		free(g_data.limiter);
 }
 

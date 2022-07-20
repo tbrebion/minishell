@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 16:51:49 by flcarval          #+#    #+#             */
-/*   Updated: 2022/07/20 15:13:29 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/07/20 16:01:39 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ t_list	**str_tok(char *str)
 	t_list	**tokens;
 	int		i;
 
-	if (g_data.limiter)
-		free(g_data.limiter);
+	// if (g_data.limiter)
+	// 	free(g_data.limiter);
 	g_data.limiter = limiter_handler(str);
 	tokens = malloc(sizeof(t_list *));
 	if (!tokens)
@@ -63,6 +63,9 @@ static char	*limiter_handler(char *str)
 		i++;
 	}
 	if (!lim[0])
+	{
+		free(lim);
 		return (NULL);
+	}
 	return (lim);
 }

@@ -34,6 +34,7 @@ SOURCES		+=                         		\
 		src/utils/expand_str.c 				\
 		src/utils/quotes_not_close.c		\
 		src/utils/is_num.c					\
+		src/utils/here_doc_helper.c			\
 
 ## SRC/BUILTINS ##
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 09:45:14 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/07/04 16:57:23 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/07/20 12:40:58 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,27 +43,38 @@ char	*find_path(char *cmd, char **my_paths)
 
 void	execute(int i)
 {
+	int		pid;
+	int		status;
 	int		j;
 	char	*tmp;
 	char	**cmd;
 	char	**paths;
 	char	*path;
 
-	j = 0;
-	tmp = ft_strdup("");
-	while (get_n_lst(g_data.tokens, i + j) && \
-		get_n_lst(g_data.tokens, i + j)->content->type == I_LITERAL)
+	pid = fork();
+	ignore_sig();
+	reinit_sig();
+	if (pid == 0)
 	{
-		if (j)
-			tmp = ft_strjoin(tmp, " ");
-		tmp = ft_strjoin(tmp, get_n_lst(g_data.tokens, i + j)->content->val);
-		j++;
+		j = 0;
+		tmp = ft_strdup("");
+		while (get_n_lst(g_data.tokens, i + j) && \
+			get_n_lst(g_data.tokens, i + j)->content->type == I_LITERAL)
+		{
+			if (j)
+				tmp = ft_strjoin(tmp, " ");
+			tmp = ft_strjoin(tmp, get_n_lst(g_data.tokens, i + j)->content->val);
+			j++;
+		}
+		cmd = ft_split(tmp, ' ');
+		free(tmp);
+		paths = get_path(g_data.my_env);
+		path = find_path(cmd[0], paths);
+		execute_supply(path, cmd);
 	}
-	cmd = ft_split(tmp, ' ');
-	free(tmp);
-	paths = get_path(g_data.my_env);
-	path = find_path(cmd[0], paths);
-	execute_supply(path, cmd);
+	waitpid(-1, &status, 0);
+	g_data.error_status = WEXITSTATUS(status);
+	exit(g_data.error_status);
 }
 
 static void	execute_supply(char *path, char **cmd)

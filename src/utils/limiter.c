@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   limiter.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 11:02:39 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/07/20 01:52:28 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/07/20 10:54:42 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,18 @@ static void	here_doc_other_supply(char *line, char *ret)
 		write(2, "\n", 1);
 		exit(EXIT_SUCCESS);
 	}
+}
+
+static void	del_last_backslash_n(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	i--;
+	if (str[i] == '\n')
+		str[i] = 127;
 }
 
 static void	hd_supply(char *ret, char *tmp)
@@ -54,7 +66,7 @@ static void	here_doc_supply(char *limiter, char *tmp)
 	reinit_sig();
 	while (1)
 	{
-		line = readline(">");
+		line = readline("> ");
 		here_doc_other_supply(line, ret);
 		if ((ft_strncmp(line, limiter, \
 		ft_max((ft_strlen(line) - 1), ft_strlen(limiter))) == 0))
@@ -66,6 +78,7 @@ static void	here_doc_supply(char *limiter, char *tmp)
 		ret = ft_strjoin(ret, expand_str(line));
 		ret = ft_strjoin(ret, "\n");
 	}
+	del_last_backslash_n(ret);
 	hd_supply(ret, tmp);
 	ft_putstr(ret);
 	free(ret);

@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 14:42:14 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/07/13 18:21:48 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/07/20 01:40:26 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static char	*expand_str_supply(char *str)
 	while (str[i] && str[i] != '$')
 		i++;
 	if (!str[i])
-		return (NULL);
+		return (str);
 	end = ft_strdup(&str[i + env_len(&str[i])]);
 	res = ft_strndup(str, i);
 	tmp = ft_strndup(&str[i], env_len(&str[i]));

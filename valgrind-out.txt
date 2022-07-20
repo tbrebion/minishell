@@ -1,817 +1,327 @@
-==62187== Memcheck, a memory error detector
-==62187== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==62187== Using Valgrind-3.15.0-608cb11914-20190413 and LibVEX; rerun with -h for copyright info
-==62187== Command: ./bin/minishell
-==62187== Parent PID: 26411
-==62187== 
---62187-- 
---62187-- Valgrind options:
---62187--    --suppressions=valgrind_readline_leaks_ignore.txt
---62187--    --leak-check=full
---62187--    --show-leak-kinds=all
---62187--    --track-origins=yes
---62187--    --verbose
---62187--    --log-file=valgrind-out.txt
---62187-- Contents of /proc/version:
---62187--   Linux version 5.4.0-120-generic (buildd@lcy02-amd64-006) (gcc version 9.4.0 (Ubuntu 9.4.0-1ubuntu1~20.04.1)) #136-Ubuntu SMP Fri Jun 10 13:40:48 UTC 2022
---62187-- 
---62187-- Arch and hwcaps: AMD64, LittleEndian, amd64-cx16-rdtscp-sse3-ssse3-avx
---62187-- Page sizes: currently 4096, max supported 4096
---62187-- Valgrind library directory: /usr/lib/x86_64-linux-gnu/valgrind
---62187-- Reading syms from /mnt/nfs/homes/flcarval/Github/minishell/bin/minishell
---62187-- Reading syms from /usr/lib/x86_64-linux-gnu/ld-2.31.so
---62187--   Considering /usr/lib/debug/.build-id/45/87364908de169dec62ffa538170118c1c3a078.debug ..
---62187--   .. build-id is valid
---62187-- Reading syms from /usr/lib/x86_64-linux-gnu/valgrind/memcheck-amd64-linux
---62187--    object doesn't have a symbol table
---62187--    object doesn't have a dynamic symbol table
---62187-- Scheduler: using generic scheduler lock implementation.
---62187-- Reading suppressions file: valgrind_readline_leaks_ignore.txt
---62187-- Reading suppressions file: /usr/lib/x86_64-linux-gnu/valgrind/default.supp
-==62187== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-62187-by-flcarval-on-???
-==62187== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-62187-by-flcarval-on-???
-==62187== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-62187-by-flcarval-on-???
-==62187== 
-==62187== TO CONTROL THIS PROCESS USING vgdb (which you probably
-==62187== don't want to do, unless you know exactly what you're doing,
-==62187== or are doing some strange experiment):
-==62187==   /usr/lib/x86_64-linux-gnu/valgrind/../../bin/vgdb --pid=62187 ...command...
-==62187== 
-==62187== TO DEBUG THIS PROCESS USING GDB: start GDB like this
-==62187==   /path/to/gdb ./bin/minishell
-==62187== and then give GDB the following command
-==62187==   target remote | /usr/lib/x86_64-linux-gnu/valgrind/../../bin/vgdb --pid=62187
-==62187== --pid is optional if only one valgrind process is running
-==62187== 
---62187-- REDIR: 0x4022e20 (ld-linux-x86-64.so.2:strlen) redirected to 0x580c9ce2 (???)
---62187-- REDIR: 0x4022bf0 (ld-linux-x86-64.so.2:index) redirected to 0x580c9cfc (???)
---62187-- Reading syms from /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_core-amd64-linux.so
---62187--    object doesn't have a symbol table
---62187-- Reading syms from /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so
---62187--    object doesn't have a symbol table
-==62187== WARNING: new redirection conflicts with existing -- ignoring it
---62187--     old: 0x04022e20 (strlen              ) R-> (0000.0) 0x580c9ce2 ???
---62187--     new: 0x04022e20 (strlen              ) R-> (2007.0) 0x0483f060 strlen
---62187-- REDIR: 0x401f600 (ld-linux-x86-64.so.2:strcmp) redirected to 0x483ffd0 (strcmp)
---62187-- REDIR: 0x4023380 (ld-linux-x86-64.so.2:mempcpy) redirected to 0x4843a20 (mempcpy)
---62187-- Reading syms from /usr/lib/x86_64-linux-gnu/libreadline.so.8.0
---62187--    object doesn't have a symbol table
---62187-- Reading syms from /usr/lib/x86_64-linux-gnu/libc-2.31.so
---62187--   Considering /usr/lib/debug/.build-id/18/78e6b475720c7c51969e69ab2d276fae6d1dee.debug ..
---62187--   .. build-id is valid
---62187-- Reading syms from /usr/lib/x86_64-linux-gnu/libtinfo.so.6.2
---62187--    object doesn't have a symbol table
---62187-- REDIR: 0x4956480 (libc.so.6:memmove) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---62187-- REDIR: 0x4955780 (libc.so.6:strncpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---62187-- REDIR: 0x49567b0 (libc.so.6:strcasecmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---62187-- REDIR: 0x49550a0 (libc.so.6:strcat) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---62187-- REDIR: 0x49557e0 (libc.so.6:rindex) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---62187-- REDIR: 0x4957c50 (libc.so.6:rawmemchr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---62187-- REDIR: 0x4972ce0 (libc.so.6:wmemchr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---62187-- REDIR: 0x4972820 (libc.so.6:wcscmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---62187-- REDIR: 0x49565e0 (libc.so.6:mempcpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---62187-- REDIR: 0x4956410 (libc.so.6:bcmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---62187-- REDIR: 0x4955710 (libc.so.6:strncmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---62187-- REDIR: 0x4955150 (libc.so.6:strcmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---62187-- REDIR: 0x4956540 (libc.so.6:memset) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---62187-- REDIR: 0x49727e0 (libc.so.6:wcschr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---62187-- REDIR: 0x4955670 (libc.so.6:strnlen) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---62187-- REDIR: 0x4955230 (libc.so.6:strcspn) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---62187-- REDIR: 0x4956800 (libc.so.6:strncasecmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---62187-- REDIR: 0x49551d0 (libc.so.6:strcpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---62187-- REDIR: 0x4956950 (libc.so.6:memcpy@@GLIBC_2.14) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---62187-- REDIR: 0x4973f50 (libc.so.6:wcsnlen) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---62187-- REDIR: 0x4972860 (libc.so.6:wcscpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---62187-- REDIR: 0x4955820 (libc.so.6:strpbrk) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---62187-- REDIR: 0x4955100 (libc.so.6:index) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---62187-- REDIR: 0x4955630 (libc.so.6:strlen) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---62187-- REDIR: 0x495ebb0 (libc.so.6:memrchr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---62187-- REDIR: 0x4956850 (libc.so.6:strcasecmp_l) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---62187-- REDIR: 0x49563d0 (libc.so.6:memchr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---62187-- REDIR: 0x4972930 (libc.so.6:wcslen) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---62187-- REDIR: 0x4955ae0 (libc.so.6:strspn) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---62187-- REDIR: 0x4956750 (libc.so.6:stpncpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---62187-- REDIR: 0x49566f0 (libc.so.6:stpcpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---62187-- REDIR: 0x4957c90 (libc.so.6:strchrnul) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---62187-- REDIR: 0x49568a0 (libc.so.6:strncasecmp_l) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---62187-- REDIR: 0x49556b0 (libc.so.6:strncat) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---62187-- REDIR: 0x49e3850 (libc.so.6:__memcpy_chk) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---62187-- REDIR: 0x49562f0 (libc.so.6:strstr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---62187-- REDIR: 0x49678c0 (libc.so.6:__strrchr_sse2) redirected to 0x483ea70 (__strrchr_sse2)
---62187-- REDIR: 0x49500e0 (libc.so.6:malloc) redirected to 0x483b780 (malloc)
---62187-- REDIR: 0x49506d0 (libc.so.6:free) redirected to 0x483c9d0 (free)
---62187-- REDIR: 0x4967bc0 (libc.so.6:__strlen_sse2) redirected to 0x483efa0 (__strlen_sse2)
---62187-- REDIR: 0x496cb00 (libc.so.6:__strcpy_sse2_unaligned) redirected to 0x483f090 (strcpy)
---62187-- REDIR: 0x49676b0 (libc.so.6:__strchrnul_sse2) redirected to 0x4843540 (strchrnul)
---62187-- REDIR: 0x48fc4f0 (libc.so.6:setenv) redirected to 0x4844480 (setenv)
---62187-- REDIR: 0x4967480 (libc.so.6:__strchr_sse2) redirected to 0x483eb90 (__strchr_sse2)
---62187-- REDIR: 0x4a34cc0 (libc.so.6:__strncmp_sse42) redirected to 0x483f7c0 (__strncmp_sse42)
---62187-- REDIR: 0x4950e80 (libc.so.6:realloc) redirected to 0x483df30 (realloc)
---62187-- REDIR: 0x4971ad0 (libc.so.6:memcpy@GLIBC_2.2.5) redirected to 0x4840100 (memcpy@GLIBC_2.2.5)
---62187-- REDIR: 0x4971ab0 (libc.so.6:__mempcpy_sse2_unaligned) redirected to 0x4843660 (mempcpy)
---62187-- REDIR: 0x49603b0 (libc.so.6:__strcmp_sse2_unaligned) redirected to 0x483fed0 (strcmp)
---62187-- REDIR: 0x4951b10 (libc.so.6:calloc) redirected to 0x483dce0 (calloc)
---62187-- REDIR: 0x4967d60 (libc.so.6:__strnlen_sse2) redirected to 0x483eee0 (strnlen)
---62187-- REDIR: 0x4955fa0 (libc.so.6:__GI_strstr) redirected to 0x4843ca0 (__strstr_sse2)
---62187-- REDIR: 0x4971ac0 (libc.so.6:__memcpy_chk_sse2_unaligned) redirected to 0x4843b10 (__memcpy_chk)
---62187-- REDIR: 0x496d130 (libc.so.6:__strncpy_sse2_unaligned) redirected to 0x483f560 (__strncpy_sse2_unaligned)
---62187-- REDIR: 0x4961ec0 (libc.so.6:__memchr_sse2) redirected to 0x4840050 (memchr)
---62187-- REDIR: 0x496e140 (libc.so.6:__stpcpy_sse2_unaligned) redirected to 0x4842570 (__stpcpy_sse2_unaligned)
---62187-- REDIR: 0x4a3b0a0 (libc.so.6:__strcasecmp_avx) redirected to 0x483f830 (strcasecmp)
---62187-- REDIR: 0x4a3c720 (libc.so.6:__strncasecmp_avx) redirected to 0x483f910 (strncasecmp)
---62187-- REDIR: 0x4971f00 (libc.so.6:__memset_sse2_unaligned) redirected to 0x48428e0 (memset)
---62187-- REDIR: 0x4a43550 (libc.so.6:__memcmp_sse4_1) redirected to 0x4842150 (__memcmp_sse4_1)
-==62223== 
-==62223== HEAP SUMMARY:
-==62223==     in use at exit: 241,545 bytes in 296 blocks
-==62223==   total heap usage: 856 allocs, 560 frees, 277,062 bytes allocated
-==62223== 
-==62223== Searching for pointers to 296 not-freed blocks
-==62223== Checked 244,824 bytes
-==62223== 
-==62223== 1 bytes in 1 blocks are still reachable in loss record 1 of 72
-==62223==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==62223==    by 0x40545F: ft_strjoin (get_next_line_utils.c:47)
-==62223==    by 0x40314E: expand_str_supply (expand_str.c:53)
-==62223==    by 0x402FB3: expand_str (expand_str.c:29)
-==62223==    by 0x402018: here_doc_supply (limiter.c:73)
-==62223==    by 0x401EF2: here_doc (limiter.c:101)
-==62223==    by 0x4026DF: redir_manager (redir_manager.c:66)
-==62223==    by 0x402A84: builtin_or_not_supply (builtin_or_not.c:40)
-==62223==    by 0x402A39: builtin_or_not (builtin_or_not.c:29)
-==62223==    by 0x401382: main_loop (minishell.c:53)
-==62223==    by 0x4012C3: main (minishell.c:24)
-==62223== 
-==62223== 2 bytes in 1 blocks are still reachable in loss record 2 of 72
-==62223==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==62223==    by 0x40525A: clear_stat (get_next_line.c:83)
-==62223==    by 0x40535B: get_next_line (get_next_line.c:110)
-==62223==    by 0x401F6D: here_doc_supply (limiter.c:60)
-==62223==    by 0x401EF2: here_doc (limiter.c:101)
-==62223==    by 0x4026DF: redir_manager (redir_manager.c:66)
-==62223==    by 0x402A84: builtin_or_not_supply (builtin_or_not.c:40)
-==62223==    by 0x402A39: builtin_or_not (builtin_or_not.c:29)
-==62223==    by 0x401382: main_loop (minishell.c:53)
-==62223==    by 0x4012C3: main (minishell.c:24)
-==62223== 
-==62223== 3 bytes in 1 blocks are still reachable in loss record 3 of 72
-==62223==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==62223==    by 0x405E6F: ft_strdup (ft_strdup.c:22)
-==62223==    by 0x404C3B: set_redir (set_tok_supply.c:93)
-==62223==    by 0x404B48: set_simple (set_tok_supply.c:28)
-==62223==    by 0x404A8F: set_tok (set_tok.c:28)
-==62223==    by 0x404896: str_tok (str_tok.c:28)
-==62223==    by 0x4029A0: init_in_loop (other_init.c:31)
-==62223==    by 0x40134F: main_loop (minishell.c:45)
-==62223==    by 0x4012C3: main (minishell.c:24)
-==62223== 
-==62223== 3 bytes in 1 blocks are still reachable in loss record 4 of 72
-==62223==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==62223==    by 0x404D2C: set_lit (set_tok_supply.c:40)
-==62223==    by 0x404A41: set_tok (set_tok.c:24)
-==62223==    by 0x404896: str_tok (str_tok.c:28)
-==62223==    by 0x4029A0: init_in_loop (other_init.c:31)
-==62223==    by 0x40134F: main_loop (minishell.c:45)
-==62223==    by 0x4012C3: main (minishell.c:24)
-==62223== 
-==62223== 4 bytes in 1 blocks are still reachable in loss record 5 of 72
-==62223==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==62223==    by 0x405E6F: ft_strdup (ft_strdup.c:22)
-==62223==    by 0x40278F: set_error_env (set_error_env.c:32)
-==62223==    by 0x4012FD: main_loop (minishell.c:39)
-==62223==    by 0x4012C3: main (minishell.c:24)
-==62223== 
-==62223== 8 bytes in 1 blocks are still reachable in loss record 10 of 72
-==62223==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==62223==    by 0x404825: str_tok (str_tok.c:20)
-==62223==    by 0x4029A0: init_in_loop (other_init.c:31)
-==62223==    by 0x40134F: main_loop (minishell.c:45)
-==62223==    by 0x4012C3: main (minishell.c:24)
-==62223== 
-==62223== 32 bytes in 2 blocks are still reachable in loss record 21 of 72
-==62223==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==62223==    by 0x4049E9: set_tok (set_tok.c:19)
-==62223==    by 0x404896: str_tok (str_tok.c:28)
-==62223==    by 0x4029A0: init_in_loop (other_init.c:31)
-==62223==    by 0x40134F: main_loop (minishell.c:45)
-==62223==    by 0x4012C3: main (minishell.c:24)
-==62223== 
-==62223== 32 bytes in 2 blocks are still reachable in loss record 22 of 72
-==62223==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==62223==    by 0x4055D0: ft_lstnew (ft_lstnew.c:19)
-==62223==    by 0x40489E: str_tok (str_tok.c:28)
-==62223==    by 0x4029A0: init_in_loop (other_init.c:31)
-==62223==    by 0x40134F: main_loop (minishell.c:45)
-==62223==    by 0x4012C3: main (minishell.c:24)
-==62223== 
-==62223== 4,016 bytes in 66 blocks are still reachable in loss record 49 of 72
-==62223==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==62223==    by 0x405E6F: ft_strdup (ft_strdup.c:22)
-==62223==    by 0x401453: init_env (get_env.c:25)
-==62223==    by 0x40296F: init_out_loop (other_init.c:24)
-==62223==    by 0x4012BE: main (minishell.c:23)
-==62223== 
-==62223== 32,768 bytes in 1 blocks are still reachable in loss record 72 of 72
-==62223==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==62223==    by 0x405757: ft_calloc (ft_calloc.c:19)
-==62223==    by 0x401401: init_env (get_env.c:20)
-==62223==    by 0x40296F: init_out_loop (other_init.c:24)
-==62223==    by 0x4012BE: main (minishell.c:23)
-==62223== 
-==62223== LEAK SUMMARY:
-==62223==    definitely lost: 0 bytes in 0 blocks
-==62223==    indirectly lost: 0 bytes in 0 blocks
-==62223==      possibly lost: 0 bytes in 0 blocks
-==62223==    still reachable: 36,869 bytes in 77 blocks
-==62223==         suppressed: 204,676 bytes in 219 blocks
-==62223== 
-==62223== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
---62223-- 
---62223-- used_suppression:     58 leak readline valgrind_readline_leaks_ignore.txt:2 suppressed: 200,620 bytes in 215 blocks
---62223-- used_suppression:      4 leak add_history valgrind_readline_leaks_ignore.txt:8 suppressed: 4,056 bytes in 4 blocks
-==62223== 
-==62223== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-==62222== 
-==62222== HEAP SUMMARY:
-==62222==     in use at exit: 241,542 bytes in 294 blocks
-==62222==   total heap usage: 839 allocs, 545 frees, 268,811 bytes allocated
-==62222== 
-==62222== Searching for pointers to 294 not-freed blocks
-==62222== Checked 244,752 bytes
-==62222== 
-==62222== 3 bytes in 1 blocks are still reachable in loss record 1 of 70
-==62222==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==62222==    by 0x405E6F: ft_strdup (ft_strdup.c:22)
-==62222==    by 0x404C3B: set_redir (set_tok_supply.c:93)
-==62222==    by 0x404B48: set_simple (set_tok_supply.c:28)
-==62222==    by 0x404A8F: set_tok (set_tok.c:28)
-==62222==    by 0x404896: str_tok (str_tok.c:28)
-==62222==    by 0x4029A0: init_in_loop (other_init.c:31)
-==62222==    by 0x40134F: main_loop (minishell.c:45)
-==62222==    by 0x4012C3: main (minishell.c:24)
-==62222== 
-==62222== 3 bytes in 1 blocks are still reachable in loss record 2 of 70
-==62222==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==62222==    by 0x404D2C: set_lit (set_tok_supply.c:40)
-==62222==    by 0x404A41: set_tok (set_tok.c:24)
-==62222==    by 0x404896: str_tok (str_tok.c:28)
-==62222==    by 0x4029A0: init_in_loop (other_init.c:31)
-==62222==    by 0x40134F: main_loop (minishell.c:45)
-==62222==    by 0x4012C3: main (minishell.c:24)
-==62222== 
-==62222== 4 bytes in 1 blocks are still reachable in loss record 3 of 70
-==62222==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==62222==    by 0x405E6F: ft_strdup (ft_strdup.c:22)
-==62222==    by 0x40278F: set_error_env (set_error_env.c:32)
-==62222==    by 0x4012FD: main_loop (minishell.c:39)
-==62222==    by 0x4012C3: main (minishell.c:24)
-==62222== 
-==62222== 8 bytes in 1 blocks are still reachable in loss record 8 of 70
-==62222==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==62222==    by 0x404825: str_tok (str_tok.c:20)
-==62222==    by 0x4029A0: init_in_loop (other_init.c:31)
-==62222==    by 0x40134F: main_loop (minishell.c:45)
-==62222==    by 0x4012C3: main (minishell.c:24)
-==62222== 
-==62222== 32 bytes in 2 blocks are still reachable in loss record 19 of 70
-==62222==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==62222==    by 0x4049E9: set_tok (set_tok.c:19)
-==62222==    by 0x404896: str_tok (str_tok.c:28)
-==62222==    by 0x4029A0: init_in_loop (other_init.c:31)
-==62222==    by 0x40134F: main_loop (minishell.c:45)
-==62222==    by 0x4012C3: main (minishell.c:24)
-==62222== 
-==62222== 32 bytes in 2 blocks are still reachable in loss record 20 of 70
-==62222==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==62222==    by 0x4055D0: ft_lstnew (ft_lstnew.c:19)
-==62222==    by 0x40489E: str_tok (str_tok.c:28)
-==62222==    by 0x4029A0: init_in_loop (other_init.c:31)
-==62222==    by 0x40134F: main_loop (minishell.c:45)
-==62222==    by 0x4012C3: main (minishell.c:24)
-==62222== 
-==62222== 4,016 bytes in 66 blocks are still reachable in loss record 47 of 70
-==62222==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==62222==    by 0x405E6F: ft_strdup (ft_strdup.c:22)
-==62222==    by 0x401453: init_env (get_env.c:25)
-==62222==    by 0x40296F: init_out_loop (other_init.c:24)
-==62222==    by 0x4012BE: main (minishell.c:23)
-==62222== 
-==62222== 32,768 bytes in 1 blocks are still reachable in loss record 70 of 70
-==62222==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==62222==    by 0x405757: ft_calloc (ft_calloc.c:19)
-==62222==    by 0x401401: init_env (get_env.c:20)
-==62222==    by 0x40296F: init_out_loop (other_init.c:24)
-==62222==    by 0x4012BE: main (minishell.c:23)
-==62222== 
-==62222== LEAK SUMMARY:
-==62222==    definitely lost: 0 bytes in 0 blocks
-==62222==    indirectly lost: 0 bytes in 0 blocks
-==62222==      possibly lost: 0 bytes in 0 blocks
-==62222==    still reachable: 36,866 bytes in 75 blocks
-==62222==         suppressed: 204,676 bytes in 219 blocks
-==62222== 
-==62222== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
---62222-- 
---62222-- used_suppression:     58 leak readline valgrind_readline_leaks_ignore.txt:2 suppressed: 200,620 bytes in 215 blocks
---62222-- used_suppression:      4 leak add_history valgrind_readline_leaks_ignore.txt:8 suppressed: 4,056 bytes in 4 blocks
-==62222== 
-==62222== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-==62325== 
-==62325== HEAP SUMMARY:
-==62325==     in use at exit: 241,640 bytes in 302 blocks
-==62325==   total heap usage: 1,544 allocs, 1,242 frees, 282,634 bytes allocated
-==62325== 
-==62325== Searching for pointers to 302 not-freed blocks
-==62325== Checked 244,760 bytes
-==62325== 
-==62325== 3 bytes in 1 blocks are still reachable in loss record 3 of 75
-==62325==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==62325==    by 0x405E6F: ft_strdup (ft_strdup.c:22)
-==62325==    by 0x404C3B: set_redir (set_tok_supply.c:93)
-==62325==    by 0x404B48: set_simple (set_tok_supply.c:28)
-==62325==    by 0x404A8F: set_tok (set_tok.c:28)
-==62325==    by 0x404896: str_tok (str_tok.c:28)
-==62325==    by 0x4029A0: init_in_loop (other_init.c:31)
-==62325==    by 0x40134F: main_loop (minishell.c:45)
-==62325==    by 0x4012C3: main (minishell.c:24)
-==62325== 
-==62325== 4 bytes in 1 blocks are still reachable in loss record 4 of 75
-==62325==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==62325==    by 0x405E6F: ft_strdup (ft_strdup.c:22)
-==62325==    by 0x402876: set_error_env_supply (set_error_env.c:45)
-==62325==    by 0x40276A: set_error_env (set_error_env.c:29)
-==62325==    by 0x4012FD: main_loop (minishell.c:39)
-==62325==    by 0x4012C3: main (minishell.c:24)
-==62325== 
-==62325== 7 bytes in 2 blocks are still reachable in loss record 6 of 75
-==62325==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==62325==    by 0x404D2C: set_lit (set_tok_supply.c:40)
-==62325==    by 0x404A41: set_tok (set_tok.c:24)
-==62325==    by 0x404896: str_tok (str_tok.c:28)
-==62325==    by 0x4029A0: init_in_loop (other_init.c:31)
-==62325==    by 0x40134F: main_loop (minishell.c:45)
-==62325==    by 0x4012C3: main (minishell.c:24)
-==62325== 
-==62325== 8 bytes in 1 blocks are still reachable in loss record 9 of 75
-==62325==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==62325==    by 0x404825: str_tok (str_tok.c:20)
-==62325==    by 0x4029A0: init_in_loop (other_init.c:31)
-==62325==    by 0x40134F: main_loop (minishell.c:45)
-==62325==    by 0x4012C3: main (minishell.c:24)
-==62325== 
-==62325== 48 bytes in 3 blocks are still reachable in loss record 28 of 75
-==62325==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==62325==    by 0x4049E9: set_tok (set_tok.c:19)
-==62325==    by 0x404896: str_tok (str_tok.c:28)
-==62325==    by 0x4029A0: init_in_loop (other_init.c:31)
-==62325==    by 0x40134F: main_loop (minishell.c:45)
-==62325==    by 0x4012C3: main (minishell.c:24)
-==62325== 
-==62325== 48 bytes in 3 blocks are still reachable in loss record 29 of 75
-==62325==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==62325==    by 0x4055D0: ft_lstnew (ft_lstnew.c:19)
-==62325==    by 0x40489E: str_tok (str_tok.c:28)
-==62325==    by 0x4029A0: init_in_loop (other_init.c:31)
-==62325==    by 0x40134F: main_loop (minishell.c:45)
-==62325==    by 0x4012C3: main (minishell.c:24)
-==62325== 
-==62325== 4,016 bytes in 66 blocks are still reachable in loss record 52 of 75
-==62325==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==62325==    by 0x405E6F: ft_strdup (ft_strdup.c:22)
-==62325==    by 0x401453: init_env (get_env.c:25)
-==62325==    by 0x40296F: init_out_loop (other_init.c:24)
-==62325==    by 0x4012BE: main (minishell.c:23)
-==62325== 
-==62325== 32,768 bytes in 1 blocks are still reachable in loss record 75 of 75
-==62325==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==62325==    by 0x405757: ft_calloc (ft_calloc.c:19)
-==62325==    by 0x401401: init_env (get_env.c:20)
-==62325==    by 0x40296F: init_out_loop (other_init.c:24)
-==62325==    by 0x4012BE: main (minishell.c:23)
-==62325== 
-==62325== LEAK SUMMARY:
-==62325==    definitely lost: 0 bytes in 0 blocks
-==62325==    indirectly lost: 0 bytes in 0 blocks
-==62325==      possibly lost: 0 bytes in 0 blocks
-==62325==    still reachable: 36,902 bytes in 78 blocks
-==62325==         suppressed: 204,738 bytes in 224 blocks
-==62325== 
-==62325== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
---62325-- 
---62325-- used_suppression:     63 leak readline valgrind_readline_leaks_ignore.txt:2 suppressed: 200,678 bytes in 220 blocks
---62325-- used_suppression:      4 leak add_history valgrind_readline_leaks_ignore.txt:8 suppressed: 4,060 bytes in 4 blocks
-==62325== 
-==62325== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-==62346== 
-==62346== HEAP SUMMARY:
-==62346==     in use at exit: 241,634 bytes in 304 blocks
-==62346==   total heap usage: 2,289 allocs, 1,985 frees, 329,482 bytes allocated
-==62346== 
-==62346== Searching for pointers to 304 not-freed blocks
-==62346== Checked 244,832 bytes
-==62346== 
-==62346== 1 bytes in 1 blocks are still reachable in loss record 2 of 77
-==62346==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==62346==    by 0x40545F: ft_strjoin (get_next_line_utils.c:47)
-==62346==    by 0x40314E: expand_str_supply (expand_str.c:53)
-==62346==    by 0x402FB3: expand_str (expand_str.c:29)
-==62346==    by 0x402018: here_doc_supply (limiter.c:73)
-==62346==    by 0x401EF2: here_doc (limiter.c:101)
-==62346==    by 0x4026DF: redir_manager (redir_manager.c:66)
-==62346==    by 0x402A84: builtin_or_not_supply (builtin_or_not.c:40)
-==62346==    by 0x402A39: builtin_or_not (builtin_or_not.c:29)
-==62346==    by 0x401382: main_loop (minishell.c:53)
-==62346==    by 0x4012C3: main (minishell.c:24)
-==62346== 
-==62346== 2 bytes in 1 blocks are still reachable in loss record 3 of 77
-==62346==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==62346==    by 0x40525A: clear_stat (get_next_line.c:83)
-==62346==    by 0x40535B: get_next_line (get_next_line.c:110)
-==62346==    by 0x401F6D: here_doc_supply (limiter.c:60)
-==62346==    by 0x401EF2: here_doc (limiter.c:101)
-==62346==    by 0x4026DF: redir_manager (redir_manager.c:66)
-==62346==    by 0x402A84: builtin_or_not_supply (builtin_or_not.c:40)
-==62346==    by 0x402A39: builtin_or_not (builtin_or_not.c:29)
-==62346==    by 0x401382: main_loop (minishell.c:53)
-==62346==    by 0x4012C3: main (minishell.c:24)
-==62346== 
-==62346== 3 bytes in 1 blocks are still reachable in loss record 5 of 77
-==62346==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==62346==    by 0x405E6F: ft_strdup (ft_strdup.c:22)
-==62346==    by 0x404C3B: set_redir (set_tok_supply.c:93)
-==62346==    by 0x404B48: set_simple (set_tok_supply.c:28)
-==62346==    by 0x404A8F: set_tok (set_tok.c:28)
-==62346==    by 0x404896: str_tok (str_tok.c:28)
-==62346==    by 0x4029A0: init_in_loop (other_init.c:31)
-==62346==    by 0x40134F: main_loop (minishell.c:45)
-==62346==    by 0x4012C3: main (minishell.c:24)
-==62346== 
-==62346== 3 bytes in 1 blocks are still reachable in loss record 6 of 77
-==62346==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==62346==    by 0x404D2C: set_lit (set_tok_supply.c:40)
-==62346==    by 0x404A41: set_tok (set_tok.c:24)
-==62346==    by 0x404896: str_tok (str_tok.c:28)
-==62346==    by 0x4029A0: init_in_loop (other_init.c:31)
-==62346==    by 0x40134F: main_loop (minishell.c:45)
-==62346==    by 0x4012C3: main (minishell.c:24)
-==62346== 
-==62346== 4 bytes in 1 blocks are still reachable in loss record 7 of 77
-==62346==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==62346==    by 0x405E6F: ft_strdup (ft_strdup.c:22)
-==62346==    by 0x402876: set_error_env_supply (set_error_env.c:45)
-==62346==    by 0x40276A: set_error_env (set_error_env.c:29)
-==62346==    by 0x4012FD: main_loop (minishell.c:39)
-==62346==    by 0x4012C3: main (minishell.c:24)
-==62346== 
-==62346== 8 bytes in 1 blocks are still reachable in loss record 11 of 77
-==62346==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==62346==    by 0x404825: str_tok (str_tok.c:20)
-==62346==    by 0x4029A0: init_in_loop (other_init.c:31)
-==62346==    by 0x40134F: main_loop (minishell.c:45)
-==62346==    by 0x4012C3: main (minishell.c:24)
-==62346== 
-==62346== 32 bytes in 2 blocks are still reachable in loss record 25 of 77
-==62346==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==62346==    by 0x4049E9: set_tok (set_tok.c:19)
-==62346==    by 0x404896: str_tok (str_tok.c:28)
-==62346==    by 0x4029A0: init_in_loop (other_init.c:31)
-==62346==    by 0x40134F: main_loop (minishell.c:45)
-==62346==    by 0x4012C3: main (minishell.c:24)
-==62346== 
-==62346== 32 bytes in 2 blocks are still reachable in loss record 26 of 77
-==62346==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==62346==    by 0x4055D0: ft_lstnew (ft_lstnew.c:19)
-==62346==    by 0x40489E: str_tok (str_tok.c:28)
-==62346==    by 0x4029A0: init_in_loop (other_init.c:31)
-==62346==    by 0x40134F: main_loop (minishell.c:45)
-==62346==    by 0x4012C3: main (minishell.c:24)
-==62346== 
-==62346== 4,016 bytes in 66 blocks are still reachable in loss record 54 of 77
-==62346==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==62346==    by 0x405E6F: ft_strdup (ft_strdup.c:22)
-==62346==    by 0x401453: init_env (get_env.c:25)
-==62346==    by 0x40296F: init_out_loop (other_init.c:24)
-==62346==    by 0x4012BE: main (minishell.c:23)
-==62346== 
-==62346== 32,768 bytes in 1 blocks are still reachable in loss record 77 of 77
-==62346==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==62346==    by 0x405757: ft_calloc (ft_calloc.c:19)
-==62346==    by 0x401401: init_env (get_env.c:20)
-==62346==    by 0x40296F: init_out_loop (other_init.c:24)
-==62346==    by 0x4012BE: main (minishell.c:23)
-==62346== 
-==62346== LEAK SUMMARY:
-==62346==    definitely lost: 0 bytes in 0 blocks
-==62346==    indirectly lost: 0 bytes in 0 blocks
-==62346==      possibly lost: 0 bytes in 0 blocks
-==62346==    still reachable: 36,869 bytes in 77 blocks
-==62346==         suppressed: 204,765 bytes in 227 blocks
-==62346== 
-==62346== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
---62346-- 
---62346-- used_suppression:     63 leak readline valgrind_readline_leaks_ignore.txt:2 suppressed: 200,708 bytes in 223 blocks
---62346-- used_suppression:      4 leak add_history valgrind_readline_leaks_ignore.txt:8 suppressed: 4,057 bytes in 4 blocks
-==62346== 
-==62346== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-==62345== 
-==62345== HEAP SUMMARY:
-==62345==     in use at exit: 241,631 bytes in 302 blocks
-==62345==   total heap usage: 2,242 allocs, 1,940 frees, 296,343 bytes allocated
-==62345== 
-==62345== Searching for pointers to 302 not-freed blocks
-==62345== Checked 244,760 bytes
-==62345== 
-==62345== 3 bytes in 1 blocks are still reachable in loss record 3 of 75
-==62345==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==62345==    by 0x405E6F: ft_strdup (ft_strdup.c:22)
-==62345==    by 0x404C3B: set_redir (set_tok_supply.c:93)
-==62345==    by 0x404B48: set_simple (set_tok_supply.c:28)
-==62345==    by 0x404A8F: set_tok (set_tok.c:28)
-==62345==    by 0x404896: str_tok (str_tok.c:28)
-==62345==    by 0x4029A0: init_in_loop (other_init.c:31)
-==62345==    by 0x40134F: main_loop (minishell.c:45)
-==62345==    by 0x4012C3: main (minishell.c:24)
-==62345== 
-==62345== 3 bytes in 1 blocks are still reachable in loss record 4 of 75
-==62345==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==62345==    by 0x404D2C: set_lit (set_tok_supply.c:40)
-==62345==    by 0x404A41: set_tok (set_tok.c:24)
-==62345==    by 0x404896: str_tok (str_tok.c:28)
-==62345==    by 0x4029A0: init_in_loop (other_init.c:31)
-==62345==    by 0x40134F: main_loop (minishell.c:45)
-==62345==    by 0x4012C3: main (minishell.c:24)
-==62345== 
-==62345== 4 bytes in 1 blocks are still reachable in loss record 5 of 75
-==62345==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==62345==    by 0x405E6F: ft_strdup (ft_strdup.c:22)
-==62345==    by 0x402876: set_error_env_supply (set_error_env.c:45)
-==62345==    by 0x40276A: set_error_env (set_error_env.c:29)
-==62345==    by 0x4012FD: main_loop (minishell.c:39)
-==62345==    by 0x4012C3: main (minishell.c:24)
-==62345== 
-==62345== 8 bytes in 1 blocks are still reachable in loss record 9 of 75
-==62345==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==62345==    by 0x404825: str_tok (str_tok.c:20)
-==62345==    by 0x4029A0: init_in_loop (other_init.c:31)
-==62345==    by 0x40134F: main_loop (minishell.c:45)
-==62345==    by 0x4012C3: main (minishell.c:24)
-==62345== 
-==62345== 32 bytes in 2 blocks are still reachable in loss record 23 of 75
-==62345==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==62345==    by 0x4049E9: set_tok (set_tok.c:19)
-==62345==    by 0x404896: str_tok (str_tok.c:28)
-==62345==    by 0x4029A0: init_in_loop (other_init.c:31)
-==62345==    by 0x40134F: main_loop (minishell.c:45)
-==62345==    by 0x4012C3: main (minishell.c:24)
-==62345== 
-==62345== 32 bytes in 2 blocks are still reachable in loss record 24 of 75
-==62345==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==62345==    by 0x4055D0: ft_lstnew (ft_lstnew.c:19)
-==62345==    by 0x40489E: str_tok (str_tok.c:28)
-==62345==    by 0x4029A0: init_in_loop (other_init.c:31)
-==62345==    by 0x40134F: main_loop (minishell.c:45)
-==62345==    by 0x4012C3: main (minishell.c:24)
-==62345== 
-==62345== 4,016 bytes in 66 blocks are still reachable in loss record 52 of 75
-==62345==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==62345==    by 0x405E6F: ft_strdup (ft_strdup.c:22)
-==62345==    by 0x401453: init_env (get_env.c:25)
-==62345==    by 0x40296F: init_out_loop (other_init.c:24)
-==62345==    by 0x4012BE: main (minishell.c:23)
-==62345== 
-==62345== 32,768 bytes in 1 blocks are still reachable in loss record 75 of 75
-==62345==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==62345==    by 0x405757: ft_calloc (ft_calloc.c:19)
-==62345==    by 0x401401: init_env (get_env.c:20)
-==62345==    by 0x40296F: init_out_loop (other_init.c:24)
-==62345==    by 0x4012BE: main (minishell.c:23)
-==62345== 
-==62345== LEAK SUMMARY:
-==62345==    definitely lost: 0 bytes in 0 blocks
-==62345==    indirectly lost: 0 bytes in 0 blocks
-==62345==      possibly lost: 0 bytes in 0 blocks
-==62345==    still reachable: 36,866 bytes in 75 blocks
-==62345==         suppressed: 204,765 bytes in 227 blocks
-==62345== 
-==62345== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
---62345-- 
---62345-- used_suppression:     63 leak readline valgrind_readline_leaks_ignore.txt:2 suppressed: 200,708 bytes in 223 blocks
---62345-- used_suppression:      4 leak add_history valgrind_readline_leaks_ignore.txt:8 suppressed: 4,057 bytes in 4 blocks
-==62345== 
-==62345== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-==62492== 
-==62492== HEAP SUMMARY:
-==62492==     in use at exit: 241,711 bytes in 305 blocks
-==62492==   total heap usage: 3,015 allocs, 2,710 frees, 380,443 bytes allocated
-==62492== 
-==62492== Searching for pointers to 305 not-freed blocks
-==62492== Checked 244,904 bytes
-==62492== 
-==62492== 2 bytes in 1 blocks are still reachable in loss record 1 of 75
-==62492==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==62492==    by 0x40525A: clear_stat (get_next_line.c:83)
-==62492==    by 0x40535B: get_next_line (get_next_line.c:110)
-==62492==    by 0x401F6D: here_doc_supply (limiter.c:60)
-==62492==    by 0x401EF2: here_doc (limiter.c:101)
-==62492==    by 0x4026DF: redir_manager (redir_manager.c:66)
-==62492==    by 0x402A84: builtin_or_not_supply (builtin_or_not.c:40)
-==62492==    by 0x402A39: builtin_or_not (builtin_or_not.c:29)
-==62492==    by 0x401382: main_loop (minishell.c:53)
-==62492==    by 0x4012C3: main (minishell.c:24)
-==62492== 
-==62492== 3 bytes in 1 blocks are still reachable in loss record 3 of 75
-==62492==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==62492==    by 0x405E6F: ft_strdup (ft_strdup.c:22)
-==62492==    by 0x404C3B: set_redir (set_tok_supply.c:93)
-==62492==    by 0x404B48: set_simple (set_tok_supply.c:28)
-==62492==    by 0x404A8F: set_tok (set_tok.c:28)
-==62492==    by 0x404896: str_tok (str_tok.c:28)
-==62492==    by 0x4029A0: init_in_loop (other_init.c:31)
-==62492==    by 0x40134F: main_loop (minishell.c:45)
-==62492==    by 0x4012C3: main (minishell.c:24)
-==62492== 
-==62492== 3 bytes in 1 blocks are still reachable in loss record 4 of 75
-==62492==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==62492==    by 0x404D2C: set_lit (set_tok_supply.c:40)
-==62492==    by 0x404A41: set_tok (set_tok.c:24)
-==62492==    by 0x404896: str_tok (str_tok.c:28)
-==62492==    by 0x4029A0: init_in_loop (other_init.c:31)
-==62492==    by 0x40134F: main_loop (minishell.c:45)
-==62492==    by 0x4012C3: main (minishell.c:24)
-==62492== 
-==62492== 4 bytes in 1 blocks are still reachable in loss record 5 of 75
-==62492==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==62492==    by 0x405E6F: ft_strdup (ft_strdup.c:22)
-==62492==    by 0x402876: set_error_env_supply (set_error_env.c:45)
-==62492==    by 0x40276A: set_error_env (set_error_env.c:29)
-==62492==    by 0x4012FD: main_loop (minishell.c:39)
-==62492==    by 0x4012C3: main (minishell.c:24)
-==62492== 
-==62492== 8 bytes in 1 blocks are still reachable in loss record 8 of 75
-==62492==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==62492==    by 0x404825: str_tok (str_tok.c:20)
-==62492==    by 0x4029A0: init_in_loop (other_init.c:31)
-==62492==    by 0x40134F: main_loop (minishell.c:45)
-==62492==    by 0x4012C3: main (minishell.c:24)
-==62492== 
-==62492== 32 bytes in 2 blocks are still reachable in loss record 21 of 75
-==62492==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==62492==    by 0x4049E9: set_tok (set_tok.c:19)
-==62492==    by 0x404896: str_tok (str_tok.c:28)
-==62492==    by 0x4029A0: init_in_loop (other_init.c:31)
-==62492==    by 0x40134F: main_loop (minishell.c:45)
-==62492==    by 0x4012C3: main (minishell.c:24)
-==62492== 
-==62492== 32 bytes in 2 blocks are still reachable in loss record 22 of 75
-==62492==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==62492==    by 0x4055D0: ft_lstnew (ft_lstnew.c:19)
-==62492==    by 0x40489E: str_tok (str_tok.c:28)
-==62492==    by 0x4029A0: init_in_loop (other_init.c:31)
-==62492==    by 0x40134F: main_loop (minishell.c:45)
-==62492==    by 0x4012C3: main (minishell.c:24)
-==62492== 
-==62492== 62 bytes in 1 blocks are still reachable in loss record 29 of 75
-==62492==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==62492==    by 0x405E6F: ft_strdup (ft_strdup.c:22)
-==62492==    by 0x40200B: here_doc_supply (limiter.c:72)
-==62492==    by 0x401EF2: here_doc (limiter.c:101)
-==62492==    by 0x4026DF: redir_manager (redir_manager.c:66)
-==62492==    by 0x402A84: builtin_or_not_supply (builtin_or_not.c:40)
-==62492==    by 0x402A39: builtin_or_not (builtin_or_not.c:29)
-==62492==    by 0x401382: main_loop (minishell.c:53)
-==62492==    by 0x4012C3: main (minishell.c:24)
-==62492== 
-==62492== 4,016 bytes in 66 blocks are still reachable in loss record 52 of 75
-==62492==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==62492==    by 0x405E6F: ft_strdup (ft_strdup.c:22)
-==62492==    by 0x401453: init_env (get_env.c:25)
-==62492==    by 0x40296F: init_out_loop (other_init.c:24)
-==62492==    by 0x4012BE: main (minishell.c:23)
-==62492== 
-==62492== 32,768 bytes in 1 blocks are still reachable in loss record 75 of 75
-==62492==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==62492==    by 0x405757: ft_calloc (ft_calloc.c:19)
-==62492==    by 0x401401: init_env (get_env.c:20)
-==62492==    by 0x40296F: init_out_loop (other_init.c:24)
-==62492==    by 0x4012BE: main (minishell.c:23)
-==62492== 
-==62492== LEAK SUMMARY:
-==62492==    definitely lost: 0 bytes in 0 blocks
-==62492==    indirectly lost: 0 bytes in 0 blocks
-==62492==      possibly lost: 0 bytes in 0 blocks
-==62492==    still reachable: 36,930 bytes in 77 blocks
-==62492==         suppressed: 204,781 bytes in 228 blocks
-==62492== 
-==62492== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
---62492-- 
---62492-- used_suppression:     61 leak readline valgrind_readline_leaks_ignore.txt:2 suppressed: 200,683 bytes in 221 blocks
---62492-- used_suppression:      4 leak add_history valgrind_readline_leaks_ignore.txt:8 suppressed: 4,098 bytes in 7 blocks
-==62492== 
-==62492== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-==62491== 
-==62491== HEAP SUMMARY:
-==62491==     in use at exit: 241,647 bytes in 303 blocks
-==62491==   total heap usage: 2,929 allocs, 2,626 frees, 309,919 bytes allocated
-==62491== 
-==62491== Searching for pointers to 303 not-freed blocks
-==62491== Checked 244,776 bytes
-==62491== 
-==62491== 3 bytes in 1 blocks are still reachable in loss record 2 of 73
-==62491==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==62491==    by 0x405E6F: ft_strdup (ft_strdup.c:22)
-==62491==    by 0x404C3B: set_redir (set_tok_supply.c:93)
-==62491==    by 0x404B48: set_simple (set_tok_supply.c:28)
-==62491==    by 0x404A8F: set_tok (set_tok.c:28)
-==62491==    by 0x404896: str_tok (str_tok.c:28)
-==62491==    by 0x4029A0: init_in_loop (other_init.c:31)
-==62491==    by 0x40134F: main_loop (minishell.c:45)
-==62491==    by 0x4012C3: main (minishell.c:24)
-==62491== 
-==62491== 3 bytes in 1 blocks are still reachable in loss record 3 of 73
-==62491==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==62491==    by 0x404D2C: set_lit (set_tok_supply.c:40)
-==62491==    by 0x404A41: set_tok (set_tok.c:24)
-==62491==    by 0x404896: str_tok (str_tok.c:28)
-==62491==    by 0x4029A0: init_in_loop (other_init.c:31)
-==62491==    by 0x40134F: main_loop (minishell.c:45)
-==62491==    by 0x4012C3: main (minishell.c:24)
-==62491== 
-==62491== 4 bytes in 1 blocks are still reachable in loss record 4 of 73
-==62491==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==62491==    by 0x405E6F: ft_strdup (ft_strdup.c:22)
-==62491==    by 0x402876: set_error_env_supply (set_error_env.c:45)
-==62491==    by 0x40276A: set_error_env (set_error_env.c:29)
-==62491==    by 0x4012FD: main_loop (minishell.c:39)
-==62491==    by 0x4012C3: main (minishell.c:24)
-==62491== 
-==62491== 8 bytes in 1 blocks are still reachable in loss record 7 of 73
-==62491==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==62491==    by 0x404825: str_tok (str_tok.c:20)
-==62491==    by 0x4029A0: init_in_loop (other_init.c:31)
-==62491==    by 0x40134F: main_loop (minishell.c:45)
-==62491==    by 0x4012C3: main (minishell.c:24)
-==62491== 
-==62491== 32 bytes in 2 blocks are still reachable in loss record 20 of 73
-==62491==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==62491==    by 0x4049E9: set_tok (set_tok.c:19)
-==62491==    by 0x404896: str_tok (str_tok.c:28)
-==62491==    by 0x4029A0: init_in_loop (other_init.c:31)
-==62491==    by 0x40134F: main_loop (minishell.c:45)
-==62491==    by 0x4012C3: main (minishell.c:24)
-==62491== 
-==62491== 32 bytes in 2 blocks are still reachable in loss record 21 of 73
-==62491==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==62491==    by 0x4055D0: ft_lstnew (ft_lstnew.c:19)
-==62491==    by 0x40489E: str_tok (str_tok.c:28)
-==62491==    by 0x4029A0: init_in_loop (other_init.c:31)
-==62491==    by 0x40134F: main_loop (minishell.c:45)
-==62491==    by 0x4012C3: main (minishell.c:24)
-==62491== 
-==62491== 4,016 bytes in 66 blocks are still reachable in loss record 50 of 73
-==62491==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==62491==    by 0x405E6F: ft_strdup (ft_strdup.c:22)
-==62491==    by 0x401453: init_env (get_env.c:25)
-==62491==    by 0x40296F: init_out_loop (other_init.c:24)
-==62491==    by 0x4012BE: main (minishell.c:23)
-==62491== 
-==62491== 32,768 bytes in 1 blocks are still reachable in loss record 73 of 73
-==62491==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==62491==    by 0x405757: ft_calloc (ft_calloc.c:19)
-==62491==    by 0x401401: init_env (get_env.c:20)
-==62491==    by 0x40296F: init_out_loop (other_init.c:24)
-==62491==    by 0x4012BE: main (minishell.c:23)
-==62491== 
-==62491== LEAK SUMMARY:
-==62491==    definitely lost: 0 bytes in 0 blocks
-==62491==    indirectly lost: 0 bytes in 0 blocks
-==62491==      possibly lost: 0 bytes in 0 blocks
-==62491==    still reachable: 36,866 bytes in 75 blocks
-==62491==         suppressed: 204,781 bytes in 228 blocks
-==62491== 
-==62491== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
---62491-- 
---62491-- used_suppression:     61 leak readline valgrind_readline_leaks_ignore.txt:2 suppressed: 200,683 bytes in 221 blocks
---62491-- used_suppression:      4 leak add_history valgrind_readline_leaks_ignore.txt:8 suppressed: 4,098 bytes in 7 blocks
-==62491== 
-==62491== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-==62187== 
-==62187== HEAP SUMMARY:
-==62187==     in use at exit: 204,776 bytes in 227 blocks
-==62187==   total heap usage: 3,604 allocs, 3,377 frees, 323,339 bytes allocated
-==62187== 
-==62187== Searching for pointers to 227 not-freed blocks
-==62187== Checked 208,096 bytes
-==62187== 
-==62187== LEAK SUMMARY:
-==62187==    definitely lost: 0 bytes in 0 blocks
-==62187==    indirectly lost: 0 bytes in 0 blocks
-==62187==      possibly lost: 0 bytes in 0 blocks
-==62187==    still reachable: 0 bytes in 0 blocks
-==62187==         suppressed: 204,776 bytes in 227 blocks
-==62187== 
-==62187== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
---62187-- 
---62187-- used_suppression:     60 leak readline valgrind_readline_leaks_ignore.txt:2 suppressed: 200,678 bytes in 220 blocks
---62187-- used_suppression:      4 leak add_history valgrind_readline_leaks_ignore.txt:8 suppressed: 4,098 bytes in 7 blocks
-==62187== 
-==62187== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==79698== Memcheck, a memory error detector
+==79698== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==79698== Using Valgrind-3.15.0-608cb11914-20190413 and LibVEX; rerun with -h for copyright info
+==79698== Command: ./bin/minishell
+==79698== Parent PID: 5380
+==79698== 
+--79698-- 
+--79698-- Valgrind options:
+--79698--    --suppressions=valgrind_readline_leaks_ignore.txt
+--79698--    --leak-check=full
+--79698--    --show-leak-kinds=all
+--79698--    --track-origins=yes
+--79698--    --verbose
+--79698--    --log-file=valgrind-out.txt
+--79698-- Contents of /proc/version:
+--79698--   Linux version 5.15.0-41-generic (buildd@lcy02-amd64-105) (gcc (Ubuntu 9.4.0-1ubuntu1~20.04.1) 9.4.0, GNU ld (GNU Binutils for Ubuntu) 2.34) #44~20.04.1-Ubuntu SMP Fri Jun 24 13:27:29 UTC 2022
+--79698-- 
+--79698-- Arch and hwcaps: AMD64, LittleEndian, amd64-cx16-lzcnt-rdtscp-sse3-ssse3-avx-avx2-bmi-f16c-rdrand
+--79698-- Page sizes: currently 4096, max supported 4096
+--79698-- Valgrind library directory: /usr/lib/x86_64-linux-gnu/valgrind
+--79698-- Reading syms from /home/flo/Github/minishell/bin/minishell
+--79698-- Reading syms from /usr/lib/x86_64-linux-gnu/ld-2.31.so
+--79698--   Considering /usr/lib/debug/.build-id/45/87364908de169dec62ffa538170118c1c3a078.debug ..
+--79698--   .. build-id is valid
+--79698-- Reading syms from /usr/lib/x86_64-linux-gnu/valgrind/memcheck-amd64-linux
+--79698--    object doesn't have a symbol table
+--79698--    object doesn't have a dynamic symbol table
+--79698-- Scheduler: using generic scheduler lock implementation.
+--79698-- Reading suppressions file: valgrind_readline_leaks_ignore.txt
+--79698-- Reading suppressions file: /usr/lib/x86_64-linux-gnu/valgrind/default.supp
+==79698== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-79698-by-flo-on-???
+==79698== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-79698-by-flo-on-???
+==79698== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-79698-by-flo-on-???
+==79698== 
+==79698== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==79698== don't want to do, unless you know exactly what you're doing,
+==79698== or are doing some strange experiment):
+==79698==   /usr/lib/x86_64-linux-gnu/valgrind/../../bin/vgdb --pid=79698 ...command...
+==79698== 
+==79698== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==79698==   /path/to/gdb ./bin/minishell
+==79698== and then give GDB the following command
+==79698==   target remote | /usr/lib/x86_64-linux-gnu/valgrind/../../bin/vgdb --pid=79698
+==79698== --pid is optional if only one valgrind process is running
+==79698== 
+--79698-- REDIR: 0x4022e20 (ld-linux-x86-64.so.2:strlen) redirected to 0x580c9ce2 (???)
+--79698-- REDIR: 0x4022bf0 (ld-linux-x86-64.so.2:index) redirected to 0x580c9cfc (???)
+--79698-- Reading syms from /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_core-amd64-linux.so
+--79698--    object doesn't have a symbol table
+--79698-- Reading syms from /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so
+--79698--    object doesn't have a symbol table
+==79698== WARNING: new redirection conflicts with existing -- ignoring it
+--79698--     old: 0x04022e20 (strlen              ) R-> (0000.0) 0x580c9ce2 ???
+--79698--     new: 0x04022e20 (strlen              ) R-> (2007.0) 0x0483f060 strlen
+--79698-- REDIR: 0x401f600 (ld-linux-x86-64.so.2:strcmp) redirected to 0x483ffd0 (strcmp)
+--79698-- REDIR: 0x4023380 (ld-linux-x86-64.so.2:mempcpy) redirected to 0x4843a20 (mempcpy)
+--79698-- Reading syms from /usr/lib/x86_64-linux-gnu/libreadline.so.8.0
+--79698--    object doesn't have a symbol table
+--79698-- Reading syms from /usr/lib/x86_64-linux-gnu/libc-2.31.so
+--79698--   Considering /usr/lib/debug/.build-id/18/78e6b475720c7c51969e69ab2d276fae6d1dee.debug ..
+--79698--   .. build-id is valid
+--79698-- Reading syms from /usr/lib/x86_64-linux-gnu/libtinfo.so.6.2
+--79698--    object doesn't have a symbol table
+--79698-- REDIR: 0x4952480 (libc.so.6:memmove) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--79698-- REDIR: 0x4951780 (libc.so.6:strncpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--79698-- REDIR: 0x49527b0 (libc.so.6:strcasecmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--79698-- REDIR: 0x49510a0 (libc.so.6:strcat) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--79698-- REDIR: 0x49517e0 (libc.so.6:rindex) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--79698-- REDIR: 0x4953c50 (libc.so.6:rawmemchr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--79698-- REDIR: 0x496ece0 (libc.so.6:wmemchr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--79698-- REDIR: 0x496e820 (libc.so.6:wcscmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--79698-- REDIR: 0x49525e0 (libc.so.6:mempcpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--79698-- REDIR: 0x4952410 (libc.so.6:bcmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--79698-- REDIR: 0x4951710 (libc.so.6:strncmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--79698-- REDIR: 0x4951150 (libc.so.6:strcmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--79698-- REDIR: 0x4952540 (libc.so.6:memset) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--79698-- REDIR: 0x496e7e0 (libc.so.6:wcschr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--79698-- REDIR: 0x4951670 (libc.so.6:strnlen) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--79698-- REDIR: 0x4951230 (libc.so.6:strcspn) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--79698-- REDIR: 0x4952800 (libc.so.6:strncasecmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--79698-- REDIR: 0x49511d0 (libc.so.6:strcpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--79698-- REDIR: 0x4952950 (libc.so.6:memcpy@@GLIBC_2.14) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--79698-- REDIR: 0x496ff50 (libc.so.6:wcsnlen) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--79698-- REDIR: 0x496e860 (libc.so.6:wcscpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--79698-- REDIR: 0x4951820 (libc.so.6:strpbrk) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--79698-- REDIR: 0x4951100 (libc.so.6:index) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--79698-- REDIR: 0x4951630 (libc.so.6:strlen) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--79698-- REDIR: 0x495abb0 (libc.so.6:memrchr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--79698-- REDIR: 0x4952850 (libc.so.6:strcasecmp_l) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--79698-- REDIR: 0x49523d0 (libc.so.6:memchr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--79698-- REDIR: 0x496e930 (libc.so.6:wcslen) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--79698-- REDIR: 0x4951ae0 (libc.so.6:strspn) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--79698-- REDIR: 0x4952750 (libc.so.6:stpncpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--79698-- REDIR: 0x49526f0 (libc.so.6:stpcpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--79698-- REDIR: 0x4953c90 (libc.so.6:strchrnul) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--79698-- REDIR: 0x49528a0 (libc.so.6:strncasecmp_l) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--79698-- REDIR: 0x49516b0 (libc.so.6:strncat) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--79698-- REDIR: 0x49df850 (libc.so.6:__memcpy_chk) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--79698-- REDIR: 0x49522f0 (libc.so.6:strstr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--79698-- REDIR: 0x4a3a500 (libc.so.6:__strrchr_avx2) redirected to 0x483ea10 (rindex)
+--79698-- REDIR: 0x494c0e0 (libc.so.6:malloc) redirected to 0x483b780 (malloc)
+--79698-- REDIR: 0x494c6d0 (libc.so.6:free) redirected to 0x483c9d0 (free)
+--79698-- REDIR: 0x4a3a6d0 (libc.so.6:__strlen_avx2) redirected to 0x483ef40 (strlen)
+--79698-- REDIR: 0x4a3bc10 (libc.so.6:__strcpy_avx2) redirected to 0x483f090 (strcpy)
+--79698-- REDIR: 0x4a3a310 (libc.so.6:__strchrnul_avx2) redirected to 0x4843540 (strchrnul)
+--79698-- REDIR: 0x48f84f0 (libc.so.6:setenv) redirected to 0x4844480 (setenv)
+--79698-- REDIR: 0x4a3a0e0 (libc.so.6:__strchr_avx2) redirected to 0x483ebf0 (index)
+--79698-- REDIR: 0x4a36010 (libc.so.6:__strncmp_avx2) redirected to 0x483f670 (strncmp)
+--79698-- REDIR: 0x494ce80 (libc.so.6:realloc) redirected to 0x483df30 (realloc)
+--79698-- REDIR: 0x4a3d6e0 (libc.so.6:__memcpy_avx_unaligned_erms) redirected to 0x48429f0 (memmove)
+--79698-- REDIR: 0x4a3d6c0 (libc.so.6:__mempcpy_avx_unaligned_erms) redirected to 0x4843660 (mempcpy)
+--79698-- REDIR: 0x4a35bd0 (libc.so.6:__strcmp_avx2) redirected to 0x483fed0 (strcmp)
+--79698-- REDIR: 0x494db10 (libc.so.6:calloc) redirected to 0x483dce0 (calloc)
+--79698-- REDIR: 0x4a3a870 (libc.so.6:__strnlen_avx2) redirected to 0x483eee0 (strnlen)
+--79698-- REDIR: 0x4951fa0 (libc.so.6:__GI_strstr) redirected to 0x4843ca0 (__strstr_sse2)
+--79698-- REDIR: 0x4a3d6d0 (libc.so.6:__memcpy_chk_avx_unaligned_erms) redirected to 0x4843b10 (__memcpy_chk)
+--79698-- REDIR: 0x4a3bfa0 (libc.so.6:__strncpy_avx2) redirected to 0x483f230 (strncpy)
+--79698-- REDIR: 0x4a36530 (libc.so.6:__memchr_avx2) redirected to 0x4840050 (memchr)
+--79698-- REDIR: 0x4a3c900 (libc.so.6:__stpcpy_avx2) redirected to 0x4842300 (stpcpy)
+--79698-- REDIR: 0x4a370a0 (libc.so.6:__strcasecmp_avx) redirected to 0x483f830 (strcasecmp)
+--79698-- REDIR: 0x4a38720 (libc.so.6:__strncasecmp_avx) redirected to 0x483f910 (strncasecmp)
+--79698-- REDIR: 0x4a3db60 (libc.so.6:__memset_avx2_unaligned_erms) redirected to 0x48428e0 (memset)
+--79698-- REDIR: 0x4a36cc0 (libc.so.6:__memcmp_avx2_movbe) redirected to 0x48421e0 (bcmp)
+==79700== 
+==79700== HEAP SUMMARY:
+==79700==     in use at exit: 241,311 bytes in 307 blocks
+==79700==   total heap usage: 921 allocs, 614 frees, 269,218 bytes allocated
+==79700== 
+==79700== Searching for pointers to 307 not-freed blocks
+==79700== Checked 244,328 bytes
+==79700== 
+==79700== 3 bytes in 1 blocks are still reachable in loss record 3 of 72
+==79700==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==79700==    by 0x405B71: ft_strdup (ft_strdup.c:22)
+==79700==    by 0x404CF3: set_redir (set_tok_supply.c:93)
+==79700==    by 0x404C12: set_simple (set_tok_supply.c:28)
+==79700==    by 0x404B5D: set_tok (set_tok.c:28)
+==79700==    by 0x404979: str_tok (str_tok.c:28)
+==79700==    by 0x402A10: init_in_loop (other_init.c:31)
+==79700==    by 0x40133F: main_loop (minishell.c:45)
+==79700==    by 0x4012B3: main (minishell.c:24)
+==79700== 
+==79700== 3 bytes in 1 blocks are still reachable in loss record 4 of 72
+==79700==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==79700==    by 0x404DE1: set_lit (set_tok_supply.c:40)
+==79700==    by 0x404B0F: set_tok (set_tok.c:24)
+==79700==    by 0x404979: str_tok (str_tok.c:28)
+==79700==    by 0x402A10: init_in_loop (other_init.c:31)
+==79700==    by 0x40133F: main_loop (minishell.c:45)
+==79700==    by 0x4012B3: main (minishell.c:24)
+==79700== 
+==79700== 4 bytes in 1 blocks are still reachable in loss record 5 of 72
+==79700==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==79700==    by 0x405B71: ft_strdup (ft_strdup.c:22)
+==79700==    by 0x40280F: set_error_env (set_error_env.c:32)
+==79700==    by 0x4012ED: main_loop (minishell.c:39)
+==79700==    by 0x4012B3: main (minishell.c:24)
+==79700== 
+==79700== 8 bytes in 1 blocks are still reachable in loss record 9 of 72
+==79700==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==79700==    by 0x404905: str_tok (str_tok.c:20)
+==79700==    by 0x402A10: init_in_loop (other_init.c:31)
+==79700==    by 0x40133F: main_loop (minishell.c:45)
+==79700==    by 0x4012B3: main (minishell.c:24)
+==79700== 
+==79700== 10 bytes in 1 blocks are definitely lost in loss record 12 of 72
+==79700==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==79700==    by 0x405163: ft_strjoin (get_next_line_utils.c:47)
+==79700==    by 0x4031D8: expand_str_supply (expand_str.c:53)
+==79700==    by 0x403033: expand_str (expand_str.c:29)
+==79700==    by 0x401FFD: here_doc_supply (limiter.c:71)
+==79700==    by 0x401EF2: here_doc (limiter.c:105)
+==79700==    by 0x40275F: redir_manager (redir_manager.c:66)
+==79700==    by 0x402AF4: builtin_or_not_supply (builtin_or_not.c:40)
+==79700==    by 0x402AA9: builtin_or_not (builtin_or_not.c:29)
+==79700==    by 0x401372: main_loop (minishell.c:53)
+==79700==    by 0x4012B3: main (minishell.c:24)
+==79700== 
+==79700== 32 bytes in 2 blocks are still reachable in loss record 22 of 72
+==79700==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==79700==    by 0x404AB9: set_tok (set_tok.c:19)
+==79700==    by 0x404979: str_tok (str_tok.c:28)
+==79700==    by 0x402A10: init_in_loop (other_init.c:31)
+==79700==    by 0x40133F: main_loop (minishell.c:45)
+==79700==    by 0x4012B3: main (minishell.c:24)
+==79700== 
+==79700== 32 bytes in 2 blocks are still reachable in loss record 23 of 72
+==79700==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==79700==    by 0x4052D5: ft_lstnew (ft_lstnew.c:19)
+==79700==    by 0x404981: str_tok (str_tok.c:28)
+==79700==    by 0x402A10: init_in_loop (other_init.c:31)
+==79700==    by 0x40133F: main_loop (minishell.c:45)
+==79700==    by 0x4012B3: main (minishell.c:24)
+==79700== 
+==79700== 3,826 bytes in 74 blocks are still reachable in loss record 48 of 72
+==79700==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==79700==    by 0x405B71: ft_strdup (ft_strdup.c:22)
+==79700==    by 0x401443: init_env (get_env.c:25)
+==79700==    by 0x4029DF: init_out_loop (other_init.c:24)
+==79700==    by 0x4012AE: main (minishell.c:23)
+==79700== 
+==79700== 32,768 bytes in 1 blocks are still reachable in loss record 72 of 72
+==79700==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==79700==    by 0x40545C: ft_calloc (ft_calloc.c:19)
+==79700==    by 0x4013F1: init_env (get_env.c:20)
+==79700==    by 0x4029DF: init_out_loop (other_init.c:24)
+==79700==    by 0x4012AE: main (minishell.c:23)
+==79700== 
+==79700== LEAK SUMMARY:
+==79700==    definitely lost: 10 bytes in 1 blocks
+==79700==    indirectly lost: 0 bytes in 0 blocks
+==79700==      possibly lost: 0 bytes in 0 blocks
+==79700==    still reachable: 36,676 bytes in 83 blocks
+==79700==         suppressed: 204,625 bytes in 223 blocks
+==79700== 
+==79700== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 1 from 1)
+--79700-- 
+--79700-- used_suppression:     59 leak readline valgrind_readline_leaks_ignore.txt:2 suppressed: 200,568 bytes in 219 blocks
+--79700-- used_suppression:      4 leak add_history valgrind_readline_leaks_ignore.txt:8 suppressed: 4,057 bytes in 4 blocks
+==79700== 
+==79700== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 1 from 1)
+==79699== 
+==79699== HEAP SUMMARY:
+==79699==     in use at exit: 241,312 bytes in 302 blocks
+==79699==   total heap usage: 870 allocs, 568 frees, 268,627 bytes allocated
+==79699== 
+==79699== Searching for pointers to 302 not-freed blocks
+==79699== Checked 244,360 bytes
+==79699== 
+==79699== 3 bytes in 1 blocks are still reachable in loss record 1 of 70
+==79699==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==79699==    by 0x405B71: ft_strdup (ft_strdup.c:22)
+==79699==    by 0x404CF3: set_redir (set_tok_supply.c:93)
+==79699==    by 0x404C12: set_simple (set_tok_supply.c:28)
+==79699==    by 0x404B5D: set_tok (set_tok.c:28)
+==79699==    by 0x404979: str_tok (str_tok.c:28)
+==79699==    by 0x402A10: init_in_loop (other_init.c:31)
+==79699==    by 0x40133F: main_loop (minishell.c:45)
+==79699==    by 0x4012B3: main (minishell.c:24)
+==79699== 
+==79699== 3 bytes in 1 blocks are still reachable in loss record 2 of 70
+==79699==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==79699==    by 0x404DE1: set_lit (set_tok_supply.c:40)
+==79699==    by 0x404B0F: set_tok (set_tok.c:24)
+==79699==    by 0x404979: str_tok (str_tok.c:28)
+==79699==    by 0x402A10: init_in_loop (other_init.c:31)
+==79699==    by 0x40133F: main_loop (minishell.c:45)
+==79699==    by 0x4012B3: main (minishell.c:24)
+==79699== 
+==79699== 4 bytes in 1 blocks are still reachable in loss record 3 of 70
+==79699==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==79699==    by 0x405B71: ft_strdup (ft_strdup.c:22)
+==79699==    by 0x40280F: set_error_env (set_error_env.c:32)
+==79699==    by 0x4012ED: main_loop (minishell.c:39)
+==79699==    by 0x4012B3: main (minishell.c:24)
+==79699== 
+==79699== 8 bytes in 1 blocks are still reachable in loss record 8 of 70
+==79699==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==79699==    by 0x404905: str_tok (str_tok.c:20)
+==79699==    by 0x402A10: init_in_loop (other_init.c:31)
+==79699==    by 0x40133F: main_loop (minishell.c:45)
+==79699==    by 0x4012B3: main (minishell.c:24)
+==79699== 
+==79699== 32 bytes in 2 blocks are still reachable in loss record 20 of 70
+==79699==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==79699==    by 0x404AB9: set_tok (set_tok.c:19)
+==79699==    by 0x404979: str_tok (str_tok.c:28)
+==79699==    by 0x402A10: init_in_loop (other_init.c:31)
+==79699==    by 0x40133F: main_loop (minishell.c:45)
+==79699==    by 0x4012B3: main (minishell.c:24)
+==79699== 
+==79699== 32 bytes in 2 blocks are still reachable in loss record 21 of 70
+==79699==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==79699==    by 0x4052D5: ft_lstnew (ft_lstnew.c:19)
+==79699==    by 0x404981: str_tok (str_tok.c:28)
+==79699==    by 0x402A10: init_in_loop (other_init.c:31)
+==79699==    by 0x40133F: main_loop (minishell.c:45)
+==79699==    by 0x4012B3: main (minishell.c:24)
+==79699== 
+==79699== 3,826 bytes in 74 blocks are still reachable in loss record 46 of 70
+==79699==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==79699==    by 0x405B71: ft_strdup (ft_strdup.c:22)
+==79699==    by 0x401443: init_env (get_env.c:25)
+==79699==    by 0x4029DF: init_out_loop (other_init.c:24)
+==79699==    by 0x4012AE: main (minishell.c:23)
+==79699== 
+==79699== 32,768 bytes in 1 blocks are still reachable in loss record 70 of 70
+==79699==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==79699==    by 0x40545C: ft_calloc (ft_calloc.c:19)
+==79699==    by 0x4013F1: init_env (get_env.c:20)
+==79699==    by 0x4029DF: init_out_loop (other_init.c:24)
+==79699==    by 0x4012AE: main (minishell.c:23)
+==79699== 
+==79699== LEAK SUMMARY:
+==79699==    definitely lost: 0 bytes in 0 blocks
+==79699==    indirectly lost: 0 bytes in 0 blocks
+==79699==      possibly lost: 0 bytes in 0 blocks
+==79699==    still reachable: 36,676 bytes in 83 blocks
+==79699==         suppressed: 204,636 bytes in 219 blocks
+==79699== 
+==79699== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+--79699-- 
+--79699-- used_suppression:     58 leak readline valgrind_readline_leaks_ignore.txt:2 suppressed: 200,579 bytes in 215 blocks
+--79699-- used_suppression:      4 leak add_history valgrind_readline_leaks_ignore.txt:8 suppressed: 4,057 bytes in 4 blocks
+==79699== 
+==79699== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==79698== 
+==79698== HEAP SUMMARY:
+==79698==     in use at exit: 204,631 bytes in 218 blocks
+==79698==   total heap usage: 1,593 allocs, 1,375 frees, 282,051 bytes allocated
+==79698== 
+==79698== Searching for pointers to 218 not-freed blocks
+==79698== Checked 207,832 bytes
+==79698== 
+==79698== LEAK SUMMARY:
+==79698==    definitely lost: 0 bytes in 0 blocks
+==79698==    indirectly lost: 0 bytes in 0 blocks
+==79698==      possibly lost: 0 bytes in 0 blocks
+==79698==    still reachable: 0 bytes in 0 blocks
+==79698==         suppressed: 204,631 bytes in 218 blocks
+==79698== 
+==79698== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+--79698-- 
+--79698-- used_suppression:     57 leak readline valgrind_readline_leaks_ignore.txt:2 suppressed: 200,574 bytes in 214 blocks
+--79698-- used_suppression:      4 leak add_history valgrind_readline_leaks_ignore.txt:8 suppressed: 4,057 bytes in 4 blocks
+==79698== 
+==79698== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

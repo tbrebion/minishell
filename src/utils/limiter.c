@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 11:02:39 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/07/19 20:40:07 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/07/20 01:52:28 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,29 +49,25 @@ static void	here_doc_supply(char *limiter, char *tmp)
 {
 	char	*line;
 	char	*ret;
-	char	*tmpret;
-	char	*tmpbis;
 
 	ret = ft_strdup("");
 	reinit_sig();
 	while (1)
 	{
-		ft_putstr("here_doc> ");
-		line = get_next_line(0);
+		line = readline(">");
 		here_doc_other_supply(line, ret);
 		if ((ft_strncmp(line, limiter, \
 		ft_max((ft_strlen(line) - 1), ft_strlen(limiter))) == 0))
 		{
+			ret = ft_strjoin(ret, "\n");
 			free(line);
 			break ;
 		}
-		ret = ft_strjoin(ret, line);
-		free(line);
+		ret = ft_strjoin(ret, expand_str(line));
+		ret = ft_strjoin(ret, "\n");
 	}
 	hd_supply(ret, tmp);
-	tmpbis = ft_strdup(ret);
-	tmpret = expand_str(tmpbis);
-	ft_putstr(tmpret);
+	ft_putstr(ret);
 	free(ret);
 	exit(0);
 }

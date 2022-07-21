@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 12:24:08 by flcarval          #+#    #+#             */
-/*   Updated: 2022/07/20 15:42:40 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/07/21 15:23:56 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,8 @@ int		is_num(char *str);
 int		redir_first(void);
 void	rotate_tokens(void);
 int		is_meta_char(void);
+int		check_meta_char(void);
+int		nb_here_doc(void);
 
 // BUILTINS
 int		is_builtin(char *cmd);

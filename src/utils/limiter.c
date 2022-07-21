@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   limiter.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 11:02:39 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/07/20 15:42:32 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/07/21 15:23:37 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ void	here_doc(void)
 		tmp = g_data.lst->content->val;
 	while (g_data.lst->content->type != I_D_INREDIR)
 		g_data.lst = g_data.lst->next;
-	if (!g_data.lst->next || is_meta_char() == 1)
+	if (!g_data.lst->next || check_meta_char() == 1)
 	{
 		ft_putstr_fd("syntax error\n", 0);
 		g_data.error_status = 2;

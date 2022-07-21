@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   str_tok.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 16:51:49 by flcarval          #+#    #+#             */
-/*   Updated: 2022/07/20 16:01:39 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/07/21 16:11:23 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
 static char	*limiter_handler(char *str);
+// static char	*limiter_in_quotes(char *str, int i, int j);
 
 t_list	**str_tok(char *str)
 {
@@ -55,6 +56,9 @@ static char	*limiter_handler(char *str)
 			i += 2;
 			while (str[i] == ' ')
 				i++;
+			// lim = limiter_in_quotes(str, i, j);
+			// if (lim)
+				// break ;
 			while (str[i] && str[i] != ' ')
 				lim[j++] = str[i++];
 			lim[j] = '\0';
@@ -69,3 +73,29 @@ static char	*limiter_handler(char *str)
 	}
 	return (lim);
 }
+
+// static char	*limiter_in_quotes(char *str, int i, int j)
+// {
+// 	char *lim;
+
+// 	lim = NULL;
+// 	if (str[i] != '\"' || str[i] != '\'')
+// 		return (NULL);
+// 	if (str[i] == '\"')	
+// 	{
+// 		i++;
+// 		while (str[i] != '\"')
+// 			lim[j++] = str[i++];
+// 		lim[j] = '\0';
+// 		return (lim);
+// 	}
+// 	if (str[i] == '\'')	
+// 	{
+// 		i++;
+// 		while (str[i] != '\'')
+// 			lim[j++] = str[i++];
+// 		lim[j] = '\0';
+// 		return (lim);
+// 	}
+// 	return (lim);
+// }

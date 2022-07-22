@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 16:51:49 by flcarval          #+#    #+#             */
-/*   Updated: 2022/07/22 18:29:05 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/07/22 18:52:43 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static char	*limiter_handler(char *str);
 static int	limiter_in_quotes(char *str, char *lim, int i, int j);
+// static int	backslash_limiter(char *str, char *lim, int i, int j);
 
 t_list	**str_tok(char *str)
 {
@@ -95,3 +96,15 @@ static int	limiter_in_quotes(char *str, char *lim, int i, int j)
 	}
 	return (1);
 }
+
+// static	int backslash_limiter(char *str, char *lim, int i, int j)
+// {
+// 	if (str[i] == '\\' && (str[i + 1] == ' ' || str[i + 1] == '\0'))
+// 	{
+// 		lim[j] = '\0';
+// 		return (1);
+// 	}
+// 	else if (str[i] == '\\' && str[i + 1] != ' ' && str[i + 1] != '\0')
+// 		return (2);
+// 	return (0);
+// }

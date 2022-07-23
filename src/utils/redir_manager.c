@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:54:58 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/07/21 17:21:01 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/07/23 19:18:24 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,11 @@
 void	rotate_tokens(void)
 {
 	t_list	*lst;
+	// t_list	*tmp;
 	int		i;
 	int		prev_type;
-	char	*concat;
+	// char	*concat;
+	// t_list	**new;
 
 	if (redir_first() != -1)
 	{
@@ -39,7 +41,7 @@ void	rotate_tokens(void)
 					g_data.tokens = &lst;
 					break ;
 				}
-				continue ;
+				// continue ;
 			}
 			i++;
 			lst = lst->next;
@@ -49,27 +51,40 @@ void	rotate_tokens(void)
 	CHANGER LA VAL DU PREMIER TOKEN DE LA LISTE PAR LA CONCATENATION
 	DE TOUS LES TOKENS LITERAUX (NON PRECEDES DUN TOKEN REDIR)
 	*/
-	concat = ft_strdup((*g_data.tokens)->content->val);
-	concat = ft_strjoin(concat, " ");
-	lst = (*g_data.tokens)->next;
-	i = 1;
-	while (lst)
-	{
-		if (lst->content->type == I_LITERAL)
-		{
-			prev_type = get_n_lst(g_data.tokens, i - 1)->content->type;
-			if (!(prev_type >= I_OUTREDIR && prev_type <= I_D_INREDIR))
-			{
-				concat = ft_strjoin(concat, lst->content->val);
-				concat = ft_strjoin(concat, " ");
-				get_n_lst(g_data.tokens, i - 1)->next = lst->next;
-			}
-		}
-		lst = lst->next;
-		i++;
-	}
-	free((*g_data.tokens)->content->val);
-	(*g_data.tokens)->content->val = concat;
+	// concat = ft_strdup((*g_data.tokens)->content->val);
+	// concat = ft_strjoin(concat, " ");
+	// lst = (*g_data.tokens)->next;
+	// i = 1;
+	// while (lst)
+	// {
+	// 	if (lst->content->type == I_LITERAL)
+	// 	{
+	// 		prev_type = get_n_lst(g_data.tokens, i - 1)->content->type;
+	// 		if (!(prev_type >= I_OUTREDIR && prev_type <= I_D_INREDIR))
+	// 		{
+	// 			concat = ft_strjoin(concat, lst->content->val);
+	// 			concat = ft_strjoin(concat, " ");
+	// 			get_n_lst(g_data.tokens, i - 1)->next = lst->next;
+	// 			i--;
+	// 		}
+	// 	}
+	// 	lst = lst->next;
+	// 	i++;
+	// }
+	/*
+	TRAMSFORMER CONCAT EN UNE NOUVELLE LISTE DE TOKENS
+	PLACER CETTE LISTE EN DEBUT DE LANCIENNE APRES AVOIR SUPPRIMER LE PREMIER TOKEN DE LANCIENNE
+	*/
+	// new = str_tok(concat);
+	// tmp = (*g_data.tokens)->next;
+	// free((*g_data.tokens)->content->val);
+	// free((*g_data.tokens)->content);
+	// free(*g_data.tokens);
+	// g_data.tokens = new;
+	// lst = *g_data.tokens;
+	// while (lst->next)
+	// 	lst = lst->next;
+	// lst->next = tmp;
 	////////////////////////////////////////////////////////
 	lst = (*g_data.tokens);
 	ft_printf("\n");

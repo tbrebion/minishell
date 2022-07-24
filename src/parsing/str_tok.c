@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 16:51:49 by flcarval          #+#    #+#             */
-/*   Updated: 2022/07/22 18:52:43 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/07/22 19:10:52 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ t_list	**str_tok(char *str)
 	return (tokens);
 }
 
-static char	*limiter_handler(char *str)
+char	*limiter_handler(char *str)
 {
 	int		i;
 	int		j;

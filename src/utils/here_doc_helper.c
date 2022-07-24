@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 14:41:41 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/07/22 18:57:55 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/07/22 19:19:54 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,15 +60,29 @@ int	nb_here_doc(void)
 	return (nb_hd);
 }
 
-// void	multi_limiter(void)
-// {
+void	multi_limiter(void)
+{
+	int		i;
+	int		j;
+	char	*new_input;
 
-// }
-// void	multi_hd_supply(char *limiter, char *new_lim)
-// {
-// 	int nb _hd;
+	i = 0;
+	j = 0;
+	if (nb_here_doc() <= 1)
+		return ;
+	new_input = ft_strdup(g_data.input);
+	g_data.limiters = malloc(sizeof(char *) * nb_here_doc);
+	while (j < nb_here_doc())
+	{
+		g_data.limiters[j] = limiter_handler(new_input);
+	}
+}
 
-// 	nb_hd = nb_here_doc();
-// 	if (nb_hd > 1)
-// 		nb_hd--;
+// static char	*new_input_maker(char *new_input, int i)
+// {
+// 	while (new_input[i] != '<' && new_input[i + 1] != '<')
+// 	{
+// 		new_input++;
+// 		i++;
+// 	}
 // }

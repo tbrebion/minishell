@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 12:24:08 by flcarval          #+#    #+#             */
-/*   Updated: 2022/07/21 15:23:56 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/07/22 19:10:49 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ typedef struct s_g_data
 	pid_t	pid;
 	int		is_env;
 	char	*limiter;
+	char	**limiters;
 }	t_data;
 
 typedef struct s_directory
@@ -98,6 +99,8 @@ void	rotate_tokens(void);
 int		is_meta_char(void);
 int		check_meta_char(void);
 int		nb_here_doc(void);
+void	multi_limiter(void);
+char	*limiter_handler(char *str);
 
 // BUILTINS
 int		is_builtin(char *cmd);

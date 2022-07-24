@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:54:58 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/07/23 19:18:24 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/07/24 12:38:12 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 void	rotate_tokens(void)
 {
 	t_list	*lst;
-	// t_list	*tmp;
+	t_list	*tmp;
 	int		i;
 	int		prev_type;
-	// char	*concat;
-	// t_list	**new;
+	char	*concat;
+	t_list	**new;
 
 	if (redir_first() != -1)
 	{
@@ -31,69 +31,88 @@ void	rotate_tokens(void)
 		i = 1;
 		while (lst)
 		{
-			if (lst->content->type == I_LITERAL)
+			if (lst->content->type == I_LITERAL \
+				|| lst->content->type == I_S_QUOTE \
+				|| lst->content->type == I_D_QUOTE)
 			{
 				prev_type = get_n_lst(g_data.tokens, i - 1)->content->type;
 				if (!(prev_type >= I_OUTREDIR && prev_type <= I_D_INREDIR))
 				{
 					get_n_lst(g_data.tokens, i - 1)->next = lst->next;
 					lst->next = *g_data.tokens;
-					g_data.tokens = &lst;
+					*g_data.tokens = lst;
 					break ;
 				}
-				// continue ;
 			}
 			i++;
 			lst = lst->next;
 		}
 	}
+	////////////////////////////////////////////////////////
+	// lst = (*g_data.tokens);
+	// ft_printf("\n");
+	// while (lst)
+	// {
+	// 	ft_printf("%s[%s]%s[%d]%s","\x1B[31m", lst->content->val, "\x1B[34m", lst->content->type, "\x1B[0m");
+	// 	lst = lst->next;
+	// }
+	// ft_printf("\n\n");
+	////////////////////////////////////////////////////////
 	/*
 	CHANGER LA VAL DU PREMIER TOKEN DE LA LISTE PAR LA CONCATENATION
 	DE TOUS LES TOKENS LITERAUX (NON PRECEDES DUN TOKEN REDIR)
 	*/
-	// concat = ft_strdup((*g_data.tokens)->content->val);
-	// concat = ft_strjoin(concat, " ");
-	// lst = (*g_data.tokens)->next;
-	// i = 1;
-	// while (lst)
-	// {
-	// 	if (lst->content->type == I_LITERAL)
-	// 	{
-	// 		prev_type = get_n_lst(g_data.tokens, i - 1)->content->type;
-	// 		if (!(prev_type >= I_OUTREDIR && prev_type <= I_D_INREDIR))
-	// 		{
-	// 			concat = ft_strjoin(concat, lst->content->val);
-	// 			concat = ft_strjoin(concat, " ");
-	// 			get_n_lst(g_data.tokens, i - 1)->next = lst->next;
-	// 			i--;
-	// 		}
-	// 	}
-	// 	lst = lst->next;
-	// 	i++;
-	// }
+	/////////////////////////////
+	// ft_printf("%s\n\n", (*g_data.tokens)->content->val);
+	/////////////////////////////
+	concat = ft_strdup((*g_data.tokens)->content->val);
+	concat = ft_strjoin(concat, " ");
+	lst = (*g_data.tokens)->next;
+	i = 1;
+	while (lst)
+	{
+		///////////////////////////////
+		// ft_printf("%s[%s]%s[%d]%s","\x1B[31m", lst->content->val, "\x1B[34m", lst->content->type, "\x1B[0m");
+		///////////////////////////////
+		if (lst->content->type == I_LITERAL \
+			|| lst->content->type == I_S_QUOTE \
+			|| lst->content->type == I_D_QUOTE)
+		{
+			prev_type = get_n_lst(g_data.tokens, i - 1)->content->type;
+			if (!(prev_type >= I_OUTREDIR && prev_type <= I_D_INREDIR))
+			{
+				concat = ft_strjoin(concat, lst->content->val);
+				concat = ft_strjoin(concat, " ");
+				get_n_lst(g_data.tokens, i - 1)->next = lst->next;
+				i--;
+			}
+		}
+		lst = lst->next;
+		i++;
+	}
 	/*
 	TRAMSFORMER CONCAT EN UNE NOUVELLE LISTE DE TOKENS
 	PLACER CETTE LISTE EN DEBUT DE LANCIENNE APRES AVOIR SUPPRIMER LE PREMIER TOKEN DE LANCIENNE
 	*/
-	// new = str_tok(concat);
-	// tmp = (*g_data.tokens)->next;
-	// free((*g_data.tokens)->content->val);
-	// free((*g_data.tokens)->content);
-	// free(*g_data.tokens);
-	// g_data.tokens = new;
-	// lst = *g_data.tokens;
-	// while (lst->next)
-	// 	lst = lst->next;
-	// lst->next = tmp;
-	////////////////////////////////////////////////////////
-	lst = (*g_data.tokens);
-	ft_printf("\n");
-	while (lst)
-	{
-		ft_printf("%s[%s]%s","\x1B[31m", lst->content->val, "\x1B[0m");
+	new = str_tok(concat);
+	tmp = (*g_data.tokens)->next;
+	free((*g_data.tokens)->content->val);
+	free((*g_data.tokens)->content);
+	free(*g_data.tokens);
+	g_data.tokens = new;
+	lst = *g_data.tokens;
+	while (lst->next)
 		lst = lst->next;
-	}
-	ft_printf("\n\n");
+	lst->next = tmp;
+	////////////////////////////////////////////////////////
+	// lst = (*g_data.tokens);
+	// ft_printf("\n");
+	// while (lst)
+	// {
+	// 	ft_printf("%s[%s]%s","\x1B[31m", lst->content->val, "\x1B[0m");
+	// 	lst = lst->next;
+	// }
+	// ft_printf("\n\n");
 	////////////////////////////////////////////////////////
 }
 

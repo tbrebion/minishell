@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 16:51:49 by flcarval          #+#    #+#             */
-/*   Updated: 2022/07/22 19:10:52 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/07/24 18:13:39 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,6 @@ static int	limiter_in_quotes(char *str, char *lim, int i, int j)
 		i++;
 		while (str[i] != '\"')
 			lim[j++] = str[i++];
-		j--;
 		lim[j] = '\0';
 	}
 	if (str[i] == '\'')	
@@ -91,7 +90,6 @@ static int	limiter_in_quotes(char *str, char *lim, int i, int j)
 		i++;
 		while (str[i] != '\'')
 			lim[j++] = str[i++];
-		j--;
 		lim[j] = '\0';
 	}
 	return (1);

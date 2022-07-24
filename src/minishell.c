@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:19:38 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/07/24 16:22:43 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/07/24 18:10:32 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ static void	main_loop(void)
 			continue ;
 		init_in_loop();
 		rotate_tokens();
+		ft_printf("%s\n", g_data.limiter);
 		if (quotes_not_close() == 1)
 		{
 			ft_putstr_fd("quotes error\n", 0);

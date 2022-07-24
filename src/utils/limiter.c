@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 11:02:39 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/07/21 15:23:37 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/07/24 18:17:57 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ static void	here_doc_supply(char *limiter, char *tmp)
 		line = readline("> ");
 		here_doc_other_supply(line, ret);
 		if ((ft_strncmp(line, limiter, \
-		ft_max((ft_strlen(line) - 1), ft_strlen(limiter))) == 0))
+		ft_max((ft_strlen(line)), ft_strlen(limiter))) == 0))
 		{
 			ret = ft_strjoin(ret, "\n");
 			free(line);

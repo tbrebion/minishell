@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 12:24:08 by flcarval          #+#    #+#             */
-/*   Updated: 2022/07/22 19:10:49 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/07/24 17:25:58 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ int		is_meta_char(void);
 int		check_meta_char(void);
 int		nb_here_doc(void);
 void	multi_limiter(void);
-char	*limiter_handler(char *str);
+// char	*limiter_handler(char *str);
 
 // BUILTINS
 int		is_builtin(char *cmd);

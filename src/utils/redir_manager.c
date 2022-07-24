@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:54:58 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/07/24 12:38:12 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/07/24 16:49:52 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ void	rotate_tokens(void)
 		///////////////////////////////
 		// ft_printf("%s[%s]%s[%d]%s","\x1B[31m", lst->content->val, "\x1B[34m", lst->content->type, "\x1B[0m");
 		///////////////////////////////
+		tmp = lst->next;
 		if (lst->content->type == I_LITERAL \
 			|| lst->content->type == I_S_QUOTE \
 			|| lst->content->type == I_D_QUOTE)
@@ -84,10 +85,13 @@ void	rotate_tokens(void)
 				concat = ft_strjoin(concat, lst->content->val);
 				concat = ft_strjoin(concat, " ");
 				get_n_lst(g_data.tokens, i - 1)->next = lst->next;
+				free(lst->content->val);
+				free(lst->content);
+				free(lst);
 				i--;
 			}
 		}
-		lst = lst->next;
+		lst = tmp;
 		i++;
 	}
 	/*
@@ -95,10 +99,15 @@ void	rotate_tokens(void)
 	PLACER CETTE LISTE EN DEBUT DE LANCIENNE APRES AVOIR SUPPRIMER LE PREMIER TOKEN DE LANCIENNE
 	*/
 	new = str_tok(concat);
+	free(concat);
 	tmp = (*g_data.tokens)->next;
-	free((*g_data.tokens)->content->val);
-	free((*g_data.tokens)->content);
-	free(*g_data.tokens);
+	free(get_n_lst(g_data.tokens, 0)->content->val);
+	free(get_n_lst(g_data.tokens, 0)->content);
+	free(get_n_lst(g_data.tokens, 0));
+	// free((*g_data.tokens)->content->val);
+	// free((*g_data.tokens)->content);
+	// free(*g_data.tokens);
+	// free(g_data.tokens);
 	g_data.tokens = new;
 	lst = *g_data.tokens;
 	while (lst->next)

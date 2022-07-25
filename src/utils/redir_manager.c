@@ -3,16 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   redir_manager.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:54:58 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/07/24 18:06:36 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/07/25 16:43:46 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-void	rotate_tokens_test(void)
+static void	rotate_tokens_bis(void);
+
+void	rotate_tokens(void)
 {
 	t_list	*lst;
 	t_list	*tmp;
@@ -21,6 +23,11 @@ void	rotate_tokens_test(void)
 	char	*concat;
 	t_list	**new;
 
+	if (is_multi_redir() == 0)
+	{
+		rotate_tokens_bis();
+		return ;
+	}
 	if (redir_first() != -1)
 	{
 		/*
@@ -101,13 +108,13 @@ void	rotate_tokens_test(void)
 	new = str_tok(concat);
 	free(concat);
 	tmp = (*g_data.tokens)->next;
-	free(get_n_lst(g_data.tokens, 0)->content->val);
-	free(get_n_lst(g_data.tokens, 0)->content);
-	free(get_n_lst(g_data.tokens, 0));
-	// free((*g_data.tokens)->content->val);
-	// free((*g_data.tokens)->content);
-	// free(*g_data.tokens);
-	// free(g_data.tokens);
+	// free(get_n_lst(g_data.tokens, 0)->content->val);
+	// free(get_n_lst(g_data.tokens, 0)->content);
+	// free(get_n_lst(g_data.tokens, 0));
+	free((*g_data.tokens)->content->val);
+	free((*g_data.tokens)->content);
+	free(*g_data.tokens);
+	free(g_data.tokens);
 	g_data.tokens = new;
 	lst = *g_data.tokens;
 	while (lst->next)
@@ -125,7 +132,7 @@ void	rotate_tokens_test(void)
 	////////////////////////////////////////////////////////
 }
 
-void	rotate_tokens(void)
+static void	rotate_tokens_bis(void)
 {
 	t_list	*tmp;
 	t_list	*save;

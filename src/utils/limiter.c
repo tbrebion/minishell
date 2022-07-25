@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 11:02:39 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/07/24 18:17:57 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/07/25 10:54:26 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ void	here_doc(void)
 	ignore_sig();
 	pid1 = fork();
 	if (pid1 == 0)
-		here_doc_supply(g_data.limiter, tmp);
+		here_doc_supply(g_data.limiters[0], tmp); //////////////////
 	waitpid(-1, &status, 0);
 	g_data.error_status = WEXITSTATUS(status);
 	exit(g_data.error_status);

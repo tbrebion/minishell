@@ -6,13 +6,12 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 16:51:49 by flcarval          #+#    #+#             */
-/*   Updated: 2022/07/24 18:13:39 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/07/25 10:52:13 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-static char	*limiter_handler(char *str);
 static int	limiter_in_quotes(char *str, char *lim, int i, int j);
 // static int	backslash_limiter(char *str, char *lim, int i, int j);
 
@@ -23,7 +22,11 @@ t_list	**str_tok(char *str)
 
 	// if (g_data.limiter)
 	// 	free(g_data.limiter);
-	g_data.limiter = limiter_handler(str);
+	//////////////////////////
+
+	// g_data.limiter = limiter_handler(str);
+
+	/////////////////////////////////////
 	tokens = malloc(sizeof(t_list *));
 	if (!tokens)
 		return (NULL);
@@ -40,13 +43,13 @@ t_list	**str_tok(char *str)
 	return (tokens);
 }
 
-char	*limiter_handler(char *str)
+char	*limiter_handler(char *str, int i)
 {
-	int		i;
+	// int		i;
 	int		j;
 	char	*lim;
 
-	i = 0;
+	// i = 0;
 	j = 0;
 	lim = malloc(4096);
 	lim[0] = '\0';

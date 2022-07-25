@@ -36,6 +36,7 @@ SOURCES		+=                         		\
 		src/utils/is_num.c					\
 		src/utils/here_doc_helper.c			\
 		src/utils/is_multi_redir.c			\
+		src/utils/is_space.c				\
 
 ## SRC/BUILTINS ##
 

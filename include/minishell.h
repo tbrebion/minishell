@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 12:24:08 by flcarval          #+#    #+#             */
-/*   Updated: 2022/07/25 16:54:30 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/07/25 18:18:53 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ char	*expand_str(char *str);
 int		quotes_not_close(void);
 int		is_num(char *str);
 int		redir_first(void);
-void	rotate_tokens(void);
+int		rotate_tokens(void);
 int		is_meta_char(void);
 int		check_meta_char(void);
 int		nb_here_doc(void);
@@ -103,6 +103,7 @@ int		nb_here_doc(void);
 char	*limiter_handler(char *str, int i);
 void	multi_limiter(char *str);
 int		is_multi_redir(void);
+int		is_space(char *str);
 
 // BUILTINS
 int		is_builtin(char *cmd);

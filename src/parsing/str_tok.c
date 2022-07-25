@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   str_tok.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 16:51:49 by flcarval          #+#    #+#             */
-/*   Updated: 2022/07/25 10:52:13 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/07/25 17:10:19 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,14 +81,14 @@ static int	limiter_in_quotes(char *str, char *lim, int i, int j)
 {
 	if (str[i] != '\"' && str[i] != '\'')
 		return (0);
-	if (str[i] == '\"')	
+	if (str[i] == '\"')
 	{
 		i++;
 		while (str[i] != '\"')
 			lim[j++] = str[i++];
 		lim[j] = '\0';
 	}
-	if (str[i] == '\'')	
+	if (str[i] == '\'')
 	{
 		i++;
 		while (str[i] != '\'')

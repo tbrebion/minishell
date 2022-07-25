@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:54:58 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/07/25 16:43:46 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/07/25 18:17:29 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	rotate_tokens_bis(void);
 
-void	rotate_tokens(void)
+int	rotate_tokens(void)
 {
 	t_list	*lst;
 	t_list	*tmp;
@@ -26,7 +26,7 @@ void	rotate_tokens(void)
 	if (is_multi_redir() == 0)
 	{
 		rotate_tokens_bis();
-		return ;
+		return (0);
 	}
 	if (redir_first() != -1)
 	{
@@ -72,6 +72,12 @@ void	rotate_tokens(void)
 	/////////////////////////////
 	// ft_printf("%s\n\n", (*g_data.tokens)->content->val);
 	/////////////////////////////
+	if (is_space((*g_data.tokens)->content->val))
+	{
+		ft_putstr_fd((*g_data.tokens)->content->val, 0);
+		ft_putstr_fd(" : command not found\n", 0);
+		return (1);
+	}
 	concat = ft_strdup((*g_data.tokens)->content->val);
 	concat = ft_strjoin(concat, " ");
 	lst = (*g_data.tokens)->next;
@@ -130,6 +136,7 @@ void	rotate_tokens(void)
 	// }
 	// ft_printf("\n\n");
 	////////////////////////////////////////////////////////
+	return (0);
 }
 
 static void	rotate_tokens_bis(void)

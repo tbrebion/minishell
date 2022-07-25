@@ -6,11 +6,13 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:54:58 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/07/24 16:49:52 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/07/25 16:22:17 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
+
+static void	rotate_tokens_bis(void);
 
 void	rotate_tokens(void)
 {
@@ -21,6 +23,11 @@ void	rotate_tokens(void)
 	char	*concat;
 	t_list	**new;
 
+	if (is_multi_redir() == 0)
+	{
+		rotate_tokens_bis();
+		return ;
+	}
 	if (redir_first() != -1)
 	{
 		/*
@@ -101,13 +108,13 @@ void	rotate_tokens(void)
 	new = str_tok(concat);
 	free(concat);
 	tmp = (*g_data.tokens)->next;
-	free(get_n_lst(g_data.tokens, 0)->content->val);
-	free(get_n_lst(g_data.tokens, 0)->content);
-	free(get_n_lst(g_data.tokens, 0));
-	// free((*g_data.tokens)->content->val);
-	// free((*g_data.tokens)->content);
-	// free(*g_data.tokens);
-	// free(g_data.tokens);
+	// free(get_n_lst(g_data.tokens, 0)->content->val);
+	// free(get_n_lst(g_data.tokens, 0)->content);
+	// free(get_n_lst(g_data.tokens, 0));
+	free((*g_data.tokens)->content->val);
+	free((*g_data.tokens)->content);
+	free(*g_data.tokens);
+	free(g_data.tokens);
 	g_data.tokens = new;
 	lst = *g_data.tokens;
 	while (lst->next)
@@ -125,29 +132,29 @@ void	rotate_tokens(void)
 	////////////////////////////////////////////////////////
 }
 
-// void	rotate_tokens(void)
-// {
-// 	t_list	*tmp;
-// 	t_list	*save;
-// 	int		i;
+static void	rotate_tokens_bis(void)
+{
+	t_list	*tmp;
+	t_list	*save;
+	int		i;
 
-// 	if (redir_first() == -1)
-// 		return ;
-// 	i = 0;
-// 	while (i++ < g_data.tok_nb - 2)
-// 	{
-// 		if (!(*g_data.tokens) || ft_lstsize(*g_data.tokens) < 2)
-// 			return ;
-// 		save = (*g_data.tokens);
-// 		while ((*g_data.tokens)->next->next != NULL)
-// 			(*g_data.tokens) = (**g_data.tokens).next;
-// 		tmp = (*g_data.tokens)->next;
-// 		(*g_data.tokens)->next = NULL;
-// 		(*g_data.tokens) = tmp;
-// 		(*g_data.tokens)->next = save;
-// 	}
-// 	g_data.lst = (*g_data.tokens);
-// }
+	if (redir_first() == -1)
+		return ;
+	i = 0;
+	while (i++ < g_data.tok_nb - 2)
+	{
+		if (!(*g_data.tokens) || ft_lstsize(*g_data.tokens) < 2)
+			return ;
+		save = (*g_data.tokens);
+		while ((*g_data.tokens)->next->next != NULL)
+			(*g_data.tokens) = (**g_data.tokens).next;
+		tmp = (*g_data.tokens)->next;
+		(*g_data.tokens)->next = NULL;
+		(*g_data.tokens) = tmp;
+		(*g_data.tokens)->next = save;
+	}
+	g_data.lst = (*g_data.tokens);
+}
 
 int	redir_first(void)
 {

@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 12:24:08 by flcarval          #+#    #+#             */
-/*   Updated: 2022/07/21 15:12:55 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/07/25 14:38:46 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ int		is_num(char *str);
 int		redir_first(void);
 void	rotate_tokens(void);
 int		is_meta_char(void);
+int		is_multi_redir(void);
 
 // BUILTINS
 int		is_builtin(char *cmd);

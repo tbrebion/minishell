@@ -35,6 +35,7 @@ SOURCES		+=                         		\
 		src/utils/quotes_not_close.c		\
 		src/utils/is_num.c					\
 		src/utils/here_doc_helper.c			\
+		src/utils/is_multi_redir.c			\
 
 ## SRC/BUILTINS ##
 

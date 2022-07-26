@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 11:10:14 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/07/25 17:30:13 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/07/26 15:21:32 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,5 @@ void	init_in_loop(void)
 	g_data.tokens = str_tok(g_data.input);
 	history();
 	g_data.lst = (*g_data.tokens);
-	multi_limiter(g_data.input);
+	multi_limiter();
 }

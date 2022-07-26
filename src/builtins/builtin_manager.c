@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 11:19:52 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/07/25 18:35:39 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/07/26 14:47:22 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,9 +90,6 @@ void	builtin_manager(int i)
 	if (!(ft_strncmp(get_n_lst(g_data.tokens, i)->content->val, "echo", 5)))
 		echo_builtin(i);
 	if (!(ft_strncmp(get_n_lst(g_data.tokens, i)->content->val, "$?", 3)))
-	{
-		ft_printf("oeoeoe\n");
 		put_error_status();
-	}
 	free_loop();
 }

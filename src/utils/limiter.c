@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   limiter.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 11:02:39 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/07/25 10:54:26 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/07/26 15:31:56 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,31 +57,41 @@ static void	hd_supply(char *ret, char *tmp)
 	}
 }
 
-static void	here_doc_supply(char *limiter, char *tmp)
+static void	here_doc_supply(/*char *limiter, */char *tmp)
 {
 	char	*line;
 	char	*ret;
+	int		i_lim;
 
 	ret = ft_strdup("");
 	reinit_sig();
+	i_lim = 0;
 	while (1)
 	{
 		line = readline("> ");
 		here_doc_other_supply(line, ret);
-		if ((ft_strncmp(line, limiter, \
-		ft_max((ft_strlen(line)), ft_strlen(limiter))) == 0))
+		if ((ft_strncmp(line, g_data.limiters[i_lim], \
+		ft_max((ft_strlen(line)), ft_strlen(g_data.limiters[i_lim]))) == 0))
 		{
-			ret = ft_strjoin(ret, "\n");
-			free(line);
-			break ;
+			i_lim++;
+			if (!g_data.limiters[i_lim])
+			{
+				ret = ft_strjoin(ret, "\n");
+				free(line);
+				break ;
+			}
 		}
-		ret = ft_strjoin(ret, expand_str(line));
-		ret = ft_strjoin(ret, "\n");
+		else
+		{
+			ret = ft_strjoin(ret, expand_str(line));
+			ret = ft_strjoin(ret, "\n");
+		}
 	}
 	del_last_backslash_n(ret);
 	hd_supply(ret, tmp);
 	ft_putstr(ret);
 	free(ret);
+	free(g_data.limiters);
 	exit(0);
 }
 
@@ -107,7 +117,7 @@ void	here_doc(void)
 	ignore_sig();
 	pid1 = fork();
 	if (pid1 == 0)
-		here_doc_supply(g_data.limiters[0], tmp); //////////////////
+		here_doc_supply(/*g_data.limiters[0], */tmp);
 	waitpid(-1, &status, 0);
 	g_data.error_status = WEXITSTATUS(status);
 	exit(g_data.error_status);

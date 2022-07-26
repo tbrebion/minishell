@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   here_doc_helper.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 14:41:41 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/07/25 10:49:37 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/07/26 15:24:21 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,21 +46,23 @@ int	is_meta_char(void)
 int	nb_here_doc(void)
 {
 	int		nb_hd;
-	// t_list	*tmp;
+	t_list	*lst;
 
 	nb_hd = 0;
-	// tmp = g_data.lst;
-	while (g_data.lst->next)
+	lst = (*g_data.tokens);
+	while (lst)
 	{
-		if (g_data.lst->content->type == I_D_INREDIR)
+		if (lst->content->type == I_D_INREDIR)
 			nb_hd++;
-		g_data.lst = g_data.lst->next;
+		lst = lst->next;
 	}
-	// g_data.lst = tmp;
+	/////////////////////////////////////
+	// ft_printf("nb_hd = %d\n", nb_hd);
+	/////////////////////////////////////
 	return (nb_hd);
 }
 
-void	multi_limiter(char *str)
+void	multi_limiter(void)
 {
 	int	i;
 	int	j;
@@ -69,13 +71,7 @@ void	multi_limiter(char *str)
 	i = 0;
 	if (nb_here_doc() < 1)
 		return ;
-	g_data.limiters = malloc(sizeof(char *) * nb_here_doc());
-	while (j <= nb_here_doc())
-	{
-		g_data.limiters[j] = limiter_handler(&str[i], i);
-		ft_printf("/////\nlimiters[%d] : %s\n//////\n", j, g_data.limiters[j]);
-		j++;
-	}
+	g_data.limiters = limiter_handler();
 }
 
 // void	multi_limiter(void)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   echo_builtin.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 01:26:03 by flcarval          #+#    #+#             */
-/*   Updated: 2022/07/19 17:31:57 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/07/26 18:42:16 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 static int	echo_empty(void);
 static void	set_n_i(int *n, int *i, int mod);
 static void	echo_supply_loop(int i, int *j);
+static int	is_n_param(char *str);
 
 int	echo_builtin(int i)
 {
@@ -24,9 +25,8 @@ int	echo_builtin(int i)
 
 	if (!(get_n_lst(g_data.tokens, i + 1)))
 		return (echo_empty());
-	set_n_i(&n, &i, (ft_strncmp(get_n_lst(g_data.tokens, i + 1)->content->val, \
-		"-n", 2)));
-	if (n)
+	set_n_i(&n, &i, is_n_param(get_n_lst(g_data.tokens, i + 1)->content->val));
+	if (!n)
 		nl = "\n";
 	else
 		nl = "";
@@ -36,7 +36,7 @@ int	echo_builtin(int i)
 		get_n_lst(g_data.tokens, i + j)->content->type == I_D_QUOTE || \
 		get_n_lst(g_data.tokens, i + j)->content->type == I_S_QUOTE))
 		{
-			if (get_n_lst(g_data.tokens, i + j)->content->val[0] == '-')
+			if (is_n_param(get_n_lst(g_data.tokens, i + j)->content->val))
 			{
 				j++;
 				continue ;
@@ -58,7 +58,7 @@ static void	set_n_i(int *n, int *i, int mod)
 	if (!mod)
 	{
 		*n = 0;
-		*i += 2;
+		*i += 1;
 	}
 	else
 	{
@@ -77,4 +77,28 @@ static void	echo_supply_loop(int i, int *j)
 	get_n_lst(g_data.tokens, i + *j)->content->type == I_D_QUOTE || \
 	get_n_lst(g_data.tokens, i + *j)->content->type == I_S_QUOTE))
 		ft_printf(" ");
+}
+
+static int	is_n_param(char *str)
+{
+	int	i;
+
+	i = 0;
+	if (str[i] != '-')
+	{
+		// ft_printf("is_n_param = 0\n");
+		return (0);
+	}
+	i++;
+	while (str[i])
+	{
+		if (str[i] != 'n')
+		{
+		// ft_printf("is_n_param = 0\n");
+			return (0);
+		}
+		i++;
+	}
+	// ft_printf("is_n_param = 1\n");
+	return (1);
 }

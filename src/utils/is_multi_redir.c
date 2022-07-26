@@ -1,37 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   other_init.c                                       :+:      :+:    :+:   */
+/*   is_multi_redir.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/03 11:10:14 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/07/26 16:09:40 by flcarval         ###   ########.fr       */
+/*   Created: 2022/07/25 14:31:45 by flcarval          #+#    #+#             */
+/*   Updated: 2022/07/25 15:01:27 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-static void	history(void)
+int	is_multi_redir(void)
 {
-	if (g_data.input)
-		add_history(g_data.input);
-}
+	t_list	*lst;
+	int		redir_nb;
 
-void	init_out_loop(char **envp)
-{
-	g_data.is_env = 1;
-	init_env(envp);
-	g_data.previous_dir = NULL;
-	g_data.error_status = 0;
-	g_data.limiter = NULL;
-}
-
-void	init_in_loop(void)
-{
-	g_data.tokens = str_tok(g_data.input);
-	history();
-	g_data.lst = (*g_data.tokens);
-	multi_limiter();
-	actualize_env();
+	lst = (*g_data.tokens);
+	redir_nb = 0;
+	while (lst)
+	{
+		if (lst->content->type == I_OUTREDIR || lst->content->type == I_INREDIR \
+			|| lst->content->type == I_D_OUTREDIR)
+			redir_nb++;
+		lst = lst->next;
+	}
+	return (redir_nb);
 }

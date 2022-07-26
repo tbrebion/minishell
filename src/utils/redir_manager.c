@@ -3,16 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   redir_manager.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:54:58 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/07/24 18:06:36 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/07/26 16:56:56 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-void	rotate_tokens_test(void)
+static void	rotate_tokens_bis(void);
+
+int	rotate_tokens(void)
 {
 	t_list	*lst;
 	t_list	*tmp;
@@ -21,6 +23,11 @@ void	rotate_tokens_test(void)
 	char	*concat;
 	t_list	**new;
 
+	if (is_multi_redir() == 0)
+	{
+		rotate_tokens_bis();
+		return (0);
+	}
 	if (redir_first() != -1)
 	{
 		/*
@@ -65,6 +72,12 @@ void	rotate_tokens_test(void)
 	/////////////////////////////
 	// ft_printf("%s\n\n", (*g_data.tokens)->content->val);
 	/////////////////////////////
+	if (is_space((*g_data.tokens)->content->val))
+	{
+		ft_putstr_fd((*g_data.tokens)->content->val, 0);
+		ft_putstr_fd(" : command not found\n", 0);
+		return (1);
+	}
 	concat = ft_strdup((*g_data.tokens)->content->val);
 	concat = ft_strjoin(concat, " ");
 	lst = (*g_data.tokens)->next;
@@ -82,7 +95,15 @@ void	rotate_tokens_test(void)
 			prev_type = get_n_lst(g_data.tokens, i - 1)->content->type;
 			if (!(prev_type >= I_OUTREDIR && prev_type <= I_D_INREDIR))
 			{
+				if (lst->content->type == I_S_QUOTE)
+					concat = ft_strjoin(concat, "\'");
+				else if (lst->content->type == I_D_QUOTE)
+					concat = ft_strjoin(concat, "\"");
 				concat = ft_strjoin(concat, lst->content->val);
+				if (lst->content->type == I_S_QUOTE)
+					concat = ft_strjoin(concat, "\'");
+				else if (lst->content->type == I_D_QUOTE)
+					concat = ft_strjoin(concat, "\"");
 				concat = ft_strjoin(concat, " ");
 				get_n_lst(g_data.tokens, i - 1)->next = lst->next;
 				free(lst->content->val);
@@ -101,13 +122,13 @@ void	rotate_tokens_test(void)
 	new = str_tok(concat);
 	free(concat);
 	tmp = (*g_data.tokens)->next;
-	free(get_n_lst(g_data.tokens, 0)->content->val);
-	free(get_n_lst(g_data.tokens, 0)->content);
-	free(get_n_lst(g_data.tokens, 0));
-	// free((*g_data.tokens)->content->val);
-	// free((*g_data.tokens)->content);
-	// free(*g_data.tokens);
-	// free(g_data.tokens);
+	// free(get_n_lst(g_data.tokens, 0)->content->val);
+	// free(get_n_lst(g_data.tokens, 0)->content);
+	// free(get_n_lst(g_data.tokens, 0));
+	free((*g_data.tokens)->content->val);
+	free((*g_data.tokens)->content);
+	free(*g_data.tokens);
+	free(g_data.tokens);
 	g_data.tokens = new;
 	lst = *g_data.tokens;
 	while (lst->next)
@@ -123,9 +144,10 @@ void	rotate_tokens_test(void)
 	// }
 	// ft_printf("\n\n");
 	////////////////////////////////////////////////////////
+	return (0);
 }
 
-void	rotate_tokens(void)
+static void	rotate_tokens_bis(void)
 {
 	t_list	*tmp;
 	t_list	*save;

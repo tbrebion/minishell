@@ -1,37 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   other_init.c                                       :+:      :+:    :+:   */
+/*   actualize_env.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/03 11:10:14 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/07/26 16:09:40 by flcarval         ###   ########.fr       */
+/*   Created: 2022/07/26 16:01:14 by flcarval          #+#    #+#             */
+/*   Updated: 2022/07/26 16:12:58 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-static void	history(void)
+void	actualize_env(void)
 {
-	if (g_data.input)
-		add_history(g_data.input);
-}
+	char	*oldpwd;
+	char	*pwd;
+	char	buff[4096];
 
-void	init_out_loop(char **envp)
-{
-	g_data.is_env = 1;
-	init_env(envp);
-	g_data.previous_dir = NULL;
-	g_data.error_status = 0;
-	g_data.limiter = NULL;
-}
-
-void	init_in_loop(void)
-{
-	g_data.tokens = str_tok(g_data.input);
-	history();
-	g_data.lst = (*g_data.tokens);
-	multi_limiter();
-	actualize_env();
+	oldpwd = ft_strdup("OLDPWD=");
+	pwd = ft_strdup("PWD=");
+	if (g_data.previous_dir)
+	{
+		oldpwd = ft_strjoin(oldpwd, g_data.previous_dir);
+		set_var(oldpwd);
+	}
+	free(oldpwd);
+	pwd = ft_strjoin(pwd,  getcwd(buff, 4095));
+	set_var(pwd);
+	free(pwd);
 }

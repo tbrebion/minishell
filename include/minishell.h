@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 12:24:08 by flcarval          #+#    #+#             */
-/*   Updated: 2022/07/25 10:43:44 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/07/26 16:09:20 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,13 +95,16 @@ char	*expand_str(char *str);
 int		quotes_not_close(void);
 int		is_num(char *str);
 int		redir_first(void);
-void	rotate_tokens(void);
+int		rotate_tokens(void);
 int		is_meta_char(void);
 int		check_meta_char(void);
 int		nb_here_doc(void);
-void	rotate_tokens_test(void);
-char	*limiter_handler(char *str, int i);
-void	multi_limiter(char *str);
+// void	rotate_tokens_test(void);
+char	**limiter_handler(void);
+void	multi_limiter(void);
+int		is_multi_redir(void);
+int		is_space(char *str);
+void	actualize_env(void);
 
 // BUILTINS
 int		is_builtin(char *cmd);

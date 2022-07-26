@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:54:58 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/07/26 16:45:23 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/07/26 16:56:56 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,9 +97,13 @@ int	rotate_tokens(void)
 			{
 				if (lst->content->type == I_S_QUOTE)
 					concat = ft_strjoin(concat, "\'");
+				else if (lst->content->type == I_D_QUOTE)
+					concat = ft_strjoin(concat, "\"");
 				concat = ft_strjoin(concat, lst->content->val);
 				if (lst->content->type == I_S_QUOTE)
 					concat = ft_strjoin(concat, "\'");
+				else if (lst->content->type == I_D_QUOTE)
+					concat = ft_strjoin(concat, "\"");
 				concat = ft_strjoin(concat, " ");
 				get_n_lst(g_data.tokens, i - 1)->next = lst->next;
 				free(lst->content->val);

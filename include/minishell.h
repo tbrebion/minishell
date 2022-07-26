@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 12:24:08 by flcarval          #+#    #+#             */
-/*   Updated: 2022/07/26 15:20:42 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/07/26 16:09:20 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,7 @@ char	**limiter_handler(void);
 void	multi_limiter(void);
 int		is_multi_redir(void);
 int		is_space(char *str);
+void	actualize_env(void);
 
 // BUILTINS
 int		is_builtin(char *cmd);

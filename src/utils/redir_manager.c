@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:54:58 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/07/26 16:56:56 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/07/27 16:40:24 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -191,11 +191,17 @@ void	redir_manager(void)
 	lst = (*g_data.tokens);
 	while (lst)
 	{
-		if (lst->content->type == I_OUTREDIR)
+		if (lst->next  && (lst->content->type == I_OUTREDIR \
+			&& (lst->next->content->type < I_OUTREDIR \
+			|| lst->content->type > I_PIPE)))
 			redir_out(lst->next->content->val);
-		if (lst->content->type == I_D_OUTREDIR)
+		if (lst->next  && (lst->content->type == I_D_OUTREDIR \
+			&& (lst->next->content->type < I_OUTREDIR \
+			|| lst->content->type > I_PIPE)))
 			redir_out_append(lst->next->content->val);
-		if (lst->content->type == I_INREDIR)
+		if (lst->next  && (lst->content->type == I_INREDIR \
+			&& (lst->next->content->type < I_OUTREDIR \
+			|| lst->content->type > I_PIPE)))
 			redir_in(lst->next->content->val);
 		if (lst->content->type == I_D_INREDIR)
 			here_doc();

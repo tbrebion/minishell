@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_or_not.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 13:19:02 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/07/27 10:35:07 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/07/27 16:31:29 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,11 @@ static void	builtin_or_not_supply(int *status)
 	{
 		reinit_sig();
 		redir_manager();
-		if (is_builtin((*g_data.tokens)->content->val) == 0)
+		if (!((*g_data.tokens)->content->type == I_LITERAL \
+			|| (*g_data.tokens)->content->type == I_S_QUOTE \
+			|| (*g_data.tokens)->content->type == I_D_QUOTE))
+			exit(2);
+		else if (is_builtin((*g_data.tokens)->content->val) == 0)
 			execute(0);
 		else
 			builtin_manager(0);

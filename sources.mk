@@ -39,6 +39,7 @@ SOURCES		+=                           		\
 		src/utils/is_space.c                	\
 		src/utils/actualize_env.c           	\
 		src/utils/tok_index.c               	\
+		src/utils/expand_loop.c 	          	\
 
 
 ## SRC/BUILTINS ##

@@ -6,7 +6,11 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 12:24:08 by flcarval          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2022/07/27 14:06:23 by flcarval         ###   ########.fr       */
+=======
+/*   Updated: 2022/07/27 15:18:10 by tbrebion         ###   ########.fr       */
+>>>>>>> main
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +109,8 @@ int		is_multi_redir(void);
 int		is_space(char *str);
 void	actualize_env(void);
 int		tok_index(t_tok *find);
+void	expand_loop(void);
+void	history(void);
 
 // BUILTINS
 int		is_builtin(char *cmd);

@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 14:41:41 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/07/27 12:18:32 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/07/27 13:43:57 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,17 +62,7 @@ int	nb_here_doc(void)
 	return (nb_hd);
 }
 
-void	multi_limiter(void)
-{
-	int	i;
-	int	j;
 
-	j = 0;
-	i = 0;
-	// if (nb_here_doc() < 1)
-		// return ;
-	g_data.limiters = limiter_handler();
-}
 
 // void	multi_limiter(void)
 // {

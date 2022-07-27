@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 14:02:53 by flcarval          #+#    #+#             */
-/*   Updated: 2022/07/27 14:14:31 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/07/27 16:15:11 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ void	set_lit(char *str, int *i, t_tok *tok)
 			len++;
 		}
 		tok->val[len] = '\0';
-		tok->val = expand_str(tok->val);
 		*i += len;
 	}
 }
@@ -70,7 +69,6 @@ void	set_quotes(char *str, int *i, t_tok *tok)
 	}
 	tok->val[len - 1] = '\0';
 	*i += len + 1;
-	set_q_to_l(tok);
 }
 
 void	set_redir(char *str, int *i, t_tok *tok)
@@ -99,8 +97,8 @@ void	set_redir(char *str, int *i, t_tok *tok)
 	}
 }
 
-void	set_q_to_l(t_tok *tok)
-{
-	if (tok->type != I_S_QUOTE)
-		tok->val = expand_str(tok->val);
-}
+// void	set_q_to_l(t_tok *tok)
+// {
+// 	if (tok->type != I_S_QUOTE)
+// 		tok->val = expand_str(tok->val);
+// }

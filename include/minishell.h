@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 12:24:08 by flcarval          #+#    #+#             */
-/*   Updated: 2022/07/26 19:54:14 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/07/27 15:18:10 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,12 +99,13 @@ int		rotate_tokens(void);
 int		is_meta_char(void);
 int		check_meta_char(void);
 int		nb_here_doc(void);
-// void	rotate_tokens_test(void);
 char	**limiter_handler(void);
 void	multi_limiter(void);
 int		is_multi_redir(void);
 int		is_space(char *str);
 void	actualize_env(void);
+void	expand_loop(void);
+void	history(void);
 
 // BUILTINS
 int		is_builtin(char *cmd);

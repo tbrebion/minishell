@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_split.c                                       :+:      :+:    :+:   */
+/*   expand_loop.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/13 16:23:11 by flcarval          #+#    #+#             */
-/*   Updated: 2022/07/27 15:31:23 by tbrebion         ###   ########.fr       */
+/*   Created: 2022/07/27 14:32:39 by tbrebion          #+#    #+#             */
+/*   Updated: 2022/07/27 16:08:32 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-void	free_split(char **spl)
+void	expand_loop(void)
 {
-	int	i;
+	int		i;
+	t_list	*lst;
 
 	i = 0;
-	if (!spl || !spl[i])
-		return ;
-	while (spl[i])
+	lst = *g_data.tokens;
+	while(lst)
 	{
-		free(spl[i]);
+		if (lst && get_n_lst(g_data.tokens, i - 1) && get_n_lst(g_data.tokens, i - 1)->content->type != I_D_INREDIR && (lst->content->type == I_LITERAL
+		|| lst->content->type == I_D_QUOTE))
+			lst->content->val = expand_str(lst->content->val);
+		lst = lst->next;
 		i++;
 	}
-	free(spl);
-	spl = NULL;
 }

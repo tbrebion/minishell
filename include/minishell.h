@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 12:24:08 by flcarval          #+#    #+#             */
-/*   Updated: 2022/07/27 16:16:46 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/07/27 17:49:42 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,5 +151,8 @@ void	interrupt_cmd(int signo);
 void	init_sig(void);
 void	reinit_sig(void);
 void	ignore_sig(void);
+
+//	DEBUG
+void	print_tok_list(void);
 
 #endif

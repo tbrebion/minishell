@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 14:42:36 by flcarval          #+#    #+#             */
-/*   Updated: 2022/07/04 16:48:45 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/07/27 17:30:44 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	put_error_status(void)
 
 	error_status = ft_itoa(g_data.error_status);
 	ft_putstr_fd(error_status, 0);
-	ft_putstr_fd(": command not found", 0);
+	ft_putstr_fd(" : command not found", 0);
 	ft_putchar_fd('\n', 0);
 	free(error_status);
 	exit(127);

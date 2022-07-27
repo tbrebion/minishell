@@ -1,43 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_loop.c                                        :+:      :+:    :+:   */
+/*   debug.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/23 14:56:57 by flcarval          #+#    #+#             */
-/*   Updated: 2022/07/27 17:00:26 by flcarval         ###   ########.fr       */
+/*   Created: 2022/07/27 17:48:13 by flcarval          #+#    #+#             */
+/*   Updated: 2022/07/27 17:49:11 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-static void	free_tokens(t_list **tokens);
-
-void	free_loop(void)
-{
-	if (g_data.tokens)
-		free_tokens(g_data.tokens);
-	if (g_data.input)
-		free(g_data.input);
-	if (g_data.limiters/* && *g_data.limiters*/)
-		free_split(g_data.limiters);
-}
-
-static void	free_tokens(t_list **tokens)
+void	print_tok_list(void)
 {
 	t_list	*lst;
-	t_list	*tmp;
 
-	lst = *tokens;
+	lst = (*g_data.tokens);
+	ft_printf("\n");
 	while (lst)
 	{
-		tmp = lst->next;
-		if (lst->content->val)
-			free(lst->content->val);
-		free(lst->content);
-		free(lst);
-		lst = tmp;
+		ft_printf("%s[%s]%s","\x1B[31m", lst->content->val, "\x1B[0m");
+		lst = lst->next;
 	}
-	free(tokens);
+	ft_printf("\n\n");
 }

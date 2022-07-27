@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 09:45:14 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/07/25 18:07:17 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/07/27 18:14:18 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,11 +63,12 @@ void	execute(int i)
 			get_n_lst(g_data.tokens, i + j)->content->type == I_S_QUOTE || \
 			get_n_lst(g_data.tokens, i + j)->content->type == I_D_QUOTE))
 		{
-			if (is_space(get_n_lst(g_data.tokens, i + j)->content->val))
+			if (is_space(get_n_lst(g_data.tokens, /*i + j*/0)->content->val))
 			{
 				ft_putstr_fd(get_n_lst(g_data.tokens, i)->content->val, 0);
 				ft_putstr_fd(" : command not found\n", 0);
-				return ;
+				// return ;
+				exit(127);
 			}
 			if (j)
 				tmp = ft_strjoin(tmp, " ");

@@ -17,9 +17,12 @@ SOURCES		+=                           		\
 		src/utils/stradd_char.c             	\
 		src/utils/free_loop.c               	\
 		src/utils/get_n_lst.c               	\
+		src/utils/tok_index.c               	\
 		src/utils/only_white_space.c        	\
 		src/utils/get_env.c                 	\
+		src/utils/expand_loop.c             	\
 		src/utils/signal_manager.c          	\
+		src/utils/debug.c                   	\
 		src/utils/is_num.c                  	\
 		src/utils/exec.c                    	\
 		src/utils/expand_str.c              	\
@@ -38,8 +41,6 @@ SOURCES		+=                           		\
 		src/utils/is_pipe.c                 	\
 		src/utils/is_space.c                	\
 		src/utils/actualize_env.c           	\
-		src/utils/tok_index.c               	\
-		src/utils/expand_loop.c 	          	\
 
 
 ## SRC/BUILTINS ##

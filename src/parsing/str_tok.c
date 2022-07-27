@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 16:51:49 by flcarval          #+#    #+#             */
-/*   Updated: 2022/07/27 10:41:01 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/07/27 12:20:08 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,13 +84,15 @@ char	**limiter_handler(void)
 	int		i;
 
 	lst = (*g_data.tokens);
+	if (nb_here_doc() < 1)
+		return (NULL);
 	limiters = malloc(sizeof(char *) * (nb_here_doc() + 1));
 	limiters[nb_here_doc()] = NULL;
 	i = 0;
 	while (lst)
 	{
 		if (lst->content->type == I_D_INREDIR && lst->next && lst->next->content->type != I_D_INREDIR)
-			limiters[i++] = lst->next->content->val;
+			limiters[i++] = ft_strdup(lst->next->content->val);
 		lst = lst->next;
 	}
 	return (limiters);

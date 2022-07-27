@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   here_doc_helper.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 14:41:41 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/07/26 15:24:21 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/07/27 12:18:32 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,8 @@ void	multi_limiter(void)
 
 	j = 0;
 	i = 0;
-	if (nb_here_doc() < 1)
-		return ;
+	// if (nb_here_doc() < 1)
+		// return ;
 	g_data.limiters = limiter_handler();
 }
 

@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 11:10:14 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/07/26 19:54:52 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/07/27 12:15:51 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	init_out_loop(char **envp)
 	init_env(envp);
 	g_data.previous_dir = NULL;
 	g_data.error_status = 0;
-	// g_data.limiter = NULL;
+	// g_data.limiters = NULL;
 }
 
 void	init_in_loop(void)

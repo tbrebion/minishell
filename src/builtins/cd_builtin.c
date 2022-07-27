@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 11:27:23 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/07/04 16:57:23 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/07/27 13:38:33 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,9 @@ int	cd_builtin(int i)
 	tmp = ft_strdup(cwd);
 	close_to_home = ft_strdup("/mnt/nfs/homes/");
 	home = ft_strjoin(close_to_home, catch_env_var("$USER"));
-	if (!(get_n_lst(g_data.tokens, i + 1)))
+	if ((!(get_n_lst(g_data.tokens, i + 1))) \
+		|| (get_n_lst(g_data.tokens, i + 1)->content->type >= I_OUTREDIR \
+		&& get_n_lst(g_data.tokens, i + 1)->content->type <= I_D_INREDIR))
 		return (cd_home(home, cwd, tmp));
 	else if (!ft_strncmp(get_n_lst(g_data.tokens, i + 1)->content->val, "-", 2))
 		cd_previous();

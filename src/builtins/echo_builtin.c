@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 01:26:03 by flcarval          #+#    #+#             */
-/*   Updated: 2022/07/26 18:42:16 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/07/26 18:46:09 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,4 +101,4 @@ static int	is_n_param(char *str)
 	}
 	// ft_printf("is_n_param = 1\n");
 	return (1);
-}
+	}

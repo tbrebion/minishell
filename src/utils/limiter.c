@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   limiter.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 11:02:39 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/07/26 15:31:56 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/07/26 20:14:06 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ static void	here_doc_supply(/*char *limiter, */char *tmp)
 	hd_supply(ret, tmp);
 	ft_putstr(ret);
 	free(ret);
-	free(g_data.limiters);
+	free_split(g_data.limiters);
 	exit(0);
 }
 

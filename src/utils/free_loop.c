@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_loop.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 14:56:57 by flcarval          #+#    #+#             */
-/*   Updated: 2022/07/20 15:59:49 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/07/27 12:16:01 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ void	free_loop(void)
 		free_tokens(g_data.tokens);
 	if (g_data.input)
 		free(g_data.input);
-	if (g_data.limiter && g_data.limiter[0])
-		free(g_data.limiter);
+	if (g_data.limiters/* && *g_data.limiters*/)
+		free_split(g_data.limiters);
 }
 
 static void	free_tokens(t_list **tokens)

@@ -56,6 +56,7 @@ SOURCES		+=                           		\
 		src/builtins/env_builtin.c          	\
 		src/builtins/builtin_manager.c      	\
 		src/builtins/echo_builtin.c         	\
+		src/builtins/exit_builtin_supply.c     	\
 
 
 ## SRC/PARSING ##

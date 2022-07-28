@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 11:19:52 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/07/28 12:29:51 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/07/28 16:28:12 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,11 @@ int	exit_builtin(void)
 {
 	int	tmp;
 
+	tmp = 0;
 	if (!(ft_strncmp(get_n_lst(g_data.tokens, 0)->content->val, "exit", 5)))
 	{
-		if (get_n_lst(g_data.tokens, 2) && (is_num(get_n_lst(g_data.tokens, 1)->content->val)) == 1)
+		if (get_n_lst(g_data.tokens, 2) && \
+		(is_num(get_n_lst(g_data.tokens, 1)->content->val)) == 1)
 		{
 			ft_putstr_fd("exit\n", 0);
 			ft_putstr_fd("exit: too many arguments\n", 0);
@@ -26,22 +28,7 @@ int	exit_builtin(void)
 			free_loop();
 			return (1);
 		}
-		if (get_n_lst(g_data.tokens, 1))
-		{
-			tmp = ft_atoi(get_n_lst(g_data.tokens, 1)->content->val);
-			if ((is_num(get_n_lst(g_data.tokens, 1)->content->val)) == 0)
-			{
-				ft_putstr_fd((get_n_lst(g_data.tokens, 1)->content->val), 0);
-				ft_putstr_fd(": numeric argument required\n", 0);
-				free_loop();
-				g_data.error_status = 2;
-				exit_shell(g_data.my_env, 2);
-			}
-			free_loop();
-			exit_shell(g_data.my_env, tmp);
-		}
-		free_loop();
-		exit_shell(g_data.my_env, 0);
+		exit_supply(tmp);
 	}
 	return (0);
 }

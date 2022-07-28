@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 14:41:41 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/07/27 13:43:57 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/07/28 16:13:11 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	check_meta_char(void)
 	while (g_data.lst->next)
 	{
 		if (g_data.lst->content->type == I_D_INREDIR)
-			if(is_meta_char() == 1)
+			if (is_meta_char() == 1)
 				return (1);
 		g_data.lst = g_data.lst->next;
 	}
@@ -56,29 +56,33 @@ int	nb_here_doc(void)
 			nb_hd++;
 		lst = lst->next;
 	}
-	/////////////////////////////////////
-	// ft_printf("nb_hd = %d\n", nb_hd);
-	/////////////////////////////////////
 	return (nb_hd);
 }
 
-
-
-// void	multi_limiter(void)
-// {
-// 	int		j;
-
-// 	j = 0;
-// 	if (nb_here_doc() <= 1)
-// 		return ;
-// 	g_data.limiters = malloc(sizeof(char *) * nb_here_doc());
-// 	while (j <= nb_here_doc())
-// 	{
-// 		while (g_data.lst->content->type != I_D_INREDIR)
-// 			g_data.lst = g_data.lst->next;
-// 		g_data.lst = g_data.lst->next;
-// 		g_data.limiters[j] = ft_strdup(g_data.lst->content->val);
-// 		ft_printf("lim[%d] : %s\n", j, g_data.limiters[j]);
-// 		j++;
-// 	}
-// }
+char	*here_doc_supply_loop(char *line, char *ret, char *exp, int i_lim)
+{
+	while (1)
+	{
+		line = readline("> ");
+		here_doc_other_supply(line, ret);
+		if ((ft_strncmp(line, g_data.limiters[i_lim], \
+		ft_max((ft_strlen(line)), ft_strlen(g_data.limiters[i_lim]))) == 0))
+		{
+			i_lim++;
+			if (!g_data.limiters[i_lim])
+			{
+				ret = ft_strjoin(ret, "\n");
+				free(line);
+				break ;
+			}
+		}
+		else
+		{
+			exp = expand_str(line);
+			ret = ft_strjoin(ret, exp);
+			ret = ft_strjoin(ret, "\n");
+			free(exp);
+		}
+	}
+	return (ret);
+}

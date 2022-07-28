@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   limiter.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 11:02:39 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/07/28 15:15:31 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/07/28 17:58:12 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-static void	here_doc_other_supply(char *line, char *ret)
+void	here_doc_other_supply(char *line, char *ret)
 {
 	if (!line)
 	{
@@ -57,7 +57,7 @@ static void	hd_supply(char *ret, char *tmp)
 	}
 }
 
-static void	here_doc_supply(/*char *limiter, */char *tmp)
+static void	here_doc_supply(char *tmp)
 {
 	char	*line;
 	char	*ret;
@@ -68,29 +68,8 @@ static void	here_doc_supply(/*char *limiter, */char *tmp)
 	exp = NULL;
 	reinit_sig();
 	i_lim = 0;
-	while (1)
-	{
-		line = readline("> ");
-		here_doc_other_supply(line, ret);
-		if ((ft_strncmp(line, g_data.limiters[i_lim], \
-		ft_max((ft_strlen(line)), ft_strlen(g_data.limiters[i_lim]))) == 0))
-		{
-			i_lim++;
-			if (!g_data.limiters[i_lim])
-			{
-				ret = ft_strjoin(ret, "\n");
-				free(line);
-				break ;
-			}
-		}
-		else
-		{
-			exp = expand_str(line);
-			ret = ft_strjoin(ret, exp);
-			ret = ft_strjoin(ret, "\n");
-			free(exp);
-		}
-	}
+	line = NULL;
+	ret = here_doc_supply_loop(line, ret, exp, i_lim);
 	del_last_backslash_n(ret);
 	hd_supply(ret, tmp);
 	ft_putstr(ret);
@@ -106,9 +85,16 @@ void	here_doc(void)
 	char	*tmp;
 
 	tmp = NULL;
-	if (g_data.lst->content->type != I_D_INREDIR && \
-	ft_strcmp(g_data.lst->content->val, "cat") != 1)
+	if (g_data.lst->content->type != I_D_INREDIR)
+	{
 		tmp = g_data.lst->content->val;
+		if (ft_strcmp(g_data.lst->content->val, "cat") == 1 && \
+		g_data.lst->next->content->type == I_D_INREDIR)
+		{
+			ft_putstr_fd("OEOE\n", 0);
+			tmp = NULL;
+		}
+	}
 	while (g_data.lst->content->type != I_D_INREDIR)
 		g_data.lst = g_data.lst->next;
 	if (!g_data.lst->next || check_meta_char() == 1 || !g_data.limiters)

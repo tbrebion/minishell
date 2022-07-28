@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 12:24:08 by flcarval          #+#    #+#             */
-/*   Updated: 2022/07/27 17:49:42 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/07/28 17:26:54 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,9 @@ typedef struct s_g_data
 	char	**all_cmd;
 	pid_t	pid;
 	int		is_env;
-	// char	*limiter;
 	char	**limiters;
+	char	*path;
+	char	**paths;
 }	t_data;
 
 typedef struct s_directory
@@ -107,6 +108,9 @@ void	actualize_env(void);
 int		tok_index(t_tok *find);
 void	expand_loop(void);
 void	history(void);
+char	*here_doc_supply_loop(char *line, char *ret, char *exp, int i_lim);
+void	here_doc_other_supply(char *line, char *ret);
+char	*exec_loop(char *tmp, int i, int j);
 
 // BUILTINS
 int		is_builtin(char *cmd);
@@ -125,6 +129,7 @@ int		is_unset(void);
 void	add_var(char *exp);
 void	set_var(char *exp);
 int		is_al_set(char *exp);
+void	exit_supply(int tmp);
 
 // PARSING
 t_list	**str_tok(char *str);

@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:19:38 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/07/27 17:50:46 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/07/28 15:08:18 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ static void	main_loop(void)
 			continue ;
 		}
 		expand_loop();
-		print_tok_list();
 		g_data.lst = (*g_data.tokens);
 		builtin_or_not();
 		if (exit_builtin() == 1)

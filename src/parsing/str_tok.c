@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 16:51:49 by flcarval          #+#    #+#             */
-/*   Updated: 2022/07/27 13:54:19 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/07/28 15:15:38 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,13 @@ char	**limiter_handler(void)
 		return (NULL);
 	limiters = malloc(sizeof(char *) * (nb_here_doc() + 1));
 	limiters[nb_here_doc()] = NULL;
+	if (nb_here_doc() == g_data.tok_nb \
+		|| nb_here_doc() > g_data.tok_nb / 2)
+	{
+		free(limiters);
+		limiters = NULL;
+		return (NULL);
+	}
 	i = 0;
 	while (lst)
 	{

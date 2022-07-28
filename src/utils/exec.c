@@ -6,14 +6,13 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 09:45:14 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/07/28 15:12:00 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/07/28 15:23:29 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
 static void	execute_supply(char *path, char **cmd);
-// static void
 
 char	*find_path(char *cmd, char **my_paths)
 {

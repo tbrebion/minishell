@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 11:02:39 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/07/26 20:14:06 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/07/28 12:32:09 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,11 @@ static void	here_doc_supply(/*char *limiter, */char *tmp)
 {
 	char	*line;
 	char	*ret;
+	char	*exp;
 	int		i_lim;
 
 	ret = ft_strdup("");
+	exp = NULL;
 	reinit_sig();
 	i_lim = 0;
 	while (1)
@@ -83,8 +85,10 @@ static void	here_doc_supply(/*char *limiter, */char *tmp)
 		}
 		else
 		{
-			ret = ft_strjoin(ret, expand_str(line));
+			exp = expand_str(line);
+			ret = ft_strjoin(ret, exp);
 			ret = ft_strjoin(ret, "\n");
+			free(exp);
 		}
 	}
 	del_last_backslash_n(ret);
@@ -117,7 +121,7 @@ void	here_doc(void)
 	ignore_sig();
 	pid1 = fork();
 	if (pid1 == 0)
-		here_doc_supply(/*g_data.limiters[0], */tmp);
+		here_doc_supply(tmp);
 	waitpid(-1, &status, 0);
 	g_data.error_status = WEXITSTATUS(status);
 	exit(g_data.error_status);

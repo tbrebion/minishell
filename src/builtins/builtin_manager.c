@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_manager.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 11:19:52 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/07/26 14:47:22 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/07/28 12:29:51 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,5 +91,4 @@ void	builtin_manager(int i)
 		echo_builtin(i);
 	if (!(ft_strncmp(get_n_lst(g_data.tokens, i)->content->val, "$?", 3)))
 		put_error_status();
-	free_loop();
 }

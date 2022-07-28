@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 09:45:14 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/07/27 18:14:18 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/07/28 13:10:49 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ void	execute(int i)
 			{
 				ft_putstr_fd(get_n_lst(g_data.tokens, i)->content->val, 0);
 				ft_putstr_fd(" : command not found\n", 0);
-				// return ;
 				exit(127);
 			}
 			if (j)

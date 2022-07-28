@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 12:24:08 by flcarval          #+#    #+#             */
-/*   Updated: 2022/07/28 17:26:54 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/07/28 18:00:56 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,6 @@
 # define I_S_QUOTE 600
 # define I_D_QUOTE 700
 
-// # define DEBUG ft_printf("debug\n");
-
 typedef struct s_g_data
 {
 	int		tok_nb;
@@ -67,6 +65,10 @@ typedef struct s_directory
 
 extern t_data	g_data;
 
+//	DEBUG
+void	print_tok_list(void);
+
+//	INIT
 void	init_env(char **envp);
 char	**get_path(char **my_env);
 void	init_in_loop(void);
@@ -140,6 +142,8 @@ void	set_redir(char *str, int *i, t_tok *tok);
 void	set_lit(char *str, int *i, t_tok *tok);
 void	set_quotes(char *str, int *i, t_tok *tok);
 void	set_q_to_l(t_tok *tok);
+int		rotate_tokens(void);
+void	rotate_tokens_bis(void);
 
 //	REDIR
 void	redir_manager(void);
@@ -156,8 +160,5 @@ void	interrupt_cmd(int signo);
 void	init_sig(void);
 void	reinit_sig(void);
 void	ignore_sig(void);
-
-//	DEBUG
-void	print_tok_list(void);
 
 #endif

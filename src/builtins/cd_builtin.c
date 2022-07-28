@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 11:27:23 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/07/27 13:38:33 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/07/28 16:02:07 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 static int	cd_home(char *home, char *cwd, char *tmp);
 static void	cd_previous(void);
 static int	cd_error(char *home, int i, char *tmp);
+static void	exit_cd(char *tmp, char *home);
 
 int	cd_builtin(int i)
 {
@@ -37,13 +38,7 @@ int	cd_builtin(int i)
 		cd_previous();
 	else if (chdir(get_n_lst(g_data.tokens, i + 1)->content->val) == -1)
 		return (cd_error(home, i, tmp));
-	if (g_data.previous_dir)
-		free(g_data.previous_dir);
-	g_data.previous_dir = ft_strdup(tmp);
-	if (tmp)
-		free(tmp);
-	free(home);
-	g_data.error_status = 0;
+	exit_cd(tmp, home);
 	return (0);
 }
 
@@ -77,4 +72,15 @@ static int	cd_error(char *home, int i, char *tmp)
 	free(home);
 	free(tmp);
 	return (0);
+}
+
+static void	exit_cd(char *tmp, char *home)
+{
+	if (g_data.previous_dir)
+		free(g_data.previous_dir);
+	g_data.previous_dir = ft_strdup(tmp);
+	if (tmp)
+		free(tmp);
+	free(home);
+	g_data.error_status = 0;
 }

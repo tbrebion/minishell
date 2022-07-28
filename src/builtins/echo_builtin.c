@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 01:26:03 by flcarval          #+#    #+#             */
-/*   Updated: 2022/07/26 18:46:09 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/07/28 15:58:43 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,11 @@ int	echo_builtin(int i)
 		(get_n_lst(g_data.tokens, i + j)->content->type == I_LITERAL || \
 		get_n_lst(g_data.tokens, i + j)->content->type == I_D_QUOTE || \
 		get_n_lst(g_data.tokens, i + j)->content->type == I_S_QUOTE))
-		{
-			if (is_n_param(get_n_lst(g_data.tokens, i + j)->content->val))
-			{
-				j++;
-				continue ;
-			}
-			echo_supply_loop(i, &j);
-		}
+	{
+		if (is_n_param(get_n_lst(g_data.tokens, i + j++)->content->val))
+			continue ;
+		echo_supply_loop(i, &j);
+	}
 	ft_printf("%s", nl);
 	return (0);
 }
@@ -85,20 +82,13 @@ static int	is_n_param(char *str)
 
 	i = 0;
 	if (str[i] != '-')
-	{
-		// ft_printf("is_n_param = 0\n");
 		return (0);
-	}
 	i++;
 	while (str[i])
 	{
 		if (str[i] != 'n')
-		{
-		// ft_printf("is_n_param = 0\n");
 			return (0);
-		}
 		i++;
 	}
-	// ft_printf("is_n_param = 1\n");
 	return (1);
-	}
+}

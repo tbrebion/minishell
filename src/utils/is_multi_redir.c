@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   is_multi_redir.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 14:31:45 by flcarval          #+#    #+#             */
-/*   Updated: 2022/07/27 10:46:09 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/07/28 15:54:53 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,10 @@ int	is_multi_redir(void)
 	redir_nb = 0;
 	while (lst)
 	{
-		if (lst->content->type == I_OUTREDIR || lst->content->type == I_INREDIR \
-			|| lst->content->type == I_D_OUTREDIR || lst->content->type == I_D_INREDIR)
+		if (lst->content->type == I_OUTREDIR \
+			|| lst->content->type == I_INREDIR \
+			|| lst->content->type == I_D_OUTREDIR \
+			|| lst->content->type == I_D_INREDIR)
 			redir_nb++;
 		lst = lst->next;
 	}

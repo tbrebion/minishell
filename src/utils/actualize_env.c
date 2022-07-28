@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 16:01:14 by flcarval          #+#    #+#             */
-/*   Updated: 2022/07/26 16:12:58 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/07/28 15:55:55 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	actualize_env(void)
 		set_var(oldpwd);
 	}
 	free(oldpwd);
-	pwd = ft_strjoin(pwd,  getcwd(buff, 4095));
+	pwd = ft_strjoin(pwd, getcwd(buff, 4095));
 	set_var(pwd);
 	free(pwd);
 }

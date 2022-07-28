@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:19:38 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/07/28 15:08:18 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/07/28 17:50:44 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ t_data	g_data;
 
 static void	void_args(int ac, char **av);
 static void	main_loop(void);
+static void	begin_loop(void);
+static int	quote_error(void);
 
 int	main(int ac, char **av, char **envp)
 {
@@ -36,26 +38,17 @@ static void	main_loop(void)
 {
 	while (1)
 	{
-		set_error_env();
-		init_sig();
-		g_data.input = readline("\\\\ minishell \\\\ ");
-		ctrld_handler(g_data.input);
+		begin_loop();
 		if (!g_data.input[0] || only_white_space() == 1)
 			continue ;
-		if (quotes_not_close() == 1)
-		{
-			ft_putstr_fd("quotes error\n", 0);
-			history();
-			free_loop();
+		if (quote_error())
 			continue ;
-		}
 		init_in_loop();
 		if (rotate_tokens())
-		{
-			free_loop();
 			continue ;
-		}
+		print_tok_list();
 		expand_loop();
+		print_tok_list();
 		g_data.lst = (*g_data.tokens);
 		builtin_or_not();
 		if (exit_builtin() == 1)
@@ -70,9 +63,20 @@ static void	main_loop(void)
 	}
 }
 
-/*
-MY_PROMPT>>
-爪ĭກĭ-ᏕਮҾᏝᏝ
-∩∩┌(ಠ_ಠ)┌∩∩
-ጠĭηĭᏕħεłł
-*/
+static void	begin_loop(void)
+{
+	set_error_env();
+	init_sig();
+	g_data.input = readline("\\\\ minishell \\\\ ");
+	ctrld_handler(g_data.input);
+}
+
+static int	quote_error(void)
+{
+	if (quotes_not_close() != 1)
+		return (0);
+	ft_putstr_fd("quotes error\n", 0);
+	history();
+	free_loop();
+	return (1);
+}

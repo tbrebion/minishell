@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 14:41:41 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/07/28 16:13:11 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/07/29 12:33:07 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,4 +85,16 @@ char	*here_doc_supply_loop(char *line, char *ret, char *exp, int i_lim)
 		}
 	}
 	return (ret);
+}
+
+char	*is_cmd_in_hd(char *tmp)
+{
+	if (g_data.lst->content->type != I_D_INREDIR)
+	{
+		tmp = g_data.lst->content->val;
+		if (ft_strcmp(g_data.lst->content->val, "cat") == 1 && \
+		g_data.lst->next->content->type == I_D_INREDIR)
+			tmp = NULL;
+	}
+	return (tmp);
 }

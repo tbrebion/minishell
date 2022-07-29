@@ -6,7 +6,7 @@
 /*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 11:02:39 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/07/28 17:58:12 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/07/29 12:33:24 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,16 +85,7 @@ void	here_doc(void)
 	char	*tmp;
 
 	tmp = NULL;
-	if (g_data.lst->content->type != I_D_INREDIR)
-	{
-		tmp = g_data.lst->content->val;
-		if (ft_strcmp(g_data.lst->content->val, "cat") == 1 && \
-		g_data.lst->next->content->type == I_D_INREDIR)
-		{
-			ft_putstr_fd("OEOE\n", 0);
-			tmp = NULL;
-		}
-	}
+	tmp = is_cmd_in_hd(tmp);
 	while (g_data.lst->content->type != I_D_INREDIR)
 		g_data.lst = g_data.lst->next;
 	if (!g_data.lst->next || check_meta_char() == 1 || !g_data.limiters)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate_tokens.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 16:16:16 by flcarval          #+#    #+#             */
-/*   Updated: 2022/07/29 02:26:20 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/07/29 12:05:34 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int	rotate_tokens(void)
 	{
 		ft_putstr_fd((*g_data.tokens)->content->val, 0);
 		ft_putstr_fd(" : command not found\n", 0);
+		free_loop();
 		return (1);
 	}
 	concat = concat_tokens();

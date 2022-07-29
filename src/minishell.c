@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:19:38 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/07/29 00:40:46 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/07/29 11:55:30 by tbrebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ static void	main_loop(void)
 			continue ;
 		expand_loop();
 		g_data.lst = (*g_data.tokens);
+		print_tok_list();
 		builtin_or_not();
 		if (exit_builtin() == 1)
 			continue ;
@@ -75,6 +76,8 @@ static int	quote_error(void)
 		return (0);
 	ft_putstr_fd("quotes error\n", 0);
 	history();
-	free_loop();
+	// free_loop();
 	return (1);
 }
+// << l "lspwd " << okok
+// clear

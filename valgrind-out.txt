@@ -1,1134 +1,532 @@
-==124886== Memcheck, a memory error detector
-==124886== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==124886== Using Valgrind-3.15.0-608cb11914-20190413 and LibVEX; rerun with -h for copyright info
-==124886== Command: ./bin/minishell
-==124886== Parent PID: 108688
-==124886== 
---124886-- 
---124886-- Valgrind options:
---124886--    --suppressions=valgrind_readline_leaks_ignore.txt
---124886--    --leak-check=full
---124886--    --show-leak-kinds=all
---124886--    --track-origins=yes
---124886--    --show-reachable=no
---124886--    --verbose
---124886--    --log-file=valgrind-out.txt
---124886-- Contents of /proc/version:
---124886--   Linux version 5.4.0-120-generic (buildd@lcy02-amd64-006) (gcc version 9.4.0 (Ubuntu 9.4.0-1ubuntu1~20.04.1)) #136-Ubuntu SMP Fri Jun 10 13:40:48 UTC 2022
---124886-- 
---124886-- Arch and hwcaps: AMD64, LittleEndian, amd64-cx16-rdtscp-sse3-ssse3-avx
---124886-- Page sizes: currently 4096, max supported 4096
---124886-- Valgrind library directory: /usr/lib/x86_64-linux-gnu/valgrind
---124886-- Reading syms from /mnt/nfs/homes/tbrebion/Desktop/minishell/bin/minishell
---124886-- Reading syms from /usr/lib/x86_64-linux-gnu/ld-2.31.so
---124886--   Considering /usr/lib/debug/.build-id/45/87364908de169dec62ffa538170118c1c3a078.debug ..
---124886--   .. build-id is valid
---124886-- Reading syms from /usr/lib/x86_64-linux-gnu/valgrind/memcheck-amd64-linux
---124886--    object doesn't have a symbol table
---124886--    object doesn't have a dynamic symbol table
---124886-- Scheduler: using generic scheduler lock implementation.
---124886-- Reading suppressions file: valgrind_readline_leaks_ignore.txt
---124886-- Reading suppressions file: /usr/lib/x86_64-linux-gnu/valgrind/default.supp
-==124886== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-124886-by-tbrebion-on-???
-==124886== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-124886-by-tbrebion-on-???
-==124886== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-124886-by-tbrebion-on-???
-==124886== 
-==124886== TO CONTROL THIS PROCESS USING vgdb (which you probably
-==124886== don't want to do, unless you know exactly what you're doing,
-==124886== or are doing some strange experiment):
-==124886==   /usr/lib/x86_64-linux-gnu/valgrind/../../bin/vgdb --pid=124886 ...command...
-==124886== 
-==124886== TO DEBUG THIS PROCESS USING GDB: start GDB like this
-==124886==   /path/to/gdb ./bin/minishell
-==124886== and then give GDB the following command
-==124886==   target remote | /usr/lib/x86_64-linux-gnu/valgrind/../../bin/vgdb --pid=124886
-==124886== --pid is optional if only one valgrind process is running
-==124886== 
---124886-- REDIR: 0x4022e20 (ld-linux-x86-64.so.2:strlen) redirected to 0x580c9ce2 (???)
---124886-- REDIR: 0x4022bf0 (ld-linux-x86-64.so.2:index) redirected to 0x580c9cfc (???)
---124886-- Reading syms from /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_core-amd64-linux.so
---124886--    object doesn't have a symbol table
---124886-- Reading syms from /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so
---124886--    object doesn't have a symbol table
-==124886== WARNING: new redirection conflicts with existing -- ignoring it
---124886--     old: 0x04022e20 (strlen              ) R-> (0000.0) 0x580c9ce2 ???
---124886--     new: 0x04022e20 (strlen              ) R-> (2007.0) 0x0483f060 strlen
---124886-- REDIR: 0x401f600 (ld-linux-x86-64.so.2:strcmp) redirected to 0x483ffd0 (strcmp)
---124886-- REDIR: 0x4023380 (ld-linux-x86-64.so.2:mempcpy) redirected to 0x4843a20 (mempcpy)
---124886-- Reading syms from /usr/lib/x86_64-linux-gnu/libreadline.so.8.0
---124886--    object doesn't have a symbol table
---124886-- Reading syms from /usr/lib/x86_64-linux-gnu/libc-2.31.so
---124886--   Considering /usr/lib/debug/.build-id/18/78e6b475720c7c51969e69ab2d276fae6d1dee.debug ..
---124886--   .. build-id is valid
---124886-- Reading syms from /usr/lib/x86_64-linux-gnu/libtinfo.so.6.2
---124886--    object doesn't have a symbol table
---124886-- REDIR: 0x4957480 (libc.so.6:memmove) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---124886-- REDIR: 0x4956780 (libc.so.6:strncpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---124886-- REDIR: 0x49577b0 (libc.so.6:strcasecmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---124886-- REDIR: 0x49560a0 (libc.so.6:strcat) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---124886-- REDIR: 0x49567e0 (libc.so.6:rindex) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---124886-- REDIR: 0x4958c50 (libc.so.6:rawmemchr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---124886-- REDIR: 0x4973ce0 (libc.so.6:wmemchr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---124886-- REDIR: 0x4973820 (libc.so.6:wcscmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---124886-- REDIR: 0x49575e0 (libc.so.6:mempcpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---124886-- REDIR: 0x4957410 (libc.so.6:bcmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---124886-- REDIR: 0x4956710 (libc.so.6:strncmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---124886-- REDIR: 0x4956150 (libc.so.6:strcmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---124886-- REDIR: 0x4957540 (libc.so.6:memset) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---124886-- REDIR: 0x49737e0 (libc.so.6:wcschr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---124886-- REDIR: 0x4956670 (libc.so.6:strnlen) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---124886-- REDIR: 0x4956230 (libc.so.6:strcspn) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---124886-- REDIR: 0x4957800 (libc.so.6:strncasecmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---124886-- REDIR: 0x49561d0 (libc.so.6:strcpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---124886-- REDIR: 0x4957950 (libc.so.6:memcpy@@GLIBC_2.14) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---124886-- REDIR: 0x4974f50 (libc.so.6:wcsnlen) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---124886-- REDIR: 0x4973860 (libc.so.6:wcscpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---124886-- REDIR: 0x4956820 (libc.so.6:strpbrk) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---124886-- REDIR: 0x4956100 (libc.so.6:index) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---124886-- REDIR: 0x4956630 (libc.so.6:strlen) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---124886-- REDIR: 0x495fbb0 (libc.so.6:memrchr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---124886-- REDIR: 0x4957850 (libc.so.6:strcasecmp_l) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---124886-- REDIR: 0x49573d0 (libc.so.6:memchr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---124886-- REDIR: 0x4973930 (libc.so.6:wcslen) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---124886-- REDIR: 0x4956ae0 (libc.so.6:strspn) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---124886-- REDIR: 0x4957750 (libc.so.6:stpncpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---124886-- REDIR: 0x49576f0 (libc.so.6:stpcpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---124886-- REDIR: 0x4958c90 (libc.so.6:strchrnul) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---124886-- REDIR: 0x49578a0 (libc.so.6:strncasecmp_l) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---124886-- REDIR: 0x49566b0 (libc.so.6:strncat) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---124886-- REDIR: 0x49e4850 (libc.so.6:__memcpy_chk) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---124886-- REDIR: 0x49572f0 (libc.so.6:strstr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---124886-- REDIR: 0x49688c0 (libc.so.6:__strrchr_sse2) redirected to 0x483ea70 (__strrchr_sse2)
---124886-- REDIR: 0x49510e0 (libc.so.6:malloc) redirected to 0x483b780 (malloc)
---124886-- REDIR: 0x49516d0 (libc.so.6:free) redirected to 0x483c9d0 (free)
---124886-- REDIR: 0x4968bc0 (libc.so.6:__strlen_sse2) redirected to 0x483efa0 (__strlen_sse2)
---124886-- REDIR: 0x496db00 (libc.so.6:__strcpy_sse2_unaligned) redirected to 0x483f090 (strcpy)
---124886-- REDIR: 0x49686b0 (libc.so.6:__strchrnul_sse2) redirected to 0x4843540 (strchrnul)
---124886-- REDIR: 0x48fd4f0 (libc.so.6:setenv) redirected to 0x4844480 (setenv)
---124886-- REDIR: 0x4968480 (libc.so.6:__strchr_sse2) redirected to 0x483eb90 (__strchr_sse2)
---124886-- REDIR: 0x4a35cc0 (libc.so.6:__strncmp_sse42) redirected to 0x483f7c0 (__strncmp_sse42)
---124886-- REDIR: 0x4951e80 (libc.so.6:realloc) redirected to 0x483df30 (realloc)
---124886-- REDIR: 0x4972ad0 (libc.so.6:memcpy@GLIBC_2.2.5) redirected to 0x4840100 (memcpy@GLIBC_2.2.5)
---124886-- REDIR: 0x4972ab0 (libc.so.6:__mempcpy_sse2_unaligned) redirected to 0x4843660 (mempcpy)
---124886-- REDIR: 0x49613b0 (libc.so.6:__strcmp_sse2_unaligned) redirected to 0x483fed0 (strcmp)
---124886-- REDIR: 0x4952b10 (libc.so.6:calloc) redirected to 0x483dce0 (calloc)
---124886-- REDIR: 0x4968d60 (libc.so.6:__strnlen_sse2) redirected to 0x483eee0 (strnlen)
---124886-- REDIR: 0x4956fa0 (libc.so.6:__GI_strstr) redirected to 0x4843ca0 (__strstr_sse2)
---124886-- REDIR: 0x4972ac0 (libc.so.6:__memcpy_chk_sse2_unaligned) redirected to 0x4843b10 (__memcpy_chk)
---124886-- REDIR: 0x496e130 (libc.so.6:__strncpy_sse2_unaligned) redirected to 0x483f560 (__strncpy_sse2_unaligned)
---124886-- REDIR: 0x4962ec0 (libc.so.6:__memchr_sse2) redirected to 0x4840050 (memchr)
---124886-- REDIR: 0x496f140 (libc.so.6:__stpcpy_sse2_unaligned) redirected to 0x4842570 (__stpcpy_sse2_unaligned)
---124886-- REDIR: 0x4a3c0a0 (libc.so.6:__strcasecmp_avx) redirected to 0x483f830 (strcasecmp)
---124886-- REDIR: 0x4a3d720 (libc.so.6:__strncasecmp_avx) redirected to 0x483f910 (strncasecmp)
---124886-- REDIR: 0x4972f00 (libc.so.6:__memset_sse2_unaligned) redirected to 0x48428e0 (memset)
---124886-- REDIR: 0x4a44550 (libc.so.6:__memcmp_sse4_1) redirected to 0x4842150 (__memcmp_sse4_1)
-==124907== 
-==124907== HEAP SUMMARY:
-==124907==     in use at exit: 241,355 bytes in 288 blocks
-==124907==   total heap usage: 1,119 allocs, 831 frees, 274,106 bytes allocated
-==124907== 
-==124907== Searching for pointers to 288 not-freed blocks
-==124907== Checked 244,272 bytes
-==124907== 
-==124907== LEAK SUMMARY:
-==124907==    definitely lost: 0 bytes in 0 blocks
-==124907==    indirectly lost: 0 bytes in 0 blocks
-==124907==      possibly lost: 0 bytes in 0 blocks
-==124907==    still reachable: 36,653 bytes in 69 blocks
-==124907==         suppressed: 204,702 bytes in 219 blocks
-==124907== Reachable blocks (those to which a pointer was found) are not shown.
-==124907== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==124907== 
-==124907== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
---124907-- 
---124907-- used_suppression:     58 leak readline valgrind_readline_leaks_ignore.txt:2 suppressed: 200,633 bytes in 215 blocks
---124907-- used_suppression:      4 leak add_history valgrind_readline_leaks_ignore.txt:8 suppressed: 4,069 bytes in 4 blocks
-==124907== 
-==124907== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-==124913== 
-==124913== HEAP SUMMARY:
-==124913==     in use at exit: 241,346 bytes in 289 blocks
-==124913==   total heap usage: 2,070 allocs, 1,781 frees, 292,854 bytes allocated
-==124913== 
-==124913== Searching for pointers to 289 not-freed blocks
-==124913== Checked 244,176 bytes
-==124913== 
-==124913== LEAK SUMMARY:
-==124913==    definitely lost: 0 bytes in 0 blocks
-==124913==    indirectly lost: 0 bytes in 0 blocks
-==124913==      possibly lost: 0 bytes in 0 blocks
-==124913==    still reachable: 36,617 bytes in 67 blocks
-==124913==         suppressed: 204,729 bytes in 222 blocks
-==124913== Reachable blocks (those to which a pointer was found) are not shown.
-==124913== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==124913== 
-==124913== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
---124913-- 
---124913-- used_suppression:     58 leak readline valgrind_readline_leaks_ignore.txt:2 suppressed: 200,620 bytes in 215 blocks
---124913-- used_suppression:      4 leak add_history valgrind_readline_leaks_ignore.txt:8 suppressed: 4,109 bytes in 7 blocks
-==124913== 
-==124913== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-==124919== 
-==124919== HEAP SUMMARY:
-==124919==     in use at exit: 241,469 bytes in 297 blocks
-==124919==   total heap usage: 3,039 allocs, 2,742 frees, 311,863 bytes allocated
-==124919== 
-==124919== Searching for pointers to 297 not-freed blocks
-==124919== Checked 244,296 bytes
-==124919== 
-==124919== LEAK SUMMARY:
-==124919==    definitely lost: 0 bytes in 0 blocks
-==124919==    indirectly lost: 0 bytes in 0 blocks
-==124919==      possibly lost: 0 bytes in 0 blocks
-==124919==    still reachable: 36,662 bytes in 70 blocks
-==124919==         suppressed: 204,807 bytes in 227 blocks
-==124919== Reachable blocks (those to which a pointer was found) are not shown.
-==124919== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==124919== 
-==124919== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
---124919-- 
---124919-- used_suppression:     63 leak readline valgrind_readline_leaks_ignore.txt:2 suppressed: 200,699 bytes in 220 blocks
---124919-- used_suppression:      4 leak add_history valgrind_readline_leaks_ignore.txt:8 suppressed: 4,108 bytes in 7 blocks
-==124919== 
-==124919== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-==124920== 
-==124920== HEAP SUMMARY:
-==124920==     in use at exit: 241,426 bytes in 295 blocks
-==124920==   total heap usage: 3,993 allocs, 3,698 frees, 330,643 bytes allocated
-==124920== 
-==124920== Searching for pointers to 295 not-freed blocks
-==124920== Checked 244,264 bytes
-==124920== 
-==124920== LEAK SUMMARY:
-==124920==    definitely lost: 0 bytes in 0 blocks
-==124920==    indirectly lost: 0 bytes in 0 blocks
-==124920==      possibly lost: 0 bytes in 0 blocks
-==124920==    still reachable: 36,616 bytes in 67 blocks
-==124920==         suppressed: 204,810 bytes in 228 blocks
-==124920== Reachable blocks (those to which a pointer was found) are not shown.
-==124920== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==124920== 
-==124920== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
---124920-- 
---124920-- used_suppression:     61 leak readline valgrind_readline_leaks_ignore.txt:2 suppressed: 200,662 bytes in 218 blocks
---124920-- used_suppression:      4 leak add_history valgrind_readline_leaks_ignore.txt:8 suppressed: 4,148 bytes in 10 blocks
-==124920== 
-==124920== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-==124934== 
-==124934== HEAP SUMMARY:
-==124934==     in use at exit: 241,552 bytes in 303 blocks
-==124934==   total heap usage: 4,962 allocs, 4,659 frees, 349,655 bytes allocated
-==124934== 
-==124934== Searching for pointers to 303 not-freed blocks
-==124934== Checked 244,384 bytes
-==124934== 
-==124934== LEAK SUMMARY:
-==124934==    definitely lost: 0 bytes in 0 blocks
-==124934==    indirectly lost: 0 bytes in 0 blocks
-==124934==      possibly lost: 0 bytes in 0 blocks
-==124934==    still reachable: 36,662 bytes in 70 blocks
-==124934==         suppressed: 204,890 bytes in 233 blocks
-==124934== Reachable blocks (those to which a pointer was found) are not shown.
-==124934== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==124934== 
-==124934== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
---124934-- 
---124934-- used_suppression:     63 leak readline valgrind_readline_leaks_ignore.txt:2 suppressed: 200,741 bytes in 223 blocks
---124934-- used_suppression:      4 leak add_history valgrind_readline_leaks_ignore.txt:8 suppressed: 4,149 bytes in 10 blocks
-==124934== 
-==124934== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-==124942== 
-==124942== HEAP SUMMARY:
-==124942==     in use at exit: 241,511 bytes in 301 blocks
-==124942==   total heap usage: 6,239 allocs, 5,938 frees, 374,845 bytes allocated
-==124942== 
-==124942== Searching for pointers to 301 not-freed blocks
-==124942== Checked 244,352 bytes
-==124942== 
-==124942== LEAK SUMMARY:
-==124942==    definitely lost: 0 bytes in 0 blocks
-==124942==    indirectly lost: 0 bytes in 0 blocks
-==124942==      possibly lost: 0 bytes in 0 blocks
-==124942==    still reachable: 36,619 bytes in 67 blocks
-==124942==         suppressed: 204,892 bytes in 234 blocks
-==124942== Reachable blocks (those to which a pointer was found) are not shown.
-==124942== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==124942== 
-==124942== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
---124942-- 
---124942-- used_suppression:     61 leak readline valgrind_readline_leaks_ignore.txt:2 suppressed: 200,703 bytes in 221 blocks
---124942-- used_suppression:      4 leak add_history valgrind_readline_leaks_ignore.txt:8 suppressed: 4,189 bytes in 13 blocks
-==124942== 
-==124942== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-==125004== 
-==125004== HEAP SUMMARY:
-==125004==     in use at exit: 241,605 bytes in 307 blocks
-==125004==   total heap usage: 7,193 allocs, 6,886 frees, 393,616 bytes allocated
-==125004== 
-==125004== Searching for pointers to 307 not-freed blocks
-==125004== Checked 244,432 bytes
-==125004== 
-==125004== LEAK SUMMARY:
-==125004==    definitely lost: 0 bytes in 0 blocks
-==125004==    indirectly lost: 0 bytes in 0 blocks
-==125004==      possibly lost: 0 bytes in 0 blocks
-==125004==    still reachable: 36,659 bytes in 70 blocks
-==125004==         suppressed: 204,946 bytes in 237 blocks
-==125004== Reachable blocks (those to which a pointer was found) are not shown.
-==125004== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==125004== 
-==125004== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
---125004-- 
---125004-- used_suppression:     61 leak readline valgrind_readline_leaks_ignore.txt:2 suppressed: 200,710 bytes in 221 blocks
---125004-- used_suppression:      4 leak add_history valgrind_readline_leaks_ignore.txt:8 suppressed: 4,236 bytes in 16 blocks
-==125004== 
-==125004== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-==125012== 
-==125012== HEAP SUMMARY:
-==125012==     in use at exit: 241,592 bytes in 306 blocks
-==125012==   total heap usage: 8,143 allocs, 7,837 frees, 412,362 bytes allocated
-==125012== 
-==125012== Searching for pointers to 306 not-freed blocks
-==125012== Checked 244,432 bytes
-==125012== 
-==125012== LEAK SUMMARY:
-==125012==    definitely lost: 0 bytes in 0 blocks
-==125012==    indirectly lost: 0 bytes in 0 blocks
-==125012==      possibly lost: 0 bytes in 0 blocks
-==125012==    still reachable: 36,609 bytes in 66 blocks
-==125012==         suppressed: 204,983 bytes in 240 blocks
-==125012== Reachable blocks (those to which a pointer was found) are not shown.
-==125012== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==125012== 
-==125012== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
---125012-- 
---125012-- used_suppression:     61 leak readline valgrind_readline_leaks_ignore.txt:2 suppressed: 200,705 bytes in 221 blocks
---125012-- used_suppression:      4 leak add_history valgrind_readline_leaks_ignore.txt:8 suppressed: 4,278 bytes in 19 blocks
-==125012== 
-==125012== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-==125016== 
-==125016== HEAP SUMMARY:
-==125016==     in use at exit: 241,637 bytes in 309 blocks
-==125016==   total heap usage: 8,776 allocs, 8,467 frees, 424,769 bytes allocated
-==125016== 
-==125016== Searching for pointers to 309 not-freed blocks
-==125016== Checked 244,472 bytes
-==125016== 
-==125016== LEAK SUMMARY:
-==125016==    definitely lost: 0 bytes in 0 blocks
-==125016==    indirectly lost: 0 bytes in 0 blocks
-==125016==      possibly lost: 0 bytes in 0 blocks
-==125016==    still reachable: 36,610 bytes in 66 blocks
-==125016==         suppressed: 205,027 bytes in 243 blocks
-==125016== Reachable blocks (those to which a pointer was found) are not shown.
-==125016== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==125016== 
-==125016== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
---125016-- 
---125016-- used_suppression:     61 leak readline valgrind_readline_leaks_ignore.txt:2 suppressed: 200,706 bytes in 221 blocks
---125016-- used_suppression:      4 leak add_history valgrind_readline_leaks_ignore.txt:8 suppressed: 4,321 bytes in 22 blocks
-==125016== 
-==125016== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-==125026== 
-==125026== HEAP SUMMARY:
-==125026==     in use at exit: 241,740 bytes in 315 blocks
-==125026==   total heap usage: 9,412 allocs, 9,097 frees, 437,236 bytes allocated
-==125026== 
-==125026== Searching for pointers to 315 not-freed blocks
-==125026== Checked 244,576 bytes
-==125026== 
-==125026== LEAK SUMMARY:
-==125026==    definitely lost: 0 bytes in 0 blocks
-==125026==    indirectly lost: 0 bytes in 0 blocks
-==125026==      possibly lost: 0 bytes in 0 blocks
-==125026==    still reachable: 36,652 bytes in 69 blocks
-==125026==         suppressed: 205,088 bytes in 246 blocks
-==125026== Reachable blocks (those to which a pointer was found) are not shown.
-==125026== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==125026== 
-==125026== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
---125026-- 
---125026-- used_suppression:     61 leak readline valgrind_readline_leaks_ignore.txt:2 suppressed: 200,715 bytes in 221 blocks
---125026-- used_suppression:      4 leak add_history valgrind_readline_leaks_ignore.txt:8 suppressed: 4,373 bytes in 25 blocks
-==125026== 
-==125026== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-==125030== 
-==125030== HEAP SUMMARY:
-==125030==     in use at exit: 241,789 bytes in 318 blocks
-==125030==   total heap usage: 10,362 allocs, 10,044 frees, 456,006 bytes allocated
-==125030== 
-==125030== Searching for pointers to 318 not-freed blocks
-==125030== Checked 244,616 bytes
-==125030== 
-==125030== LEAK SUMMARY:
-==125030==    definitely lost: 0 bytes in 0 blocks
-==125030==    indirectly lost: 0 bytes in 0 blocks
-==125030==      possibly lost: 0 bytes in 0 blocks
-==125030==    still reachable: 36,651 bytes in 69 blocks
-==125030==         suppressed: 205,138 bytes in 249 blocks
-==125030== Reachable blocks (those to which a pointer was found) are not shown.
-==125030== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==125030== 
-==125030== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
---125030-- 
---125030-- used_suppression:     61 leak readline valgrind_readline_leaks_ignore.txt:2 suppressed: 200,714 bytes in 221 blocks
---125030-- used_suppression:      4 leak add_history valgrind_readline_leaks_ignore.txt:8 suppressed: 4,424 bytes in 28 blocks
-==125030== 
-==125030== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-==125036== 
-==125036== HEAP SUMMARY:
-==125036==     in use at exit: 241,774 bytes in 318 blocks
-==125036==   total heap usage: 10,995 allocs, 10,677 frees, 468,404 bytes allocated
-==125036== 
-==125036== Searching for pointers to 318 not-freed blocks
-==125036== Checked 244,616 bytes
-==125036== 
-==125036== LEAK SUMMARY:
-==125036==    definitely lost: 0 bytes in 0 blocks
-==125036==    indirectly lost: 0 bytes in 0 blocks
-==125036==      possibly lost: 0 bytes in 0 blocks
-==125036==    still reachable: 36,607 bytes in 66 blocks
-==125036==         suppressed: 205,167 bytes in 252 blocks
-==125036== Reachable blocks (those to which a pointer was found) are not shown.
-==125036== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==125036== 
-==125036== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
---125036-- 
---125036-- used_suppression:     61 leak readline valgrind_readline_leaks_ignore.txt:2 suppressed: 200,703 bytes in 221 blocks
---125036-- used_suppression:      4 leak add_history valgrind_readline_leaks_ignore.txt:8 suppressed: 4,464 bytes in 31 blocks
-==125036== 
-==125036== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-==125046== 
-==125046== HEAP SUMMARY:
-==125046==     in use at exit: 241,811 bytes in 321 blocks
-==125046==   total heap usage: 11,946 allocs, 11,625 frees, 487,118 bytes allocated
-==125046== 
-==125046== Searching for pointers to 321 not-freed blocks
-==125046== Checked 244,656 bytes
-==125046== 
-==125046== LEAK SUMMARY:
-==125046==    definitely lost: 0 bytes in 0 blocks
-==125046==    indirectly lost: 0 bytes in 0 blocks
-==125046==      possibly lost: 0 bytes in 0 blocks
-==125046==    still reachable: 36,606 bytes in 66 blocks
-==125046==         suppressed: 205,205 bytes in 255 blocks
-==125046== Reachable blocks (those to which a pointer was found) are not shown.
-==125046== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==125046== 
-==125046== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
---125046-- 
---125046-- used_suppression:     61 leak readline valgrind_readline_leaks_ignore.txt:2 suppressed: 200,702 bytes in 221 blocks
---125046-- used_suppression:      4 leak add_history valgrind_readline_leaks_ignore.txt:8 suppressed: 4,503 bytes in 34 blocks
-==125046== 
-==125046== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-==125050== 
-==125050== HEAP SUMMARY:
-==125050==     in use at exit: 241,895 bytes in 325 blocks
-==125050==   total heap usage: 12,615 allocs, 12,290 frees, 500,192 bytes allocated
-==125050== 
-==125050== Searching for pointers to 325 not-freed blocks
-==125050== Checked 244,744 bytes
-==125050== 
-==125050== LEAK SUMMARY:
-==125050==    definitely lost: 0 bytes in 0 blocks
-==125050==    indirectly lost: 0 bytes in 0 blocks
-==125050==      possibly lost: 0 bytes in 0 blocks
-==125050==    still reachable: 36,649 bytes in 67 blocks
-==125050==         suppressed: 205,246 bytes in 258 blocks
-==125050== Reachable blocks (those to which a pointer was found) are not shown.
-==125050== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==125050== 
-==125050== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
---125050-- 
---125050-- used_suppression:     61 leak readline valgrind_readline_leaks_ignore.txt:2 suppressed: 200,703 bytes in 221 blocks
---125050-- used_suppression:      4 leak add_history valgrind_readline_leaks_ignore.txt:8 suppressed: 4,543 bytes in 37 blocks
-==125050== 
-==125050== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-==125054== 
-==125054== HEAP SUMMARY:
-==125054==     in use at exit: 241,971 bytes in 331 blocks
-==125054==   total heap usage: 13,598 allocs, 13,267 frees, 519,459 bytes allocated
-==125054== 
-==125054== Searching for pointers to 331 not-freed blocks
-==125054== Checked 244,808 bytes
-==125054== 
-==125054== LEAK SUMMARY:
-==125054==    definitely lost: 0 bytes in 0 blocks
-==125054==    indirectly lost: 0 bytes in 0 blocks
-==125054==      possibly lost: 0 bytes in 0 blocks
-==125054==    still reachable: 36,683 bytes in 70 blocks
-==125054==         suppressed: 205,288 bytes in 261 blocks
-==125054== Reachable blocks (those to which a pointer was found) are not shown.
-==125054== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==125054== 
-==125054== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
---125054-- 
---125054-- used_suppression:     61 leak readline valgrind_readline_leaks_ignore.txt:2 suppressed: 200,704 bytes in 221 blocks
---125054-- used_suppression:      4 leak add_history valgrind_readline_leaks_ignore.txt:8 suppressed: 4,584 bytes in 40 blocks
-==125054== 
-==125054== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-==125063== 
-==125063== HEAP SUMMARY:
-==125063==     in use at exit: 241,994 bytes in 334 blocks
-==125063==   total heap usage: 14,270 allocs, 13,936 frees, 532,515 bytes allocated
-==125063== 
-==125063== Searching for pointers to 334 not-freed blocks
-==125063== Checked 244,824 bytes
-==125063== 
-==125063== LEAK SUMMARY:
-==125063==    definitely lost: 0 bytes in 0 blocks
-==125063==    indirectly lost: 0 bytes in 0 blocks
-==125063==      possibly lost: 0 bytes in 0 blocks
-==125063==    still reachable: 36,665 bytes in 70 blocks
-==125063==         suppressed: 205,329 bytes in 264 blocks
-==125063== Reachable blocks (those to which a pointer was found) are not shown.
-==125063== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==125063== 
-==125063== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
---125063-- 
---125063-- used_suppression:     61 leak readline valgrind_readline_leaks_ignore.txt:2 suppressed: 200,704 bytes in 221 blocks
---125063-- used_suppression:      4 leak add_history valgrind_readline_leaks_ignore.txt:8 suppressed: 4,625 bytes in 43 blocks
-==125063== 
-==125063== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-==125074== 
-==125074== HEAP SUMMARY:
-==125074==     in use at exit: 242,035 bytes in 334 blocks
-==125074==   total heap usage: 14,939 allocs, 14,605 frees, 545,643 bytes allocated
-==125074== 
-==125074== Searching for pointers to 334 not-freed blocks
-==125074== Checked 244,880 bytes
-==125074== 
-==125074== LEAK SUMMARY:
-==125074==    definitely lost: 0 bytes in 0 blocks
-==125074==    indirectly lost: 0 bytes in 0 blocks
-==125074==      possibly lost: 0 bytes in 0 blocks
-==125074==    still reachable: 36,667 bytes in 67 blocks
-==125074==         suppressed: 205,368 bytes in 267 blocks
-==125074== Reachable blocks (those to which a pointer was found) are not shown.
-==125074== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==125074== 
-==125074== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
---125074-- 
---125074-- used_suppression:     61 leak readline valgrind_readline_leaks_ignore.txt:2 suppressed: 200,703 bytes in 221 blocks
---125074-- used_suppression:      4 leak add_history valgrind_readline_leaks_ignore.txt:8 suppressed: 4,665 bytes in 46 blocks
-==125074== 
-==125074== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-==125078== 
-==125078== HEAP SUMMARY:
-==125078==     in use at exit: 242,114 bytes in 340 blocks
-==125078==   total heap usage: 15,922 allocs, 15,582 frees, 565,021 bytes allocated
-==125078== 
-==125078== Searching for pointers to 340 not-freed blocks
-==125078== Checked 244,944 bytes
-==125078== 
-==125078== LEAK SUMMARY:
-==125078==    definitely lost: 0 bytes in 0 blocks
-==125078==    indirectly lost: 0 bytes in 0 blocks
-==125078==      possibly lost: 0 bytes in 0 blocks
-==125078==    still reachable: 36,702 bytes in 70 blocks
-==125078==         suppressed: 205,412 bytes in 270 blocks
-==125078== Reachable blocks (those to which a pointer was found) are not shown.
-==125078== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==125078== 
-==125078== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
---125078-- 
---125078-- used_suppression:     61 leak readline valgrind_readline_leaks_ignore.txt:2 suppressed: 200,705 bytes in 221 blocks
---125078-- used_suppression:      4 leak add_history valgrind_readline_leaks_ignore.txt:8 suppressed: 4,707 bytes in 49 blocks
-==125078== 
-==125078== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-==125083== 
-==125083== HEAP SUMMARY:
-==125083==     in use at exit: 242,107 bytes in 340 blocks
-==125083==   total heap usage: 16,591 allocs, 16,251 frees, 578,155 bytes allocated
-==125083== 
-==125083== Searching for pointers to 340 not-freed blocks
-==125083== Checked 244,952 bytes
-==125083== 
-==125083== LEAK SUMMARY:
-==125083==    definitely lost: 0 bytes in 0 blocks
-==125083==    indirectly lost: 0 bytes in 0 blocks
-==125083==      possibly lost: 0 bytes in 0 blocks
-==125083==    still reachable: 36,657 bytes in 67 blocks
-==125083==         suppressed: 205,450 bytes in 273 blocks
-==125083== Reachable blocks (those to which a pointer was found) are not shown.
-==125083== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==125083== 
-==125083== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
---125083-- 
---125083-- used_suppression:     61 leak readline valgrind_readline_leaks_ignore.txt:2 suppressed: 200,703 bytes in 221 blocks
---125083-- used_suppression:      4 leak add_history valgrind_readline_leaks_ignore.txt:8 suppressed: 4,747 bytes in 52 blocks
-==125083== 
-==125083== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-==125084== 
-==125084== HEAP SUMMARY:
-==125084==     in use at exit: 242,183 bytes in 346 blocks
-==125084==   total heap usage: 17,574 allocs, 17,228 frees, 597,470 bytes allocated
-==125084== 
-==125084== Searching for pointers to 346 not-freed blocks
-==125084== Checked 245,016 bytes
-==125084== 
-==125084== LEAK SUMMARY:
-==125084==    definitely lost: 0 bytes in 0 blocks
-==125084==    indirectly lost: 0 bytes in 0 blocks
-==125084==      possibly lost: 0 bytes in 0 blocks
-==125084==    still reachable: 36,691 bytes in 70 blocks
-==125084==         suppressed: 205,492 bytes in 276 blocks
-==125084== Reachable blocks (those to which a pointer was found) are not shown.
-==125084== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==125084== 
-==125084== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
---125084-- 
---125084-- used_suppression:     61 leak readline valgrind_readline_leaks_ignore.txt:2 suppressed: 200,704 bytes in 221 blocks
---125084-- used_suppression:      4 leak add_history valgrind_readline_leaks_ignore.txt:8 suppressed: 4,788 bytes in 55 blocks
-==125084== 
-==125084== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-==125098== 
-==125098== HEAP SUMMARY:
-==125098==     in use at exit: 242,308 bytes in 357 blocks
-==125098==   total heap usage: 18,272 allocs, 17,915 frees, 610,876 bytes allocated
-==125098== 
-==125098== Searching for pointers to 357 not-freed blocks
-==125098== Checked 245,120 bytes
-==125098== 
-==125098== LEAK SUMMARY:
-==125098==    definitely lost: 0 bytes in 0 blocks
-==125098==    indirectly lost: 0 bytes in 0 blocks
-==125098==      possibly lost: 0 bytes in 0 blocks
-==125098==    still reachable: 36,751 bytes in 76 blocks
-==125098==         suppressed: 205,557 bytes in 281 blocks
-==125098== Reachable blocks (those to which a pointer was found) are not shown.
-==125098== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==125098== 
-==125098== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
---125098-- 
---125098-- used_suppression:     63 leak readline valgrind_readline_leaks_ignore.txt:2 suppressed: 200,764 bytes in 226 blocks
---125098-- used_suppression:      4 leak add_history valgrind_readline_leaks_ignore.txt:8 suppressed: 4,793 bytes in 55 blocks
-==125098== 
-==125098== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-==125102== 
-==125102== HEAP SUMMARY:
-==125102==     in use at exit: 242,223 bytes in 349 blocks
-==125102==   total heap usage: 18,941 allocs, 18,592 frees, 623,990 bytes allocated
-==125102== 
-==125102== Searching for pointers to 349 not-freed blocks
-==125102== Checked 245,072 bytes
-==125102== 
-==125102== LEAK SUMMARY:
-==125102==    definitely lost: 0 bytes in 0 blocks
-==125102==    indirectly lost: 0 bytes in 0 blocks
-==125102==      possibly lost: 0 bytes in 0 blocks
-==125102==    still reachable: 36,657 bytes in 67 blocks
-==125102==         suppressed: 205,566 bytes in 282 blocks
-==125102== Reachable blocks (those to which a pointer was found) are not shown.
-==125102== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==125102== 
-==125102== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
---125102-- 
---125102-- used_suppression:     61 leak readline valgrind_readline_leaks_ignore.txt:2 suppressed: 200,733 bytes in 224 blocks
---125102-- used_suppression:      4 leak add_history valgrind_readline_leaks_ignore.txt:8 suppressed: 4,833 bytes in 58 blocks
-==125102== 
-==125102== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-==125125== 
-==125125== HEAP SUMMARY:
-==125125==     in use at exit: 242,260 bytes in 352 blocks
-==125125==   total heap usage: 19,921 allocs, 19,569 frees, 643,266 bytes allocated
-==125125== 
-==125125== Searching for pointers to 352 not-freed blocks
-==125125== Checked 245,144 bytes
-==125125== 
-==125125== LEAK SUMMARY:
-==125125==    definitely lost: 0 bytes in 0 blocks
-==125125==    indirectly lost: 0 bytes in 0 blocks
-==125125==      possibly lost: 0 bytes in 0 blocks
-==125125==    still reachable: 36,656 bytes in 67 blocks
-==125125==         suppressed: 205,604 bytes in 285 blocks
-==125125== Reachable blocks (those to which a pointer was found) are not shown.
-==125125== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==125125== 
-==125125== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
---125125-- 
---125125-- used_suppression:     61 leak readline valgrind_readline_leaks_ignore.txt:2 suppressed: 200,732 bytes in 224 blocks
---125125-- used_suppression:      4 leak add_history valgrind_readline_leaks_ignore.txt:8 suppressed: 4,872 bytes in 61 blocks
-==125125== 
-==125125== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-==125131== 
-==125131== HEAP SUMMARY:
-==125131==     in use at exit: 242,338 bytes in 358 blocks
-==125131==   total heap usage: 20,904 allocs, 20,546 frees, 662,581 bytes allocated
-==125131== 
-==125131== Searching for pointers to 358 not-freed blocks
-==125131== Checked 245,176 bytes
-==125131== 
-==125131== LEAK SUMMARY:
-==125131==    definitely lost: 0 bytes in 0 blocks
-==125131==    indirectly lost: 0 bytes in 0 blocks
-==125131==      possibly lost: 0 bytes in 0 blocks
-==125131==    still reachable: 36,691 bytes in 70 blocks
-==125131==         suppressed: 205,647 bytes in 288 blocks
-==125131== Reachable blocks (those to which a pointer was found) are not shown.
-==125131== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==125131== 
-==125131== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
---125131-- 
---125131-- used_suppression:     61 leak readline valgrind_readline_leaks_ignore.txt:2 suppressed: 200,734 bytes in 224 blocks
---125131-- used_suppression:      4 leak add_history valgrind_readline_leaks_ignore.txt:8 suppressed: 4,913 bytes in 64 blocks
-==125131== 
-==125131== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-==125135== 
-==125135== HEAP SUMMARY:
-==125135==     in use at exit: 242,330 bytes in 358 blocks
-==125135==   total heap usage: 21,573 allocs, 21,215 frees, 675,662 bytes allocated
-==125135== 
-==125135== Searching for pointers to 358 not-freed blocks
-==125135== Checked 245,208 bytes
-==125135== 
-==125135== LEAK SUMMARY:
-==125135==    definitely lost: 0 bytes in 0 blocks
-==125135==    indirectly lost: 0 bytes in 0 blocks
-==125135==      possibly lost: 0 bytes in 0 blocks
-==125135==    still reachable: 36,646 bytes in 67 blocks
-==125135==         suppressed: 205,684 bytes in 291 blocks
-==125135== Reachable blocks (those to which a pointer was found) are not shown.
-==125135== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==125135== 
-==125135== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
---125135-- 
---125135-- used_suppression:     61 leak readline valgrind_readline_leaks_ignore.txt:2 suppressed: 200,732 bytes in 224 blocks
---125135-- used_suppression:      4 leak add_history valgrind_readline_leaks_ignore.txt:8 suppressed: 4,952 bytes in 67 blocks
-==125135== 
-==125135== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-==125686== 
-==125686== HEAP SUMMARY:
-==125686==     in use at exit: 242,591 bytes in 364 blocks
-==125686==   total heap usage: 22,571 allocs, 22,207 frees, 695,462 bytes allocated
-==125686== 
-==125686== Searching for pointers to 364 not-freed blocks
-==125686== Checked 245,408 bytes
-==125686== 
-==125686== LEAK SUMMARY:
-==125686==    definitely lost: 0 bytes in 0 blocks
-==125686==    indirectly lost: 0 bytes in 0 blocks
-==125686==      possibly lost: 0 bytes in 0 blocks
-==125686==    still reachable: 36,724 bytes in 70 blocks
-==125686==         suppressed: 205,867 bytes in 294 blocks
-==125686== Reachable blocks (those to which a pointer was found) are not shown.
-==125686== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==125686== 
-==125686== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
---125686-- 
---125686-- used_suppression:     61 leak readline valgrind_readline_leaks_ignore.txt:2 suppressed: 200,830 bytes in 224 blocks
---125686-- used_suppression:      4 leak add_history valgrind_readline_leaks_ignore.txt:8 suppressed: 5,037 bytes in 70 blocks
-==125686== 
-==125686== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-==125691== 
-==125691== HEAP SUMMARY:
-==125691==     in use at exit: 242,543 bytes in 364 blocks
-==125691==   total heap usage: 23,419 allocs, 23,055 frees, 712,083 bytes allocated
-==125691== 
-==125691== Searching for pointers to 364 not-freed blocks
-==125691== Checked 245,368 bytes
-==125691== 
-==125691== LEAK SUMMARY:
-==125691==    definitely lost: 0 bytes in 0 blocks
-==125691==    indirectly lost: 0 bytes in 0 blocks
-==125691==      possibly lost: 0 bytes in 0 blocks
-==125691==    still reachable: 36,681 bytes in 67 blocks
-==125691==         suppressed: 205,862 bytes in 297 blocks
-==125691== Reachable blocks (those to which a pointer was found) are not shown.
-==125691== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==125691== 
-==125691== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
---125691-- 
---125691-- used_suppression:     61 leak readline valgrind_readline_leaks_ignore.txt:2 suppressed: 200,785 bytes in 224 blocks
---125691-- used_suppression:      4 leak add_history valgrind_readline_leaks_ignore.txt:8 suppressed: 5,077 bytes in 73 blocks
-==125691== 
-==125691== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-==125908== 
-==125908== HEAP SUMMARY:
-==125908==     in use at exit: 242,586 bytes in 367 blocks
-==125908==   total heap usage: 24,408 allocs, 24,041 frees, 731,625 bytes allocated
-==125908== 
-==125908== Searching for pointers to 367 not-freed blocks
-==125908== Checked 245,440 bytes
-==125908== 
-==125908== LEAK SUMMARY:
-==125908==    definitely lost: 0 bytes in 0 blocks
-==125908==    indirectly lost: 0 bytes in 0 blocks
-==125908==      possibly lost: 0 bytes in 0 blocks
-==125908==    still reachable: 36,682 bytes in 67 blocks
-==125908==         suppressed: 205,904 bytes in 300 blocks
-==125908== Reachable blocks (those to which a pointer was found) are not shown.
-==125908== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==125908== 
-==125908== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
---125908-- 
---125908-- used_suppression:     61 leak readline valgrind_readline_leaks_ignore.txt:2 suppressed: 200,786 bytes in 224 blocks
---125908-- used_suppression:      4 leak add_history valgrind_readline_leaks_ignore.txt:8 suppressed: 5,118 bytes in 76 blocks
-==125908== 
-==125908== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-==126099== 
-==126099== HEAP SUMMARY:
-==126099==     in use at exit: 242,624 bytes in 370 blocks
-==126099==   total heap usage: 25,395 allocs, 25,025 frees, 751,130 bytes allocated
-==126099== 
-==126099== Searching for pointers to 370 not-freed blocks
-==126099== Checked 245,448 bytes
-==126099== 
-==126099== LEAK SUMMARY:
-==126099==    definitely lost: 0 bytes in 0 blocks
-==126099==    indirectly lost: 0 bytes in 0 blocks
-==126099==      possibly lost: 0 bytes in 0 blocks
-==126099==    still reachable: 36,681 bytes in 67 blocks
-==126099==         suppressed: 205,943 bytes in 303 blocks
-==126099== Reachable blocks (those to which a pointer was found) are not shown.
-==126099== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==126099== 
-==126099== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
---126099-- 
---126099-- used_suppression:     61 leak readline valgrind_readline_leaks_ignore.txt:2 suppressed: 200,785 bytes in 224 blocks
---126099-- used_suppression:      4 leak add_history valgrind_readline_leaks_ignore.txt:8 suppressed: 5,158 bytes in 79 blocks
-==126099== 
-==126099== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-==126147== 
-==126147== HEAP SUMMARY:
-==126147==     in use at exit: 242,667 bytes in 373 blocks
-==126147==   total heap usage: 26,375 allocs, 26,002 frees, 770,504 bytes allocated
-==126147== 
-==126147== Searching for pointers to 373 not-freed blocks
-==126147== Checked 245,520 bytes
-==126147== 
-==126147== LEAK SUMMARY:
-==126147==    definitely lost: 0 bytes in 0 blocks
-==126147==    indirectly lost: 0 bytes in 0 blocks
-==126147==      possibly lost: 0 bytes in 0 blocks
-==126147==    still reachable: 36,682 bytes in 67 blocks
-==126147==         suppressed: 205,985 bytes in 306 blocks
-==126147== Reachable blocks (those to which a pointer was found) are not shown.
-==126147== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==126147== 
-==126147== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
---126147-- 
---126147-- used_suppression:     61 leak readline valgrind_readline_leaks_ignore.txt:2 suppressed: 200,786 bytes in 224 blocks
---126147-- used_suppression:      4 leak add_history valgrind_readline_leaks_ignore.txt:8 suppressed: 5,199 bytes in 82 blocks
-==126147== 
-==126147== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-==126210== 
-==126210== HEAP SUMMARY:
-==126210==     in use at exit: 242,702 bytes in 376 blocks
-==126210==   total heap usage: 27,355 allocs, 26,979 frees, 789,872 bytes allocated
-==126210== 
-==126210== Searching for pointers to 376 not-freed blocks
-==126210== Checked 245,560 bytes
-==126210== 
-==126210== LEAK SUMMARY:
-==126210==    definitely lost: 0 bytes in 0 blocks
-==126210==    indirectly lost: 0 bytes in 0 blocks
-==126210==      possibly lost: 0 bytes in 0 blocks
-==126210==    still reachable: 36,680 bytes in 67 blocks
-==126210==         suppressed: 206,022 bytes in 309 blocks
-==126210== Reachable blocks (those to which a pointer was found) are not shown.
-==126210== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==126210== 
-==126210== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
---126210-- 
---126210-- used_suppression:     61 leak readline valgrind_readline_leaks_ignore.txt:2 suppressed: 200,784 bytes in 224 blocks
---126210-- used_suppression:      4 leak add_history valgrind_readline_leaks_ignore.txt:8 suppressed: 5,238 bytes in 85 blocks
-==126210== 
-==126210== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-==126220== 
-==126220== HEAP SUMMARY:
-==126220==     in use at exit: 242,836 bytes in 385 blocks
-==126220==   total heap usage: 28,379 allocs, 27,994 frees, 875,591 bytes allocated
-==126220== 
-==126220== Searching for pointers to 385 not-freed blocks
-==126220== Checked 245,664 bytes
-==126220== 
-==126220== LEAK SUMMARY:
-==126220==    definitely lost: 0 bytes in 0 blocks
-==126220==    indirectly lost: 0 bytes in 0 blocks
-==126220==      possibly lost: 0 bytes in 0 blocks
-==126220==    still reachable: 36,755 bytes in 73 blocks
-==126220==         suppressed: 206,081 bytes in 312 blocks
-==126220== Reachable blocks (those to which a pointer was found) are not shown.
-==126220== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==126220== 
-==126220== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
---126220-- 
---126220-- used_suppression:     61 leak readline valgrind_readline_leaks_ignore.txt:2 suppressed: 200,794 bytes in 224 blocks
---126220-- used_suppression:      4 leak add_history valgrind_readline_leaks_ignore.txt:8 suppressed: 5,287 bytes in 88 blocks
-==126220== 
-==126220== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-==126225== 
-==126225== HEAP SUMMARY:
-==126225==     in use at exit: 242,790 bytes in 382 blocks
-==126225==   total heap usage: 29,359 allocs, 28,977 frees, 894,959 bytes allocated
-==126225== 
-==126225== Searching for pointers to 382 not-freed blocks
-==126225== Checked 245,648 bytes
-==126225== 
-==126225== LEAK SUMMARY:
-==126225==    definitely lost: 0 bytes in 0 blocks
-==126225==    indirectly lost: 0 bytes in 0 blocks
-==126225==      possibly lost: 0 bytes in 0 blocks
-==126225==    still reachable: 36,680 bytes in 67 blocks
-==126225==         suppressed: 206,110 bytes in 315 blocks
-==126225== Reachable blocks (those to which a pointer was found) are not shown.
-==126225== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==126225== 
-==126225== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
---126225-- 
---126225-- used_suppression:     61 leak readline valgrind_readline_leaks_ignore.txt:2 suppressed: 200,784 bytes in 224 blocks
---126225-- used_suppression:      4 leak add_history valgrind_readline_leaks_ignore.txt:8 suppressed: 5,326 bytes in 91 blocks
-==126225== 
-==126225== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-==126239== 
-==126239== HEAP SUMMARY:
-==126239==     in use at exit: 243,067 bytes in 403 blocks
-==126239==   total heap usage: 30,373 allocs, 29,970 frees, 914,720 bytes allocated
-==126239== 
-==126239== Searching for pointers to 403 not-freed blocks
-==126239== Checked 245,864 bytes
-==126239== 
-==126239== LEAK SUMMARY:
-==126239==    definitely lost: 0 bytes in 0 blocks
-==126239==    indirectly lost: 0 bytes in 0 blocks
-==126239==      possibly lost: 0 bytes in 0 blocks
-==126239==    still reachable: 36,890 bytes in 85 blocks
-==126239==         suppressed: 206,177 bytes in 318 blocks
-==126239== Reachable blocks (those to which a pointer was found) are not shown.
-==126239== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==126239== 
-==126239== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
---126239-- 
---126239-- used_suppression:     61 leak readline valgrind_readline_leaks_ignore.txt:2 suppressed: 200,798 bytes in 224 blocks
---126239-- used_suppression:      4 leak add_history valgrind_readline_leaks_ignore.txt:8 suppressed: 5,379 bytes in 94 blocks
-==126239== 
-==126239== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-==126244== 
-==126244== HEAP SUMMARY:
-==126244==     in use at exit: 242,924 bytes in 391 blocks
-==126244==   total heap usage: 31,356 allocs, 30,965 frees, 934,130 bytes allocated
-==126244== 
-==126244== Searching for pointers to 391 not-freed blocks
-==126244== Checked 245,768 bytes
-==126244== 
-==126244== LEAK SUMMARY:
-==126244==    definitely lost: 0 bytes in 0 blocks
-==126244==    indirectly lost: 0 bytes in 0 blocks
-==126244==      possibly lost: 0 bytes in 0 blocks
-==126244==    still reachable: 36,716 bytes in 70 blocks
-==126244==         suppressed: 206,208 bytes in 321 blocks
-==126244== Reachable blocks (those to which a pointer was found) are not shown.
-==126244== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==126244== 
-==126244== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
---126244-- 
---126244-- used_suppression:     61 leak readline valgrind_readline_leaks_ignore.txt:2 suppressed: 200,787 bytes in 224 blocks
---126244-- used_suppression:      4 leak add_history valgrind_readline_leaks_ignore.txt:8 suppressed: 5,421 bytes in 97 blocks
-==126244== 
-==126244== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-==126264== 
-==126264== HEAP SUMMARY:
-==126264==     in use at exit: 242,980 bytes in 396 blocks
-==126264==   total heap usage: 32,348 allocs, 31,952 frees, 953,638 bytes allocated
-==126264== 
-==126264== Searching for pointers to 396 not-freed blocks
-==126264== Checked 245,824 bytes
-==126264== 
-==126264== LEAK SUMMARY:
-==126264==    definitely lost: 0 bytes in 0 blocks
-==126264==    indirectly lost: 0 bytes in 0 blocks
-==126264==      possibly lost: 0 bytes in 0 blocks
-==126264==    still reachable: 36,716 bytes in 70 blocks
-==126264==         suppressed: 206,264 bytes in 326 blocks
-==126264== Reachable blocks (those to which a pointer was found) are not shown.
-==126264== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==126264== 
-==126264== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
---126264-- 
---126264-- used_suppression:     63 leak readline valgrind_readline_leaks_ignore.txt:2 suppressed: 200,843 bytes in 229 blocks
---126264-- used_suppression:      4 leak add_history valgrind_readline_leaks_ignore.txt:8 suppressed: 5,421 bytes in 97 blocks
-==126264== 
-==126264== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-==126273== 
-==126273== HEAP SUMMARY:
-==126273==     in use at exit: 242,997 bytes in 397 blocks
-==126273==   total heap usage: 33,331 allocs, 32,934 frees, 973,048 bytes allocated
-==126273== 
-==126273== Searching for pointers to 397 not-freed blocks
-==126273== Checked 245,840 bytes
-==126273== 
-==126273== LEAK SUMMARY:
-==126273==    definitely lost: 0 bytes in 0 blocks
-==126273==    indirectly lost: 0 bytes in 0 blocks
-==126273==      possibly lost: 0 bytes in 0 blocks
-==126273==    still reachable: 36,716 bytes in 70 blocks
-==126273==         suppressed: 206,281 bytes in 327 blocks
-==126273== Reachable blocks (those to which a pointer was found) are not shown.
-==126273== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==126273== 
-==126273== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
---126273-- 
---126273-- used_suppression:     61 leak readline valgrind_readline_leaks_ignore.txt:2 suppressed: 200,818 bytes in 227 blocks
---126273-- used_suppression:      4 leak add_history valgrind_readline_leaks_ignore.txt:8 suppressed: 5,463 bytes in 100 blocks
-==126273== 
-==126273== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-==126279== 
-==126279== HEAP SUMMARY:
-==126279==     in use at exit: 243,056 bytes in 402 blocks
-==126279==   total heap usage: 34,321 allocs, 33,919 frees, 992,526 bytes allocated
-==126279== 
-==126279== Searching for pointers to 402 not-freed blocks
-==126279== Checked 245,896 bytes
-==126279== 
-==126279== LEAK SUMMARY:
-==126279==    definitely lost: 0 bytes in 0 blocks
-==126279==    indirectly lost: 0 bytes in 0 blocks
-==126279==      possibly lost: 0 bytes in 0 blocks
-==126279==    still reachable: 36,717 bytes in 70 blocks
-==126279==         suppressed: 206,339 bytes in 332 blocks
-==126279== Reachable blocks (those to which a pointer was found) are not shown.
-==126279== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==126279== 
-==126279== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
---126279-- 
---126279-- used_suppression:     63 leak readline valgrind_readline_leaks_ignore.txt:2 suppressed: 200,875 bytes in 232 blocks
---126279-- used_suppression:      4 leak add_history valgrind_readline_leaks_ignore.txt:8 suppressed: 5,464 bytes in 100 blocks
-==126279== 
-==126279== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-==126286== 
-==126286== HEAP SUMMARY:
-==126286==     in use at exit: 243,107 bytes in 406 blocks
-==126286==   total heap usage: 35,309 allocs, 34,903 frees, 1,012,006 bytes allocated
-==126286== 
-==126286== Searching for pointers to 406 not-freed blocks
-==126286== Checked 245,936 bytes
-==126286== 
-==126286== LEAK SUMMARY:
-==126286==    definitely lost: 0 bytes in 0 blocks
-==126286==    indirectly lost: 0 bytes in 0 blocks
-==126286==      possibly lost: 0 bytes in 0 blocks
-==126286==    still reachable: 36,750 bytes in 73 blocks
-==126286==         suppressed: 206,357 bytes in 333 blocks
-==126286== Reachable blocks (those to which a pointer was found) are not shown.
-==126286== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==126286== 
-==126286== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
---126286-- 
---126286-- used_suppression:     61 leak readline valgrind_readline_leaks_ignore.txt:2 suppressed: 200,850 bytes in 230 blocks
---126286-- used_suppression:      4 leak add_history valgrind_readline_leaks_ignore.txt:8 suppressed: 5,507 bytes in 103 blocks
-==126286== 
-==126286== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-==126363== 
-==126363== HEAP SUMMARY:
-==126363==     in use at exit: 243,238 bytes in 415 blocks
-==126363==   total heap usage: 36,338 allocs, 35,923 frees, 1,032,214 bytes allocated
-==126363== 
-==126363== Searching for pointers to 415 not-freed blocks
-==126363== Checked 247,008 bytes
-==126363== 
-==126363== LEAK SUMMARY:
-==126363==    definitely lost: 0 bytes in 0 blocks
-==126363==    indirectly lost: 0 bytes in 0 blocks
-==126363==      possibly lost: 0 bytes in 0 blocks
-==126363==    still reachable: 36,822 bytes in 79 blocks
-==126363==         suppressed: 206,416 bytes in 336 blocks
-==126363== Reachable blocks (those to which a pointer was found) are not shown.
-==126363== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==126363== 
-==126363== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
---126363-- 
---126363-- used_suppression:     61 leak readline valgrind_readline_leaks_ignore.txt:2 suppressed: 200,858 bytes in 230 blocks
---126363-- used_suppression:      4 leak add_history valgrind_readline_leaks_ignore.txt:8 suppressed: 5,558 bytes in 106 blocks
-==126363== 
-==126363== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-==126595== 
-==126595== HEAP SUMMARY:
-==126595==     in use at exit: 243,519 bytes in 433 blocks
-==126595==   total heap usage: 37,706 allocs, 37,273 frees, 1,059,017 bytes allocated
-==126595== 
-==126595== Searching for pointers to 433 not-freed blocks
-==126595== Checked 246,256 bytes
-==126595== 
-==126595== LEAK SUMMARY:
-==126595==    definitely lost: 0 bytes in 0 blocks
-==126595==    indirectly lost: 0 bytes in 0 blocks
-==126595==      possibly lost: 0 bytes in 0 blocks
-==126595==    still reachable: 37,004 bytes in 93 blocks
-==126595==         suppressed: 206,515 bytes in 340 blocks
-==126595== Reachable blocks (those to which a pointer was found) are not shown.
-==126595== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==126595== 
-==126595== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
---126595-- 
---126595-- used_suppression:     62 leak readline valgrind_readline_leaks_ignore.txt:2 suppressed: 200,885 bytes in 231 blocks
---126595-- used_suppression:      4 leak add_history valgrind_readline_leaks_ignore.txt:8 suppressed: 5,630 bytes in 109 blocks
-==126595== 
-==126595== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-==126754== 
-==126754== HEAP SUMMARY:
-==126754==     in use at exit: 243,204 bytes in 409 blocks
-==126754==   total heap usage: 38,686 allocs, 38,277 frees, 1,078,396 bytes allocated
-==126754== 
-==126754== Searching for pointers to 409 not-freed blocks
-==126754== Checked 246,048 bytes
-==126754== 
-==126754== LEAK SUMMARY:
-==126754==    definitely lost: 0 bytes in 0 blocks
-==126754==    indirectly lost: 0 bytes in 0 blocks
-==126754==      possibly lost: 0 bytes in 0 blocks
-==126754==    still reachable: 36,683 bytes in 67 blocks
-==126754==         suppressed: 206,521 bytes in 342 blocks
-==126754== Reachable blocks (those to which a pointer was found) are not shown.
-==126754== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==126754== 
-==126754== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
---126754-- 
---126754-- used_suppression:     61 leak readline valgrind_readline_leaks_ignore.txt:2 suppressed: 200,849 bytes in 230 blocks
---126754-- used_suppression:      4 leak add_history valgrind_readline_leaks_ignore.txt:8 suppressed: 5,672 bytes in 112 blocks
-==126754== 
-==126754== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-==126792== 
-==126792== HEAP SUMMARY:
-==126792==     in use at exit: 243,279 bytes in 415 blocks
-==126792==   total heap usage: 39,669 allocs, 39,254 frees, 1,097,806 bytes allocated
-==126792== 
-==126792== Searching for pointers to 415 not-freed blocks
-==126792== Checked 246,112 bytes
-==126792== 
-==126792== LEAK SUMMARY:
-==126792==    definitely lost: 0 bytes in 0 blocks
-==126792==    indirectly lost: 0 bytes in 0 blocks
-==126792==      possibly lost: 0 bytes in 0 blocks
-==126792==    still reachable: 36,716 bytes in 70 blocks
-==126792==         suppressed: 206,563 bytes in 345 blocks
-==126792== Reachable blocks (those to which a pointer was found) are not shown.
-==126792== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==126792== 
-==126792== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
---126792-- 
---126792-- used_suppression:     61 leak readline valgrind_readline_leaks_ignore.txt:2 suppressed: 200,849 bytes in 230 blocks
---126792-- used_suppression:      4 leak add_history valgrind_readline_leaks_ignore.txt:8 suppressed: 5,714 bytes in 115 blocks
-==126792== 
-==126792== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-==124886== 
-==124886== HEAP SUMMARY:
-==124886==     in use at exit: 206,557 bytes in 344 blocks
-==124886==   total heap usage: 40,626 allocs, 40,282 frees, 1,116,937 bytes allocated
-==124886== 
-==124886== Searching for pointers to 344 not-freed blocks
-==124886== Checked 209,608 bytes
-==124886== 
-==124886== LEAK SUMMARY:
-==124886==    definitely lost: 0 bytes in 0 blocks
-==124886==    indirectly lost: 0 bytes in 0 blocks
-==124886==      possibly lost: 0 bytes in 0 blocks
-==124886==    still reachable: 0 bytes in 0 blocks
-==124886==         suppressed: 206,557 bytes in 344 blocks
-==124886== 
-==124886== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
---124886-- 
---124886-- used_suppression:     60 leak readline valgrind_readline_leaks_ignore.txt:2 suppressed: 200,843 bytes in 229 blocks
---124886-- used_suppression:      4 leak add_history valgrind_readline_leaks_ignore.txt:8 suppressed: 5,714 bytes in 115 blocks
-==124886== 
-==124886== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==196684== Memcheck, a memory error detector
+==196684== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==196684== Using Valgrind-3.15.0-608cb11914-20190413 and LibVEX; rerun with -h for copyright info
+==196684== Command: ./bin/minishell
+==196684== Parent PID: 180884
+==196684== 
+--196684-- 
+--196684-- Valgrind options:
+--196684--    --suppressions=valgrind_readline_leaks_ignore.txt
+--196684--    --leak-check=full
+--196684--    --show-leak-kinds=all
+--196684--    --track-origins=yes
+--196684--    --verbose
+--196684--    --log-file=valgrind-out.txt
+--196684-- Contents of /proc/version:
+--196684--   Linux version 5.4.0-120-generic (buildd@lcy02-amd64-006) (gcc version 9.4.0 (Ubuntu 9.4.0-1ubuntu1~20.04.1)) #136-Ubuntu SMP Fri Jun 10 13:40:48 UTC 2022
+--196684-- 
+--196684-- Arch and hwcaps: AMD64, LittleEndian, amd64-cx16-rdtscp-sse3-ssse3-avx
+--196684-- Page sizes: currently 4096, max supported 4096
+--196684-- Valgrind library directory: /usr/lib/x86_64-linux-gnu/valgrind
+--196684-- Reading syms from /mnt/nfs/homes/flcarval/Github/minishell/bin/minishell
+--196684-- Reading syms from /usr/lib/x86_64-linux-gnu/ld-2.31.so
+--196684--   Considering /usr/lib/debug/.build-id/45/87364908de169dec62ffa538170118c1c3a078.debug ..
+--196684--   .. build-id is valid
+--196684-- Reading syms from /usr/lib/x86_64-linux-gnu/valgrind/memcheck-amd64-linux
+--196684--    object doesn't have a symbol table
+--196684--    object doesn't have a dynamic symbol table
+--196684-- Scheduler: using generic scheduler lock implementation.
+--196684-- Reading suppressions file: valgrind_readline_leaks_ignore.txt
+--196684-- Reading suppressions file: /usr/lib/x86_64-linux-gnu/valgrind/default.supp
+==196684== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-196684-by-flcarval-on-???
+==196684== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-196684-by-flcarval-on-???
+==196684== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-196684-by-flcarval-on-???
+==196684== 
+==196684== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==196684== don't want to do, unless you know exactly what you're doing,
+==196684== or are doing some strange experiment):
+==196684==   /usr/lib/x86_64-linux-gnu/valgrind/../../bin/vgdb --pid=196684 ...command...
+==196684== 
+==196684== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==196684==   /path/to/gdb ./bin/minishell
+==196684== and then give GDB the following command
+==196684==   target remote | /usr/lib/x86_64-linux-gnu/valgrind/../../bin/vgdb --pid=196684
+==196684== --pid is optional if only one valgrind process is running
+==196684== 
+--196684-- REDIR: 0x4022e20 (ld-linux-x86-64.so.2:strlen) redirected to 0x580c9ce2 (???)
+--196684-- REDIR: 0x4022bf0 (ld-linux-x86-64.so.2:index) redirected to 0x580c9cfc (???)
+--196684-- Reading syms from /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_core-amd64-linux.so
+--196684--    object doesn't have a symbol table
+--196684-- Reading syms from /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so
+--196684--    object doesn't have a symbol table
+==196684== WARNING: new redirection conflicts with existing -- ignoring it
+--196684--     old: 0x04022e20 (strlen              ) R-> (0000.0) 0x580c9ce2 ???
+--196684--     new: 0x04022e20 (strlen              ) R-> (2007.0) 0x0483f060 strlen
+--196684-- REDIR: 0x401f600 (ld-linux-x86-64.so.2:strcmp) redirected to 0x483ffd0 (strcmp)
+--196684-- REDIR: 0x4023380 (ld-linux-x86-64.so.2:mempcpy) redirected to 0x4843a20 (mempcpy)
+--196684-- Reading syms from /usr/lib/x86_64-linux-gnu/libreadline.so.8.0
+--196684--    object doesn't have a symbol table
+--196684-- Reading syms from /usr/lib/x86_64-linux-gnu/libc-2.31.so
+--196684--   Considering /usr/lib/debug/.build-id/18/78e6b475720c7c51969e69ab2d276fae6d1dee.debug ..
+--196684--   .. build-id is valid
+--196684-- Reading syms from /usr/lib/x86_64-linux-gnu/libtinfo.so.6.2
+--196684--    object doesn't have a symbol table
+--196684-- REDIR: 0x4957480 (libc.so.6:memmove) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--196684-- REDIR: 0x4956780 (libc.so.6:strncpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--196684-- REDIR: 0x49577b0 (libc.so.6:strcasecmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--196684-- REDIR: 0x49560a0 (libc.so.6:strcat) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--196684-- REDIR: 0x49567e0 (libc.so.6:rindex) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--196684-- REDIR: 0x4958c50 (libc.so.6:rawmemchr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--196684-- REDIR: 0x4973ce0 (libc.so.6:wmemchr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--196684-- REDIR: 0x4973820 (libc.so.6:wcscmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--196684-- REDIR: 0x49575e0 (libc.so.6:mempcpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--196684-- REDIR: 0x4957410 (libc.so.6:bcmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--196684-- REDIR: 0x4956710 (libc.so.6:strncmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--196684-- REDIR: 0x4956150 (libc.so.6:strcmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--196684-- REDIR: 0x4957540 (libc.so.6:memset) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--196684-- REDIR: 0x49737e0 (libc.so.6:wcschr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--196684-- REDIR: 0x4956670 (libc.so.6:strnlen) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--196684-- REDIR: 0x4956230 (libc.so.6:strcspn) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--196684-- REDIR: 0x4957800 (libc.so.6:strncasecmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--196684-- REDIR: 0x49561d0 (libc.so.6:strcpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--196684-- REDIR: 0x4957950 (libc.so.6:memcpy@@GLIBC_2.14) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--196684-- REDIR: 0x4974f50 (libc.so.6:wcsnlen) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--196684-- REDIR: 0x4973860 (libc.so.6:wcscpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--196684-- REDIR: 0x4956820 (libc.so.6:strpbrk) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--196684-- REDIR: 0x4956100 (libc.so.6:index) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--196684-- REDIR: 0x4956630 (libc.so.6:strlen) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--196684-- REDIR: 0x495fbb0 (libc.so.6:memrchr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--196684-- REDIR: 0x4957850 (libc.so.6:strcasecmp_l) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--196684-- REDIR: 0x49573d0 (libc.so.6:memchr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--196684-- REDIR: 0x4973930 (libc.so.6:wcslen) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--196684-- REDIR: 0x4956ae0 (libc.so.6:strspn) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--196684-- REDIR: 0x4957750 (libc.so.6:stpncpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--196684-- REDIR: 0x49576f0 (libc.so.6:stpcpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--196684-- REDIR: 0x4958c90 (libc.so.6:strchrnul) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--196684-- REDIR: 0x49578a0 (libc.so.6:strncasecmp_l) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--196684-- REDIR: 0x49566b0 (libc.so.6:strncat) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--196684-- REDIR: 0x49e4850 (libc.so.6:__memcpy_chk) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--196684-- REDIR: 0x49572f0 (libc.so.6:strstr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--196684-- REDIR: 0x49688c0 (libc.so.6:__strrchr_sse2) redirected to 0x483ea70 (__strrchr_sse2)
+--196684-- REDIR: 0x49510e0 (libc.so.6:malloc) redirected to 0x483b780 (malloc)
+--196684-- REDIR: 0x49516d0 (libc.so.6:free) redirected to 0x483c9d0 (free)
+--196684-- REDIR: 0x4968bc0 (libc.so.6:__strlen_sse2) redirected to 0x483efa0 (__strlen_sse2)
+--196684-- REDIR: 0x496db00 (libc.so.6:__strcpy_sse2_unaligned) redirected to 0x483f090 (strcpy)
+--196684-- REDIR: 0x49686b0 (libc.so.6:__strchrnul_sse2) redirected to 0x4843540 (strchrnul)
+--196684-- REDIR: 0x48fd4f0 (libc.so.6:setenv) redirected to 0x4844480 (setenv)
+--196684-- REDIR: 0x4968480 (libc.so.6:__strchr_sse2) redirected to 0x483eb90 (__strchr_sse2)
+--196684-- REDIR: 0x4a35cc0 (libc.so.6:__strncmp_sse42) redirected to 0x483f7c0 (__strncmp_sse42)
+--196684-- REDIR: 0x4951e80 (libc.so.6:realloc) redirected to 0x483df30 (realloc)
+--196684-- REDIR: 0x4972ad0 (libc.so.6:memcpy@GLIBC_2.2.5) redirected to 0x4840100 (memcpy@GLIBC_2.2.5)
+--196684-- REDIR: 0x4972ab0 (libc.so.6:__mempcpy_sse2_unaligned) redirected to 0x4843660 (mempcpy)
+--196684-- REDIR: 0x49613b0 (libc.so.6:__strcmp_sse2_unaligned) redirected to 0x483fed0 (strcmp)
+--196684-- REDIR: 0x4952b10 (libc.so.6:calloc) redirected to 0x483dce0 (calloc)
+--196684-- REDIR: 0x4968d60 (libc.so.6:__strnlen_sse2) redirected to 0x483eee0 (strnlen)
+--196684-- REDIR: 0x4956fa0 (libc.so.6:__GI_strstr) redirected to 0x4843ca0 (__strstr_sse2)
+--196684-- REDIR: 0x4972ac0 (libc.so.6:__memcpy_chk_sse2_unaligned) redirected to 0x4843b10 (__memcpy_chk)
+--196684-- REDIR: 0x496e130 (libc.so.6:__strncpy_sse2_unaligned) redirected to 0x483f560 (__strncpy_sse2_unaligned)
+--196684-- REDIR: 0x4962ec0 (libc.so.6:__memchr_sse2) redirected to 0x4840050 (memchr)
+--196684-- REDIR: 0x496f140 (libc.so.6:__stpcpy_sse2_unaligned) redirected to 0x4842570 (__stpcpy_sse2_unaligned)
+--196684-- REDIR: 0x4a3c0a0 (libc.so.6:__strcasecmp_avx) redirected to 0x483f830 (strcasecmp)
+--196684-- REDIR: 0x4a3d720 (libc.so.6:__strncasecmp_avx) redirected to 0x483f910 (strncasecmp)
+--196684-- REDIR: 0x4972f00 (libc.so.6:__memset_sse2_unaligned) redirected to 0x48428e0 (memset)
+--196684-- REDIR: 0x4a44550 (libc.so.6:__memcmp_sse4_1) redirected to 0x4842150 (__memcmp_sse4_1)
+==196692== 
+==196692== HEAP SUMMARY:
+==196692==     in use at exit: 241,658 bytes in 300 blocks
+==196692==   total heap usage: 1,181 allocs, 881 frees, 275,356 bytes allocated
+==196692== 
+==196692== Searching for pointers to 300 not-freed blocks
+==196692== Checked 244,808 bytes
+==196692== 
+==196692== 2 bytes in 1 blocks are still reachable in loss record 1 of 75
+==196692==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==196692==    by 0x406B65: ft_strdup (ft_strdup.c:22)
+==196692==    by 0x405A59: set_redir (set_tok_supply.c:84)
+==196692==    by 0x4059C8: set_simple (set_tok_supply.c:28)
+==196692==    by 0x40590F: set_tok (set_tok.c:28)
+==196692==    by 0x405696: str_tok (str_tok.c:28)
+==196692==    by 0x402A70: init_in_loop (other_init.c:31)
+==196692==    by 0x401329: main_loop (minishell.c:46)
+==196692==    by 0x4012B3: main (minishell.c:26)
+==196692== 
+==196692== 3 bytes in 1 blocks are still reachable in loss record 2 of 75
+==196692==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==196692==    by 0x405BAC: set_lit (set_tok_supply.c:40)
+==196692==    by 0x4058C1: set_tok (set_tok.c:24)
+==196692==    by 0x405696: str_tok (str_tok.c:28)
+==196692==    by 0x402A70: init_in_loop (other_init.c:31)
+==196692==    by 0x401329: main_loop (minishell.c:46)
+==196692==    by 0x4012B3: main (minishell.c:26)
+==196692== 
+==196692== 4 bytes in 1 blocks are still reachable in loss record 3 of 75
+==196692==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==196692==    by 0x406B65: ft_strdup (ft_strdup.c:22)
+==196692==    by 0x402DEF: set_error_env (set_error_env.c:32)
+==196692==    by 0x4013C8: begin_loop (minishell.c:68)
+==196692==    by 0x4012ED: main_loop (minishell.c:41)
+==196692==    by 0x4012B3: main (minishell.c:26)
+==196692== 
+==196692== 6 bytes in 1 blocks are still reachable in loss record 4 of 75
+==196692==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==196692==    by 0x405BAC: set_lit (set_tok_supply.c:40)
+==196692==    by 0x4058C1: set_tok (set_tok.c:24)
+==196692==    by 0x405696: str_tok (str_tok.c:28)
+==196692==    by 0x405FC4: new_list (rotate_tokens.c:83)
+==196692==    by 0x405E96: rotate_tokens (rotate_tokens.c:36)
+==196692==    by 0x401333: main_loop (minishell.c:48)
+==196692==    by 0x4012B3: main (minishell.c:26)
+==196692== 
+==196692== 8 bytes in 1 blocks are still reachable in loss record 7 of 75
+==196692==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==196692==    by 0x405625: str_tok (str_tok.c:20)
+==196692==    by 0x405FC4: new_list (rotate_tokens.c:83)
+==196692==    by 0x405E96: rotate_tokens (rotate_tokens.c:36)
+==196692==    by 0x401333: main_loop (minishell.c:48)
+==196692==    by 0x4012B3: main (minishell.c:26)
+==196692== 
+==196692== 15 bytes in 1 blocks are still reachable in loss record 12 of 75
+==196692==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==196692==    by 0x406155: ft_strjoin (get_next_line_utils.c:47)
+==196692==    by 0x40284E: expand_str_supply (expand_str.c:51)
+==196692==    by 0x4026AC: expand_str (expand_str.c:27)
+==196692==    by 0x402077: expand_loop (expand_loop.c:28)
+==196692==    by 0x401346: main_loop (minishell.c:50)
+==196692==    by 0x4012B3: main (minishell.c:26)
+==196692== 
+==196692== 32 bytes in 2 blocks are still reachable in loss record 21 of 75
+==196692==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==196692==    by 0x405869: set_tok (set_tok.c:19)
+==196692==    by 0x405696: str_tok (str_tok.c:28)
+==196692==    by 0x402A70: init_in_loop (other_init.c:31)
+==196692==    by 0x401329: main_loop (minishell.c:46)
+==196692==    by 0x4012B3: main (minishell.c:26)
+==196692== 
+==196692== 32 bytes in 2 blocks are still reachable in loss record 22 of 75
+==196692==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==196692==    by 0x4062C6: ft_lstnew (ft_lstnew.c:19)
+==196692==    by 0x40569E: str_tok (str_tok.c:28)
+==196692==    by 0x402A70: init_in_loop (other_init.c:31)
+==196692==    by 0x401329: main_loop (minishell.c:46)
+==196692==    by 0x4012B3: main (minishell.c:26)
+==196692== 
+==196692== 32 bytes in 2 blocks are still reachable in loss record 23 of 75
+==196692==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==196692==    by 0x405869: set_tok (set_tok.c:19)
+==196692==    by 0x405696: str_tok (str_tok.c:28)
+==196692==    by 0x405FC4: new_list (rotate_tokens.c:83)
+==196692==    by 0x405E96: rotate_tokens (rotate_tokens.c:36)
+==196692==    by 0x401333: main_loop (minishell.c:48)
+==196692==    by 0x4012B3: main (minishell.c:26)
+==196692== 
+==196692== 32 bytes in 2 blocks are still reachable in loss record 24 of 75
+==196692==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==196692==    by 0x4062C6: ft_lstnew (ft_lstnew.c:19)
+==196692==    by 0x40569E: str_tok (str_tok.c:28)
+==196692==    by 0x405FC4: new_list (rotate_tokens.c:83)
+==196692==    by 0x405E96: rotate_tokens (rotate_tokens.c:36)
+==196692==    by 0x401333: main_loop (minishell.c:48)
+==196692==    by 0x4012B3: main (minishell.c:26)
+==196692== 
+==196692== 45 bytes in 1 blocks are still reachable in loss record 26 of 75
+==196692==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==196692==    by 0x406B65: ft_strdup (ft_strdup.c:22)
+==196692==    by 0x403EE7: set_var (export_supply.c:50)
+==196692==    by 0x403D1E: actualize_env (actualize_env.c:30)
+==196692==    by 0x402A8F: init_in_loop (other_init.c:34)
+==196692==    by 0x401329: main_loop (minishell.c:46)
+==196692==    by 0x4012B3: main (minishell.c:26)
+==196692== 
+==196692== 3,965 bytes in 65 blocks are still reachable in loss record 51 of 75
+==196692==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==196692==    by 0x406B65: ft_strdup (ft_strdup.c:22)
+==196692==    by 0x401EB3: init_env (get_env.c:25)
+==196692==    by 0x402A3F: init_out_loop (other_init.c:24)
+==196692==    by 0x4012AE: main (minishell.c:25)
+==196692== 
+==196692== 32,768 bytes in 1 blocks are still reachable in loss record 75 of 75
+==196692==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==196692==    by 0x40644D: ft_calloc (ft_calloc.c:19)
+==196692==    by 0x401E61: init_env (get_env.c:20)
+==196692==    by 0x402A3F: init_out_loop (other_init.c:24)
+==196692==    by 0x4012AE: main (minishell.c:25)
+==196692== 
+==196692== LEAK SUMMARY:
+==196692==    definitely lost: 0 bytes in 0 blocks
+==196692==    indirectly lost: 0 bytes in 0 blocks
+==196692==      possibly lost: 0 bytes in 0 blocks
+==196692==    still reachable: 36,944 bytes in 81 blocks
+==196692==         suppressed: 204,714 bytes in 219 blocks
+==196692== 
+==196692== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+--196692-- 
+--196692-- used_suppression:     58 leak readline valgrind_readline_leaks_ignore.txt:2 suppressed: 200,639 bytes in 215 blocks
+--196692-- used_suppression:      4 leak add_history valgrind_readline_leaks_ignore.txt:8 suppressed: 4,075 bytes in 4 blocks
+==196692== 
+==196692== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==196697== 
+==196697== HEAP SUMMARY:
+==196697==     in use at exit: 241,601 bytes in 297 blocks
+==196697==   total heap usage: 2,186 allocs, 1,889 frees, 295,157 bytes allocated
+==196697== 
+==196697== Searching for pointers to 297 not-freed blocks
+==196697== Checked 244,704 bytes
+==196697== 
+==196697== 4 bytes in 1 blocks are still reachable in loss record 1 of 70
+==196697==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==196697==    by 0x406B65: ft_strdup (ft_strdup.c:22)
+==196697==    by 0x402ED6: set_error_env_supply (set_error_env.c:45)
+==196697==    by 0x402DCA: set_error_env (set_error_env.c:29)
+==196697==    by 0x4013C8: begin_loop (minishell.c:68)
+==196697==    by 0x4012ED: main_loop (minishell.c:41)
+==196697==    by 0x4012B3: main (minishell.c:26)
+==196697== 
+==196697== 8 bytes in 1 blocks are still reachable in loss record 4 of 70
+==196697==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==196697==    by 0x405625: str_tok (str_tok.c:20)
+==196697==    by 0x402A70: init_in_loop (other_init.c:31)
+==196697==    by 0x401329: main_loop (minishell.c:46)
+==196697==    by 0x4012B3: main (minishell.c:26)
+==196697== 
+==196697== 8 bytes in 2 blocks are still reachable in loss record 6 of 70
+==196697==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==196697==    by 0x405BAC: set_lit (set_tok_supply.c:40)
+==196697==    by 0x4058C1: set_tok (set_tok.c:24)
+==196697==    by 0x405696: str_tok (str_tok.c:28)
+==196697==    by 0x402A70: init_in_loop (other_init.c:31)
+==196697==    by 0x401329: main_loop (minishell.c:46)
+==196697==    by 0x4012B3: main (minishell.c:26)
+==196697== 
+==196697== 32 bytes in 2 blocks are still reachable in loss record 17 of 70
+==196697==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==196697==    by 0x405869: set_tok (set_tok.c:19)
+==196697==    by 0x405696: str_tok (str_tok.c:28)
+==196697==    by 0x402A70: init_in_loop (other_init.c:31)
+==196697==    by 0x401329: main_loop (minishell.c:46)
+==196697==    by 0x4012B3: main (minishell.c:26)
+==196697== 
+==196697== 32 bytes in 2 blocks are still reachable in loss record 18 of 70
+==196697==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==196697==    by 0x4062C6: ft_lstnew (ft_lstnew.c:19)
+==196697==    by 0x40569E: str_tok (str_tok.c:28)
+==196697==    by 0x402A70: init_in_loop (other_init.c:31)
+==196697==    by 0x401329: main_loop (minishell.c:46)
+==196697==    by 0x4012B3: main (minishell.c:26)
+==196697== 
+==196697== 45 bytes in 1 blocks are still reachable in loss record 20 of 70
+==196697==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==196697==    by 0x406B65: ft_strdup (ft_strdup.c:22)
+==196697==    by 0x403EE7: set_var (export_supply.c:50)
+==196697==    by 0x403D1E: actualize_env (actualize_env.c:30)
+==196697==    by 0x402A8F: init_in_loop (other_init.c:34)
+==196697==    by 0x401329: main_loop (minishell.c:46)
+==196697==    by 0x4012B3: main (minishell.c:26)
+==196697== 
+==196697== 3,965 bytes in 65 blocks are still reachable in loss record 46 of 70
+==196697==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==196697==    by 0x406B65: ft_strdup (ft_strdup.c:22)
+==196697==    by 0x401EB3: init_env (get_env.c:25)
+==196697==    by 0x402A3F: init_out_loop (other_init.c:24)
+==196697==    by 0x4012AE: main (minishell.c:25)
+==196697== 
+==196697== 32,768 bytes in 1 blocks are still reachable in loss record 70 of 70
+==196697==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==196697==    by 0x40644D: ft_calloc (ft_calloc.c:19)
+==196697==    by 0x401E61: init_env (get_env.c:20)
+==196697==    by 0x402A3F: init_out_loop (other_init.c:24)
+==196697==    by 0x4012AE: main (minishell.c:25)
+==196697== 
+==196697== LEAK SUMMARY:
+==196697==    definitely lost: 0 bytes in 0 blocks
+==196697==    indirectly lost: 0 bytes in 0 blocks
+==196697==      possibly lost: 0 bytes in 0 blocks
+==196697==    still reachable: 36,862 bytes in 75 blocks
+==196697==         suppressed: 204,739 bytes in 222 blocks
+==196697== 
+==196697== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+--196697-- 
+--196697-- used_suppression:     58 leak readline valgrind_readline_leaks_ignore.txt:2 suppressed: 200,622 bytes in 215 blocks
+--196697-- used_suppression:      4 leak add_history valgrind_readline_leaks_ignore.txt:8 suppressed: 4,117 bytes in 7 blocks
+==196697== 
+==196697== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==196701== 
+==196701== HEAP SUMMARY:
+==196701==     in use at exit: 241,720 bytes in 306 blocks
+==196701==   total heap usage: 3,197 allocs, 2,891 frees, 315,035 bytes allocated
+==196701== 
+==196701== Searching for pointers to 306 not-freed blocks
+==196701== Checked 244,808 bytes
+==196701== 
+==196701== 4 bytes in 1 blocks are still reachable in loss record 1 of 70
+==196701==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==196701==    by 0x406B65: ft_strdup (ft_strdup.c:22)
+==196701==    by 0x402ED6: set_error_env_supply (set_error_env.c:45)
+==196701==    by 0x402DCA: set_error_env (set_error_env.c:29)
+==196701==    by 0x4013C8: begin_loop (minishell.c:68)
+==196701==    by 0x4012ED: main_loop (minishell.c:41)
+==196701==    by 0x4012B3: main (minishell.c:26)
+==196701== 
+==196701== 8 bytes in 1 blocks are still reachable in loss record 3 of 70
+==196701==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==196701==    by 0x405625: str_tok (str_tok.c:20)
+==196701==    by 0x402A70: init_in_loop (other_init.c:31)
+==196701==    by 0x401329: main_loop (minishell.c:46)
+==196701==    by 0x4012B3: main (minishell.c:26)
+==196701== 
+==196701== 13 bytes in 4 blocks are still reachable in loss record 7 of 70
+==196701==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==196701==    by 0x405BAC: set_lit (set_tok_supply.c:40)
+==196701==    by 0x4058C1: set_tok (set_tok.c:24)
+==196701==    by 0x405696: str_tok (str_tok.c:28)
+==196701==    by 0x402A70: init_in_loop (other_init.c:31)
+==196701==    by 0x401329: main_loop (minishell.c:46)
+==196701==    by 0x4012B3: main (minishell.c:26)
+==196701== 
+==196701== 45 bytes in 1 blocks are still reachable in loss record 18 of 70
+==196701==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==196701==    by 0x406B65: ft_strdup (ft_strdup.c:22)
+==196701==    by 0x403EE7: set_var (export_supply.c:50)
+==196701==    by 0x403D1E: actualize_env (actualize_env.c:30)
+==196701==    by 0x402A8F: init_in_loop (other_init.c:34)
+==196701==    by 0x401329: main_loop (minishell.c:46)
+==196701==    by 0x4012B3: main (minishell.c:26)
+==196701== 
+==196701== 64 bytes in 4 blocks are still reachable in loss record 22 of 70
+==196701==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==196701==    by 0x405869: set_tok (set_tok.c:19)
+==196701==    by 0x405696: str_tok (str_tok.c:28)
+==196701==    by 0x402A70: init_in_loop (other_init.c:31)
+==196701==    by 0x401329: main_loop (minishell.c:46)
+==196701==    by 0x4012B3: main (minishell.c:26)
+==196701== 
+==196701== 64 bytes in 4 blocks are still reachable in loss record 23 of 70
+==196701==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==196701==    by 0x4062C6: ft_lstnew (ft_lstnew.c:19)
+==196701==    by 0x40569E: str_tok (str_tok.c:28)
+==196701==    by 0x402A70: init_in_loop (other_init.c:31)
+==196701==    by 0x401329: main_loop (minishell.c:46)
+==196701==    by 0x4012B3: main (minishell.c:26)
+==196701== 
+==196701== 3,965 bytes in 65 blocks are still reachable in loss record 46 of 70
+==196701==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==196701==    by 0x406B65: ft_strdup (ft_strdup.c:22)
+==196701==    by 0x401EB3: init_env (get_env.c:25)
+==196701==    by 0x402A3F: init_out_loop (other_init.c:24)
+==196701==    by 0x4012AE: main (minishell.c:25)
+==196701== 
+==196701== 32,768 bytes in 1 blocks are still reachable in loss record 70 of 70
+==196701==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==196701==    by 0x40644D: ft_calloc (ft_calloc.c:19)
+==196701==    by 0x401E61: init_env (get_env.c:20)
+==196701==    by 0x402A3F: init_out_loop (other_init.c:24)
+==196701==    by 0x4012AE: main (minishell.c:25)
+==196701== 
+==196701== LEAK SUMMARY:
+==196701==    definitely lost: 0 bytes in 0 blocks
+==196701==    indirectly lost: 0 bytes in 0 blocks
+==196701==      possibly lost: 0 bytes in 0 blocks
+==196701==    still reachable: 36,931 bytes in 81 blocks
+==196701==         suppressed: 204,789 bytes in 225 blocks
+==196701== 
+==196701== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+--196701-- 
+--196701-- used_suppression:     58 leak readline valgrind_readline_leaks_ignore.txt:2 suppressed: 200,626 bytes in 215 blocks
+--196701-- used_suppression:      4 leak add_history valgrind_readline_leaks_ignore.txt:8 suppressed: 4,163 bytes in 10 blocks
+==196701== 
+==196701== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==196703== 
+==196703== HEAP SUMMARY:
+==196703==     in use at exit: 241,647 bytes in 300 blocks
+==196703==   total heap usage: 4,199 allocs, 3,899 frees, 334,794 bytes allocated
+==196703== 
+==196703== Searching for pointers to 300 not-freed blocks
+==196703== Checked 244,768 bytes
+==196703== 
+==196703== 4 bytes in 1 blocks are still reachable in loss record 2 of 70
+==196703==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==196703==    by 0x405BAC: set_lit (set_tok_supply.c:40)
+==196703==    by 0x4058C1: set_tok (set_tok.c:24)
+==196703==    by 0x405696: str_tok (str_tok.c:28)
+==196703==    by 0x402A70: init_in_loop (other_init.c:31)
+==196703==    by 0x401329: main_loop (minishell.c:46)
+==196703==    by 0x4012B3: main (minishell.c:26)
+==196703== 
+==196703== 4 bytes in 1 blocks are still reachable in loss record 3 of 70
+==196703==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==196703==    by 0x406B65: ft_strdup (ft_strdup.c:22)
+==196703==    by 0x402ED6: set_error_env_supply (set_error_env.c:45)
+==196703==    by 0x402DCA: set_error_env (set_error_env.c:29)
+==196703==    by 0x4013C8: begin_loop (minishell.c:68)
+==196703==    by 0x4012ED: main_loop (minishell.c:41)
+==196703==    by 0x4012B3: main (minishell.c:26)
+==196703== 
+==196703== 8 bytes in 1 blocks are still reachable in loss record 5 of 70
+==196703==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==196703==    by 0x405625: str_tok (str_tok.c:20)
+==196703==    by 0x402A70: init_in_loop (other_init.c:31)
+==196703==    by 0x401329: main_loop (minishell.c:46)
+==196703==    by 0x4012B3: main (minishell.c:26)
+==196703== 
+==196703== 16 bytes in 1 blocks are still reachable in loss record 11 of 70
+==196703==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==196703==    by 0x405869: set_tok (set_tok.c:19)
+==196703==    by 0x405696: str_tok (str_tok.c:28)
+==196703==    by 0x402A70: init_in_loop (other_init.c:31)
+==196703==    by 0x401329: main_loop (minishell.c:46)
+==196703==    by 0x4012B3: main (minishell.c:26)
+==196703== 
+==196703== 16 bytes in 1 blocks are still reachable in loss record 12 of 70
+==196703==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==196703==    by 0x4062C6: ft_lstnew (ft_lstnew.c:19)
+==196703==    by 0x40569E: str_tok (str_tok.c:28)
+==196703==    by 0x402A70: init_in_loop (other_init.c:31)
+==196703==    by 0x401329: main_loop (minishell.c:46)
+==196703==    by 0x4012B3: main (minishell.c:26)
+==196703== 
+==196703== 45 bytes in 1 blocks are still reachable in loss record 19 of 70
+==196703==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==196703==    by 0x406B65: ft_strdup (ft_strdup.c:22)
+==196703==    by 0x403EE7: set_var (export_supply.c:50)
+==196703==    by 0x403D1E: actualize_env (actualize_env.c:30)
+==196703==    by 0x402A8F: init_in_loop (other_init.c:34)
+==196703==    by 0x401329: main_loop (minishell.c:46)
+==196703==    by 0x4012B3: main (minishell.c:26)
+==196703== 
+==196703== 3,965 bytes in 65 blocks are still reachable in loss record 46 of 70
+==196703==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==196703==    by 0x406B65: ft_strdup (ft_strdup.c:22)
+==196703==    by 0x401EB3: init_env (get_env.c:25)
+==196703==    by 0x402A3F: init_out_loop (other_init.c:24)
+==196703==    by 0x4012AE: main (minishell.c:25)
+==196703== 
+==196703== 32,768 bytes in 1 blocks are still reachable in loss record 70 of 70
+==196703==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==196703==    by 0x40644D: ft_calloc (ft_calloc.c:19)
+==196703==    by 0x401E61: init_env (get_env.c:20)
+==196703==    by 0x402A3F: init_out_loop (other_init.c:24)
+==196703==    by 0x4012AE: main (minishell.c:25)
+==196703== 
+==196703== LEAK SUMMARY:
+==196703==    definitely lost: 0 bytes in 0 blocks
+==196703==    indirectly lost: 0 bytes in 0 blocks
+==196703==      possibly lost: 0 bytes in 0 blocks
+==196703==    still reachable: 36,826 bytes in 72 blocks
+==196703==         suppressed: 204,821 bytes in 228 blocks
+==196703== 
+==196703== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+--196703-- 
+--196703-- used_suppression:     58 leak readline valgrind_readline_leaks_ignore.txt:2 suppressed: 200,619 bytes in 215 blocks
+--196703-- used_suppression:      4 leak add_history valgrind_readline_leaks_ignore.txt:8 suppressed: 4,202 bytes in 13 blocks
+==196703== 
+==196703== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==196684== 
+==196684== HEAP SUMMARY:
+==196684==     in use at exit: 204,818 bytes in 227 blocks
+==196684==   total heap usage: 4,874 allocs, 4,647 frees, 348,202 bytes allocated
+==196684== 
+==196684== Searching for pointers to 227 not-freed blocks
+==196684== Checked 208,152 bytes
+==196684== 
+==196684== LEAK SUMMARY:
+==196684==    definitely lost: 0 bytes in 0 blocks
+==196684==    indirectly lost: 0 bytes in 0 blocks
+==196684==      possibly lost: 0 bytes in 0 blocks
+==196684==    still reachable: 0 bytes in 0 blocks
+==196684==         suppressed: 204,818 bytes in 227 blocks
+==196684== 
+==196684== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+--196684-- 
+--196684-- used_suppression:     57 leak readline valgrind_readline_leaks_ignore.txt:2 suppressed: 200,616 bytes in 214 blocks
+--196684-- used_suppression:      4 leak add_history valgrind_readline_leaks_ignore.txt:8 suppressed: 4,202 bytes in 13 blocks
+==196684== 
+==196684== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

@@ -3,18 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   rotate_tokens.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 16:16:16 by flcarval          #+#    #+#             */
-/*   Updated: 2022/07/29 12:05:34 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/07/29 14:39:24 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
 static void	if_redir_first(void);
-static char	*concat_tokens(void);
-// static void	concat_tokens_supply(char *concat, t_list *lst, int i);
 static void	new_list(char *concat);
 
 int	rotate_tokens(void)
@@ -73,94 +71,9 @@ static void	if_redir_first(void)
 }
 
 /*
-CONCATENER LA VALEUR DE TOUS LES TOKENS ARGUMENTS DE LA COMMANDE
-ET SUPPRIMER CES TOKENS DE LA LISTE
-*/
-static char	*concat_tokens(void)
-{
-	char	*concat;
-	int		prev_type;
-	int		i;
-	t_list	*lst;
-	t_list	*tmp;
-
-	concat = ft_strdup((*g_data.tokens)->content->val);
-	concat = ft_strjoin(concat, " ");
-	lst = (*g_data.tokens)->next;
-	i = 1;
-	while (lst)
-	{
-		tmp = lst->next;
-		if (is_lit_or_quotes(lst->content))
-		{
-			prev_type = get_n_lst(g_data.tokens, i - 1)->content->type;
-			if (!(prev_type >= I_OUTREDIR && prev_type <= I_D_INREDIR))
-			{
-				if (lst->content->type == I_S_QUOTE)
-					concat = ft_strjoin(concat, "\'");
-				else if (lst->content->type == I_D_QUOTE)
-					concat = ft_strjoin(concat, "\"");
-				concat = ft_strjoin(concat, lst->content->val);
-				if (lst->content->type == I_S_QUOTE)
-					concat = ft_strjoin(concat, "\'");
-				else if (lst->content->type == I_D_QUOTE)
-					concat = ft_strjoin(concat, "\"");
-				concat = ft_strjoin(concat, " ");
-				get_n_lst(g_data.tokens, i - 1)->next = lst->next;
-				free(lst->content->val);
-				free(lst->content);
-				free(lst);
-				i--;
-			}
-		}
-		lst = tmp;
-		i++;
-	}
-	////////////////////////////////
-	// concat_tokens_supply(concat, lst, i);
-	////////////////////////////////
-	return (concat);
-}
-
-// static void	concat_tokens_supply(char *concat, t_list *lst, int i)
-// {
-// 	int		prev_type;
-// 	t_list	*tmp;
-
-// 	while (lst)
-// 	{
-// 		tmp = lst->next;
-// 		if (is_lit_or_quotes(lst->content))
-// 		{
-// 			prev_type = get_n_lst(g_data.tokens, i - 1)->content->type;
-// 			if (!(prev_type >= I_OUTREDIR && prev_type <= I_D_INREDIR))
-// 			{
-// 				if (lst->content->type == I_S_QUOTE)
-// 					concat = ft_strjoin(concat, "\'");
-// 				else if (lst->content->type == I_D_QUOTE)
-// 					concat = ft_strjoin(concat, "\"");
-// 				concat = ft_strjoin(concat, lst->content->val);
-// 				if (lst->content->type == I_S_QUOTE)
-// 					concat = ft_strjoin(concat, "\'");
-// 				else if (lst->content->type == I_D_QUOTE)
-// 					concat = ft_strjoin(concat, "\"");
-// 				concat = ft_strjoin(concat, " ");
-// 				get_n_lst(g_data.tokens, i - 1)->next = lst->next;
-// 				free(lst->content->val);
-// 				free(lst->content);
-// 				free(lst);
-// 				i--;
-// 			}
-// 		}
-// 		lst = tmp;
-// 		i++;
-// 	}
-// }
-
-
-/*
 TRAMSFORMER CONCAT EN UNE NOUVELLE LISTE DE TOKENS
-PLACER CETTE LISTE EN DEBUT DE LANCIENNE APRES AVOIR SUPPRIMER LE PREMIER TOKEN DE LANCIENNE
+PLACER CETTE LISTE EN DEBUT DE LANCIENNE APRES AVOIR SUPPRIMER LE PREMIER
+TOKEN DE LANCIENNE
 */
 static void	new_list(char *concat)
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrebion <tbrebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 12:24:08 by flcarval          #+#    #+#             */
-/*   Updated: 2022/07/28 18:00:56 by tbrebion         ###   ########.fr       */
+/*   Updated: 2022/07/29 01:07:28 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,7 @@ void	history(void);
 char	*here_doc_supply_loop(char *line, char *ret, char *exp, int i_lim);
 void	here_doc_other_supply(char *line, char *ret);
 char	*exec_loop(char *tmp, int i, int j);
+int		is_lit_or_quotes(t_tok *tok);
 
 // BUILTINS
 int		is_builtin(char *cmd);

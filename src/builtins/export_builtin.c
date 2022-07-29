@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 09:58:04 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/07/19 17:27:47 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/07/29 00:39:53 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,8 @@ static int	exp_check(char *exp);
 
 void	export_varenv(int i)
 {
-	int		j;
-	char	**spl;
 	char	*exp;
 
-	j = 0;
-	spl = NULL;
 	if (!get_n_lst(g_data.tokens, i + 1))
 		return ;
 	exp = get_n_lst(g_data.tokens, i + 1)->content->val;

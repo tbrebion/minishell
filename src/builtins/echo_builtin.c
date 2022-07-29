@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 01:26:03 by flcarval          #+#    #+#             */
-/*   Updated: 2022/07/28 15:58:43 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/07/29 01:18:17 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,14 @@ int	echo_builtin(int i)
 	else
 		nl = "";
 	j = 0;
-	while (get_n_lst(g_data.tokens, i + j) && \
-		(get_n_lst(g_data.tokens, i + j)->content->type == I_LITERAL || \
-		get_n_lst(g_data.tokens, i + j)->content->type == I_D_QUOTE || \
-		get_n_lst(g_data.tokens, i + j)->content->type == I_S_QUOTE))
+	while (get_n_lst(g_data.tokens, i + j) \
+		&& is_lit_or_quotes(get_n_lst(g_data.tokens, i + j)->content))
 	{
-		if (is_n_param(get_n_lst(g_data.tokens, i + j++)->content->val))
+		if (is_n_param(get_n_lst(g_data.tokens, i + j)->content->val))
+		{
+			j++;
 			continue ;
+		}
 		echo_supply_loop(i, &j);
 	}
 	ft_printf("%s", nl);

@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 14:42:14 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/07/20 01:40:26 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/07/29 00:38:52 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,8 @@ static int	is_dollar(char *str);
 
 char	*expand_str(char *str)
 {
-	int		i;
 	char	*tmp;
 
-	i = 0;
 	while (is_dollar(str) != 0)
 	{
 		tmp = ft_strdup(str);

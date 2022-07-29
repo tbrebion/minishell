@@ -6,7 +6,7 @@
 /*   By: flcarval <flcarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:19:38 by tbrebion          #+#    #+#             */
-/*   Updated: 2022/07/29 14:26:56 by flcarval         ###   ########.fr       */
+/*   Updated: 2022/07/29 15:02:22 by flcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,10 @@ static void	main_loop(void)
 		if (quote_error())
 			continue ;
 		init_in_loop();
-		print_tok_list();
 		if (rotate_tokens())
 			continue ;
 		expand_loop();
 		g_data.lst = (*g_data.tokens);
-		print_tok_list();
 		builtin_or_not();
 		if (exit_builtin() == 1)
 			continue ;

@@ -1,4 +1,4 @@
-# minishell
+# minishell - done in collab with [tbrebion](https://github.com/tbrebion)
 
 This project is from 42 school commom core. Its aim was to create a posix bash like shell.
 

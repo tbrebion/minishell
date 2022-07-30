@@ -5,8 +5,8 @@ This project is from 42 school commom core. Its aim was to create a posix bash l
 ## Rules
 
 - ### prompt :
-  - Print a prompt waiting for a new command
-  - Have a working history
+  - print a prompt waiting for a new command
+  - must have a working history
  
 - ### redirections :
   - `<` must redirect the input

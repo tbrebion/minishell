@@ -15,7 +15,7 @@ This project is from 42 school commom core. Its aim was to create a posix bash l
   - `>>` must redirect the output in append mode
   
 - ### pipes
-  - each pipeline's command's output must be connected to the next command's input with a pipe (`|`)
+  - each pipeline's command's output must be connected to the next command's input with a pipe ( `|` )
  
 - ### environment variable
   - `$VAR` must be expanded
